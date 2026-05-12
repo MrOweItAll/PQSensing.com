@@ -4,15 +4,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the repository for **PQSensing.com**. The project has not yet been initialized — no source files, build configuration, or tooling have been committed.
+This is the repository for **[www.pqsensing.com](https://www.pqsensing.com)**, a static HTML/CSS/JS website hosted on Namecheap.
 
-When the project is bootstrapped, update this file with:
+## Repository layout
 
-- **Build commands**: how to install dependencies, build, and start the project
-- **Test commands**: how to run the full test suite and a single test file
-- **Lint/format commands**: how to check and auto-fix code style
-- **Architecture notes**: the high-level structure that requires reading multiple files to understand (e.g., data flow, auth patterns, API conventions, state management approach)
-- **Key conventions**: naming patterns, file organization rules, or domain-specific constraints that aren't obvious from the code itself
+- `site/` — live website files (HTML, CSS, JS, images). All edits to the site go here.
+- `CHANGELOG.md` — tracks every change since the initial import.
+
+## Local development
+
+```bash
+python3 -m http.server 8000 -d site
+```
+
+No build step, no dependencies to install.
 
 ---
 
