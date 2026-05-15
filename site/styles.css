@@ -1258,11 +1258,155 @@ sub, sup { line-height: 0; font-size: 0.72em; }
   text-align: right;
 }
 
+/* ============================================================ MZI interactive */
+
+.band--mzi { background: var(--ink-0); }
+.mzi__h { font-family: 'Fraunces', serif; font-size: clamp(28px,3.4vw,42px); line-height: 1.15; }
+.mzi__sub { color: var(--muted); max-width: 68ch; }
+
+/* --- toggle controls --- */
+.mzi-controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 16px; align-items: center; }
+.mzi-btn {
+  background: rgba(127,255,212,0.08); border: 1px solid rgba(127,255,212,0.3);
+  color: var(--cyan); padding: 8px 14px; border-radius: 8px;
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.mzi-btn:hover { background: rgba(127,255,212,0.16); }
+.mzi-btn--active {
+  background: var(--cyan); color: var(--ink-0);
+  border-color: var(--cyan); box-shadow: 0 0 18px rgba(127,255,212,0.35);
+}
+.mzi-btn--violet { background: rgba(180,139,255,0.08); border-color: rgba(180,139,255,0.3); color: var(--violet); }
+.mzi-btn--violet:hover { background: rgba(180,139,255,0.16); }
+.mzi-btn--violet.mzi-btn--active {
+  background: var(--violet); color: var(--ink-0);
+  border-color: var(--violet); box-shadow: 0 0 18px rgba(180,139,255,0.35);
+}
+.mzi-controls__hint { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+/* --- diagram container --- */
+.mzi-diagram {
+  --beam-color: #7fffd4;
+  background: var(--ink-0); border: 1px solid var(--line-strong); border-radius: 12px;
+  padding: 18px; position: relative; transition: background 0.2s;
+}
+.mzi-diagram svg { width: 100%; height: auto; display: block; }
+
+/* --- hotspots --- */
+.mzi-hotspot { cursor: help; }
+.mzi-hit { pointer-events: all; }
+.mzi-hotspot:hover rect:not(.mzi-hit):not(.mzi-d2-glow),
+.mzi-hotspot:hover line { filter: drop-shadow(0 0 8px var(--cyan)); }
+.mzi-lbl { fill: var(--bone); font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; pointer-events: none; }
+.mzi-sub { fill: var(--muted); font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; pointer-events: none; }
+.mzi-hotspot:hover .mzi-lbl { fill: #fff; }
+
+/* --- tooltip --- */
+.mzi-tooltip {
+  position: fixed; z-index: 200; max-width: 320px; padding: 12px 14px; border-radius: 10px;
+  background: rgba(13,17,23,0.97); border: 1px solid rgba(127,255,212,0.45);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5); color: var(--bone); font-size: 13px;
+  line-height: 1.5; pointer-events: none; opacity: 0; transform: translateY(4px);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.mzi-tooltip.show { opacity: 1; transform: translateY(0); }
+.mzi-tooltip .tip-title {
+  color: var(--cyan); font-weight: 600; font-size: 12px; margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.mzi-tooltip .tip-body { color: var(--bone-2); }
+
+/* --- beam visualization --- */
+.mzi-beam {
+  stroke: var(--beam-color); stroke-width: 2; fill: none;
+  transition: stroke-width 0.45s ease, stroke-opacity 0.3s ease, filter 0.3s ease;
+}
+.mzi-diagram.mode-off .mzi-beam-main { stroke-width: 2; stroke-opacity: 0.7; }
+.mzi-diagram.mode-power .mzi-beam-main,
+.mzi-diagram.mode-noise .mzi-beam-main {
+  stroke-width: 7; stroke-opacity: 1;
+  filter: drop-shadow(0 0 12px var(--beam-color));
+  animation: mzi-amp-breathe 1.4s ease-in-out infinite;
+}
+@keyframes mzi-amp-breathe { 0%,100% { stroke-width: 6.5; } 50% { stroke-width: 8; } }
+
+/* noise overlay */
+.mzi-beam-noise {
+  stroke-width: 1; fill: none; stroke-dasharray: 4 3; stroke-linecap: round;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.mzi-diagram.mode-noise .mzi-beam-noise {
+  opacity: 1; animation: mzi-noise-flow 1.1s linear infinite;
+}
+@keyframes mzi-noise-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -28; } }
+
+/* dark-port glow indicators */
+.mzi-d2-glow { opacity: 0; transition: opacity 0.3s; }
+.mzi-diagram.mode-power .mzi-d2-glow,
+.mzi-diagram.mode-noise .mzi-d2-glow { opacity: 1; animation: mzi-glow-lock 1.4s ease-in-out infinite; }
+@keyframes mzi-glow-lock {
+  0%,100% { filter: drop-shadow(0 0 6px var(--beam-color)); }
+  50%     { filter: drop-shadow(0 0 18px var(--beam-color)); }
+}
+
+/* lock badges */
+.mzi-lock-badge, .mzi-lock-badge-noise {
+  opacity: 0; transition: opacity 0.25s, transform 0.25s; transform: translateY(4px);
+}
+.mzi-diagram.mode-power .mzi-lock-badge,
+.mzi-diagram.mode-noise .mzi-lock-badge { opacity: 1; transform: translateY(0); }
+.mzi-diagram.mode-noise .mzi-lock-badge-noise { opacity: 1; transform: translateY(0); }
+
+/* --- info box --- */
+.mzi-info {
+  margin-top: 14px; padding: 14px 16px; border-radius: 10px;
+  background: rgba(127,255,212,0.06); border: 1px solid rgba(127,255,212,0.2);
+  font-size: 14px; color: var(--bone-2); min-height: 84px; line-height: 1.55;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.mzi-info strong { color: var(--cyan); }
+.mzi-info.mzi-info--violet { background: rgba(180,139,255,0.06); border-color: rgba(180,139,255,0.2); }
+.mzi-info.mzi-info--violet strong { color: var(--violet); }
+
+/* --- Thorlabs pan/zoom viewer --- */
+.mzi-thorlabs { margin-top: 32px; }
+.mzi-thorlabs__title {
+  font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 18px;
+  color: var(--bone); margin: 0 0 6px;
+}
+.mzi-thorlabs__sub { color: var(--muted); font-size: 14px; margin: 0 0 14px; max-width: 68ch; }
+.mzi-panzoom {
+  position: relative; width: 100%; aspect-ratio: 8/5; max-height: 640px;
+  border-radius: 12px; overflow: hidden; border: 1px solid var(--line-strong);
+  background: var(--ink-0); touch-action: none; user-select: none; cursor: grab;
+}
+.mzi-panzoom.grabbing { cursor: grabbing; }
+.mzi-pz-inner {
+  position: absolute; top: 0; left: 0; transform-origin: 0 0; will-change: transform;
+}
+.mzi-pz-inner img {
+  display: block; width: 100%; height: auto; pointer-events: none;
+  -webkit-user-drag: none; image-rendering: -webkit-optimize-contrast;
+}
+.mzi-pz-controls {
+  position: absolute; top: 12px; right: 12px; display: flex; gap: 6px; z-index: 5;
+}
+.mzi-pz-btn {
+  background: rgba(13,17,23,0.9); border: 1px solid rgba(127,255,212,0.3);
+  color: var(--cyan); width: 34px; height: 34px; border-radius: 8px;
+  font-size: 16px; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit; transition: all 0.12s;
+}
+.mzi-pz-btn:hover { background: rgba(127,255,212,0.15); }
+
 /* ============================================================ reveal-on-scroll */
 
 .band { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .band.is-revealed { opacity: 1; transform: none; }
-.hero, .exhibit { opacity: 1; transform: none; } /* hero and centerpiece always visible */
+.hero, .exhibit, .band--mzi { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .band { opacity: 1; transform: none; transition: none; }
 }

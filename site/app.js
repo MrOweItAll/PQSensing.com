@@ -367,3 +367,181 @@
     resizeT = setTimeout(update, 120);
   });
 })();
+
+/* ============================================================
+   MZI interactive — mode toggle, tooltip, turbulence, pan/zoom
+   ============================================================ */
+(function () {
+  'use strict';
+
+  // ---- Tooltip ----
+  var tip = document.createElement('div');
+  tip.className = 'mzi-tooltip';
+  tip.innerHTML = '<div class="tip-title"></div><div class="tip-body"></div>';
+  document.body.appendChild(tip);
+  var tipTitle = tip.querySelector('.tip-title');
+  var tipBody = tip.querySelector('.tip-body');
+
+  function showTip(e, title, body) {
+    tipTitle.textContent = title;
+    tipBody.textContent = body;
+    tip.classList.add('show');
+    moveTip(e);
+  }
+  function moveTip(e) {
+    var x = e.clientX + 16, y = e.clientY + 16;
+    var r = tip.getBoundingClientRect();
+    if (x + r.width > window.innerWidth - 12) x = window.innerWidth - r.width - 12;
+    if (y + r.height > window.innerHeight - 12) y = e.clientY - r.height - 16;
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+  }
+  function hideTip() { tip.classList.remove('show'); }
+
+  document.querySelectorAll('.mzi-hotspot').forEach(function (el) {
+    var t = el.getAttribute('data-title') || '';
+    var b = el.getAttribute('data-body') || '';
+    el.addEventListener('mouseenter', function (e) { showTip(e, t, b); });
+    el.addEventListener('mousemove', moveTip);
+    el.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---- Turbulence color cycling ----
+  var palettes = {
+    off:   ['#7fffd4','#f472b6','#fbbf24','#f87171','#34d399','#b48bff','#60a5fa','#fb923c'],
+    power: ['#7fffd4','#7dd3fc','#a5f3fc','#bae6fd','#4fd9b5','#06b6d4'],
+    noise: ['#7fffd4']
+  };
+  var turbTimer = null;
+
+  function setTurbulence(diagram, mode) {
+    if (turbTimer) { clearInterval(turbTimer); turbTimer = null; }
+    var pal = palettes[mode] || palettes.off;
+    diagram.style.setProperty('--beam-color', pal[0]);
+    if (mode === 'noise' || pal.length === 1) return;
+    turbTimer = setInterval(function () {
+      diagram.style.setProperty('--beam-color', pal[Math.floor(Math.random() * pal.length)]);
+    }, 500);
+  }
+
+  // ---- MZI mode toggle ----
+  var mziDiagram = document.getElementById('mzi-diagram');
+  var mziInfo = document.getElementById('mzi-info');
+  if (!mziDiagram || !mziInfo) return;
+
+  var infoText = {
+    off: '<strong>No lock applied.</strong> The interferometer sits at whatever phase the environment gives it. The OPO generates squeezed vacuum, but without a lock, environmental turbulence walks the fringe and the squeezed-state advantage is wasted.',
+    power: '<strong>Power lock applied.</strong> The PZT actuator on M3 drives a feedback loop that holds the dark-port amplitude at its operating point. The beam thickens — its color still flickers in a muted palette because a power lock alone cannot fully suppress non-stationary noise.',
+    noise: '<strong>Power lock + noise-stationary lock.</strong> NSL sits <em>on top of</em> the power lock. The thick bright base beam is the power-locked amplitude. The thin dashed overlay is the noise waveform, held stationary by the detection-normalized objective. The color stops flickering — NSL has quelled the turbulence. Sub-shot-noise sensing becomes possible.'
+  };
+
+  document.querySelectorAll('.mzi-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.mzi-btn').forEach(function (b) { b.classList.remove('mzi-btn--active'); });
+      btn.classList.add('mzi-btn--active');
+      var m = btn.getAttribute('data-mzi');
+      mziDiagram.classList.remove('mode-off', 'mode-power', 'mode-noise');
+      mziDiagram.classList.add('mode-' + m);
+      mziInfo.className = 'mzi-info' + (m === 'noise' ? ' mzi-info--violet' : '');
+      mziInfo.innerHTML = infoText[m];
+      setTurbulence(mziDiagram, m);
+    });
+  });
+  setTurbulence(mziDiagram, 'off');
+
+  // ---- Pan/zoom viewer ----
+  var pzContainer = document.getElementById('mzi-panzoom');
+  if (!pzContainer) return;
+  var pzInner = pzContainer.querySelector('.mzi-pz-inner');
+  var pzImg = pzInner.querySelector('img');
+  var pzState = { x: 0, y: 0, s: 1, minS: 0.1, maxS: 4 };
+
+  function pzApply() {
+    pzInner.style.transform = 'translate(' + pzState.x + 'px,' + pzState.y + 'px) scale(' + pzState.s + ')';
+  }
+  function pzClamp() {
+    var cw = pzContainer.clientWidth, ch = pzContainer.clientHeight;
+    var iw = pzImg.naturalWidth * pzState.s, ih = pzImg.naturalHeight * pzState.s;
+    if (iw <= cw) pzState.x = (cw - iw) / 2;
+    else { if (pzState.x > 0) pzState.x = 0; if (pzState.x < cw - iw) pzState.x = cw - iw; }
+    if (ih <= ch) pzState.y = (ch - ih) / 2;
+    else { if (pzState.y > 0) pzState.y = 0; if (pzState.y < ch - ih) pzState.y = ch - ih; }
+  }
+  function pzFit() {
+    if (!pzImg.naturalWidth) return;
+    pzInner.style.width = pzImg.naturalWidth + 'px';
+    pzInner.style.height = pzImg.naturalHeight + 'px';
+    var cw = pzContainer.clientWidth, ch = pzContainer.clientHeight;
+    var fitS = Math.min(cw / pzImg.naturalWidth, ch / pzImg.naturalHeight);
+    pzState.minS = fitS;
+    pzState.maxS = Math.max(fitS * 12, 1.5);
+    pzState.s = fitS;
+    pzState.x = (cw - pzImg.naturalWidth * fitS) / 2;
+    pzState.y = (ch - pzImg.naturalHeight * fitS) / 2;
+    pzApply();
+  }
+  function pzZoomAt(factor, cx, cy) {
+    var rect = pzContainer.getBoundingClientRect();
+    var px = cx - rect.left, py = cy - rect.top;
+    var ns = Math.max(pzState.minS, Math.min(pzState.maxS, pzState.s * factor));
+    var r = ns / pzState.s;
+    pzState.x = px - (px - pzState.x) * r;
+    pzState.y = py - (py - pzState.y) * r;
+    pzState.s = ns;
+    pzClamp(); pzApply();
+  }
+
+  if (pzImg.complete && pzImg.naturalWidth) pzFit();
+  else pzImg.addEventListener('load', pzFit);
+  window.addEventListener('resize', pzFit);
+
+  pzContainer.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    pzZoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX, e.clientY);
+  }, { passive: false });
+  pzContainer.addEventListener('dblclick', pzFit);
+
+  var pzDrag = false, pzLX = 0, pzLY = 0;
+  pzContainer.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('.mzi-pz-btn')) return;
+    pzDrag = true; pzLX = e.clientX; pzLY = e.clientY;
+    pzContainer.classList.add('grabbing');
+    pzContainer.setPointerCapture(e.pointerId);
+  });
+  pzContainer.addEventListener('pointermove', function (e) {
+    if (!pzDrag) return;
+    pzState.x += e.clientX - pzLX; pzState.y += e.clientY - pzLY;
+    pzLX = e.clientX; pzLY = e.clientY;
+    pzClamp(); pzApply();
+  });
+  pzContainer.addEventListener('pointerup', function () { pzDrag = false; pzContainer.classList.remove('grabbing'); });
+  pzContainer.addEventListener('pointercancel', function () { pzDrag = false; pzContainer.classList.remove('grabbing'); });
+
+  // Pinch zoom
+  var pzPtrs = new Map(), pzLastDist = 0;
+  pzContainer.addEventListener('pointerdown', function (e) { pzPtrs.set(e.pointerId, e); });
+  pzContainer.addEventListener('pointermove', function (e) {
+    if (!pzPtrs.has(e.pointerId)) return;
+    pzPtrs.set(e.pointerId, e);
+    if (pzPtrs.size === 2) {
+      var pts = Array.from(pzPtrs.values());
+      var d = Math.hypot(pts[0].clientX - pts[1].clientX, pts[0].clientY - pts[1].clientY);
+      if (pzLastDist) pzZoomAt(d / pzLastDist, (pts[0].clientX + pts[1].clientX) / 2, (pts[0].clientY + pts[1].clientY) / 2);
+      pzLastDist = d;
+    }
+  });
+  pzContainer.addEventListener('pointerup', function (e) { pzPtrs.delete(e.pointerId); if (pzPtrs.size < 2) pzLastDist = 0; });
+  pzContainer.addEventListener('pointercancel', function (e) { pzPtrs.delete(e.pointerId); if (pzPtrs.size < 2) pzLastDist = 0; });
+
+  pzContainer.querySelectorAll('.mzi-pz-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var kind = btn.getAttribute('data-pz');
+      var rect = pzContainer.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+      if (kind === 'in') pzZoomAt(1.4, cx, cy);
+      else if (kind === 'out') pzZoomAt(1 / 1.4, cx, cy);
+      else if (kind === 'reset') pzFit();
+    });
+  });
+})();

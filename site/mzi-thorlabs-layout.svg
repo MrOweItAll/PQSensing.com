@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Thorlabs-style tabletop Mach-Zehnder interferometer layout with labeled components">
+  <defs>
+    <pattern id="breadboard" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <rect width="30" height="30" fill="#0a0f1e"/>
+      <circle cx="15" cy="15" r="2.2" fill="#1e293b"/>
+      <circle cx="15" cy="15" r="1" fill="#0a0f1e"/>
+    </pattern>
+    <linearGradient id="mount" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="laser" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1e293b"/>
+      <stop offset="0.6" stop-color="#475569"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="cube" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(196,181,253,0.45)"/>
+      <stop offset="1" stop-color="rgba(196,181,253,0.15)"/>
+    </linearGradient>
+    <filter id="beamGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="beamArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#67e8f9"/>
+    </marker>
+  </defs>
+
+  <!-- Optical breadboard background -->
+  <rect width="960" height="600" fill="url(#breadboard)"/>
+  <rect x="4" y="4" width="952" height="592" fill="none" stroke="#334155" stroke-width="3" rx="10"/>
+
+  <!-- Title -->
+  <text x="480" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#e2e8f0">Tabletop Mach-Zehnder Interferometer — Thorlabs cage layout</text>
+  <text x="480" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#94a3b8">600 mm × 400 mm optical breadboard · M6 × 25 mm hole grid</text>
+
+  <!-- ================ BEAM PATHS ================ -->
+  <g stroke="#67e8f9" stroke-width="3" fill="none" filter="url(#beamGlow)" marker-end="url(#beamArrow)">
+    <!-- Laser → BS1 -->
+    <line x1="145" y1="430" x2="245" y2="430"/>
+    <!-- BS1 → M1 (up) -->
+    <line x1="270" y1="405" x2="270" y2="195"/>
+    <!-- M1 → phase element → BS2 (top arm) -->
+    <line x1="295" y1="170" x2="690" y2="170"/>
+    <!-- BS1 → M2 (bottom arm) -->
+    <line x1="295" y1="430" x2="690" y2="430"/>
+    <!-- M2 → BS2 (up) -->
+    <line x1="715" y1="405" x2="715" y2="195"/>
+    <!-- BS2 → D1 (bright, right) -->
+    <line x1="740" y1="170" x2="860" y2="170"/>
+    <!-- BS2 → D2 (dark, down) -->
+    <line x1="715" y1="195" x2="715" y2="505"/>
+  </g>
+
+  <!-- ================ LASER ================ -->
+  <g>
+    <rect x="50" y="410" width="100" height="40" rx="4" fill="url(#laser)" stroke="#64748b" stroke-width="1.5"/>
+    <rect x="50" y="410" width="100" height="10" fill="#0f172a"/>
+    <circle cx="145" cy="430" r="4" fill="#67e8f9" filter="url(#beamGlow)"/>
+    <text x="100" y="398" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">HeNe Laser</text>
+    <text x="100" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">Thorlabs HNLS008R · 0.8 mW · 632.8 nm</text>
+  </g>
+
+  <!-- ================ BS1 (beam splitter cube) ================ -->
+  <g>
+    <rect x="245" y="405" width="50" height="50" fill="url(#cube)" stroke="#c4b5fd" stroke-width="1.8"/>
+    <line x1="245" y1="455" x2="295" y2="405" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <!-- Kinematic mount base -->
+    <rect x="240" y="458" width="60" height="8" rx="2" fill="url(#mount)"/>
+    <circle cx="250" cy="480" r="3" fill="#475569"/>
+    <circle cx="290" cy="480" r="3" fill="#475569"/>
+    <text x="270" y="500" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#c4b5fd">BS1</text>
+    <text x="270" y="516" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">CCM1-BS013 · 50:50</text>
+  </g>
+
+  <!-- ================ BS2 ================ -->
+  <g>
+    <rect x="690" y="145" width="50" height="50" fill="url(#cube)" stroke="#c4b5fd" stroke-width="1.8"/>
+    <line x1="690" y1="195" x2="740" y2="145" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <rect x="685" y="198" width="60" height="8" rx="2" fill="url(#mount)"/>
+    <circle cx="695" cy="220" r="3" fill="#475569"/>
+    <circle cx="735" cy="220" r="3" fill="#475569"/>
+    <text x="715" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#c4b5fd">BS2</text>
+    <text x="715" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">CCM1-BS013 · 50:50</text>
+  </g>
+
+  <!-- ================ M1 (top-left mirror) ================ -->
+  <g>
+    <rect x="250" y="145" width="45" height="50" rx="3" fill="url(#mount)" stroke="#64748b"/>
+    <line x1="258" y1="148" x2="293" y2="183" stroke="#e2e8f0" stroke-width="3"/>
+    <circle cx="258" cy="190" r="3" fill="#475569"/>
+    <circle cx="290" cy="190" r="3" fill="#475569"/>
+    <text x="272" y="133" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">M1</text>
+    <text x="272" y="117" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">BB1-E02 · KM100 mount</text>
+  </g>
+
+  <!-- ================ M2 (bottom-right mirror) ================ -->
+  <g>
+    <rect x="700" y="405" width="45" height="50" rx="3" fill="url(#mount)" stroke="#64748b"/>
+    <line x1="708" y1="452" x2="743" y2="417" stroke="#e2e8f0" stroke-width="3"/>
+    <circle cx="708" cy="462" r="3" fill="#475569"/>
+    <circle cx="740" cy="462" r="3" fill="#475569"/>
+    <text x="722" y="495" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">M2</text>
+    <text x="722" y="512" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">BB1-E02 · KM100 mount</text>
+  </g>
+
+  <!-- ================ Phase modulator / sample ================ -->
+  <g>
+    <rect x="440" y="150" width="100" height="40" rx="4" fill="rgba(103,232,249,0.12)" stroke="#67e8f9" stroke-width="1.8"/>
+    <rect x="450" y="158" width="80" height="24" rx="2" fill="#0f172a" stroke="#1e293b"/>
+    <circle cx="460" cy="170" r="3" fill="#67e8f9"/>
+    <circle cx="520" cy="170" r="3" fill="#67e8f9"/>
+    <text x="490" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#67e8f9">Phase Modulator</text>
+    <text x="490" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">EO-PM-NR-C2 · LiNbO₃ · 0–150 MHz</text>
+  </g>
+
+  <!-- ================ D1 bright port detector ================ -->
+  <g>
+    <rect x="860" y="150" width="60" height="40" rx="4" fill="url(#mount)" stroke="#64748b" stroke-width="1.5"/>
+    <circle cx="866" cy="170" r="5" fill="#0b1020" stroke="#67e8f9" stroke-width="1.5"/>
+    <rect x="880" y="160" width="35" height="20" fill="#1e293b" stroke="#475569"/>
+    <text x="890" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#67e8f9">D1 · Bright Port</text>
+    <text x="890" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">PDA36A2 · Si amplified</text>
+  </g>
+
+  <!-- ================ D2 dark port detector ================ -->
+  <g>
+    <rect x="685" y="505" width="60" height="40" rx="4" fill="url(#mount)" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="691" cy="517" r="5" fill="#0b1020" stroke="#c4b5fd" stroke-width="1.5"/>
+    <rect x="700" y="515" width="40" height="20" fill="#1e293b" stroke="#475569"/>
+    <text x="715" y="565" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#c4b5fd">D2 · Dark Port</text>
+    <text x="715" y="581" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">PDA36A2 · noise-locked</text>
+  </g>
+
+  <!-- ================ Dimension annotations ================ -->
+  <g stroke="#475569" stroke-width="1" fill="none">
+    <line x1="270" y1="560" x2="715" y2="560" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+    <line x1="270" y1="555" x2="270" y2="565"/>
+    <line x1="715" y1="555" x2="715" y2="565"/>
+  </g>
+  <text x="492" y="553" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">arm length ≈ 445 mm</text>
+
+  <!-- ================ Legend ================ -->
+  <g transform="translate(30, 74)">
+    <rect x="0" y="0" width="240" height="26" rx="6" fill="rgba(15,23,42,0.75)" stroke="#334155"/>
+    <line x1="12" y1="13" x2="32" y2="13" stroke="#67e8f9" stroke-width="3"/>
+    <text x="40" y="17" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">laser path (632.8 nm)</text>
+    <rect x="150" y="7" width="12" height="12" fill="url(#cube)" stroke="#c4b5fd"/>
+    <text x="168" y="17" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">BS cube</text>
+  </g>
+
+  <!-- Breadboard corner indicator -->
+  <text x="940" y="590" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#475569">Thorlabs MB2020 breadboard · not to scale</text>
+</svg>

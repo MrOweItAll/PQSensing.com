@@ -40,7 +40,10 @@
       <nav class="masthead__nav">
         <a href="#thesis">Thesis</a>
         <a href="#exhibit">Demo</a>
+        <a href="#mzi-interactive">MZI</a>
         <a href="#method">Method</a>
+        <a href="metrology.html">Metrology 101</a>
+        <a href="metrology201.html">Metrology 201</a>
         <a href="#sprint">Sprint</a>
         <a href="#ladder">Funding</a>
         <a href="#team">Team</a>
@@ -296,6 +299,141 @@
           and V<sub>norm</sub> to demonstrate the slope-null thesis. The validation sprint replaces these analytic
           curves with measured ones from a tabletop Mach-Zehnder.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── interactive MZI diagram ─────────── -->
+  <section class="band band--mzi" id="mzi-interactive">
+    <div class="band__inner">
+      <header class="section-head">
+        <span class="section-head__num">§ 02b</span>
+        <span class="section-head__eyebrow">Interactive hardware</span>
+      </header>
+
+      <h2 class="mzi__h">
+        See the lock <em>on the hardware</em>.
+      </h2>
+      <p class="mzi__sub">
+        This layout reflects the PQS benchtop concept: a Mach-Zehnder interferometer
+        with OPO-fed squeezed-vacuum injection at the dark port, plus the control
+        hardware for comparing conventional locking and noise-stationary locking.
+        Hover any component for details.
+      </p>
+
+      <div class="mzi-controls">
+        <button class="mzi-btn mzi-btn--active" data-mzi="off">No lock</button>
+        <button class="mzi-btn" data-mzi="power">Power lock</button>
+        <button class="mzi-btn mzi-btn--violet" data-mzi="noise">+ Noise-stationary lock</button>
+        <span class="mzi-controls__hint">NSL adds on top of the power lock.</span>
+      </div>
+
+      <div class="mzi-diagram mode-off" id="mzi-diagram">
+        <svg viewBox="0 0 880 500" role="img" aria-label="Interactive PQS interferometer with OPO cavity and squeezed-light injection" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="mzi-arrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7fffd4"/></marker>
+            <marker id="mzi-arrow-sq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b48bff"/></marker>
+          </defs>
+          <!-- BEAM PATHS -->
+          <line class="mzi-beam mzi-beam-main" style="stroke:#b48bff" x1="100" y1="280" x2="195" y2="280"/>
+          <line class="mzi-beam mzi-beam-main" style="stroke:#b48bff" x1="225" y1="280" x2="405" y2="280"/>
+          <line class="mzi-beam mzi-beam-main" style="stroke:#f87171" x1="435" y1="280" x2="645" y2="280"/>
+          <line class="mzi-beam mzi-beam-main" style="stroke:#60a5fa" x1="420" y1="300" x2="420" y2="385"/>
+          <line class="mzi-beam mzi-beam-main" style="stroke:#f87171" x1="660" y1="295" x2="660" y2="385"/>
+          <line class="mzi-beam mzi-beam-main" style="stroke:#60a5fa" x1="435" y1="400" x2="645" y2="400"/>
+          <line class="mzi-beam mzi-beam-main" style="stroke:#b48bff" x1="660" y1="415" x2="660" y2="460"/>
+          <line class="mzi-beam mzi-beam-main" style="stroke:#b48bff" x1="675" y1="400" x2="785" y2="400"/>
+          <!-- NOISE OVERLAY -->
+          <line class="mzi-beam-noise" style="stroke:#7c3aed" x1="100" y1="280" x2="195" y2="280"/>
+          <line class="mzi-beam-noise" style="stroke:#7c3aed" x1="225" y1="280" x2="405" y2="280"/>
+          <line class="mzi-beam-noise" style="stroke:#991b1b" x1="435" y1="280" x2="645" y2="280"/>
+          <line class="mzi-beam-noise" style="stroke:#1e3a5f" x1="420" y1="300" x2="420" y2="385"/>
+          <line class="mzi-beam-noise" style="stroke:#991b1b" x1="660" y1="295" x2="660" y2="385"/>
+          <line class="mzi-beam-noise" style="stroke:#1e3a5f" x1="435" y1="400" x2="645" y2="400"/>
+          <line class="mzi-beam-noise" style="stroke:#7c3aed" x1="660" y1="415" x2="660" y2="460"/>
+          <line class="mzi-beam-noise" style="stroke:#7c3aed" x1="675" y1="400" x2="785" y2="400"/>
+          <!-- OPO BRANCH -->
+          <line stroke="#b48bff" stroke-opacity="0.6" stroke-width="1.5" x1="210" y1="260" x2="210" y2="162"/>
+          <line stroke="#b48bff" stroke-opacity="0.6" stroke-width="1.5" x1="225" y1="150" x2="405" y2="150"/>
+          <line marker-end="url(#mzi-arrow-sq)" stroke="#b48bff" stroke-dasharray="5 3" stroke-opacity="0.7" stroke-width="1.5" x1="420" y1="162" x2="420" y2="260"/>
+          <line stroke="#8a93a6" stroke-dasharray="3 3" stroke-opacity="0.4" stroke-width="1" x1="330" y1="100" x2="330" y2="138"/>
+          <!-- HARDWARE HOTSPOTS -->
+          <g class="mzi-hotspot" data-title="Laser source" data-body="A stabilized single-frequency laser. Narrow linewidth is critical — frequency noise converts directly into phase noise at the detectors. Also pumps the OPO cavity via BS0.">
+            <rect fill="#1a212d" height="40" rx="6" stroke="#7fffd4" width="70" x="30" y="260"/><text class="mzi-lbl" text-anchor="middle" x="65" y="285">Laser</text><rect class="mzi-hit" fill="transparent" height="60" width="90" x="20" y="250"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Optical isolator" data-body="Faraday-effect isolator blocking back-reflections from reaching the laser. Provides >30 dB isolation.">
+            <rect fill="rgba(127,255,212,0.08)" height="30" rx="4" stroke="#7fffd4" stroke-dasharray="3 2" width="50" x="118" y="265"/><text class="mzi-sub" text-anchor="middle" x="143" y="312">Isolator</text><rect class="mzi-hit" fill="transparent" height="45" width="62" x="112" y="258"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Beam splitter BS0" data-body="Picks off pump power for the OPO cavity. Transmitted beam continues to the interferometer input at BS1.">
+            <rect fill="rgba(180,139,255,0.15)" height="40" stroke="#b48bff" transform="rotate(45 210 280)" width="40" x="190" y="260"/><text class="mzi-sub" text-anchor="middle" x="210" y="330">BS0</text><rect class="mzi-hit" fill="transparent" height="50" width="50" x="185" y="255"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Mirror M0" data-body="Steers the pump beam from BS0 into the OPO cavity.">
+            <line stroke="#e8e2d5" stroke-width="3" x1="200" y1="160" x2="220" y2="140"/><text class="mzi-sub" text-anchor="end" x="195" y="138">M0</text><rect class="mzi-hit" fill="transparent" height="36" width="36" x="192" y="132"/>
+          </g>
+          <g class="mzi-hotspot" data-title="OPO cavity" data-body="Nonlinear crystal (PPKTP/PPLN) in a resonant cavity. Below threshold, produces squeezed vacuum — quantum noise in one quadrature suppressed below shot noise. Injected at the dark port to improve measurement sensitivity.">
+            <rect fill="rgba(180,139,255,0.1)" height="28" rx="4" stroke="#b48bff" width="120" x="248" y="136"/><text class="mzi-lbl" fill="#b48bff" text-anchor="middle" x="308" y="155">OPO Cavity</text><rect class="mzi-hit" fill="transparent" height="44" width="132" x="242" y="128"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Electro-Optic Modulator" data-body="Phase-modulates the pump beam for PDH locking of the OPO cavity length. Also enables phase-coding of the injected squeezed field for NSL.">
+            <rect fill="rgba(127,255,212,0.1)" height="28" rx="3" stroke="#7fffd4" width="30" x="373" y="136"/><text class="mzi-sub" text-anchor="middle" x="388" y="125">EOM</text><rect class="mzi-hit" fill="transparent" height="44" width="40" x="368" y="128"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Mirror M-1" data-body="Steers squeezed vacuum from the OPO into BS1, where it enters the interferometer via the dark port path.">
+            <line stroke="#e8e2d5" stroke-width="3" x1="430" y1="160" x2="410" y2="140"/><text class="mzi-sub" x="442" y="142">M-1</text><rect class="mzi-hit" fill="transparent" height="36" width="36" x="404" y="132"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Electronics breadboard" data-body="Servo electronics, RF generators, and photodetector amplifiers. Drives the EOM, locks the OPO, and processes error signals for both power locking and noise-stationary locking.">
+            <rect fill="#1a212d" height="50" rx="6" stroke="#8a93a6" stroke-dasharray="4 2" width="120" x="270" y="40"/>
+            <line stroke="#8a93a6" stroke-opacity="0.4" stroke-width="0.5" x1="280" y1="50" x2="380" y2="50"/>
+            <line stroke="#8a93a6" stroke-opacity="0.4" stroke-width="0.5" x1="280" y1="58" x2="380" y2="58"/>
+            <line stroke="#8a93a6" stroke-opacity="0.4" stroke-width="0.5" x1="280" y1="66" x2="380" y2="66"/>
+            <line stroke="#8a93a6" stroke-opacity="0.4" stroke-width="0.5" x1="280" y1="74" x2="380" y2="74"/>
+            <line stroke="#8a93a6" stroke-opacity="0.4" stroke-width="0.5" x1="280" y1="82" x2="380" y2="82"/>
+            <text class="mzi-sub" text-anchor="middle" x="330" y="34">Breadboard</text><rect class="mzi-hit" fill="transparent" height="68" width="132" x="264" y="30"/>
+          </g>
+          <g class="mzi-hotspot" data-title="BS1 — Input beam splitter" data-body="50/50 NPBS splitting the laser into two arms. Squeezed vacuum from the OPO also enters here via M-1.">
+            <rect fill="rgba(180,139,255,0.15)" height="40" stroke="#b48bff" transform="rotate(45 420 280)" width="40" x="400" y="260"/><text class="mzi-sub" text-anchor="middle" x="420" y="335">BS1</text><rect class="mzi-hit" fill="transparent" height="50" width="50" x="395" y="255"/>
+          </g>
+          <g class="mzi-hotspot" data-title="M3 — Mirror with PZT actuator" data-body="High-reflectivity mirror on a PZT stack. Provides nanometer-precision arm-length control driven by the feedback servo. This is the actuator for both conventional and noise-stationary locking.">
+            <line stroke="#e8e2d5" stroke-width="3" x1="670" y1="290" x2="650" y2="270"/>
+            <rect fill="rgba(127,255,212,0.3)" height="24" rx="1" stroke="#7fffd4" stroke-width="1" width="8" x="672" y="268"/>
+            <text class="mzi-sub" x="695" y="275">M3</text><text class="mzi-sub" fill="#7fffd4" font-size="9" x="695" y="290">PZT</text><rect class="mzi-hit" fill="transparent" height="40" width="65" x="642" y="262"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Mirror M1" data-body="Flat high-reflectivity mirror (>99.5%) redirecting the lower arm toward BS2. Every nanometer of mount vibration adds phase noise.">
+            <line stroke="#e8e2d5" stroke-width="3" x1="430" y1="410" x2="410" y2="390"/><text class="mzi-sub" text-anchor="end" x="398" y="415">M1</text><rect class="mzi-hit" fill="transparent" height="36" width="36" x="404" y="382"/>
+          </g>
+          <g class="mzi-hotspot" data-title="BS2 — Recombiner" data-body="Recombines both arms. Relative phase determines light distribution between bright port (down, constructive) and dark port (right, destructive).">
+            <rect fill="rgba(180,139,255,0.15)" height="40" stroke="#b48bff" transform="rotate(45 660 400)" width="40" x="640" y="380"/><text class="mzi-sub" text-anchor="end" x="622" y="405">BS2</text><rect class="mzi-hit" fill="transparent" height="50" width="50" x="635" y="375"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Bright port (NSL)" data-body="Constructive-interference output. Provides a high-SNR intensity reference for detection normalization and slow drift correction.">
+            <rect class="mzi-d2-glow" fill="none" height="38" rx="10" stroke="#7fffd4" stroke-width="2" width="74" x="623" y="458"/>
+            <rect fill="#1a212d" height="30" rx="6" stroke="#7fffd4" width="60" x="630" y="462"/><text class="mzi-lbl" text-anchor="middle" x="660" y="482">Bright</text><text class="mzi-sub" fill="#7fffd4" text-anchor="middle" x="660" y="504">NSL</text><rect class="mzi-hit" fill="transparent" height="55" width="74" x="623" y="455"/>
+          </g>
+          <g class="mzi-hotspot" data-title="Dark port — Squeezed + NSL" data-body="Destructive-interference output. With squeezed vacuum injected, supports lower-noise readout. NSL holds the statistics of this port stationary under disturbance.">
+            <rect class="mzi-d2-glow" fill="none" height="54" rx="10" stroke="#b48bff" stroke-width="2" width="80" x="783" y="373"/>
+            <rect fill="#1a212d" height="40" rx="6" stroke="#b48bff" width="66" x="790" y="380"/><text class="mzi-lbl" fill="#b48bff" text-anchor="middle" x="823" y="397">Dark</text><text class="mzi-lbl" fill="#b48bff" font-size="10" text-anchor="middle" x="823" y="413">Squeezed + NSL</text><rect class="mzi-hit" fill="transparent" height="74" width="80" x="783" y="370"/>
+          </g>
+          <text class="mzi-sub" fill="#b48bff" x="432" y="220">squeezed vacuum</text>
+          <!-- Lock badges -->
+          <g class="mzi-lock-badge"><rect fill="rgba(127,255,212,0.15)" height="30" rx="6" stroke="#7fffd4" width="130" x="30" y="420"/><text class="mzi-lbl" fill="#7fffd4" text-anchor="middle" x="95" y="440">POWER LOCKED</text></g>
+          <g class="mzi-lock-badge-noise"><rect fill="rgba(180,139,255,0.15)" height="30" rx="6" stroke="#b48bff" width="180" x="30" y="460"/><text class="mzi-lbl" fill="#b48bff" text-anchor="middle" x="120" y="480">NOISE-STATIONARY LOCK</text></g>
+        </svg>
+      </div>
+
+      <p class="mzi-info" id="mzi-info">
+        <strong>No lock applied.</strong> The interferometer sits at whatever phase the environment gives it.
+        The OPO generates squeezed vacuum, but without a lock, environmental turbulence walks the fringe
+        and the squeezed-state advantage is wasted.
+      </p>
+
+      <div class="mzi-thorlabs">
+        <h3 class="mzi-thorlabs__title">Tabletop prototype layout</h3>
+        <p class="mzi-thorlabs__sub">A CAD layout built from off-the-shelf Thorlabs parts on a standard optical breadboard. Zoom and pan to inspect component part numbers.</p>
+        <div class="mzi-panzoom" id="mzi-panzoom">
+          <div class="mzi-pz-inner"><img src="mzi-thorlabs-layout.svg" alt="Thorlabs MZI layout"/></div>
+          <div class="mzi-pz-controls">
+            <button class="mzi-pz-btn" data-pz="in" aria-label="Zoom in">+</button>
+            <button class="mzi-pz-btn" data-pz="out" aria-label="Zoom out">−</button>
+            <button class="mzi-pz-btn" data-pz="reset" aria-label="Reset view">⤾</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
