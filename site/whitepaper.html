@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noise-Stationary Locking and Phase-Controlled Dark-Mode Injection — PQSensing</title>
+  <meta name="description" content="A PDH-compatible measurement-performance layer for interferometric sensors. Technical white paper by Peterson Quantum Sensing.">
+  <meta name="author" content="Jon Peterson, Peterson Quantum Sensing">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper:        #fdfdfb;
+      --ink:          #1a1a1a;
+      --ink-soft:     #333;
+      --rule:         #cfcfcf;
+      --rule-soft:    #e4e4e4;
+      --accent:       #6b1d1d;   /* arxiv-ish deep red for links */
+      --muted:        #6a6a6a;
+      --max:          720px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'STIX Two Text', 'Times New Roman', Times, serif;
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .wp {
+      max-width: var(--max);
+      margin: 56px auto 80px;
+      padding: 0 28px;
+    }
+
+    /* Header / title block */
+    .wp__breadcrumb {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .wp__breadcrumb a { color: var(--muted); text-decoration: none; }
+    .wp__breadcrumb a:hover { color: var(--accent); text-decoration: underline; }
+    .wp__cite {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .wp__title {
+      font-size: 30px;
+      line-height: 1.18;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0 0 14px;
+      text-wrap: balance;
+    }
+    .wp__authors {
+      font-size: 16px;
+      font-style: italic;
+      margin: 0 0 4px;
+      color: var(--ink-soft);
+    }
+    .wp__affil {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+    .wp__date {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+    .wp__abstract {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 16px 0;
+      margin: 8px 0 36px;
+    }
+    .wp__abstract-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+    .wp__abstract p {
+      margin: 0;
+      font-size: 15.5px;
+      line-height: 1.55;
+    }
+
+    /* Body */
+    .wp h2 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin: 34px 0 10px;
+    }
+    .wp h2 .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      color: var(--muted);
+      margin-right: 10px;
+      font-weight: 500;
+    }
+    .wp h3 {
+      font-size: 15px;
+      font-weight: 600;
+      font-style: italic;
+      margin: 22px 0 6px;
+    }
+    .wp p { margin: 0 0 14px; text-wrap: pretty; }
+    .wp strong { font-weight: 600; }
+    .wp em { font-style: italic; }
+    .wp ul, .wp ol { padding-left: 22px; margin: 0 0 14px; }
+    .wp li { margin-bottom: 4px; }
+    .wp a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(107,29,29,0.25);
+    }
+    .wp a:hover { border-bottom-color: var(--accent); }
+
+    /* Equations */
+    .eq {
+      display: block;
+      margin: 14px 0 18px;
+      padding: 10px 0;
+      text-align: center;
+      font-family: 'STIX Two Text', 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 17px;
+      border-top: 1px solid var(--rule-soft);
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .eq .ref {
+      float: right;
+      font-style: normal;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+
+    /* Callout */
+    .pull {
+      border-left: 3px solid var(--ink);
+      padding: 4px 0 4px 18px;
+      margin: 18px 0 22px;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink-soft);
+    }
+
+    /* Footer */
+    .wp__footer {
+      margin-top: 56px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .wp__footer a { color: var(--muted); text-decoration: none; }
+    .wp__footer a:hover { color: var(--accent); }
+
+    /* Print — clean PDF export */
+    @media print {
+      body { background: #fff; font-size: 11pt; }
+      .wp { margin: 0; padding: 0; max-width: none; }
+      .wp__breadcrumb { display: none; }
+      .wp h2 { page-break-after: avoid; }
+      .wp p, .wp li, .eq { page-break-inside: avoid; }
+      a { color: var(--ink); border-bottom: none; }
+    }
+
+    /* Narrow screens */
+    @media (max-width: 520px) {
+      .wp { margin: 32px auto 48px; padding: 0 18px; }
+      .wp__title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <article class="wp">
+    <div class="wp__breadcrumb">
+      <a href="index.html">← pqsensing.com</a>
+      <span class="wp__cite">PQS-WP-2026-01</span>
+    </div>
+
+    <h1 class="wp__title">
+      Noise-Stationary Locking and Phase-Controlled Dark-Mode Injection:
+      a PDH-compatible measurement-performance layer for interferometric sensors
+    </h1>
+    <p class="wp__authors">Jon Peterson</p>
+    <p class="wp__affil">Peterson Quantum Sensing · Hugoton, Kansas, USA</p>
+    <p class="wp__date">Working paper · last revised May 2026</p>
+
+    <section class="wp__abstract" aria-label="Abstract">
+      <p class="wp__abstract-label">Abstract</p>
+      <p>
+        PQSensing develops <em>Noise-Stationary Locking</em> (NSL) and
+        <em>Phase-Controlled Dark-Mode Injection</em> (DPI), a PDH-compatible
+        measurement-performance layer for interferometric sensors. Conventional
+        optical locks hold a cavity resonance, fringe point, or power extremum;
+        they do not guarantee that measurement-band noise is minimized or
+        stationary. NSL adds a second loop that monitors normalized
+        measurement-band noise and servoes the operating point toward a
+        noise-stationary condition. DPI gives the nominally dark port a job —
+        calibration tones, codes, or quantum auxiliary fields — and recovers
+        them at the output. The combination is intended to make integration
+        time productive in environments where a power lock alone is not enough.
+      </p>
+    </section>
+
+    <h2><span class="num">1.</span>Positioning</h2>
+    <p>
+      <strong>PDH locks the resonance. NSL locks measurement quality. DPI
+      activates the dark port.</strong> NSL is additive — it rides on top of
+      established optical-locking methods such as Pound–Drever–Hall rather than
+      replacing them.
+    </p>
+
+    <h2><span class="num">2.</span>What we are trying to do</h2>
+    <p>
+      We are trying to keep precision interferometric sensors at the operating
+      point where photons, integration time, and quantum-noise resources
+      produce the most usable measurement information.
+    </p>
+    <p>
+      A conventional optical lock can hold a cavity resonance, fringe point,
+      reflected-power null, or transmitted-power peak. That is necessary, but
+      it does not guarantee that the measurement-band noise is minimized or
+      stationary. NSL adds a second layer that directly monitors normalized
+      measurement-band noise and controls the operating point toward a
+      noise-stationary condition.
+    </p>
+
+    <h2><span class="num">3.</span>Why we are doing it</h2>
+    <p>
+      A sensor's useful output is not optical power. It is an estimate with an
+      uncertainty, such as <em>x̂ ± σ<sub>x</sub></em> or
+      <em>φ̂ ± Δφ</em>. For a photon-limited phase measurement:
+    </p>
+    <p class="eq">
+      (Δφ)<sup>2</sup> &asymp; V<sub>norm</sub> / (Ṅ · T)
+      <span class="ref">(1)</span>
+    </p>
+    <p>
+      Lower and more stable V<sub>norm</sub> means the same photon flux and
+      integration time can produce a smaller error bar. The goal is not
+      uncertainty control for its own sake — the goal is to make integration
+      time productive.
+    </p>
+
+    <h2><span class="num">4.</span>How NSL works</h2>
+    <ol>
+      <li>Acquire detector signal <em>y(t)</em>.</li>
+      <li>Estimate band-limited noise <em>N<sub>band</sub></em> over the protected measurement band.</li>
+      <li>Estimate the optical-power metric <em>P</em>.</li>
+      <li>Compute the normalized noise objective:
+        <p class="eq">V<sub>norm</sub> = N<sub>band</sub> / P<sup>k</sup>
+          <span class="ref">(2)</span>
+        </p>
+      </li>
+      <li>Apply a small dither to the operating parameter <em>δ</em> outside the protected band.</li>
+      <li>Synchronously demodulate V<sub>norm</sub> against the dither to estimate
+        <em>dV<sub>norm</sub>/dδ</em>.</li>
+      <li>Servo <em>δ</em> toward:
+        <p class="eq">dV<sub>norm</sub>/dδ &asymp; 0
+          <span class="ref">(3)</span>
+        </p>
+      </li>
+    </ol>
+    <p>
+      At this noise-stationary point, first-order conversion of detuning jitter
+      into normalized measurement noise is suppressed.
+    </p>
+
+    <h2><span class="num">5.</span>What DPI adds</h2>
+    <p>
+      DPI uses the nominally dark port as a controlled injection channel. The
+      injected field may carry a phase waveform <em>g(t)</em>, pilot tone,
+      chirp, code, coherent auxiliary field, or squeezed vacuum. The output
+      signature can be recovered using synchronous detection, correlation,
+      matched filtering, or homodyne readout.
+    </p>
+    <p>
+      Use cases include calibration, code-division signatures, multiplexing,
+      interference rejection, ranging or timing signatures, squeezed-light
+      injection, and quadrature/noise-shaping control.
+    </p>
+
+    <h2><span class="num">6.</span>What this can help measure</h2>
+    <p>
+      NSL + DPI is aimed at weak interferometric signals that are too noisy,
+      too slow, or too unstable to recover reliably with optical-power locking
+      alone. Candidate measurement categories:
+    </p>
+    <ul>
+      <li>Displacement and vibration</li>
+      <li>Strain and deformation</li>
+      <li>Acceleration, force, pressure, and acoustic motion</li>
+      <li>Rotation and inertial drift</li>
+      <li>Refractive-index, chemical, and biological changes</li>
+      <li>Quantum-enhanced weak phase shifts</li>
+      <li>Timing, ranging, and coded dark-port signatures</li>
+    </ul>
+
+    <h2><span class="num">7.</span>First validation sprint</h2>
+    <p>
+      Build a classical tabletop Mach–Zehnder interferometer. Sweep <em>δ</em>;
+      map <em>P(δ)</em>, <em>N<sub>band</sub>(δ)</em>, and
+      <em>V<sub>norm</sub>(δ)</em>. Inject controlled detuning jitter, and
+      compare a conventional power lock against NSL.
+    </p>
+    <h3>Prototype targets</h3>
+    <ul>
+      <li>Show a V<sub>norm</sub> stationary point distinct from the power extremum in at least one noise regime.</li>
+      <li>First-demo target: at least 6 dB lower jitter-induced V<sub>norm</sub> than power lock.</li>
+      <li>Stretch target: 10–20 dB if bench stability supports it.</li>
+      <li>Maintain power above a useful floor.</li>
+      <li>Complete at least five disturbance / reacquisition trials.</li>
+      <li>Optional DPI test: recover a known <em>g(t)</em> signature by correlation or matched filtering.</li>
+    </ul>
+
+    <h2><span class="num">8.</span>One-liner</h2>
+    <p class="pull">
+      NSL + DPI is designed for interferometers that are optically locked but
+      not necessarily measurement-optimized. It helps keep the sensor where
+      integration time produces usable information instead of accumulated
+      noise.
+    </p>
+
+    <h2><span class="num">9.</span>Seeking collaboration</h2>
+    <p>
+      PQSensing is seeking a university lab, metrology partner, instrument
+      company, or technical sponsor to help validate Noise-Stationary Locking
+      on a classical tabletop interferometer. The first experiment should
+      compare a conventional PDH, power, or PID-style lock against a
+      normalized-noise-objective lock under controlled vibration, thermal
+      drift, and phase / path-length disturbance.
+    </p>
+    <h3>What we have</h3>
+    <p>A filed patent application, simulation models, control logic, draft validation protocol, and a lean $10K prototype / data-sprint plan.</p>
+    <h3>What we need</h3>
+    <p>Access to an optical bench or Mach–Zehnder / cavity setup, photodetector readout, PZT or phase actuator, DAQ / controller support, and technical guidance on a defensible first validation.</p>
+    <h3>What a partner gets</h3>
+    <p>A focused applied-optics / control project, possible student-useful data, early visibility into Kansas-origin photonics IP, and a clear sponsored-research or prototype path if the traces are interesting.</p>
+    <h3>Current ask</h3>
+    <p>A 20–30 minute feasibility call to decide whether this fits as a small sponsored test, student project, supervised lab exercise, or vendor application note.</p>
+
+    <footer class="wp__footer">
+      <span>&copy; 2026 Peterson Quantum Sensing · Hugoton, KS</span>
+      <span><a href="index.html">pqsensing.com</a> · <a href="mailto:contact@pqsensing.com">contact@pqsensing.com</a></span>
+    </footer>
+  </article>
+</body>
+</html>
