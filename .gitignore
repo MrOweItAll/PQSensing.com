@@ -23,3 +23,6 @@ node_modules/
 # Import artifacts
 _import.zip
 _import/
+
+# Local-only files (not for web or git)
+_local_only/
