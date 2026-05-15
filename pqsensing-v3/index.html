@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PQSensing — Lock the Error Bar, Not Just the Fringe</title>
+  <meta name="description" content="PQSensing is seeking university, metrology, and instrument partners to validate Noise-Stationary Locking and Phase-Controlled Dark-Mode Injection as a PDH-compatible performance layer for interferometric sensors.">
+  <link rel="preload" href="assets/hero.jpg" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="PQSensing home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>PQSensing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Navigation menu" onclick="document.body.classList.toggle('nav-open')">Menu</button>
+    <nav class="nav-links">
+      <a href="#collaborate">Collaborate</a>
+      <a href="#exhibit">Demo</a>
+      <a href="#how">Method</a>
+      <a href="#validate">Validate</a>
+      <a href="metrology.html">Metrology 101</a>
+      <a href="metrology201.html">Metrology 201</a>
+      <a href="#fund">Fund</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg" role="img" aria-label="Abstract interferometer with spectral noise visualization"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <p class="eyebrow">NSL + DPI · PDH-compatible measurement-aware interferometry</p>
+        <h1>Lock the error bar, not just the fringe.</h1>
+        <p class="lede">Conventional locks keep an interferometer optically stable. PQSensing adds a performance layer that asks a harder question: is the instrument parked where photons, time, and quantum-noise control produce the most usable measurement information?</p>
+        <div class="cta-row">
+          <a class="button primary" href="#collaborate">Seeking collaboration</a>
+          <a class="button ghost" href="PQSensing_MZI_NSL_Pitch_Deck.pdf">Download pitch deck</a>
+        </div>
+        <div class="hero-facts" aria-label="Core positioning">
+          <span><strong>PDH</strong> locks the resonance.</span>
+          <span><strong>NSL</strong> locks measurement quality.</span>
+          <span><strong>DPI</strong> activates the dark port.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="collaborate" class="section-pad collaborate-section">
+      <div class="container collaborate-card">
+        <div class="collaborate-copy">
+          <p class="eyebrow">Seeking collaboration</p>
+          <h2>Help validate a new noise-reduction layer for interferometers.</h2>
+          <p>PQSensing is looking for a university lab, metrology partner, instrument company, or technical sponsor to help test Noise-Stationary Locking on a classical tabletop interferometer.</p>
+          <p>The first experiment is deliberately modest: compare a conventional PDH, power, or PID-style lock against a normalized noise-objective lock under controlled vibration, thermal drift, and phase/path-length disturbance.</p>
+          <p><strong>What we need:</strong> access to an optical bench or Mach-Zehnder/cavity test setup, photodetector readout, a PZT or phase actuator, DAQ/controller support, and technical guidance on a defensible validation protocol.</p>
+          <p><strong>What partners get:</strong> a focused applied optics/control project, possible student-useful data, early visibility into Kansas-origin photonics IP, and a clear sponsored-research or prototype path if the traces are interesting.</p>
+          <div class="cta-row">
+            <a class="button primary" href="mailto:mroweitall@gmail.com?subject=PQSensing%20collaboration%20on%20NSL%20validation">Discuss collaboration</a>
+            <a class="button ghost" href="#validate">View validation plan</a>
+          </div>
+        </div>
+        <aside class="collaborate-ask" aria-label="Current collaboration ask">
+          <span class="label">Current ask</span>
+          <h3>20–30 minute feasibility call</h3>
+          <p>Can this be run as a small sponsored test, student project, supervised lab exercise, or vendor application note?</p>
+          <div class="ask-list">
+            <span>Classical MZI first</span>
+            <span>No squeezed source required</span>
+            <span>$10K minimum data sprint</span>
+            <span>Raw traces + plots + protocol</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="why" class="section-pad intro-section">
+      <div class="container split major-split">
+        <div>
+          <p class="eyebrow">Why this exists</p>
+          <h2>A locked interferometer is not always an optimized interferometer.</h2>
+        </div>
+        <div class="copy-stack">
+          <p>Most precision interferometers are locked to an optical condition: a cavity resonance, a fringe point, a reflected-power null, or a transmitted-power peak. That is necessary, but it is not always enough.</p>
+          <p>The customer does not buy a pretty fringe. The customer buys a smaller error bar: displacement, phase, strain, rotation, acceleration, refractive index, or timing measured with less uncertainty and less wasted integration time.</p>
+          <p><strong>NSL + DPI is for instruments that are optically locked but not necessarily measurement-optimized.</strong> The optical lock says stable. The noise floor says otherwise.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad value-section">
+      <div class="container value-grid">
+        <article class="value-card tall">
+          <p class="eyebrow">The buyer pain</p>
+          <h2>“My interferometer is locked, but my measurement is still noisy.”</h2>
+          <p>That is the use case. The lock is holding the optics, but vibration, thermal drift, laser-frequency noise, platform motion, speckle, detuning jitter, or quadrature-angle error still corrupt the measurement band.</p>
+        </article>
+        <article class="value-card">
+          <h3>More averaging stops helping.</h3>
+          <p>Integration time should shrink the error bar. When the operating point drifts or the noise becomes nonstationary, longer averaging can collect drift instead of information.</p>
+        </article>
+        <article class="value-card">
+          <h3>Quantum advantage fades in the field.</h3>
+          <p>Squeezed-light benefit depends on alignment, loss, and phase stability. A squeezed source is not enough if the readout drifts away from the low-variance quadrature.</p>
+        </article>
+        <article class="value-card">
+          <h3>The dark port is underused.</h3>
+          <p>A nominally dark port can be more than an empty input. DPI turns it into a controlled channel for calibration, coding, ranging, interference rejection, and squeezed-light injection.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="what" class="section-pad dark-block">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">What we are doing</p>
+          <h2>We add a measurement-performance layer to interferometric sensors.</h2>
+          <p>NSL + DPI is intended to augment established optical locking methods such as PDH, not pick a needless fight with them. PDH keeps the cavity or interferometer captured. NSL trims the operating point toward the quietest useful measurement condition. DPI gives the dark port a controlled job.</p>
+        </div>
+        <div class="three-col">
+          <article class="tech-card">
+            <span class="number">01</span>
+            <h3>Keep the optical lock.</h3>
+            <p>Use PDH, bias locking, or another conventional method to maintain optical capture and keep the instrument in range.</p>
+          </article>
+          <article class="tech-card accent">
+            <span class="number">02</span>
+            <h3>Add Noise-Stationary Locking.</h3>
+            <p>Compute normalized measurement-band noise and servo the system toward a point where small detuning errors no longer cause first-order noise degradation.</p>
+          </article>
+          <article class="tech-card violet">
+            <span class="number">03</span>
+            <h3>Activate the dark port.</h3>
+            <p>Inject a controlled auxiliary field, phase code, pilot signal, or squeezed vacuum through the dark mode and recover useful signatures at the output.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="exhibit" class="section-pad exhibit-section">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">Interactive demonstration</p>
+          <h2>Watch the two locks <em>disagree</em>.</h2>
+          <p>A power lock parks at the fringe extremum. A noise-stationary lock parks where the slope of <span class="mono">V<sub>norm</sub>(δ) = N<sub>band</sub>(δ) / P(δ)<sup>k</sup></span> goes to zero. Whenever real-world noise has structure that isn't perfectly aligned with the fringe — which it rarely does — those two operating points are not the same. Drag the controls.</p>
+        </div>
+
+        <div class="exhibit-panel" aria-label="Interactive demonstration: noise-stationary lock vs power lock">
+          <div class="exhibit-plot" id="exhibitPlot" role="img" aria-label="Plot of P, N_band, and V_norm versus detuning"></div>
+
+          <div class="exhibit-readout">
+            <div class="readout-block">
+              <span class="readout-label">Power lock parks at</span>
+              <span class="readout-value" id="readPowerDelta">δ = 0.00</span>
+              <span class="readout-sub" id="readPowerVnorm">V<sub>norm</sub> there = —</span>
+            </div>
+            <div class="readout-block readout-block-accent">
+              <span class="readout-label">NSL parks at</span>
+              <span class="readout-value" id="readNSLDelta">δ = 0.00</span>
+              <span class="readout-sub" id="readNSLVnorm">V<sub>norm</sub> there = —</span>
+            </div>
+            <div class="readout-block readout-block-gain">
+              <span class="readout-label">NSL advantage</span>
+              <span class="readout-value" id="readGain">— dB</span>
+              <span class="readout-sub">in this regime</span>
+            </div>
+          </div>
+
+          <div class="exhibit-controls">
+            <label class="exhibit-control">
+              <span class="control-label">
+                Noise alignment offset
+                <span class="control-hint">how misaligned the structured noise is from the fringe</span>
+              </span>
+              <input type="range" min="0" max="100" value="68" id="ctrlOffset" class="exhibit-slider">
+              <output id="outOffset" class="control-out">+0.36π</output>
+            </label>
+
+            <label class="exhibit-control">
+              <span class="control-label">
+                Excess-noise strength
+                <span class="control-hint">how much structured noise rides on top of the floor</span>
+              </span>
+              <input type="range" min="0" max="100" value="78" id="ctrlAmp" class="exhibit-slider">
+              <output id="outAmp" class="control-out">0.78</output>
+            </label>
+
+            <label class="exhibit-control">
+              <span class="control-label">
+                Power-weighting exponent k
+                <span class="control-hint">k = 0 unweighted, k = 1 SNR-like, k = 2 photon-shot-limited</span>
+              </span>
+              <input type="range" min="0" max="200" value="100" id="ctrlK" class="exhibit-slider">
+              <output id="outK" class="control-out">k = 1.00</output>
+            </label>
+          </div>
+
+          <div class="exhibit-legend">
+            <span class="legend-item"><span class="legend-swatch legend-p"></span>P(δ) — optical transmission</span>
+            <span class="legend-item"><span class="legend-swatch legend-n"></span>N<sub>band</sub>(δ) — measurement-band noise</span>
+            <span class="legend-item"><span class="legend-swatch legend-v"></span>V<sub>norm</sub>(δ) — the NSL objective</span>
+          </div>
+
+          <p class="exhibit-note">
+            Pedagogical model, not bench data. Analytic curves illustrate the slope-null thesis. The validation sprint replaces these with measured curves from a tabletop Mach–Zehnder.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad equation-section">
+      <div class="container equation-wrap">
+        <div>
+          <p class="eyebrow">Why optimize variance?</p>
+          <h2>Because the sensor’s product is an estimate with an uncertainty.</h2>
+          <p>For a photon-limited phase measurement, the useful relationship is:</p>
+          <div class="big-equation">(Δφ)<sup>2</sup> ≈ V<sub>norm</sub> / ( ṄT )</div>
+          <p>Lower and more stable V<sub>norm</sub> means the same photon flux and integration time produce a smaller phase-error variance. That can mean better precision in the same time, the same precision faster, or the same result with less optical power.</p>
+        </div>
+        <aside class="callout">
+          <h3>Not uncertainty for uncertainty’s sake.</h3>
+          <p>Uncertainty is the control variable because uncertainty is what determines whether the reading is useful. NSL is designed to keep integration time productive.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="how" class="section-pad how-section">
+      <div class="container">
+        <div class="section-head narrow">
+          <p class="eyebrow">How we intend to do it</p>
+          <h2>Measure the noise that matters, normalize it, find its slope, and lock there.</h2>
+        </div>
+        <div class="process-grid">
+          <article>
+            <span>1</span>
+            <h3>Acquire</h3>
+            <p>Read the detector stream y(t) from a photodiode, balanced detector, homodyne receiver, or related interferometric readout.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Compute</h3>
+            <p>Estimate band-limited noise N<sub>band</sub>, compute an optical power metric P, and form the normalized objective.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Dither</h3>
+            <p>Apply a small operating-point dither to δ outside the protected measurement band to probe the objective’s slope.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Demodulate</h3>
+            <p>Synchronously demodulate V<sub>norm</sub> against the dither reference to estimate dV<sub>norm</sub>/dδ.</p>
+          </article>
+          <article>
+            <span>5</span>
+            <h3>Servo</h3>
+            <p>Drive the actuator toward dV<sub>norm</sub>/dδ ≈ 0 while preserving a power floor and using mislock recovery logic.</p>
+          </article>
+          <article>
+            <span>6</span>
+            <h3>Integrate</h3>
+            <p>Hold the quietest useful operating point so photon integration continues to reduce the measurement error bar.</p>
+          </article>
+        </div>
+        <div class="formula-band">
+          <div>
+            <span class="label">Controller objective</span>
+            <p>V<sub>norm</sub>(δ) = N<sub>band</sub>(δ) / P(δ)<sup>k</sup> + power-floor penalty</p>
+          </div>
+          <div>
+            <span class="label">Slope-null condition</span>
+            <p>dV<sub>norm</sub>/dδ → 0</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad visual-band">
+      <div class="container visual-split">
+        <img src="assets/dark_port.jpg" alt="Dark-port injection and phase-code waveform visualization">
+        <div>
+          <p class="eyebrow">Phase-Controlled Dark-Mode Injection</p>
+          <h2>DPI gives the dark port a job.</h2>
+          <p>In a conventional interferometer, the dark input is often treated as unused or as a passive vacuum input. DPI uses that port intentionally. A known phase waveform g(t), pilot signal, code, chirp, coherent auxiliary field, or squeezed vacuum can be injected and recovered through synchronous detection, correlation, matched filtering, or homodyne readout.</p>
+          <ul class="checklist">
+            <li>Calibration and system identification</li>
+            <li>Code-division signatures and multiplexing</li>
+            <li>Interference rejection and matched-filter recovery</li>
+            <li>Ranging or time-delay signatures</li>
+            <li>Squeezed-light injection and quadrature control</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="measure" class="section-pad measurement-section">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">What can this help measure?</p>
+          <h2>Weak phase-based signals that were too noisy, too slow, or too unstable to recover reliably.</h2>
+          <p>If the physical quantity can be converted into an optical phase, path-length, quadrature, or time-delay change, NSL + DPI may help move it from “buried in noise” to “recoverable with usable integration time.”</p>
+        </div>
+        <div class="measurement-grid">
+          <article><h3>Displacement and vibration</h3><p>Mirror motion, MEMS motion, wafer-stage position, precision machine vibration, optomechanical displacement.</p></article>
+          <article><h3>Strain and deformation</h3><p>Fiber strain, structural deformation, composite stress, shape sensing, pressure-vessel or pipeline strain.</p></article>
+          <article><h3>Acceleration, force, pressure, acoustics</h3><p>Proof-mass motion, cantilever force, membrane pressure, acoustic diaphragm motion, hydrophone-style sensing.</p></article>
+          <article><h3>Rotation and inertial drift</h3><p>Sagnac-style rotation, fiber gyro readout, GPS-denied navigation support, platform stabilization.</p></article>
+          <article><h3>Refractive-index and chemical change</h3><p>Trace gas, fluid contamination, biosensing, lab-on-chip refractive-index shifts, molecular binding effects.</p></article>
+          <article><h3>Quantum-enhanced weak phase signals</h3><p>Sub-shot-noise phase shifts, squeezed-light readout, low-variance quadrature tracking, dark-port quantum resources.</p></article>
+          <article><h3>Timing, ranging, and coded signatures</h3><p>Dark-port code recovery, matched-filter timing, correlation peaks, multiplexed instrument identification.</p></article>
+          <article class="highlight-card"><h3>The practical claim</h3><p>Not magic. Not “measure anything.” The claim is sharper: preserve the measurement condition so small interferometric signals can be recovered sooner and with less noise-floor wandering.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="validate" class="section-pad validate-section">
+      <div class="container visual-split reverse">
+        <img src="assets/mzi_bench.jpg" alt="Tabletop Mach-Zehnder-style optical bench visualization">
+        <div>
+          <p class="eyebrow">Validation plan</p>
+          <h2>First prove it on a classical tabletop Mach-Zehnder.</h2>
+          <p>The first milestone is intentionally lean. No squeezed-light source is required to validate the core control principle. Build a classical MZI, sweep the operating point, map power and V<sub>norm</sub>, inject controlled detuning jitter, and compare a conventional power lock against NSL.</p>
+          <ul class="checklist">
+            <li>Map P(δ), N<sub>band</sub>(δ), and V<sub>norm</sub>(δ)</li>
+            <li>Show whether the noise-stationary point differs from the power extremum</li>
+            <li>Inject repeatable jitter and compare locked time traces</li>
+            <li>Demonstrate dither/demod convergence toward dV<sub>norm</sub>/dδ ≈ 0</li>
+            <li>Package raw data, plots, and reproducible analysis</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad metrics-section">
+      <div class="container">
+        <div class="section-head narrow">
+          <p class="eyebrow">Prototype metrics</p>
+          <h2>Evidence that makes partner conversations rational.</h2>
+          <p>These are validation targets, not guaranteed product specifications. The point is to produce defensible traces that prove or kill the control thesis.</p>
+        </div>
+        <div class="metrics-table" role="table" aria-label="Prototype validation metrics">
+          <div class="row head" role="row"><span>Metric</span><span>Target</span><span>Evidence output</span></div>
+          <div class="row" role="row"><span>Setpoint separation</span><span>V<sub>norm</sub> stationary point differs from the power extremum in at least one injected-noise regime.</span><span>δ sweep: P(δ), N<sub>band</sub>(δ), V<sub>norm</sub>(δ)</span></div>
+          <div class="row" role="row"><span>Jitter-induced noise reduction</span><span>First-demo target: ≥6 dB vs power lock; stretch target: 10–20 dB if bench stability supports it.</span><span>Locked traces under controlled jitter</span></div>
+          <div class="row" role="row"><span>Slope-null convergence</span><span>|dV<sub>norm</sub>/dδ| driven toward zero while maintaining P above a useful floor.</span><span>Dither/demod error and actuator command</span></div>
+          <div class="row" role="row"><span>Reacquisition</span><span>≥5 successful reacquisitions after intentional mislock or disturbance trials.</span><span>State log: SEARCH → CAPTURE → BIAS_LOCK → NOISE_LOCK</span></div>
+          <div class="row" role="row"><span>DPI optional test</span><span>Recover known g(t) by correlation/matched filtering with a visible peak over uncorrelated disturbance.</span><span>Correlation peak, lag estimate, processing-gain plot</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad market-section">
+      <div class="market-bg" aria-hidden="true"></div>
+      <div class="container split major-split">
+        <div>
+          <p class="eyebrow">Market wedge</p>
+          <h2>Start where the lock is stable but the reading is not.</h2>
+        </div>
+        <div class="copy-stack market-copy">
+          <p><strong>Metrology OEMs:</strong> cavities, mode cleaners, MZI/Michelson platforms, displacement and precision phase sensors.</p>
+          <p><strong>Defense and navigation:</strong> inertial sensing, gyro readout, platform vibration, GPS-denied measurement support.</p>
+          <p><strong>Photonics and integrated sensing:</strong> MZI/PIC control firmware, dark-port coding, correlation signatures, interference rejection.</p>
+          <p><strong>Quantum-sensing labs and partners:</strong> squeezed-light injection, quadrature alignment, homodyne readout, practical quantum advantage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="audio" class="section-pad audio-section">
+      <div class="container audio-panel">
+        <div>
+          <p class="eyebrow">Audio overview</p>
+          <h2>Listen to the metrology thesis.</h2>
+          <p>A concise spoken overview of the PQSensing approach, the tabletop validation sprint, and why noise-stationary control matters for interferometric metrology.</p>
+        </div>
+        <div class="audio-player" aria-label="Metrology overview audio player">
+          <audio controls preload="metadata">
+            <source src="assets/metrology-overview.m4a" type="audio/mp4">
+            Your browser does not support embedded audio. <a href="assets/metrology-overview.m4a">Download the audio overview</a>.
+          </audio>
+          <a class="audio-download" href="assets/metrology-overview.m4a">Download audio file</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="fund" class="section-pad fund-section">
+      <div class="container fund-card">
+        <div>
+          <p class="eyebrow">Immediate ask</p>
+          <h2>$10K minimum useful prototype/data sprint.</h2>
+          <p>The first funding unit is not a full quantum hardware build. It is a lean classical MZI validation package: optical bench or partner lab access, detector/readout path, actuator, DSP, jitter injection, and reproducible data comparing conventional locking against NSL.</p>
+        </div>
+        <div class="fund-list">
+          <p><strong>Optics + mechanics:</strong> breadboard, mirrors, beamsplitters, mounts, alignment hardware.</p>
+          <p><strong>Readout + control:</strong> photodiode or balanced detector path, DAQ/interface, PZT/phase actuator, driver.</p>
+          <p><strong>DSP + analysis:</strong> real-time V<sub>norm</sub> pipeline, dither/demod loop, reproducible notebooks.</p>
+          <p><strong>Output:</strong> raw logs, plots, updated deck, technical package for companies, SBIR/STTR, investors, and lab partners.</p>
+        </div>
+        <div class="cta-row lower">
+          <a class="button primary" href="mailto:mroweitall@gmail.com?subject=PQSensing%20MZI%20validation%20sprint">Contact PQSensing</a>
+          <a class="button ghost" href="PQSensing_MZI_NSL_Pitch_Deck.pptx">Download PPTX deck</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>PQSensing</strong>
+        <p>Noise-Stationary Locking and Phase-Controlled Dark-Mode Injection for interferometric signal and noise manipulation.</p>
+      </div>
+      <div>
+        <strong>Plain-language summary</strong>
+        <p>PDH keeps the optics locked. NSL keeps the measurement quiet. DPI gives the dark port a job.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+  <script>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => document.body.classList.remove('nav-open'));
+    });
+  </script>
+</body>
+</html>
