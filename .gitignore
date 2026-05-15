@@ -10,6 +10,9 @@ Desktop.ini
 .vscode/
 .idea/
 
+# SFTP credentials
+sftp.json
+
 # Dependencies
 node_modules/
 
