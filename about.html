@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About the Founder — Jon Peterson · PQSensing</title>
+  <meta name="description" content="Jon Peterson is the founder and inventor behind PQSensing — an architectural engineer with an acoustics emphasis and 20+ years of technical development, drafting, and documentation experience, now building Advanced Supervisory Modules for interferometric systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .nav-links a.active{color:var(--cyan)}
+    .about-hero{position:relative;overflow:hidden;padding:84px 0 64px;background:
+      radial-gradient(circle at 16% 14%,rgba(57,223,255,.15),transparent 38%),
+      radial-gradient(circle at 88% 20%,rgba(154,99,255,.15),transparent 40%),
+      linear-gradient(180deg,var(--bg),var(--bg2) 60%,var(--bg))}
+    .about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:50px;align-items:center}
+    .about-hero h1{font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-.03em;margin:12px 0 8px}
+    .about-role{color:var(--cyan);font-weight:750;font-size:15px;font-family:'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.02em}
+    .about-hero .lede{color:var(--muted);font-size:18px;line-height:1.62;max-width:60ch;margin:18px 0 0}
+    /* portrait */
+    .portrait-wrap{position:relative;width:100%;max-width:320px;aspect-ratio:4/5;margin:0 auto;border-radius:28px;overflow:hidden;
+      border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+    .portrait-photo{width:100%;height:100%;object-fit:cover}
+    .portrait-fallback{position:absolute;inset:0;display:grid;place-items:center;
+      background:radial-gradient(circle at 35% 28%,rgba(57,223,255,.28),transparent 60%),linear-gradient(150deg,#0a2036,#04101e);
+      color:#eef9ff;font-weight:850;font-size:84px;letter-spacing:.04em}
+    .portrait-fallback span{background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .portrait-cap{margin-top:12px;text-align:center;color:var(--muted2);font-size:12.5px}
+    /* bio + timeline */
+    .bio-prose p{color:var(--muted);font-size:18px;line-height:1.7;max-width:70ch}
+    .bio-prose strong{color:var(--ink)}
+    .timeline{display:grid;gap:16px;margin-top:8px}
+    .t-item{display:grid;grid-template-columns:200px minmax(0,1fr);gap:22px;border:1px solid var(--line);border-radius:20px;background:var(--panel2);padding:22px 24px}
+    .t-when{color:var(--cyan);font-weight:750;font-size:14px;font-family:'IBM Plex Mono',ui-monospace,monospace}
+    .t-what h3{margin:0 0 6px;font-size:18px}
+    .t-what p{margin:0;color:var(--muted);font-size:15px}
+    .creds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .cred{border:1px solid var(--line2);border-radius:18px;background:rgba(255,255,255,.03);padding:22px}
+    .cred h3{margin:0 0 6px;font-size:16px}
+    .cred p{margin:0;color:var(--muted);font-size:14px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}
+    .chip{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:rgba(255,255,255,.02)}
+    @media (max-width:860px){
+      .about-grid{grid-template-columns:1fr;gap:30px}
+      .t-item{grid-template-columns:1fr;gap:6px}
+      .creds{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Main navigation">
+    <a class="brand" href="index.html" aria-label="PQSensing home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>PQSensing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Navigation menu" onclick="document.body.classList.toggle('nav-open')">Menu</button>
+    <nav class="nav-links">
+      <a href="index.html#collaborate">Collaborate</a>
+      <a href="index.html#exhibit">Demo</a>
+      <a href="index.html#how">Method</a>
+      <a href="index.html#validate">Validate</a>
+      <a href="modules.html">Modules</a>
+      <a href="metrology.html">Metrology 101</a>
+      <a href="metrology201.html">Metrology 201</a>
+      <a class="active" href="about.html">About</a>
+      <a href="index.html#fund">Fund</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="about-hero">
+      <div class="container about-grid">
+        <div>
+          <p class="eyebrow">About the founder</p>
+          <h1>Jon Peterson</h1>
+          <p class="about-role">Founder &amp; Inventor, PQSensing · Architectural Engineer (Acoustics)</p>
+          <p class="lede">A multidisciplinary engineer who pairs two decades of drafting, documentation, and acoustics work with self-directed study in optics, interferometry, and DSP — and turns it into the disciplined, buildable validation roadmaps behind PQSensing's Advanced Supervisory Modules.</p>
+          <div class="cta-row">
+            <a class="button primary" href="Jon_Peterson_Resume.pdf" download>Download résumé (PDF)</a>
+            <a class="button ghost" href="mailto:mroweitall@gmail.com?subject=PQSensing%20%E2%80%94%20intro">Get in touch</a>
+          </div>
+        </div>
+        <div>
+          <!-- To use a real photo: upload it to assets/jon-peterson.jpg (it will replace the monogram automatically). -->
+          <div class="portrait-wrap">
+            <img class="portrait-photo" src="assets/jon-peterson.jpg" alt="Portrait of Jon Peterson, founder of PQSensing" style="display:none" onload="this.style.display='block';var f=document.getElementById('portraitFallback');if(f)f.style.display='none';">
+            <div class="portrait-fallback" id="portraitFallback"><span>JP</span></div>
+          </div>
+          <p class="portrait-cap">Hugoton, Kansas</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">Background</p>
+          <h2>Engineering rigor from the bench, the blueprint, and the recording studio.</h2>
+        </div>
+        <div class="bio-prose">
+          <p>Jon is an architectural engineer with an acoustics emphasis and <strong>20+ years</strong> of practical experience producing buildable drawings, construction documents, field measurements, models, and technical plans. That career — across architectural drafting, engineering support, and acoustical consulting — built a habit that now defines PQSensing: take an idea from theory to clear diagrams, defensible test plans, and reproducible analysis.</p>
+          <p>Today he leads <strong>PQSensing</strong> as founder, inventor, and independent technical developer, advancing <strong>Noise-Stationary Locking</strong> — the flagship of a family of Advanced Supervisory Modules that hold precision interferometric instruments at their best measurement operating point. He prepares the non-confidential concept diagrams, validation plans, and partner-facing materials, and frames the work around a lean, low-cost tabletop validation sprint.</p>
+          <p>His background in <strong>acoustics, signal flow, and DSP</strong> — sharpened over years of home-studio music production — maps naturally onto interferometric measurement, noise, and control, while his drafting discipline keeps the engineering organized, documented, and buildable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad dark-block">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">Experience</p>
+          <h2>A through-line of measurement, documentation, and applied engineering.</h2>
+        </div>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-when">Current</div>
+            <div class="t-what"><h3>Founder / Inventor — PQSensing</h3><p>Develops the Noise-Stationary Locking control concept and the supervisory-module platform; produces concept diagrams, validation roadmaps, and partner-facing technical materials, integrating independent study in optics, photonics, interferometry, measurement noise, and DSP.</p></div>
+          </div>
+          <div class="t-item">
+            <div class="t-when">2010 – present</div>
+            <div class="t-what"><h3>Contract Architectural Draftsman / CAD Technician — Media+Architecture</h3><p>Self-employed drafting for regional architects, builders, and owners: floor plans, elevations, sections, details, schedules, field measurements, and as-builts on projects from roughly $50K to $5M, with AI-assisted workflows for productivity.</p></div>
+          </div>
+          <div class="t-item">
+            <div class="t-when">2000 – 2003</div>
+            <div class="t-what"><h3>Acoustical Consulting — Engineering Dynamics International &amp; Acoustical Design Group</h3><p>Acoustical and theatre consulting: acoustical modeling, sound-system CAD drawings, AV equipment evaluation, technical documentation, and client coordination for performance-space and architectural-acoustics projects.</p></div>
+          </div>
+          <div class="t-item">
+            <div class="t-when">1998 – 1999</div>
+            <div class="t-what"><h3>HABS Scholarship Team — University of Kansas</h3><p>Documented the Old New York Life Building in Kansas City for archival submission to the Library of Congress under the Historic American Buildings Survey; drawings earned honorable mention for the Charles E. Peterson Prize.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">Education &amp; recognition</p>
+          <h2>Credentials.</h2>
+        </div>
+        <div class="creds">
+          <div class="cred"><h3>B.S., Architectural Engineering</h3><p>University of Kansas — Acoustics emphasis. EIT (Engineer in Training) certification.</p></div>
+          <div class="cred"><h3>Recognition</h3><p>HABS / Recording &amp; Representing Historic Structures scholarship (’98, ’99); honorable mention, Charles E. Peterson Prize; runner-up, ASA Student Design Competition.</p></div>
+          <div class="cred"><h3>Memberships</h3><p>Member of Mensa; affiliations with the Acoustical Society of America (ASA) and ASHRAE.</p></div>
+        </div>
+        <div class="chips" aria-label="Selected skills">
+          <span class="chip">AutoCAD LT</span><span class="chip">SketchUp</span><span class="chip">CAD/CAM</span><span class="chip">Construction documents</span><span class="chip">Acoustical modeling</span><span class="chip">Optical interferometry</span><span class="chip">DSP / control concepts</span><span class="chip">Technical writing</span><span class="chip">AI-assisted workflows</span><span class="chip">Logic Pro production</span>
+        </div>
+        <div class="cta-row" style="margin-top:34px">
+          <a class="button primary" href="Jon_Peterson_Resume.pdf" download>Download full résumé (PDF)</a>
+          <a class="button ghost" href="modules.html">Explore the modules</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>PQSensing</strong>
+        <p>Advanced Supervisory Modules for interferometric systems — a firmware performance layer that holds precision instruments at their best measurement operating point. Flagship module: Noise-Stationary Locking.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p>Jon Peterson, Founder · Hugoton, Kansas · <a href="mailto:mroweitall@gmail.com" style="color:var(--cyan)">mroweitall@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => document.body.classList.remove('nav-open'));
+    });
+  </script>
+</body>
+</html>

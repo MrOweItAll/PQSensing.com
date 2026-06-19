@@ -1,0 +1,52 @@
+<svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized illustration of a compact FPGA development board (Red Pitaya class)">
+  <defs>
+    <linearGradient id="bd-pcb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a2036"/><stop offset="1" stop-color="#071827"/>
+    </linearGradient>
+    <linearGradient id="bd-chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#39dfff"/><stop offset="1" stop-color="#246dff"/>
+    </linearGradient>
+    <radialGradient id="bd-led" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="60%" stop-color="#49f4c8"/><stop offset="100%" stop-color="#0a2036"/>
+    </radialGradient>
+  </defs>
+  <!-- board -->
+  <rect x="40" y="50" width="360" height="200" rx="14" fill="url(#bd-pcb)" stroke="#39dfff" stroke-opacity=".5" stroke-width="1.5"/>
+  <!-- copper traces -->
+  <g stroke="#39dfff" stroke-opacity=".28" stroke-width="1.5" fill="none">
+    <path d="M70 90 H170 V140"/><path d="M70 120 H140 V200"/>
+    <path d="M250 70 V120 H330"/><path d="M250 230 H340 V150"/>
+    <path d="M180 210 H250"/>
+  </g>
+  <!-- central FPGA/SoC chip -->
+  <rect x="175" y="115" width="90" height="78" rx="6" fill="#04101e" stroke="url(#bd-chip)" stroke-width="2"/>
+  <rect x="190" y="130" width="60" height="48" rx="3" fill="url(#bd-chip)" opacity=".85"/>
+  <text x="220" y="160" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" font-weight="700" fill="#02111f">FPGA</text>
+  <!-- chip pins -->
+  <g fill="#a7c4d8">
+    <rect x="178" y="196" width="6" height="8"/><rect x="190" y="196" width="6" height="8"/><rect x="202" y="196" width="6" height="8"/><rect x="214" y="196" width="6" height="8"/><rect x="226" y="196" width="6" height="8"/><rect x="238" y="196" width="6" height="8"/><rect x="250" y="196" width="6" height="8"/>
+    <rect x="178" y="104" width="6" height="8"/><rect x="202" y="104" width="6" height="8"/><rect x="226" y="104" width="6" height="8"/><rect x="250" y="104" width="6" height="8"/>
+  </g>
+  <!-- SMA / fast I/O connectors (left edge) -->
+  <g>
+    <circle cx="40" cy="100" r="15" fill="#0a2036" stroke="#e8c27a" stroke-width="2"/><circle cx="40" cy="100" r="5" fill="#e8c27a"/>
+    <circle cx="40" cy="150" r="15" fill="#0a2036" stroke="#e8c27a" stroke-width="2"/><circle cx="40" cy="150" r="5" fill="#e8c27a"/>
+    <circle cx="40" cy="200" r="15" fill="#0a2036" stroke="#39dfff" stroke-width="2"/><circle cx="40" cy="200" r="5" fill="#39dfff"/>
+  </g>
+  <!-- GPIO header (right) -->
+  <g fill="#9a63ff">
+    <rect x="330" y="86" width="54" height="14" rx="3" opacity=".85"/>
+    <rect x="330" y="200" width="54" height="14" rx="3" opacity=".85"/>
+  </g>
+  <g fill="#04101e">
+    <circle cx="338" cy="93" r="2"/><circle cx="348" cy="93" r="2"/><circle cx="358" cy="93" r="2"/><circle cx="368" cy="93" r="2"/><circle cx="378" cy="93" r="2"/>
+  </g>
+  <!-- ADC/DAC block -->
+  <rect x="120" y="150" width="44" height="34" rx="4" fill="#04101e" stroke="#9a63ff" stroke-width="1.5"/>
+  <text x="142" y="171" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#9a63ff">ADC</text>
+  <!-- status LEDs -->
+  <circle cx="300" cy="150" r="6" fill="url(#bd-led)"/>
+  <circle cx="318" cy="150" r="6" fill="url(#bd-led)" opacity=".7"/>
+  <!-- micro-SD slot -->
+  <rect x="290" y="186" width="40" height="22" rx="3" fill="#04101e" stroke="#a7c4d8" stroke-opacity=".5"/>
+</svg>

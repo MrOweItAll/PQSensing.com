@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Advanced Supervisory Modules — PQSensing</title>
+  <meta name="description" content="PQSensing's Advanced Supervisory Modules are a firmware performance layer that holds precision interferometric instruments at their best measurement operating point. The family spans quantum metrology, inertial sensing, optical clocks, and quantum communications, and runs on standard FPGA lab instruments such as Liquid Instruments Moku and Red Pitaya.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .nav-links a.active{color:var(--cyan)}
+    .mod-hero{position:relative;overflow:hidden;padding:96px 0 72px;background:
+      radial-gradient(circle at 18% 12%,rgba(57,223,255,.16),transparent 38%),
+      radial-gradient(circle at 86% 28%,rgba(154,99,255,.16),transparent 40%),
+      linear-gradient(180deg,var(--bg),var(--bg2) 60%,var(--bg))}
+    .mod-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:54px;align-items:center}
+    .mod-hero h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.03em;margin:14px 0 18px}
+    .mod-hero .lede{color:var(--muted);font-size:19px;line-height:1.6;max-width:60ch}
+    .mod-graphic{width:100%;height:auto;filter:drop-shadow(0 24px 60px rgba(0,0,0,.45))}
+    .family-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:14px}
+    .family-card{position:relative;border:1px solid var(--line);border-radius:24px;background:var(--panel2);padding:28px;display:flex;flex-direction:column;gap:10px}
+    .family-card h3{font-size:21px;margin:0}
+    .family-card p{color:var(--muted);font-size:16px;margin:0}
+    .family-card .tag{display:inline-flex;align-self:flex-start;align-items:center;gap:7px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+    .family-card.flagship{border-color:rgba(57,223,255,.5);background:linear-gradient(160deg,rgba(57,223,255,.10),rgba(154,99,255,.05))}
+    .family-card.flagship .tag{color:#02111f;background:linear-gradient(135deg,var(--cyan),var(--teal));border:none}
+    .family-card .card-link{margin-top:6px;color:var(--cyan);font-weight:750;font-size:15px}
+    .platform-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:8px}
+    .platform-card{border:1px solid var(--line);border-radius:22px;background:var(--panel2);padding:26px}
+    .platform-card h3{margin:0 0 8px;font-size:18px}
+    .platform-card p{color:var(--muted);font-size:15px;margin:0}
+    .benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:8px}
+    .benefit{border:1px solid var(--line2);border-radius:20px;background:rgba(255,255,255,.03);padding:24px}
+    .benefit h3{margin:0 0 8px;font-size:17px}
+    .benefit p{color:var(--muted);font-size:15px;margin:0}
+    .mod-note{margin-top:26px;color:var(--muted2);font-size:14px;max-width:80ch}
+    @media (max-width:860px){
+      .mod-hero-grid{grid-template-columns:1fr;gap:30px}
+      .family-grid,.platform-grid,.benefit-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Main navigation">
+    <a class="brand" href="index.html" aria-label="PQSensing home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>PQSensing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Navigation menu" onclick="document.body.classList.toggle('nav-open')">Menu</button>
+    <nav class="nav-links">
+      <a href="index.html#collaborate">Collaborate</a>
+      <a href="index.html#exhibit">Demo</a>
+      <a href="index.html#how">Method</a>
+      <a href="index.html#validate">Validate</a>
+      <a class="active" href="modules.html">Modules</a>
+      <a href="metrology.html">Metrology 101</a>
+      <a href="metrology201.html">Metrology 201</a>
+      <a href="about.html">About</a>
+      <a href="index.html#fund">Fund</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="mod-hero">
+      <div class="container mod-hero-grid">
+        <div>
+          <p class="eyebrow">The platform</p>
+          <h1>Advanced Supervisory Modules.</h1>
+          <p class="lede">A precision instrument that is merely <em>locked</em> is not necessarily <em>optimized</em>. PQSensing builds a family of supervisory modules — a firmware layer that runs alongside the lock you already have and holds the instrument at the operating point where its measurement is cleanest. One discipline, many instrument classes.</p>
+          <div class="cta-row">
+            <a class="button primary" href="metrology.html">See the flagship module</a>
+            <a class="button ghost" href="index.html#collaborate">Seeking collaboration</a>
+          </div>
+        </div>
+        <div>
+          <svg class="mod-graphic" viewBox="0 0 520 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Advanced Supervisory Modules family: a central supervisory layer connected to optical, inertial, clock, quantum-link, and gravitational-wave instrument classes">
+            <defs>
+              <radialGradient id="coreG" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset="35%" stop-color="#5bf3ff"/>
+                <stop offset="100%" stop-color="#246dff"/>
+              </radialGradient>
+              <linearGradient id="lineG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#39dfff" stop-opacity=".85"/>
+                <stop offset="1" stop-color="#9a63ff" stop-opacity=".55"/>
+              </linearGradient>
+              <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- orbit rings -->
+            <circle cx="260" cy="230" r="150" fill="none" stroke="rgba(96,219,255,.16)" stroke-width="1"/>
+            <circle cx="260" cy="230" r="195" fill="none" stroke="rgba(154,99,255,.12)" stroke-width="1"/>
+            <!-- connectors -->
+            <g stroke="url(#lineG)" stroke-width="2" fill="none" opacity=".8">
+              <line x1="260" y1="230" x2="260" y2="70"/>
+              <line x1="260" y1="230" x2="412" y2="158"/>
+              <line x1="260" y1="230" x2="392" y2="356"/>
+              <line x1="260" y1="230" x2="128" y2="356"/>
+              <line x1="260" y1="230" x2="108" y2="158"/>
+            </g>
+            <!-- domain nodes -->
+            <g font-family="Inter, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+              <g><circle cx="260" cy="70" r="34" fill="rgba(8,28,47,.92)" stroke="#39dfff" stroke-width="1.5"/><text x="260" y="66" fill="#eef9ff">Optical</text><text x="260" y="82" fill="#a7c4d8" font-size="10" font-weight="500">sensing</text></g>
+              <g><circle cx="412" cy="158" r="34" fill="rgba(8,28,47,.92)" stroke="#39dfff" stroke-width="1.5"/><text x="412" y="154" fill="#eef9ff">Inertial</text><text x="412" y="170" fill="#a7c4d8" font-size="10" font-weight="500">&amp; gyros</text></g>
+              <g><circle cx="392" cy="356" r="34" fill="rgba(8,28,47,.92)" stroke="#9a63ff" stroke-width="1.5"/><text x="392" y="352" fill="#eef9ff">Clocks</text><text x="392" y="368" fill="#a7c4d8" font-size="10" font-weight="500">&amp; refs</text></g>
+              <g><circle cx="128" cy="356" r="34" fill="rgba(8,28,47,.92)" stroke="#9a63ff" stroke-width="1.5"/><text x="128" y="352" fill="#eef9ff">Quantum</text><text x="128" y="368" fill="#a7c4d8" font-size="10" font-weight="500">links</text></g>
+              <g><circle cx="108" cy="158" r="34" fill="rgba(8,28,47,.92)" stroke="#39dfff" stroke-width="1.5"/><text x="108" y="154" fill="#eef9ff">Large</text><text x="108" y="170" fill="#a7c4d8" font-size="10" font-weight="500">optics</text></g>
+            </g>
+            <!-- core -->
+            <circle cx="260" cy="230" r="46" fill="url(#coreG)" filter="url(#soft)"/>
+            <text x="260" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#02111f">PQS</text>
+            <text x="260" y="243" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#063">supervisory</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">What a supervisory module does</p>
+          <h2>It keeps the instrument where its numbers are best.</h2>
+          <p>Every supervisory module shares the same job: continuously hold a precision instrument at the operating point that produces the cleanest, most usable measurement — automatically, while your existing lock keeps the device captured.</p>
+        </div>
+        <div class="benefit-grid">
+          <div class="benefit"><h3>Smaller error bar</h3><p>Turn the same signal and the same integration time into less measurement uncertainty.</p></div>
+          <div class="benefit"><h3>Stays put</h3><p>Hold the best operating point through vibration, thermal drift, and disturbance, so long averages keep helping.</p></div>
+          <div class="benefit"><h3>Drop-in</h3><p>Runs above the lock you already use — no rip-and-replace, no new optics required.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad dark-block">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">The module family</p>
+          <h2>One discipline, applied across instrument classes.</h2>
+          <p>Each module is tuned to the figure of merit that matters for its instrument class. The quantum-metrology module is the flagship and most developed; the others are on the roadmap as the family extends.</p>
+        </div>
+        <div class="family-grid">
+          <article class="family-card flagship">
+            <span class="tag">Flagship · most developed</span>
+            <h3>Quantum Metrology &amp; Optical Sensing</h3>
+            <p>Hold interferometric optical sensors at their lowest-uncertainty operating point for quantum-grade measurement stability — the same photons and time, a smaller error bar.</p>
+            <a class="card-link" href="metrology.html">Read Metrology 101 →</a>
+          </article>
+          <article class="family-card">
+            <span class="tag">Roadmap</span>
+            <h3>Inertial &amp; Fiber-Optic Gyros</h3>
+            <p>Keep rotation and inertial sensors at their steadiest, lowest-drift operating point for more dependable navigation-grade output, including where GPS is unavailable.</p>
+          </article>
+          <article class="family-card">
+            <span class="tag">Roadmap</span>
+            <h3>Frequency References &amp; Optical Clocks</h3>
+            <p>Hold ultrastable lasers and clock references at their quietest condition, layered above the precision locks they already run.</p>
+          </article>
+          <article class="family-card">
+            <span class="tag">Roadmap</span>
+            <h3>Quantum Communications &amp; Coherent Links</h3>
+            <p>Keep the physical layer of quantum and coherent optical links regulated for cleaner, more reliable channels.</p>
+          </article>
+          <article class="family-card">
+            <span class="tag">Research channel</span>
+            <h3>Gravitational-Wave &amp; Large Optics</h3>
+            <p>A research-grade supervisory layer for large interferometers and precision-optics collaborations — a validation and credibility track for the whole family.</p>
+            <a class="card-link" href="metrology201.html">See Metrology 201 →</a>
+          </article>
+          <article class="family-card">
+            <span class="tag">How it ships</span>
+            <h3>Vertically integrated firmware</h3>
+            <p>Modules share a common engineering core, so each new instrument class extends the line rather than starting over.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow">Delivery</p>
+          <h2>Runs on the instruments you already use.</h2>
+          <p>Modules ship as firmware for standard FPGA-based laboratory instruments — no custom hardware required. Prototype on accessible benchtop hardware, then scale to production-grade instruments, deployed alongside the lock-in, PID, and lock-box instruments already on the box.</p>
+        </div>
+        <div class="platform-figs" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:8px 0 28px">
+          <figure style="margin:0;border:1px solid var(--line);border-radius:20px;background:var(--panel2);padding:18px;text-align:center">
+            <img src="assets/instrument-board.svg" alt="Stylized illustration of a compact FPGA development board, Red Pitaya class" style="width:100%;height:auto;border-radius:10px">
+            <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">Compact FPGA board — <em>Red Pitaya class</em> · stylized illustration</figcaption>
+          </figure>
+          <figure style="margin:0;border:1px solid var(--line);border-radius:20px;background:var(--panel2);padding:18px;text-align:center">
+            <img src="assets/instrument-benchtop.svg" alt="Stylized illustration of a benchtop FPGA instrument, Liquid Instruments Mako class" style="width:100%;height:auto;border-radius:10px">
+            <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">Benchtop FPGA instrument — <em>Liquid Instruments Mako class</em> · stylized illustration</figcaption>
+          </figure>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-card"><h3>Liquid Instruments Moku</h3><p>Packaged to run as a native instrument on the Moku platform, alongside its existing lock and control instruments.</p></div>
+          <div class="platform-card"><h3>Red Pitaya</h3><p>A low-cost reference and academic platform for prototyping, validation, and classroom-scale deployments.</p></div>
+          <div class="platform-card"><h3>Licensing &amp; firmware</h3><p>Available as licensed technology or as PQSensing-branded firmware, depending on the partner and the program.</p></div>
+        </div>
+        <p class="mod-note">PQSensing protects the methods behind these modules as intellectual property. This page describes what the modules achieve and where they run; it intentionally omits the underlying control techniques.</p>
+        <div class="cta-row">
+          <a class="button primary" href="index.html#collaborate">Discuss collaboration</a>
+          <a class="button ghost" href="PQSensing_MZI_NSL_Pitch_Deck.pdf" download>Download pitch deck</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>PQSensing</strong>
+        <p>Advanced Supervisory Modules for interferometric systems — a firmware performance layer that holds precision instruments at their best measurement operating point. Flagship module: Noise-Stationary Locking.</p>
+      </div>
+      <div>
+        <strong>Plain-language summary</strong>
+        <p>Your existing lock keeps the instrument stable. A PQSensing supervisory module keeps the measurement at its best — and the same idea extends across optical, inertial, timing, and quantum-link instruments.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => document.body.classList.remove('nav-open'));
+    });
+  </script>
+</body>
+</html>
