@@ -31,6 +31,12 @@
     /* bio + timeline */
     .bio-prose p{color:var(--muted);font-size:18px;line-height:1.7;max-width:70ch}
     .bio-prose strong{color:var(--ink)}
+    .music-card{margin-top:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.04);padding:20px;max-width:760px}
+    .music-card h3{margin:0 0 8px;font-size:18px}
+    .music-card p{font-size:15px!important;line-height:1.55!important;margin:0 0 14px!important;max-width:68ch}
+    .music-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+    .music-meta span{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted2);font-size:12px;font-weight:750}
+    .music-card audio{display:block;width:100%;max-width:620px}
     .timeline{display:grid;gap:16px;margin-top:8px}
     .t-item{display:grid;grid-template-columns:200px minmax(0,1fr);gap:22px;border:1px solid var(--line);border-radius:20px;background:var(--panel2);padding:22px 24px}
     .t-when{color:var(--cyan);font-weight:750;font-size:14px;font-family:'IBM Plex Mono',ui-monospace,monospace}
@@ -80,6 +86,7 @@
       .about-grid{grid-template-columns:1fr;gap:30px}
       .t-item{grid-template-columns:1fr;gap:6px}
       .company-heading{align-items:flex-start}
+      .music-card{padding:18px}
       .habs-gallery{grid-template-columns:1fr}
       .lightbox-stage img{max-height:72vh}
       .lightbox-caption{padding-left:0;padding-right:0}
@@ -142,6 +149,15 @@
           <p>Jon is an architectural engineer with an acoustics emphasis and <strong>20+ years</strong> of practical experience producing buildable drawings, construction documents, field measurements, models, and technical plans. That career — across architectural drafting, engineering support, and acoustical consulting — built a habit that now defines PQSensing: take an idea from theory to clear diagrams, defensible test plans, and reproducible analysis.</p>
           <p>Today he leads <strong>PQSensing</strong> as founder, inventor, and independent technical developer, advancing <strong>Noise-Stationary Locking</strong> — the flagship of a family of Advanced Supervisory Modules that hold precision interferometric instruments at their best measurement operating point. He prepares the non-confidential concept diagrams, validation plans, and partner-facing materials, and frames the work around a lean, low-cost tabletop validation sprint.</p>
           <p>His background in <strong>acoustics, signal flow, and DSP</strong> — sharpened over years of home-studio music production — maps naturally onto interferometric measurement, noise, and control, while his drafting discipline keeps the engineering organized, documented, and buildable.</p>
+          <div class="music-card">
+            <h3>EverSound Records</h3>
+            <p>Jon also writes, produces, and releases music through EverSound Records, a home-studio label shaped by the same ear for signal flow, texture, timing, and detail that informs his acoustics and DSP work.</p>
+            <div class="music-meta"><span>Latest single</span><span>A Real Charmer</span><span>AI Gentle Remaster</span></div>
+            <audio controls preload="metadata">
+              <source src="assets/audio/a-real-charmer-ai-gentle-remaster.wav" type="audio/wav">
+              Your browser does not support the audio player.
+            </audio>
+          </div>
         </div>
       </div>
     </section>
