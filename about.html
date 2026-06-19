@@ -36,6 +36,40 @@
     .t-when{color:var(--cyan);font-weight:750;font-size:14px;font-family:'IBM Plex Mono',ui-monospace,monospace}
     .t-what h3{margin:0 0 6px;font-size:18px}
     .t-what p{margin:0;color:var(--muted);font-size:15px}
+    .company-heading{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+    .company-heading h3{margin:0}
+    .company-logo{width:78px;height:52px;object-fit:contain;border:1px solid var(--line);border-radius:8px;background:#f5f7f8;padding:4px}
+    .inline-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .inline-links a{border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--cyan);font-size:12.5px;font-weight:750;background:rgba(57,223,255,.07)}
+    .inline-links a:hover{background:rgba(57,223,255,.14)}
+    .habs-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+    .habs-drawing{display:block;color:var(--ink);cursor:zoom-in}
+    .habs-drawing img{width:100%;aspect-ratio:13/17;object-fit:cover;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .habs-drawing span{display:block;margin-top:8px;color:var(--muted);font-size:13px}
+    .habs-drawing strong{color:var(--cyan)}
+    .portfolio-note{margin-top:12px!important;font-size:13px!important;color:var(--muted2)!important}
+    .portfolio-gallery,.paper-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px}
+    .portfolio-drawing,.paper-preview{display:block;color:var(--ink);cursor:zoom-in}
+    .portfolio-drawing img{width:100%;aspect-ratio:16/10.75;object-fit:cover;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .paper-preview img{width:100%;max-width:230px;aspect-ratio:8.5/11;object-fit:cover;object-position:top;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .portfolio-drawing span,.paper-preview span{display:block;margin-top:7px;color:var(--muted);font-size:12.5px}
+    .drawing-lightbox{position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:auto 1fr auto;background:rgba(2,8,16,.94);backdrop-filter:blur(8px);padding:18px;color:var(--ink)}
+    .drawing-lightbox[hidden]{display:none}
+    .lightbox-top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
+    .lightbox-title{font-weight:800;color:var(--ink);font-size:15px}
+    .lightbox-count{font-family:'IBM Plex Mono',ui-monospace,monospace;color:var(--muted2);font-size:12px}
+    .lightbox-stage{position:relative;display:grid;place-items:center;min-height:0}
+    .lightbox-stage img{max-width:min(94vw,1500px);max-height:78vh;width:auto;height:auto;object-fit:contain;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+    .lightbox-button{display:grid;place-items:center;width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--ink);font-size:26px;line-height:1;cursor:pointer}
+    .lightbox-button:hover{background:rgba(57,223,255,.16)}
+    .lightbox-close{font-size:24px}
+    .lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%)}
+    .lightbox-prev{left:8px}
+    .lightbox-next{right:8px}
+    .lightbox-caption{padding:12px 52px 4px;text-align:center;color:var(--muted);font-size:14px;min-height:36px}
+    .lightbox-actions{display:flex;justify-content:center;min-height:42px}
+    .lightbox-download{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--cyan);font-size:13px;font-weight:800;background:rgba(57,223,255,.08)}
+    .lightbox-download:hover{background:rgba(57,223,255,.16)}
     .creds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
     .cred{border:1px solid var(--line2);border-radius:18px;background:rgba(255,255,255,.03);padding:22px}
     .cred h3{margin:0 0 6px;font-size:16px}
@@ -45,6 +79,11 @@
     @media (max-width:860px){
       .about-grid{grid-template-columns:1fr;gap:30px}
       .t-item{grid-template-columns:1fr;gap:6px}
+      .company-heading{align-items:flex-start}
+      .habs-gallery{grid-template-columns:1fr}
+      .lightbox-stage img{max-height:72vh}
+      .lightbox-caption{padding-left:0;padding-right:0}
+      .lightbox-prev,.lightbox-next{top:auto;bottom:48px;transform:none}
       .creds{grid-template-columns:1fr}
     }
   </style>
@@ -116,11 +155,11 @@
         <div class="timeline">
           <div class="t-item">
             <div class="t-when">Current</div>
-            <div class="t-what"><h3>Founder / Inventor — PQSensing</h3><p>Develops the Noise-Stationary Locking control concept and the supervisory-module platform; produces concept diagrams, validation roadmaps, and partner-facing technical materials, integrating independent study in optics, photonics, interferometry, measurement noise, and DSP.</p></div>
+            <div class="t-what"><h3>Founder / Inventor — PQSensing</h3><p>Develops the Noise-Stationary Locking control concept and the supervisory-module platform; produces concept diagrams, validation roadmaps, and partner-facing technical materials, integrating independent study in optics, photonics, interferometry, measurement noise, and DSP.</p><p class="portfolio-note">Non-confidential technical papers based on the PQSensing patent-application math and control architecture.</p><div class="paper-gallery"><a class="paper-preview" href="assets/whitepapers/pqsensing-nsl-dpi-white-paper.pdf" data-full="assets/whitepapers/pqsensing-nsl-dpi-white-paper-preview.jpg" data-download="assets/whitepapers/pqsensing-nsl-dpi-white-paper.pdf" data-download-label="Download NSL + DPI paper (PDF)" target="_blank" rel="noopener" download><img src="assets/whitepapers/pqsensing-nsl-dpi-white-paper-thumb.jpg" alt="White paper preview for Noise-Stationary Locking and Phase-Controlled Dark-Port Injection"><span>NSL + DPI</span></a><a class="paper-preview" href="assets/whitepapers/pqsensing-ascm-white-paper.pdf" data-full="assets/whitepapers/pqsensing-ascm-white-paper-preview.jpg" data-download="assets/whitepapers/pqsensing-ascm-white-paper.pdf" data-download-label="Download ASCM paper (PDF)" target="_blank" rel="noopener" download><img src="assets/whitepapers/pqsensing-ascm-white-paper-thumb.jpg" alt="White paper preview for Objective-Function Supervisory Control Modules"><span>ASCM modules</span></a><a class="paper-preview" href="assets/whitepapers/pqsensing-atomic-interferometry-white-paper.pdf" data-full="assets/whitepapers/pqsensing-atomic-interferometry-white-paper-preview.jpg" data-download="assets/whitepapers/pqsensing-atomic-interferometry-white-paper.pdf" data-download-label="Download atom interferometry paper (PDF)" target="_blank" rel="noopener" download><img src="assets/whitepapers/pqsensing-atomic-interferometry-white-paper-thumb.jpg" alt="White paper preview for Advanced Supervisory Modules for Atom Interferometric Measurement Systems"><span>Atom interferometry modules</span></a></div></div>
           </div>
           <div class="t-item">
             <div class="t-when">2010 – present</div>
-            <div class="t-what"><h3>Contract Architectural Draftsman / CAD Technician — Media+Architecture</h3><p>Self-employed drafting for regional architects, builders, and owners: floor plans, elevations, sections, details, schedules, field measurements, and as-builts on projects from roughly $50K to $5M, with AI-assisted workflows for productivity.</p></div>
+            <div class="t-what"><div class="company-heading"><img class="company-logo" src="assets/drafting/media-architecture-logo-thumb.jpg" alt="Media+Architecture drafting business logo"><h3>Contract Architectural Draftsman / CAD Technician — Media+Architecture</h3></div><p>Self-employed drafting for regional architects, builders, and owners: floor plans, elevations, sections, details, schedules, field measurements, and as-builts on projects from roughly $50K to $5M, with AI-assisted workflows for productivity.</p><p class="portfolio-note">Selected redacted drawing excerpts are shown with titleblocks removed; project ownership and original files remain with Dan Fankhauser.</p><div class="portfolio-gallery"><a class="portfolio-drawing" href="assets/drafting/residential-section-roof-plan.jpg" target="_blank" rel="noopener"><img src="assets/drafting/residential-section-roof-plan-thumb.jpg" alt="Redacted architectural drawing excerpt showing a residential wall section, front elevation, and roof plan"><span>Residential section and roof plan</span></a><a class="portfolio-drawing" href="assets/drafting/residential-basement-plan.jpg" target="_blank" rel="noopener"><img src="assets/drafting/residential-basement-plan-thumb.jpg" alt="Redacted architectural drawing excerpt showing a residential section and basement plan"><span>Residential basement plan and section</span></a><a class="portfolio-drawing" href="assets/drafting/assembly-building-section.jpg" target="_blank" rel="noopener"><img src="assets/drafting/assembly-building-section-thumb.jpg" alt="Redacted architectural drawing excerpt showing an assembly building section"><span>Assembly building section</span></a><a class="portfolio-drawing" href="assets/drafting/residential-elevations.jpg" target="_blank" rel="noopener"><img src="assets/drafting/residential-elevations-thumb.jpg" alt="Redacted architectural drawing excerpt showing residential elevations and a roof plan"><span>Residential elevations and roof plan</span></a><a class="portfolio-drawing" href="assets/drafting/commercial-floor-plan.jpg" target="_blank" rel="noopener"><img src="assets/drafting/commercial-floor-plan-thumb.jpg" alt="Redacted architectural drawing excerpt showing a commercial floor plan and elevation"><span>Commercial floor plan and elevation</span></a></div></div>
           </div>
           <div class="t-item">
             <div class="t-when">2000 – 2003</div>
@@ -128,7 +167,7 @@
           </div>
           <div class="t-item">
             <div class="t-when">1998 – 1999</div>
-            <div class="t-what"><h3>HABS Scholarship Team — University of Kansas</h3><p>Documented the Old New York Life Building in Kansas City for archival submission to the Library of Congress under the Historic American Buildings Survey; drawings earned honorable mention for the Charles E. Peterson Prize.</p></div>
+            <div class="t-what"><h3>HABS Scholarship Team — University of Kansas</h3><p>Documented the New York Life Insurance Building at 20 West Ninth Street in Kansas City for archival submission to the Library of Congress under the Historic American Buildings Survey; credited by LOC as Jon Peterson, delineator, with the measured-drawing set earning honorable mention for the Charles E. Peterson Prize. Jon took field measurements and produced measured pencil/construction drawings for the project, including work later traced in ink for the final HABS sheet set.</p><div class="inline-links"><a href="https://www.loc.gov/item/mo0432/" target="_blank" rel="noopener">LOC HABS record</a><a href="https://www.loc.gov/resource/hhh.mo0432.sheet.00007a/" target="_blank" rel="noopener">LOC Sheet 7</a><a href="https://www.loc.gov/resource/hhh.mo0432.sheet.00010a/" target="_blank" rel="noopener">LOC Sheet 10</a><a href="https://www.loc.gov/resource/hhh.mo0432.sheet.00015a/" target="_blank" rel="noopener">LOC Sheet 15</a></div><div class="habs-gallery"><a class="habs-drawing" href="assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan.jpg" target="_blank" rel="noopener"><img src="assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan-thumb.jpg" alt="HABS measured drawing sheet 7, seventh floor plan for the New York Life Insurance Building"><span><strong>Sheet 7</strong> Seventh Floor Plan</span></a><a class="habs-drawing" href="assets/habs/habs-mo0432-sheet-00010-facade-elevation.jpg" target="_blank" rel="noopener"><img src="assets/habs/habs-mo0432-sheet-00010-facade-elevation-thumb.jpg" alt="HABS measured drawing sheet 10, south elevation facade for the New York Life Insurance Building"><span><strong>Sheet 10</strong> South Elevation</span></a><a class="habs-drawing" href="assets/habs/habs-mo0432-photo-eagle-sculpture.jpg" target="_blank" rel="noopener"><img src="assets/habs/habs-mo0432-photo-eagle-sculpture-thumb.jpg" alt="Photograph by Jon Peterson of the eagle sculpture over the New York Life Insurance Building entrance at 20 West Ninth Street"><span><strong>Eagle sculpture</strong> Photograph by Jon Peterson</span></a><a class="habs-drawing" href="assets/habs/habs-mo0432-photo-exterior-view.jpg" target="_blank" rel="noopener"><img src="assets/habs/habs-mo0432-photo-exterior-view-thumb.jpg" alt="HABS exterior photograph of the New York Life Insurance Building at 20 West Ninth Street"><span><strong>20 W. 9th</strong> Exterior HABS photo</span></a></div></div>
           </div>
         </div>
       </div>
@@ -169,9 +208,117 @@
     </div>
   </footer>
 
+  <div class="drawing-lightbox" id="drawingLightbox" hidden aria-modal="true" role="dialog" aria-label="Media viewer">
+    <div class="lightbox-top">
+      <div>
+        <div class="lightbox-title" id="lightboxTitle"></div>
+        <div class="lightbox-count" id="lightboxCount"></div>
+      </div>
+      <button class="lightbox-button lightbox-close" type="button" id="lightboxClose" aria-label="Close viewer">&times;</button>
+    </div>
+    <div class="lightbox-stage">
+      <button class="lightbox-button lightbox-prev" type="button" id="lightboxPrev" aria-label="Previous item">&#8249;</button>
+      <img id="lightboxImage" src="" alt="">
+      <button class="lightbox-button lightbox-next" type="button" id="lightboxNext" aria-label="Next item">&#8250;</button>
+    </div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+    <div class="lightbox-actions"><a class="lightbox-download" id="lightboxDownload" href="#" download hidden>Download</a></div>
+  </div>
+
   <script>
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => document.body.classList.remove('nav-open'));
+    });
+
+    const lightbox = document.getElementById('drawingLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxCount = document.getElementById('lightboxCount');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxDownload = document.getElementById('lightboxDownload');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const carousels = [
+      { links: Array.from(document.querySelectorAll('.paper-preview')), label: 'PQS paper' },
+      { links: Array.from(document.querySelectorAll('.portfolio-drawing, .habs-drawing')), label: 'Drawing' }
+    ].map((group) => ({
+      ...group,
+      items: group.links.map((link) => {
+        const img = link.querySelector('img');
+        const caption = link.querySelector('span');
+        return {
+          href: link.dataset.full || link.getAttribute('href'),
+          download: link.dataset.download || '',
+          downloadLabel: link.dataset.downloadLabel || 'Download',
+          title: caption ? caption.textContent.trim() : img.alt,
+          alt: img ? img.alt : 'Preview'
+        };
+      })
+    }));
+    let activeCarousel = carousels[0];
+    let activeIndex = 0;
+
+    function renderActiveItem() {
+      const item = activeCarousel.items[activeIndex];
+      if (!item) return;
+      lightboxImage.src = item.href;
+      lightboxImage.alt = item.alt;
+      lightboxTitle.textContent = item.title;
+      lightboxCaption.textContent = item.alt;
+      lightboxCount.textContent = `${activeCarousel.label} ${activeIndex + 1} / ${activeCarousel.items.length}`;
+      if (item.download) {
+        lightboxDownload.href = item.download;
+        lightboxDownload.textContent = item.downloadLabel;
+        lightboxDownload.hidden = false;
+      } else {
+        lightboxDownload.hidden = true;
+        lightboxDownload.removeAttribute('href');
+      }
+    }
+
+    function openCarousel(group, index) {
+      activeCarousel = group;
+      activeIndex = index;
+      renderActiveItem();
+      lightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    }
+
+    function closeCarousel() {
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute('src');
+      lightboxDownload.hidden = true;
+      document.body.style.overflow = '';
+      activeCarousel.links[activeIndex]?.focus();
+    }
+
+    function stepCarousel(delta) {
+      activeIndex = (activeIndex + delta + activeCarousel.items.length) % activeCarousel.items.length;
+      renderActiveItem();
+    }
+
+    carousels.forEach((group) => {
+      group.links.forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          openCarousel(group, index);
+        });
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeCarousel);
+    lightboxPrev.addEventListener('click', () => stepCarousel(-1));
+    lightboxNext.addEventListener('click', () => stepCarousel(1));
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeCarousel();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (lightbox.hidden) return;
+      if (event.key === 'Escape') closeCarousel();
+      if (event.key === 'ArrowLeft') stepCarousel(-1);
+      if (event.key === 'ArrowRight') stepCarousel(1);
     });
   </script>
 </body>
