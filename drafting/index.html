@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media+Architecture | AutoCAD Drafting Support in the USA</title>
+  <meta name="description" content="AutoCAD drafting support for construction drawings, floor plans, sections, elevations, code footprints, site plans, as-builts, remodels, redline cleanup, and SketchUp renderings.">
+  <meta property="og:title" content="Media+Architecture">
+  <meta property="og:description" content="Practical AutoCAD drafting support for construction drawings, residential, small commercial, agricultural, as-built, remodel, overflow drafting, and SketchUp rendering projects.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root{
+      --draft-bg:#f4f0e8;
+      --draft-ink:#20242a;
+      --draft-muted:#5b626b;
+      --draft-line:#d2c8ba;
+      --draft-panel:#fffaf1;
+      --draft-panel2:#ebe4d8;
+      --draft-accent:#1f6f7a;
+      --draft-accent2:#b8742a;
+      --draft-dark:#172228;
+    }
+    body.drafting-page{background:var(--draft-bg);color:var(--draft-ink)}
+    .drafting-page .site-header{background:rgba(244,240,232,.92);border-bottom:1px solid var(--draft-line);backdrop-filter:blur(14px)}
+    .drafting-page .brand,.drafting-page .nav-links a{color:var(--draft-ink)}
+    .drafting-page .nav-links{color:var(--draft-muted)}
+    .drafting-page .brand-mark{background:linear-gradient(135deg,var(--draft-accent),var(--draft-accent2));box-shadow:none;border-radius:4px}
+    .drafting-page .button.primary{background:var(--draft-accent);color:white;box-shadow:none}
+    .drafting-page .button.ghost{background:#fff;border-color:var(--draft-line);color:var(--draft-ink)}
+    .drafting-page .eyebrow{color:var(--draft-accent);letter-spacing:.12em}
+    .draft-hero{padding:78px 0 56px;border-bottom:1px solid var(--draft-line);background:
+      linear-gradient(90deg,rgba(244,240,232,.96),rgba(244,240,232,.82)),
+      repeating-linear-gradient(0deg,transparent 0,transparent 31px,rgba(31,111,122,.09) 32px),
+      repeating-linear-gradient(90deg,transparent 0,transparent 31px,rgba(31,111,122,.07) 32px)}
+    .draft-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:46px;align-items:center}
+    .draft-hero h1{max-width:780px;color:var(--draft-ink);font-size:clamp(42px,6vw,76px);letter-spacing:-.055em}
+    .draft-hero .lede{color:var(--draft-muted);max-width:760px;font-size:20px}
+    .draft-logo-card{border:1px solid var(--draft-line);background:#fff;border-radius:8px;padding:24px;box-shadow:0 20px 50px rgba(30,25,18,.12)}
+    .draft-logo-card img{width:100%;max-width:520px;margin:auto}
+    .draft-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px}
+    .draft-facts span{border:1px solid var(--draft-line);background:rgba(255,255,255,.8);border-radius:8px;padding:12px 13px;color:var(--draft-muted);font-weight:750}
+    .draft-section{padding:68px 0}
+    .draft-section.alt{background:var(--draft-panel2);border-top:1px solid var(--draft-line);border-bottom:1px solid var(--draft-line)}
+    .draft-head{max-width:860px;margin-bottom:30px}
+    .draft-head h2{font-size:clamp(30px,4vw,48px);line-height:1.06;letter-spacing:-.04em;color:var(--draft-ink);margin-bottom:12px}
+    .draft-head p,.draft-copy{color:var(--draft-muted);font-size:18px}
+    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .service-card,.sample-card,.step-card,.quote-box,.note-box,.contact-card{border:1px solid var(--draft-line);background:var(--draft-panel);border-radius:8px;padding:22px}
+    .service-card h3,.sample-card h3,.step-card h3,.quote-box h3,.note-box h3,.contact-card h3{color:var(--draft-ink);font-size:20px;line-height:1.16;margin-bottom:10px}
+    .service-card p,.sample-card p,.step-card p,.quote-box p,.note-box p,.contact-card p{color:var(--draft-muted);margin:0}
+    .trust-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;align-items:start}
+    .cred-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .cred-list li{border-bottom:1px solid var(--draft-line);padding:0 0 10px;color:var(--draft-muted)}
+    .cred-list strong{color:var(--draft-ink)}
+    .sample-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .sample-card{padding:0;overflow:hidden}
+    .sample-card img{width:100%;aspect-ratio:16/10.75;object-fit:cover;background:white;border-bottom:1px solid var(--draft-line)}
+    .sample-card div{padding:16px}
+    .sample-card .tag{display:inline-block;margin-bottom:8px;color:var(--draft-accent);font-size:12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .step-card span{display:inline-grid;place-items:center;width:34px;height:34px;margin-bottom:14px;border-radius:50%;background:var(--draft-accent);color:#fff;font-weight:900}
+    .quote-box{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+    .quote-list{margin:0;padding-left:18px;color:var(--draft-muted)}
+    .note-box{border-color:#c8aa82;background:#fff7e9}
+    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .contact-list{display:grid;gap:9px;margin-top:16px}
+    .contact-list span{display:block;border:1px solid var(--draft-line);background:white;border-radius:8px;padding:11px 12px;color:var(--draft-muted)}
+    .draft-footer{padding:34px 0;border-top:1px solid var(--draft-line);background:var(--draft-dark);color:#dfe8e8}
+    .draft-footer p{margin:0;color:#b8c7c7}
+    @media (max-width:980px){
+      .draft-hero-grid,.trust-grid,.quote-box,.contact-layout{grid-template-columns:1fr}
+      .service-grid,.sample-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:700px){
+      .draft-facts,.service-grid,.sample-grid,.steps{grid-template-columns:1fr}
+      .draft-hero{padding-top:54px}
+    }
+  </style>
+</head>
+<body class="drafting-page">
+  <header class="site-header" aria-label="Drafting services navigation">
+    <a class="brand" href="./" aria-label="Media+Architecture home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Media+Architecture</span>
+    </a>
+    <button class="nav-toggle" aria-label="Navigation menu" onclick="document.body.classList.toggle('nav-open')">Menu</button>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#samples">Samples</a>
+      <a href="#process">How it works</a>
+      <a href="#quote">Quotes</a>
+      <a href="#contact">Contact</a>
+      <a href="../about.html">Jon Peterson</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="draft-hero">
+      <div class="container draft-hero-grid">
+        <div>
+          <p class="eyebrow">Media+Architecture</p>
+          <h1>Construction Drawing Support Available Now</h1>
+          <p class="lede">Practical AutoCAD drafting help for floor plans, sections, elevations, code footprints, site plans, as-builts, remodels, redline cleanup, shop/ag buildings, small commercial projects, and SketchUp Online renderings.</p>
+          <div class="cta-row">
+            <a class="button primary" href="tel:+16205183686">Call/Text 620-518-3686</a>
+            <a class="button ghost" href="#samples">View Sample Drawings</a>
+            <a class="button ghost" href="mailto:mroweitall@gmail.com?subject=Drafting%20quote%20request">Email Jon</a>
+          </div>
+          <div class="draft-facts" aria-label="Drafting service highlights">
+            <span>AutoCAD LT drafting</span>
+            <span>SketchUp Online renderings</span>
+            <span>Serving clients across the USA</span>
+            <span>Fixed-fee quotes after scope review</span>
+          </div>
+        </div>
+        <div class="draft-logo-card">
+          <img src="../assets/drafting/media-architecture-logo.jpg" alt="Media plus Architecture logo for Jon Peterson's drafting business">
+        </div>
+      </div>
+    </section>
+
+    <section class="draft-section">
+      <div class="container trust-grid">
+        <div class="draft-head">
+          <p class="eyebrow">Practical Drawing Help</p>
+          <h2>Clean sheets, organized drawings, and production support that helps projects move forward.</h2>
+        </div>
+        <div>
+          <p class="draft-copy">I’m Jon Peterson, an experienced architectural draftsman based in Hugoton, Kansas and serving clients across the USA. I produce clean, practical AutoCAD drawings for contractors, homeowners, architects, engineers, property managers, churches, farms, and small businesses. My focus is simple: readable plans, organized sheets, and drawings that help projects move forward.</p>
+          <ul class="cred-list" aria-label="Drafting credentials">
+            <li><strong>Software:</strong> AutoCAD LT</li>
+            <li><strong>3D visualization:</strong> Google SketchUp Online renderings for buildings and project communication.</li>
+            <li><strong>Education:</strong> Degree in Architectural Engineering, University of Kansas. Confirm exact degree wording before publishing.</li>
+            <li><strong>Experience:</strong> Residential and commercial building drafting support, construction document production, as-builts, redlines, and field-measured drawings.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="draft-section alt" id="services">
+      <div class="container">
+        <div class="draft-head">
+          <p class="eyebrow">Services</p>
+          <h2>Drafting support for owners, builders, and professionals.</h2>
+          <p>AutoCAD drafting support for residential, small commercial, agricultural, remodel, as-built, construction drawing, permit-support, rendering, and overflow drafting projects.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card"><h3>Construction Drawing Sets</h3><p>Floor plans, sections, elevations, code footprints, site plans, roof plans, and coordinated sheets for review and construction communication.</p></article>
+          <article class="service-card"><h3>Residential &amp; Remodel Drafting</h3><p>Existing plans, proposed layouts, additions, basement finishes, garage/shop additions, and permit-support drawing sets.</p></article>
+          <article class="service-card"><h3>Small Commercial Drafting Support</h3><p>Tenant improvement layouts, restroom updates, plan cleanup, redline pickup, life-safety sheet support, site plans, and drafting under licensed professional direction where required.</p></article>
+          <article class="service-card"><h3>Agricultural, Shop &amp; Garage Buildings</h3><p>Practical plan drawings for farm shops, storage buildings, equipment buildings, office/shop combinations, and related small-building projects.</p></article>
+          <article class="service-card"><h3>As-Built &amp; Existing-Condition Drawings</h3><p>Floor plans and existing-condition documentation from field dimensions, sketches, photos, PDFs, or site information.</p></article>
+          <article class="service-card"><h3>SketchUp Building Renderings</h3><p>Google SketchUp Online 3D renderings for building form, exterior studies, client communication, and project visualization.</p></article>
+          <article class="service-card"><h3>CAD Cleanup &amp; Redline Pickup</h3><p>AutoCAD LT production drafting, sheet formatting, title block coordination, PDF-to-CAD tracing, block cleanup, and drawing organization.</p></article>
+          <article class="service-card"><h3>Overflow Drafting for Professionals</h3><p>Remote drafting support for architects, engineers, contractors, and designers who need extra production capacity.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="draft-section" id="samples">
+      <div class="container">
+        <div class="draft-head">
+          <p class="eyebrow">Sample Deliverables</p>
+          <h2>Representative drawing previews.</h2>
+          <p>These are sanitized image previews only. Client names, addresses, stamps, and title block data should stay hidden unless a project is specifically approved for public display.</p>
+        </div>
+        <div class="sample-grid">
+          <article class="sample-card"><img src="../assets/drafting/residential-section-roof-plan-thumb.jpg" alt="Sanitized residential section and roof plan drawing preview"><div><span class="tag">Residential</span><h3>Section and Roof Plan</h3><p>Typical construction document drafting support for residential work.</p></div></article>
+          <article class="sample-card"><img src="../assets/drafting/residential-basement-plan-thumb.jpg" alt="Sanitized residential basement plan and section drawing preview"><div><span class="tag">Remodel</span><h3>Basement Plan and Section</h3><p>Plan cleanup and section drafting for review and coordination.</p></div></article>
+          <article class="sample-card"><img src="../assets/drafting/commercial-floor-plan-thumb.jpg" alt="Sanitized small commercial floor plan and elevation drawing preview"><div><span class="tag">Commercial</span><h3>Floor Plan and Elevation</h3><p>Small commercial drafting support and sheet organization.</p></div></article>
+          <article class="sample-card"><img src="../assets/drafting/assembly-building-section-thumb.jpg" alt="Sanitized assembly building section drawing preview"><div><span class="tag">Assembly</span><h3>Building Section</h3><p>Section drafting and drawing cleanup for building projects.</p></div></article>
+          <article class="sample-card"><img src="../assets/drafting/residential-elevations-thumb.jpg" alt="Sanitized residential elevations and roof plan drawing preview"><div><span class="tag">Residential</span><h3>Elevations and Roof Plan</h3><p>Exterior elevation and roof-plan production support.</p></div></article>
+          <article class="sample-card"><div><span class="tag">Coming soon</span><h3>Redline Pickup Example</h3><p>Placeholder slot for a sanitized before/after redline cleanup example.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="draft-section alt" id="process">
+      <div class="container">
+        <div class="draft-head">
+          <p class="eyebrow">How It Works</p>
+          <h2>A simple path from rough information to usable drawings.</h2>
+        </div>
+        <div class="steps">
+          <article class="step-card"><span>1</span><h3>Send project info</h3><p>Send sketches, photos, PDFs, redlines, field dimensions, or a short project description.</p></article>
+          <article class="step-card"><span>2</span><h3>Scope review</h3><p>Jon reviews the information and provides a fixed-fee quote or hourly estimate.</p></article>
+          <article class="step-card"><span>3</span><h3>Approval</h3><p>Work begins after scope approval and any agreed deposit.</p></article>
+          <article class="step-card"><span>4</span><h3>Review and files</h3><p>Receive review PDFs first, then final PDFs/CAD files as agreed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="draft-section" id="quote">
+      <div class="container">
+        <div class="quote-box">
+          <div>
+            <p class="eyebrow">Quotes</p>
+            <h3>Fixed-fee quotes after scope review.</h3>
+            <p>Small redline and cleanup jobs can often be quoted quickly. Rush availability may vary by project size and current workload.</p>
+          </div>
+          <div>
+            <h3>Information that helps</h3>
+            <ul class="quote-list">
+              <li>Project type and location</li>
+              <li>Existing drawings, sketches, photos, or PDFs</li>
+              <li>Needed deliverables and deadline</li>
+              <li>Whether 3D SketchUp rendering is needed</li>
+              <li>Whether a licensed architect or engineer is involved</li>
+              <li>Preferred file types: PDF, DWG, DXF, JPG, PNG, marked-up PDFs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="draft-section alt">
+      <div class="container note-box">
+        <h3>Professional note</h3>
+        <p>Media+Architecture provides CAD drafting, as-built drawings, permit drawing support, redline cleanup, 3D rendering, and construction document production assistance. Projects requiring licensed architectural or engineering services, professional seals, or code-design responsibility must be reviewed and stamped by the appropriate licensed professional.</p>
+      </div>
+    </section>
+
+    <section class="draft-section" id="contact">
+      <div class="container contact-layout">
+        <div class="draft-head">
+          <p class="eyebrow">Contact</p>
+          <h2>Need drawings finished?</h2>
+          <p>Call or text Jon, or send a sketch, PDF, photo set, redline markup, or short project description by email. The website does not send forms or messages directly.</p>
+          <div class="cta-row">
+            <a class="button primary" href="tel:+16205183686">Call/Text 620-518-3686</a>
+            <a class="button ghost" href="mailto:mroweitall@gmail.com?subject=Drafting%20quote%20request">Email mroweitall@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <h3>Contact Media+Architecture</h3>
+          <p>Preferred contact is by phone. Call, text, or email directly for drafting availability and quotes.</p>
+          <div class="contact-list">
+            <span><strong>Phone:</strong> <a href="tel:+16205183686">620-518-3686</a></span>
+            <span><strong>Email:</strong> <a href="mailto:mroweitall@gmail.com?subject=Drafting%20quote%20request">mroweitall@gmail.com</a></span>
+            <span><strong>Preferred contact:</strong> phone, call or text</span>
+            <span><strong>Service area:</strong> USA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="draft-footer">
+    <div class="container">
+      <strong>Media+Architecture</strong>
+      <p>CAD drafting support hosted separately on pqsensing.com for convenience. Not a licensed architecture or engineering firm.</p>
+    </div>
+  </footer>
+</body>
+</html>
