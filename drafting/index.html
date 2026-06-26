@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Media+Architecture | AutoCAD Drafting Support in the USA</title>
-  <meta name="description" content="AutoCAD drafting support for construction drawings, floor plans, sections, elevations, code footprints, site plans, as-builts, remodels, redline cleanup, and SketchUp renderings.">
+  <meta name="description" content="Media+Architecture provides AutoCAD drafting support for construction drawings, floor plans, sections, elevations, code footprints, site plans, as-builts, remodels, redline cleanup, and SketchUp renderings.">
   <meta property="og:title" content="Media+Architecture">
-  <meta property="og:description" content="Practical AutoCAD drafting support for construction drawings, residential, small commercial, agricultural, as-built, remodel, overflow drafting, and SketchUp rendering projects.">
+  <meta property="og:description" content="Drawing-first portfolio and drafting support by Jon Peterson: residential, commercial, warehouse, church, HABS documentation, and construction drawing production.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,60 +25,84 @@
       --draft-dark:#172228;
     }
     body.drafting-page{background:var(--draft-bg);color:var(--draft-ink)}
-    .drafting-page .site-header{background:rgba(244,240,232,.92);border-bottom:1px solid var(--draft-line);backdrop-filter:blur(14px)}
+    .drafting-page .site-header{background:rgba(244,240,232,.94);border-bottom:1px solid var(--draft-line);backdrop-filter:blur(14px)}
     .drafting-page .brand,.drafting-page .nav-links a{color:var(--draft-ink)}
     .drafting-page .nav-links{color:var(--draft-muted)}
     .drafting-page .brand-mark{background:linear-gradient(135deg,var(--draft-accent),var(--draft-accent2));box-shadow:none;border-radius:4px}
     .drafting-page .button.primary{background:var(--draft-accent);color:white;box-shadow:none}
     .drafting-page .button.ghost{background:#fff;border-color:var(--draft-line);color:var(--draft-ink)}
     .drafting-page .eyebrow{color:var(--draft-accent);letter-spacing:.12em}
-    .draft-hero{padding:78px 0 56px;border-bottom:1px solid var(--draft-line);background:
+    .draft-hero{padding:54px 0 32px;border-bottom:1px solid var(--draft-line);background:
       linear-gradient(90deg,rgba(244,240,232,.96),rgba(244,240,232,.82)),
       repeating-linear-gradient(0deg,transparent 0,transparent 31px,rgba(31,111,122,.09) 32px),
       repeating-linear-gradient(90deg,transparent 0,transparent 31px,rgba(31,111,122,.07) 32px)}
-    .draft-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:46px;align-items:center}
-    .draft-hero h1{max-width:780px;color:var(--draft-ink);font-size:clamp(42px,6vw,76px);letter-spacing:-.055em}
-    .draft-hero .lede{color:var(--draft-muted);max-width:760px;font-size:20px}
-    .draft-logo-card{border:1px solid var(--draft-line);background:#fff;border-radius:8px;padding:24px;box-shadow:0 20px 50px rgba(30,25,18,.12)}
-    .draft-logo-card img{width:100%;max-width:520px;margin:auto}
-    .draft-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px}
-    .draft-facts span{border:1px solid var(--draft-line);background:rgba(255,255,255,.8);border-radius:8px;padding:12px 13px;color:var(--draft-muted);font-weight:750}
-    .draft-section{padding:68px 0}
+    .draft-hero-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(320px,1.12fr);gap:34px;align-items:center}
+    .draft-hero h1{max-width:780px;color:var(--draft-ink);font-size:clamp(40px,5vw,70px);letter-spacing:-.055em}
+    .draft-hero .lede{color:var(--draft-muted);max-width:760px;font-size:19px}
+    .draft-logo-row{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    .draft-logo-row img{width:96px;height:64px;object-fit:contain;border:1px solid var(--draft-line);border-radius:6px;background:#fff;padding:6px}
+    .featured-drawing{display:block;border:1px solid var(--draft-line);background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 20px 50px rgba(30,25,18,.13);cursor:zoom-in}
+    .featured-drawing img{width:100%;aspect-ratio:16/10.5;object-fit:contain;background:#fff}
+    .featured-drawing span{display:block;padding:12px 14px;color:var(--draft-muted);font-size:13px;border-top:1px solid var(--draft-line)}
+    .draft-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}
+    .draft-facts span{border:1px solid var(--draft-line);background:rgba(255,255,255,.82);border-radius:8px;padding:11px 12px;color:var(--draft-muted);font-weight:750}
+    .draft-section{padding:54px 0}
     .draft-section.alt{background:var(--draft-panel2);border-top:1px solid var(--draft-line);border-bottom:1px solid var(--draft-line)}
-    .draft-head{max-width:860px;margin-bottom:30px}
-    .draft-head h2{font-size:clamp(30px,4vw,48px);line-height:1.06;letter-spacing:-.04em;color:var(--draft-ink);margin-bottom:12px}
-    .draft-head p,.draft-copy{color:var(--draft-muted);font-size:18px}
-    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .service-card,.sample-card,.step-card,.quote-box,.note-box,.contact-card{border:1px solid var(--draft-line);background:var(--draft-panel);border-radius:8px;padding:22px}
-    .service-card h3,.sample-card h3,.step-card h3,.quote-box h3,.note-box h3,.contact-card h3{color:var(--draft-ink);font-size:20px;line-height:1.16;margin-bottom:10px}
-    .service-card p,.sample-card p,.step-card p,.quote-box p,.note-box p,.contact-card p{color:var(--draft-muted);margin:0}
-    .trust-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;align-items:start}
+    .draft-head{max-width:900px;margin-bottom:24px}
+    .draft-head h2{font-size:clamp(30px,4vw,48px);line-height:1.06;letter-spacing:-.04em;color:var(--draft-ink);margin-bottom:10px}
+    .draft-head p,.draft-copy{color:var(--draft-muted);font-size:17px}
+    .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .project-card{border:1px solid var(--draft-line);background:var(--draft-panel);border-radius:8px;overflow:hidden}
+    .project-button{display:block;width:100%;padding:0;border:0;background:transparent;text-align:left;color:inherit;cursor:zoom-in}
+    .project-button img{width:100%;aspect-ratio:16/10.5;object-fit:contain;background:white;border-bottom:1px solid var(--draft-line)}
+    .project-copy{padding:17px 18px 18px}
+    .project-copy .tag{display:inline-block;margin-bottom:8px;color:var(--draft-accent);font-size:12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .project-copy h3{color:var(--draft-ink);font-size:22px;line-height:1.12;margin:0 0 7px}
+    .project-copy p{color:var(--draft-muted);margin:0;font-size:14px}
+    .sheet-count{display:block;margin-top:10px;color:var(--draft-accent2);font-size:12px;font-weight:850}
+    .compact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .compact-card,.note-box,.contact-card{border:1px solid var(--draft-line);background:var(--draft-panel);border-radius:8px;padding:20px}
+    .compact-card h3,.note-box h3,.contact-card h3{color:var(--draft-ink);font-size:19px;line-height:1.16;margin:0 0 8px}
+    .compact-card p,.note-box p,.contact-card p{color:var(--draft-muted);margin:0;font-size:14px}
+    .vita-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:24px;align-items:start}
     .cred-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
     .cred-list li{border-bottom:1px solid var(--draft-line);padding:0 0 10px;color:var(--draft-muted)}
     .cred-list strong{color:var(--draft-ink)}
-    .sample-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .sample-card{padding:0;overflow:hidden}
-    .sample-card img{width:100%;aspect-ratio:16/10.75;object-fit:cover;background:white;border-bottom:1px solid var(--draft-line)}
-    .sample-card div{padding:16px}
-    .sample-card .tag{display:inline-block;margin-bottom:8px;color:var(--draft-accent);font-size:12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
-    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-    .step-card span{display:inline-grid;place-items:center;width:34px;height:34px;margin-bottom:14px;border-radius:50%;background:var(--draft-accent);color:#fff;font-weight:900}
-    .quote-box{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
-    .quote-list{margin:0;padding-left:18px;color:var(--draft-muted)}
-    .note-box{border-color:#c8aa82;background:#fff7e9}
+    .link-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .link-row a{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--draft-line);border-radius:999px;padding:8px 12px;color:var(--draft-accent);font-size:13px;font-weight:800;background:#fff}
     .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
     .contact-list{display:grid;gap:9px;margin-top:16px}
     .contact-list span{display:block;border:1px solid var(--draft-line);background:white;border-radius:8px;padding:11px 12px;color:var(--draft-muted)}
+    .note-box{border-color:#c8aa82;background:#fff7e9}
+    .viewer{position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:auto 1fr auto;background:rgba(11,16,20,.95);padding:16px;color:white}
+    .viewer[hidden]{display:none}
+    .viewer-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .viewer-title{font-weight:850;color:#fff}
+    .viewer-count{font-family:'IBM Plex Mono',ui-monospace,monospace;color:#b9c6ca;font-size:12px;margin-top:2px}
+    .viewer-stage{position:relative;display:grid;place-items:center;min-height:0}
+    .viewer-stage a{display:grid;place-items:center;max-width:100%;max-height:100%;cursor:zoom-in}
+    .viewer-stage img{max-width:min(94vw,1600px);max-height:78vh;width:auto;height:auto;object-fit:contain;border:1px solid rgba(255,255,255,.2);border-radius:8px;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+    .viewer-button{display:grid;place-items:center;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+    .viewer-button:hover{background:rgba(31,111,122,.5)}
+    .viewer-close{font-size:24px}
+    .viewer-prev,.viewer-next{position:absolute;top:50%;transform:translateY(-50%)}
+    .viewer-prev{left:8px}
+    .viewer-next{right:8px}
+    .viewer-caption{padding:12px 54px 4px;text-align:center;color:#d8e0e2;font-size:14px;min-height:42px}
     .draft-footer{padding:34px 0;border-top:1px solid var(--draft-line);background:var(--draft-dark);color:#dfe8e8}
     .draft-footer p{margin:0;color:#b8c7c7}
     @media (max-width:980px){
-      .draft-hero-grid,.trust-grid,.quote-box,.contact-layout{grid-template-columns:1fr}
-      .service-grid,.sample-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .draft-hero-grid,.vita-layout,.contact-layout{grid-template-columns:1fr}
+      .project-grid{grid-template-columns:1fr}
+      .compact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
     @media (max-width:700px){
-      .draft-facts,.service-grid,.sample-grid,.steps{grid-template-columns:1fr}
-      .draft-hero{padding-top:54px}
+      .draft-facts,.compact-grid{grid-template-columns:1fr}
+      .draft-hero{padding-top:42px}
+      .viewer{padding:12px}
+      .viewer-stage img{max-height:72vh}
+      .viewer-caption{padding-left:0;padding-right:0}
+      .viewer-prev,.viewer-next{top:auto;bottom:48px;transform:none}
     }
   </style>
 </head>
@@ -90,12 +114,12 @@
     </a>
     <button class="nav-toggle" aria-label="Navigation menu" onclick="document.body.classList.toggle('nav-open')">Menu</button>
     <nav class="nav-links">
+      <a href="#drawings">Drawings</a>
       <a href="#services">Services</a>
-      <a href="#samples">Samples</a>
-      <a href="#process">How it works</a>
-      <a href="#quote">Quotes</a>
+      <a href="#habs">HABS</a>
+      <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
-      <a href="../about.html">Jon Peterson</a>
+      <a href="../index.html">PQSensing</a>
     </nav>
   </header>
 
@@ -103,12 +127,15 @@
     <section class="draft-hero">
       <div class="container draft-hero-grid">
         <div>
-          <p class="eyebrow">Media+Architecture</p>
-          <h1>Construction Drawing Support Available Now</h1>
-          <p class="lede">Practical AutoCAD drafting help for floor plans, sections, elevations, code footprints, site plans, as-builts, remodels, redline cleanup, shop/ag buildings, small commercial projects, and SketchUp Online renderings.</p>
+          <div class="draft-logo-row">
+            <img src="../assets/drafting/media-architecture-logo.jpg" alt="Media plus Architecture logo">
+            <p class="eyebrow">Media+Architecture</p>
+          </div>
+          <h1>Construction drawings, cleanly drafted.</h1>
+          <p class="lede">AutoCAD drafting support for floor plans, sections, elevations, code footprints, site plans, as-builts, remodels, small commercial work, agricultural/shop buildings, and SketchUp Online renderings.</p>
           <div class="cta-row">
             <a class="button primary" href="tel:+16205183686">Call/Text 620-518-3686</a>
-            <a class="button ghost" href="#samples">View Sample Drawings</a>
+            <a class="button ghost" href="#drawings">View Drawings</a>
             <a class="button ghost" href="mailto:mroweitall@gmail.com?subject=Drafting%20quote%20request">Email Jon</a>
           </div>
           <div class="draft-facts" aria-label="Drafting service highlights">
@@ -118,27 +145,21 @@
             <span>Fixed-fee quotes after scope review</span>
           </div>
         </div>
-        <div class="draft-logo-card">
-          <img src="../assets/drafting/media-architecture-logo.jpg" alt="Media plus Architecture logo for Jon Peterson's drafting business">
-        </div>
+        <button class="featured-drawing project-button" type="button" data-open-index="0">
+          <img src="../assets/drafting/sets/ottley-addition-page-01-thumb.jpg" alt="Ottley Addition floor plan drawing preview">
+          <span>Click any drawing preview to open the full portfolio carousel.</span>
+        </button>
       </div>
     </section>
 
-    <section class="draft-section">
-      <div class="container trust-grid">
+    <section class="draft-section" id="drawings">
+      <div class="container">
         <div class="draft-head">
-          <p class="eyebrow">Practical Drawing Help</p>
-          <h2>Clean sheets, organized drawings, and production support that helps projects move forward.</h2>
+          <p class="eyebrow">Drawing Portfolio</p>
+          <h2>Representative building sets.</h2>
+          <p>Each project opens into one shared viewer. Use the arrows to move through every drawing image on this page. Click the large image in the viewer to open that sheet full-size in this tab; the browser Back button returns to the carousel.</p>
         </div>
-        <div>
-          <p class="draft-copy">I’m Jon Peterson, an experienced architectural draftsman based in Hugoton, Kansas and serving clients across the USA. I produce clean, practical AutoCAD drawings for contractors, homeowners, architects, engineers, property managers, churches, farms, and small businesses. My focus is simple: readable plans, organized sheets, and drawings that help projects move forward.</p>
-          <ul class="cred-list" aria-label="Drafting credentials">
-            <li><strong>Software:</strong> AutoCAD LT</li>
-            <li><strong>3D visualization:</strong> Google SketchUp Online renderings for buildings and project communication.</li>
-            <li><strong>Education:</strong> Degree in Architectural Engineering, University of Kansas. Confirm exact degree wording before publishing.</li>
-            <li><strong>Experience:</strong> Residential and commercial building drafting support, construction document production, as-builts, redlines, and field-measured drawings.</li>
-          </ul>
-        </div>
+        <div class="project-grid" id="projectGrid" aria-label="Media+Architecture drawing projects"></div>
       </div>
     </section>
 
@@ -147,78 +168,58 @@
         <div class="draft-head">
           <p class="eyebrow">Services</p>
           <h2>Drafting support for owners, builders, and professionals.</h2>
-          <p>AutoCAD drafting support for residential, small commercial, agricultural, remodel, as-built, construction drawing, permit-support, rendering, and overflow drafting projects.</p>
         </div>
-        <div class="service-grid">
-          <article class="service-card"><h3>Construction Drawing Sets</h3><p>Floor plans, sections, elevations, code footprints, site plans, roof plans, and coordinated sheets for review and construction communication.</p></article>
-          <article class="service-card"><h3>Residential &amp; Remodel Drafting</h3><p>Existing plans, proposed layouts, additions, basement finishes, garage/shop additions, and permit-support drawing sets.</p></article>
-          <article class="service-card"><h3>Small Commercial Drafting Support</h3><p>Tenant improvement layouts, restroom updates, plan cleanup, redline pickup, life-safety sheet support, site plans, and drafting under licensed professional direction where required.</p></article>
-          <article class="service-card"><h3>Agricultural, Shop &amp; Garage Buildings</h3><p>Practical plan drawings for farm shops, storage buildings, equipment buildings, office/shop combinations, and related small-building projects.</p></article>
-          <article class="service-card"><h3>As-Built &amp; Existing-Condition Drawings</h3><p>Floor plans and existing-condition documentation from field dimensions, sketches, photos, PDFs, or site information.</p></article>
-          <article class="service-card"><h3>SketchUp Building Renderings</h3><p>Google SketchUp Online 3D renderings for building form, exterior studies, client communication, and project visualization.</p></article>
-          <article class="service-card"><h3>CAD Cleanup &amp; Redline Pickup</h3><p>AutoCAD LT production drafting, sheet formatting, title block coordination, PDF-to-CAD tracing, block cleanup, and drawing organization.</p></article>
-          <article class="service-card"><h3>Overflow Drafting for Professionals</h3><p>Remote drafting support for architects, engineers, contractors, and designers who need extra production capacity.</p></article>
+        <div class="compact-grid">
+          <article class="compact-card"><h3>Construction Drawing Sets</h3><p>Floor plans, sections, elevations, roof plans, site plans, code footprints, schedules, and coordinated sheets.</p></article>
+          <article class="compact-card"><h3>Residential &amp; Remodel Drafting</h3><p>Existing plans, additions, basement finishes, garage/shop additions, and permit-support drawing packages.</p></article>
+          <article class="compact-card"><h3>Small Commercial Support</h3><p>Tenant improvements, plan cleanup, life-safety support, redline pickup, and drafting under licensed professional direction where required.</p></article>
+          <article class="compact-card"><h3>As-Builts &amp; Field Measuring</h3><p>Existing-condition drawings from field dimensions, sketches, PDFs, photos, and site information.</p></article>
+          <article class="compact-card"><h3>SketchUp Renderings</h3><p>Google SketchUp Online models and rendered views for massing, exterior studies, and project communication.</p></article>
+          <article class="compact-card"><h3>Overflow Drafting</h3><p>Remote production support for architects, engineers, contractors, and designers who need extra drafting capacity.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="draft-section" id="samples">
+    <section class="draft-section" id="habs">
       <div class="container">
         <div class="draft-head">
-          <p class="eyebrow">Sample Deliverables</p>
-          <h2>Representative drawing previews.</h2>
-          <p>These are sanitized image previews only. Client names, addresses, stamps, and title block data should stay hidden unless a project is specifically approved for public display.</p>
+          <p class="eyebrow">HABS Work</p>
+          <h2>20 W. 9th Street, Kansas City, Missouri.</h2>
+          <p>Jon Peterson worked with the University of Kansas HABS scholarship team documenting the New York Life Insurance Building for Library of Congress archival submission. Jon took field measurements and produced measured pencil/construction drawings for the project, including work later traced in ink for the final HABS sheet set.</p>
+          <div class="link-row">
+            <a href="https://www.loc.gov/item/mo0432/" target="_blank" rel="noopener">LOC HABS record</a>
+            <a href="https://www.loc.gov/resource/hhh.mo0432.sheet.00007a/" target="_blank" rel="noopener">LOC Sheet 7</a>
+            <a href="https://www.loc.gov/resource/hhh.mo0432.sheet.00010a/" target="_blank" rel="noopener">LOC Sheet 10</a>
+            <a href="https://www.loc.gov/resource/hhh.mo0432.sheet.00015a/" target="_blank" rel="noopener">LOC Sheet 15</a>
+          </div>
         </div>
-        <div class="sample-grid">
-          <article class="sample-card"><img src="../assets/drafting/residential-section-roof-plan-thumb.jpg" alt="Sanitized residential section and roof plan drawing preview"><div><span class="tag">Residential</span><h3>Section and Roof Plan</h3><p>Typical construction document drafting support for residential work.</p></div></article>
-          <article class="sample-card"><img src="../assets/drafting/residential-basement-plan-thumb.jpg" alt="Sanitized residential basement plan and section drawing preview"><div><span class="tag">Remodel</span><h3>Basement Plan and Section</h3><p>Plan cleanup and section drafting for review and coordination.</p></div></article>
-          <article class="sample-card"><img src="../assets/drafting/commercial-floor-plan-thumb.jpg" alt="Sanitized small commercial floor plan and elevation drawing preview"><div><span class="tag">Commercial</span><h3>Floor Plan and Elevation</h3><p>Small commercial drafting support and sheet organization.</p></div></article>
-          <article class="sample-card"><img src="../assets/drafting/assembly-building-section-thumb.jpg" alt="Sanitized assembly building section drawing preview"><div><span class="tag">Assembly</span><h3>Building Section</h3><p>Section drafting and drawing cleanup for building projects.</p></div></article>
-          <article class="sample-card"><img src="../assets/drafting/residential-elevations-thumb.jpg" alt="Sanitized residential elevations and roof plan drawing preview"><div><span class="tag">Residential</span><h3>Elevations and Roof Plan</h3><p>Exterior elevation and roof-plan production support.</p></div></article>
-          <article class="sample-card"><div><span class="tag">Coming soon</span><h3>Redline Pickup Example</h3><p>Placeholder slot for a sanitized before/after redline cleanup example.</p></div></article>
-        </div>
+        <div class="project-grid" id="habsGrid" aria-label="HABS work examples"></div>
       </div>
     </section>
 
-    <section class="draft-section alt" id="process">
-      <div class="container">
+    <section class="draft-section alt" id="resume">
+      <div class="container vita-layout">
         <div class="draft-head">
-          <p class="eyebrow">How It Works</p>
-          <h2>A simple path from rough information to usable drawings.</h2>
+          <p class="eyebrow">Professional Vita</p>
+          <h2>Jon Peterson</h2>
+          <p>Experienced architectural draftsman and CAD technician with practical construction-document, field-measurement, acoustics, and technical-documentation experience.</p>
+          <div class="cta-row">
+            <a class="button primary" href="../Jon_Peterson_Resume.pdf" download>Download Resume PDF</a>
+            <a class="button ghost" href="#contact">Start a project</a>
+          </div>
         </div>
-        <div class="steps">
-          <article class="step-card"><span>1</span><h3>Send project info</h3><p>Send sketches, photos, PDFs, redlines, field dimensions, or a short project description.</p></article>
-          <article class="step-card"><span>2</span><h3>Scope review</h3><p>Jon reviews the information and provides a fixed-fee quote or hourly estimate.</p></article>
-          <article class="step-card"><span>3</span><h3>Approval</h3><p>Work begins after scope approval and any agreed deposit.</p></article>
-          <article class="step-card"><span>4</span><h3>Review and files</h3><p>Receive review PDFs first, then final PDFs/CAD files as agreed.</p></article>
+        <div>
+          <ul class="cred-list" aria-label="Drafting credentials">
+            <li><strong>Software:</strong> AutoCAD LT, SketchUp Online, PDF/redline workflows.</li>
+            <li><strong>Education:</strong> Architectural Engineering, University of Kansas, acoustics emphasis.</li>
+            <li><strong>Experience:</strong> Residential and commercial drafting support, construction document production, as-builts, redlines, field-measured drawings, and technical coordination.</li>
+            <li><strong>Recognition:</strong> HABS / Recording and Representing Historic Structures scholarship; Charles E. Peterson Prize honorable mention for the measured drawing set.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="draft-section" id="quote">
-      <div class="container">
-        <div class="quote-box">
-          <div>
-            <p class="eyebrow">Quotes</p>
-            <h3>Fixed-fee quotes after scope review.</h3>
-            <p>Small redline and cleanup jobs can often be quoted quickly. Rush availability may vary by project size and current workload.</p>
-          </div>
-          <div>
-            <h3>Information that helps</h3>
-            <ul class="quote-list">
-              <li>Project type and location</li>
-              <li>Existing drawings, sketches, photos, or PDFs</li>
-              <li>Needed deliverables and deadline</li>
-              <li>Whether 3D SketchUp rendering is needed</li>
-              <li>Whether a licensed architect or engineer is involved</li>
-              <li>Preferred file types: PDF, DWG, DXF, JPG, PNG, marked-up PDFs</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="draft-section alt">
+    <section class="draft-section">
       <div class="container note-box">
         <h3>Professional note</h3>
         <p>Media+Architecture provides CAD drafting, as-built drawings, permit drawing support, redline cleanup, 3D rendering, and construction document production assistance. Projects requiring licensed architectural or engineering services, professional seals, or code-design responsibility must be reviewed and stamped by the appropriate licensed professional.</p>
@@ -256,5 +257,227 @@
       <p>CAD drafting support hosted separately on pqsensing.com for convenience. Not a licensed architecture or engineering firm.</p>
     </div>
   </footer>
+
+  <div class="viewer" id="drawingViewer" hidden aria-modal="true" role="dialog" aria-label="Drawing carousel">
+    <div class="viewer-top">
+      <div>
+        <div class="viewer-title" id="viewerTitle"></div>
+        <div class="viewer-count" id="viewerCount"></div>
+      </div>
+      <button class="viewer-button viewer-close" type="button" id="viewerClose" aria-label="Close viewer">x</button>
+    </div>
+    <div class="viewer-stage">
+      <button class="viewer-button viewer-prev" type="button" id="viewerPrev" aria-label="Previous drawing">&#8249;</button>
+      <a id="viewerFullLink" href="#">
+        <img id="viewerImage" src="" alt="">
+      </a>
+      <button class="viewer-button viewer-next" type="button" id="viewerNext" aria-label="Next drawing">&#8250;</button>
+    </div>
+    <div class="viewer-caption" id="viewerCaption"></div>
+  </div>
+
+  <script>
+    const projectData = [
+      {
+        name: 'Ottley Addition',
+        type: 'Residential addition',
+        summary: 'Residential addition drawings with floor plan, elevations, and construction coordination sheets.',
+        images: [
+          ['../assets/drafting/sets/ottley-addition-page-01.jpg','../assets/drafting/sets/ottley-addition-page-01-thumb.jpg','Ottley Addition - Floor Plan'],
+          ['../assets/drafting/sets/ottley-addition-page-02.jpg','../assets/drafting/sets/ottley-addition-page-02-thumb.jpg','Ottley Addition - Elevations'],
+          ['../assets/drafting/sets/ottley-addition-page-03.jpg','../assets/drafting/sets/ottley-addition-page-03-thumb.jpg','Ottley Addition - Section and Details']
+        ]
+      },
+      {
+        name: 'Western Quality Auto',
+        type: 'Small commercial',
+        summary: 'Commercial site, floor plan, elevations, sections, schedules, and project coordination drawings.',
+        images: [
+          ['../assets/drafting/sets/western-quality-auto-page-01.jpg','../assets/drafting/sets/western-quality-auto-page-01-thumb.jpg','Western Quality Auto - Site Plan'],
+          ['../assets/drafting/sets/western-quality-auto-page-02.jpg','../assets/drafting/sets/western-quality-auto-page-02-thumb.jpg','Western Quality Auto - Floor Plan'],
+          ['../assets/drafting/sets/western-quality-auto-page-03.jpg','../assets/drafting/sets/western-quality-auto-page-03-thumb.jpg','Western Quality Auto - Reflected Ceiling Plan'],
+          ['../assets/drafting/sets/western-quality-auto-page-04.jpg','../assets/drafting/sets/western-quality-auto-page-04-thumb.jpg','Western Quality Auto - Elevations'],
+          ['../assets/drafting/sets/western-quality-auto-page-05.jpg','../assets/drafting/sets/western-quality-auto-page-05-thumb.jpg','Western Quality Auto - Building Sections'],
+          ['../assets/drafting/sets/western-quality-auto-page-06.jpg','../assets/drafting/sets/western-quality-auto-page-06-thumb.jpg','Western Quality Auto - Wall Sections'],
+          ['../assets/drafting/sets/western-quality-auto-page-07.jpg','../assets/drafting/sets/western-quality-auto-page-07-thumb.jpg','Western Quality Auto - Door and Window Schedules'],
+          ['../assets/drafting/sets/western-quality-auto-page-08.jpg','../assets/drafting/sets/western-quality-auto-page-08-thumb.jpg','Western Quality Auto - Details'],
+          ['../assets/drafting/sets/western-quality-auto-page-09.jpg','../assets/drafting/sets/western-quality-auto-page-09-thumb.jpg','Western Quality Auto - Details']
+        ]
+      },
+      {
+        name: 'Church of the Seventh Day Adventist',
+        type: 'Assembly / church',
+        summary: 'Church building drawing set with plans, elevations, sections, and detail coordination.',
+        images: [
+          ['../assets/drafting/sets/church-seventh-day-adventist-page-01.jpg','../assets/drafting/sets/church-seventh-day-adventist-page-01-thumb.jpg','Church of the Seventh Day Adventist - Sheet 1'],
+          ['../assets/drafting/sets/church-seventh-day-adventist-page-02.jpg','../assets/drafting/sets/church-seventh-day-adventist-page-02-thumb.jpg','Church of the Seventh Day Adventist - Sheet 2'],
+          ['../assets/drafting/sets/church-seventh-day-adventist-page-03.jpg','../assets/drafting/sets/church-seventh-day-adventist-page-03-thumb.jpg','Church of the Seventh Day Adventist - Sheet 3'],
+          ['../assets/drafting/sets/church-seventh-day-adventist-page-04.jpg','../assets/drafting/sets/church-seventh-day-adventist-page-04-thumb.jpg','Church of the Seventh Day Adventist - Sheet 4'],
+          ['../assets/drafting/sets/church-seventh-day-adventist-page-05.jpg','../assets/drafting/sets/church-seventh-day-adventist-page-05-thumb.jpg','Church of the Seventh Day Adventist - Sheet 5'],
+          ['../assets/drafting/sets/church-seventh-day-adventist-page-06.jpg','../assets/drafting/sets/church-seventh-day-adventist-page-06-thumb.jpg','Church of the Seventh Day Adventist - Sheet 6'],
+          ['../assets/drafting/sets/church-seventh-day-adventist-page-07.jpg','../assets/drafting/sets/church-seventh-day-adventist-page-07-thumb.jpg','Church of the Seventh Day Adventist - Sheet 7']
+        ]
+      },
+      {
+        name: 'Grandview Warehouse',
+        type: 'Warehouse / commercial',
+        summary: 'Warehouse drawing set with title sheet, code information, site data, plans, schedules, and details.',
+        images: [
+          ['../assets/drafting/sets/grandview-warehouse-page-01.jpg','../assets/drafting/sets/grandview-warehouse-page-01-thumb.jpg','Grandview Warehouse - Title and Code Sheet'],
+          ['../assets/drafting/sets/grandview-warehouse-page-02.jpg','../assets/drafting/sets/grandview-warehouse-page-02-thumb.jpg','Grandview Warehouse - Site and Floor Plan'],
+          ['../assets/drafting/sets/grandview-warehouse-page-03.jpg','../assets/drafting/sets/grandview-warehouse-page-03-thumb.jpg','Grandview Warehouse - Elevations'],
+          ['../assets/drafting/sets/grandview-warehouse-page-04.jpg','../assets/drafting/sets/grandview-warehouse-page-04-thumb.jpg','Grandview Warehouse - Sections'],
+          ['../assets/drafting/sets/grandview-warehouse-page-05.jpg','../assets/drafting/sets/grandview-warehouse-page-05-thumb.jpg','Grandview Warehouse - Details'],
+          ['../assets/drafting/sets/grandview-warehouse-page-06.jpg','../assets/drafting/sets/grandview-warehouse-page-06-thumb.jpg','Grandview Warehouse - Schedules'],
+          ['../assets/drafting/sets/grandview-warehouse-page-07.jpg','../assets/drafting/sets/grandview-warehouse-page-07-thumb.jpg','Grandview Warehouse - Details'],
+          ['../assets/drafting/sets/grandview-warehouse-page-08.jpg','../assets/drafting/sets/grandview-warehouse-page-08-thumb.jpg','Grandview Warehouse - Details']
+        ]
+      },
+      {
+        name: '20 W. 9th Street HABS Documentation',
+        type: 'Historic documentation',
+        summary: 'University of Kansas HABS work for the Library of Congress record of the New York Life Insurance Building.',
+        habs: true,
+        images: [
+          ['../assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan.jpg','../assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan-thumb.jpg','HABS Sheet 7 - Seventh Floor Plan'],
+          ['../assets/habs/habs-mo0432-sheet-00010-facade-elevation.jpg','../assets/habs/habs-mo0432-sheet-00010-facade-elevation-thumb.jpg','HABS Sheet 10 - South Elevation'],
+          ['../assets/habs/habs-mo0432-photo-eagle-sculpture.jpg','../assets/habs/habs-mo0432-photo-eagle-sculpture-thumb.jpg','20 W. 9th Eagle Sculpture - Photograph by Jon Peterson'],
+          ['../assets/habs/habs-mo0432-photo-exterior-view.jpg','../assets/habs/habs-mo0432-photo-exterior-view-thumb.jpg','20 W. 9th Exterior HABS Photograph']
+        ]
+      }
+    ];
+
+    const allItems = [];
+    projectData.forEach((project) => {
+      const start = allItems.length;
+      project.startIndex = start;
+      project.images.forEach((image, imageIndex) => {
+        allItems.push({
+          project: project.name,
+          type: project.type,
+          src: image[0],
+          thumb: image[1],
+          title: image[2],
+          caption: `${project.name} - ${imageIndex + 1} of ${project.images.length}`
+        });
+      });
+    });
+
+    const projectGrid = document.getElementById('projectGrid');
+    const habsGrid = document.getElementById('habsGrid');
+
+    function renderProjectCard(project) {
+      const first = project.images[0];
+      const article = document.createElement('article');
+      article.className = 'project-card';
+      article.innerHTML = `
+        <button class="project-button" type="button" data-open-index="${project.startIndex}">
+          <img src="${first[1]}" alt="${project.name} drawing preview">
+          <div class="project-copy">
+            <span class="tag">${project.type}</span>
+            <h3>${project.name}</h3>
+            <p>${project.summary}</p>
+            <span class="sheet-count">${project.images.length} images in carousel</span>
+          </div>
+        </button>`;
+      return article;
+    }
+
+    projectData.forEach((project) => {
+      const card = renderProjectCard(project);
+      if (project.habs) {
+        habsGrid.appendChild(card);
+      } else {
+        projectGrid.appendChild(card);
+      }
+    });
+
+    const viewer = document.getElementById('drawingViewer');
+    const viewerImage = document.getElementById('viewerImage');
+    const viewerFullLink = document.getElementById('viewerFullLink');
+    const viewerTitle = document.getElementById('viewerTitle');
+    const viewerCount = document.getElementById('viewerCount');
+    const viewerCaption = document.getElementById('viewerCaption');
+    let currentIndex = 0;
+
+    function updateViewer() {
+      const item = allItems[currentIndex];
+      viewerImage.src = item.src;
+      viewerImage.alt = item.title;
+      viewerFullLink.href = item.src;
+      viewerTitle.textContent = item.title;
+      viewerCount.textContent = `${currentIndex + 1} of ${allItems.length}`;
+      viewerCaption.textContent = `${item.project} | ${item.type}`;
+      sessionStorage.setItem('maViewerIndex', String(currentIndex));
+    }
+
+    function openViewer(index, updateHistory = true) {
+      currentIndex = (index + allItems.length) % allItems.length;
+      viewer.hidden = false;
+      document.body.style.overflow = 'hidden';
+      updateViewer();
+      if (updateHistory) {
+        history.pushState({ mediaArchitectureViewer: true, index: currentIndex }, '', `#drawing-${currentIndex + 1}`);
+      }
+    }
+
+    function closeViewer(updateHistory = true) {
+      viewer.hidden = true;
+      document.body.style.overflow = '';
+      if (updateHistory && location.hash.startsWith('#drawing-')) {
+        history.pushState({}, '', location.pathname + location.search);
+      }
+    }
+
+    function moveViewer(delta) {
+      currentIndex = (currentIndex + delta + allItems.length) % allItems.length;
+      updateViewer();
+      history.replaceState({ mediaArchitectureViewer: true, index: currentIndex }, '', `#drawing-${currentIndex + 1}`);
+    }
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-open-index]');
+      if (button) {
+        openViewer(Number(button.dataset.openIndex));
+      }
+    });
+
+    document.getElementById('viewerClose').addEventListener('click', () => closeViewer());
+    document.getElementById('viewerPrev').addEventListener('click', () => moveViewer(-1));
+    document.getElementById('viewerNext').addEventListener('click', () => moveViewer(1));
+    viewerFullLink.addEventListener('click', () => {
+      sessionStorage.setItem('maRestoreViewer', '1');
+      sessionStorage.setItem('maViewerIndex', String(currentIndex));
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (viewer.hidden) return;
+      if (event.key === 'Escape') closeViewer();
+      if (event.key === 'ArrowLeft') moveViewer(-1);
+      if (event.key === 'ArrowRight') moveViewer(1);
+    });
+
+    window.addEventListener('popstate', () => {
+      const match = location.hash.match(/^#drawing-(\d+)$/);
+      if (match) {
+        openViewer(Number(match[1]) - 1, false);
+      } else if (!viewer.hidden) {
+        closeViewer(false);
+      }
+    });
+
+    window.addEventListener('pageshow', () => {
+      const match = location.hash.match(/^#drawing-(\d+)$/);
+      if (match) {
+        openViewer(Number(match[1]) - 1, false);
+        return;
+      }
+      if (sessionStorage.getItem('maRestoreViewer') === '1') {
+        sessionStorage.removeItem('maRestoreViewer');
+        const saved = Number(sessionStorage.getItem('maViewerIndex') || '0');
+        openViewer(saved, false);
+      }
+    });
+  </script>
 </body>
 </html>
