@@ -111,6 +111,7 @@ h1{max-width:900px;margin-bottom:28px;font-size:clamp(48px,7vw,88px);line-height
 .audio-section{background:linear-gradient(180deg,#071827,#061525)}.audio-panel{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.045);padding:40px}.audio-panel h2{font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-.045em}.audio-player audio{width:100%;margin-bottom:14px}.audio-download{color:var(--cyan);font-weight:850}
 .fund-section{background:radial-gradient(circle at 80% 20%,rgba(57,223,255,.18),transparent 35%),#061425}.fund-card{border:1px solid var(--line);border-radius:36px;padding:48px;background:linear-gradient(135deg,rgba(8,28,47,.94),rgba(6,20,37,.76));box-shadow:var(--shadow);display:grid;grid-template-columns:.85fr 1.15fr;gap:54px}.fund-list p{margin-bottom:15px}.lower{grid-column:1/-1}
 .site-footer{border-top:1px solid var(--line);background:#030b14;padding:44px 0}.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.site-footer strong{display:block;margin-bottom:8px}.site-footer p{font-size:16px;margin:0;color:var(--muted2)}
+.footer-legal{margin-top:30px;padding-top:20px;border-top:1px solid var(--line2)}.footer-legal p{font-size:14px;color:var(--muted2)}.footer-legal a{color:var(--cyan)}
 
 .collaborate-section{
   background:
