@@ -1,0 +1,5 @@
+# Suggested addition to the LIVE .htaccess (do not blindly overwrite the
+# existing file — the live host may have rules this repo doesn't track).
+# Merge by hand in cPanel File Manager after review.
+
+ErrorDocument 404 /404.html

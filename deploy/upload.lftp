@@ -1,0 +1,47 @@
+# ============================================================
+# PQSensing.com — prepared FTP upload script (lftp)
+#
+#   *** DO NOT RUN until Jon has completed REVIEW.md ***
+#   *** and given explicit approval.                 ***
+#
+# Usage (after approval):
+#   lftp -f deploy/upload.lftp
+#
+# Fill in the three placeholders below first. Never commit real
+# credentials to this repository. Host is typically
+# ftp.pqsensing.com or the server hostname shown in cPanel.
+# ============================================================
+
+set ssl:verify-certificate yes
+set ftp:ssl-force true
+
+# --- credentials (placeholders — fill in locally, do not commit) ---
+open -u FTP_USERNAME,FTP_PASSWORD ftp.FTP_HOST
+
+# --- remote web root (adjust if cPanel uses a different docroot) ---
+cd public_html
+
+# --- upload exactly the files in deploy/MANIFEST.md ---
+lcd .
+put index.html
+put modules.html
+put metrology.html
+put metrology201.html
+put about.html
+put styles.css
+put 404.html
+put robots.txt
+put sitemap.xml
+put favicon.ico
+put favicon.svg
+put apple-touch-icon.png
+cd drafting
+lcd drafting
+put index.html
+
+bye
+
+# NOTE: the ErrorDocument rule for 404.html is intentionally NOT
+# uploaded by this script. Merge deploy/htaccess.suggested into the
+# live .htaccess by hand (cPanel File Manager) after checking what
+# already exists there — see REVIEW_FLAGS.md item 8.
