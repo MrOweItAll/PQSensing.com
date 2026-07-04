@@ -431,11 +431,11 @@
         </div>
         <div class="metrics-table" role="table" aria-label="Prototype validation metrics">
           <div class="row head" role="row"><span>Metric</span><span>Target</span><span>Evidence output</span></div>
-          <div class="row" role="row"><span>Setpoint separation</span><span>V<sub>norm</sub> stationary point differs from the power extremum in at least one injected-noise regime.</span><span>δ sweep: P(δ), N<sub>band</sub>(δ), V<sub>norm</sub>(δ)</span></div>
-          <div class="row" role="row"><span>Jitter-induced noise reduction</span><span>First-demo target: ≥6 dB vs power lock; stretch target: 10–20 dB if bench stability supports it.</span><span>Locked traces under controlled jitter</span></div>
-          <div class="row" role="row"><span>Slope-null convergence</span><span>|dV<sub>norm</sub>/dδ| driven toward zero while maintaining P above a useful floor.</span><span>Dither/demod error and actuator command</span></div>
-          <div class="row" role="row"><span>Reacquisition</span><span>≥5 successful reacquisitions after intentional mislock or disturbance trials.</span><span>State log: SEARCH → CAPTURE → BIAS_LOCK → NOISE_LOCK</span></div>
-          <div class="row" role="row"><span>DPI optional test</span><span>Recover known g(t) by correlation/matched filtering with a visible peak over uncorrelated disturbance.</span><span>Correlation peak, lag estimate, processing-gain plot</span></div>
+          <div class="row" role="row"><span>Setpoint separation</span><span data-label="Target">V<sub>norm</sub> stationary point differs from the power extremum in at least one injected-noise regime.</span><span data-label="Evidence output">δ sweep: P(δ), N<sub>band</sub>(δ), V<sub>norm</sub>(δ)</span></div>
+          <div class="row" role="row"><span>Jitter-induced noise reduction</span><span data-label="Target">First-demo target: ≥6 dB vs power lock; stretch target: 10–20 dB if bench stability supports it.</span><span data-label="Evidence output">Locked traces under controlled jitter</span></div>
+          <div class="row" role="row"><span>Slope-null convergence</span><span data-label="Target">|dV<sub>norm</sub>/dδ| driven toward zero while maintaining P above a useful floor.</span><span data-label="Evidence output">Dither/demod error and actuator command</span></div>
+          <div class="row" role="row"><span>Reacquisition</span><span data-label="Target">≥5 successful reacquisitions after intentional mislock or disturbance trials.</span><span data-label="Evidence output">State log: SEARCH → CAPTURE → BIAS_LOCK → NOISE_LOCK</span></div>
+          <div class="row" role="row"><span>DPI optional test</span><span data-label="Target">Recover known g(t) by correlation/matched filtering with a visible peak over uncorrelated disturbance.</span><span data-label="Evidence output">Correlation peak, lag estimate, processing-gain plot</span></div>
         </div>
       </div>
     </section>
