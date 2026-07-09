@@ -6,7 +6,7 @@
   <title>Media+Architecture | AutoCAD Drafting Support in the USA</title>
   <meta name="description" content="Media+Architecture provides AutoCAD drafting support for construction drawings, floor plans, sections, elevations, code footprints, site plans, as-builts, remodels, redline cleanup, and SketchUp renderings.">
   <meta property="og:title" content="Media+Architecture">
-  <meta property="og:description" content="Drawing-first portfolio and drafting support by Jon Peterson: residential, commercial, warehouse, church, HABS documentation, and construction drawing production.">
+  <meta property="og:description" content="Drawing-first portfolio and drafting support by Jon Peterson: residential, commercial, warehouse, church, HABS documentation, 3D modeling, and construction drawing production.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,6 +115,7 @@
     <button class="nav-toggle" aria-label="Navigation menu" onclick="document.body.classList.toggle('nav-open')">Menu</button>
     <nav class="nav-links">
       <a href="#drawings">Drawings</a>
+      <a href="#modeling">3D Modeling</a>
       <a href="#services">Services</a>
       <a href="#habs">HABS</a>
       <a href="#resume">Resume</a>
@@ -157,13 +158,24 @@
         <div class="draft-head">
           <p class="eyebrow">Drawing Portfolio</p>
           <h2>Representative building sets.</h2>
-          <p>Each project opens into one shared viewer. Use the arrows to move through every drawing image on this page. Click the large image in the viewer to open that sheet full-size in this tab; the browser Back button returns to the carousel.</p>
+          <p>Each project opens into one shared viewer. Use the arrows to move through every drawing and rendering image on this page. Click the large image in the viewer to open that sheet full-size in this tab; the browser Back button returns to the carousel.</p>
         </div>
         <div class="project-grid" id="projectGrid" aria-label="Media+Architecture drawing projects"></div>
       </div>
     </section>
 
-    <section class="draft-section alt" id="services">
+    <section class="draft-section alt" id="modeling">
+      <div class="container">
+        <div class="draft-head">
+          <p class="eyebrow">3D Modeling</p>
+          <h2>SketchUp building visualization.</h2>
+          <p>Google SketchUp modeling and rendered views help clients understand massing, materials, entrances, canopies, landscape edges, and the overall building presence before construction details are finalized.</p>
+        </div>
+        <div class="project-grid" id="modelGrid" aria-label="Media+Architecture 3D modeling examples"></div>
+      </div>
+    </section>
+
+    <section class="draft-section" id="services">
       <div class="container">
         <div class="draft-head">
           <p class="eyebrow">Services</p>
@@ -180,7 +192,7 @@
       </div>
     </section>
 
-    <section class="draft-section" id="habs">
+    <section class="draft-section alt" id="habs">
       <div class="container">
         <div class="draft-head">
           <p class="eyebrow">HABS Work</p>
@@ -197,7 +209,7 @@
       </div>
     </section>
 
-    <section class="draft-section alt" id="resume">
+    <section class="draft-section" id="resume">
       <div class="container vita-layout">
         <div class="draft-head">
           <p class="eyebrow">Professional Vita</p>
@@ -219,7 +231,7 @@
       </div>
     </section>
 
-    <section class="draft-section">
+    <section class="draft-section alt">
       <div class="container note-box">
         <h3>Professional note</h3>
         <p>Media+Architecture provides CAD drafting, as-built drawings, permit drawing support, redline cleanup, 3D rendering, and construction document production assistance. Projects requiring licensed architectural or engineering services, professional seals, or code-design responsibility must be reviewed and stamped by the appropriate licensed professional.</p>
@@ -358,8 +370,41 @@
       }
     ];
 
+    function renderingProject(name, type, summary, prefix, count, labelBase = name) {
+      return {
+        name,
+        type,
+        summary,
+        model: true,
+        images: Array.from({ length: count }, (_, index) => {
+          const number = String(index + 1).padStart(2, '0');
+          return [
+            `../assets/drafting/renderings/${prefix}-${number}.jpg`,
+            `../assets/drafting/renderings/${prefix}-${number}-thumb.jpg`,
+            `${labelBase} - Rendering ${index + 1}`
+          ];
+        })
+      };
+    }
+
+    const modelData = [
+      renderingProject('Pioneer Electric Building Study', '3D modeling / exterior visualization', 'Photoreal exterior visualization study for an industrial/service building with office frontage, metal building volume, canopy, site paving, and landscape context.', 'pioneer-electric-rendering', 6),
+      renderingProject('20-36 Industrial Building', 'SketchUp exterior study', 'Industrial building visualization views for massing, frontage, material studies, and client review.', '20-36-industrial-building-pdf-rendering', 2),
+      renderingProject('2020-06 Truck Center', 'Commercial service building', 'Truck center building visualization views for exterior form, service-bay massing, and site presentation.', '2020-06-truck-center-pdf-rendering', 2),
+      renderingProject('2020-29 Martin Residence', 'Residential 3D model', 'Residential SketchUp views for massing, roof form, exterior expression, and client-facing design review.', '2020-29-martin-residence-pdf-rendering', 7),
+      renderingProject('2022-17 Southwind House', 'Residential 3D model', 'Residential exterior modeling views for building form, materials, and approach visualization.', '2022-17-southwind-house-pdf-rendering', 4),
+      renderingProject('2024-14 Event Center', 'Event center 3D model', 'Event center visualization views for entrance studies, exterior massing, materials, and pedestrian scale.', '2024-14-event-center-pdf-rendering', 3),
+      renderingProject('2026-03 Pioneer Electric', 'Industrial / office visualization', 'Additional Pioneer Electric SketchUp presentation views for the industrial building and office frontage.', '2026-03-pioneer-electric-pdf-rendering', 2),
+      renderingProject('Assembly of God Addition', 'Church addition model', 'Church addition visualization views prepared for scale, entrance character, and exterior review.', 'assembly-of-god-addition-wolters-construction-pdf-rendering', 2),
+      renderingProject('Baker 3rd Revision', 'Residential 3D model', 'Residential revision views showing exterior massing, materials, and design options.', 'baker-3rd-revision-pdf-rendering', 5),
+      renderingProject('Ebert 4th Revision', 'Residential 3D model', 'Residential exterior rendering sequence for massing, landscape context, and owner review.', 'ebert-4th-revision-pdf-rendering', 13),
+      renderingProject('GBS', 'Commercial 3D model', 'Commercial building visualization views for exterior presentation and design coordination.', 'gbs-pdf-rendering', 3),
+      renderingProject('McGonagle House', 'Residential 3D model', 'Residential SketchUp views for exterior form, roof geometry, and client communication.', 'mcgonagle-house-pdf-rendering', 3)
+    ];
+
     const allItems = [];
-    projectData.forEach((project) => {
+    const portfolioData = [...projectData, ...modelData];
+    portfolioData.forEach((project) => {
       const start = allItems.length;
       project.startIndex = start;
       project.images.forEach((image, imageIndex) => {
@@ -375,6 +420,7 @@
     });
 
     const projectGrid = document.getElementById('projectGrid');
+    const modelGrid = document.getElementById('modelGrid');
     const habsGrid = document.getElementById('habsGrid');
 
     function renderProjectCard(project) {
@@ -394,10 +440,12 @@
       return article;
     }
 
-    projectData.forEach((project) => {
+    portfolioData.forEach((project) => {
       const card = renderProjectCard(project);
       if (project.habs) {
         habsGrid.appendChild(card);
+      } else if (project.model) {
+        modelGrid.appendChild(card);
       } else {
         projectGrid.appendChild(card);
       }
