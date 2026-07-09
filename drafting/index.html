@@ -146,9 +146,9 @@
             <span>Fixed-fee quotes after scope review</span>
           </div>
         </div>
-        <button class="featured-drawing project-button" type="button" data-open-index="0">
+        <button class="featured-drawing project-button" type="button" data-gallery="drawings" data-open-index="0">
           <img src="../assets/drafting/sets/ottley-addition-page-01-thumb.jpg" alt="Ottley Addition floor plan drawing preview">
-          <span>Click any drawing preview to open the full portfolio carousel.</span>
+          <span>Click any drawing preview to open the representative building sets carousel.</span>
         </button>
       </div>
     </section>
@@ -158,7 +158,7 @@
         <div class="draft-head">
           <p class="eyebrow">Drawing Portfolio</p>
           <h2>Representative building sets.</h2>
-          <p>Each project opens into one shared viewer. Use the arrows to move through every drawing and rendering image on this page. Click the large image in the viewer to open that sheet full-size in this tab; the browser Back button returns to the carousel.</p>
+          <p>Each project opens into the representative building sets carousel. Use the arrows to move through drawings in this section only. Click the large image in the viewer to open that sheet full-size in this tab; the browser Back button returns to the carousel.</p>
         </div>
         <div class="project-grid" id="projectGrid" aria-label="Media+Architecture drawing projects"></div>
       </div>
@@ -169,7 +169,7 @@
         <div class="draft-head">
           <p class="eyebrow">3D Modeling</p>
           <h2>SketchUp building visualization.</h2>
-          <p>Google SketchUp modeling and rendered views help clients understand massing, materials, entrances, canopies, landscape edges, and the overall building presence before construction details are finalized.</p>
+          <p>Google SketchUp modeling and rendered views help clients understand massing, materials, entrances, canopies, landscape edges, and the overall building presence before construction details are finalized. These examples open in their own 3D modeling carousel.</p>
         </div>
         <div class="project-grid" id="modelGrid" aria-label="Media+Architecture 3D modeling examples"></div>
       </div>
@@ -197,7 +197,7 @@
         <div class="draft-head">
           <p class="eyebrow">HABS Work</p>
           <h2>20 W. 9th Street, Kansas City, Missouri.</h2>
-          <p>Jon Peterson worked with the University of Kansas HABS scholarship team documenting the New York Life Insurance Building for Library of Congress archival submission. Jon took field measurements and produced measured pencil/construction drawings for the project, including work later traced in ink for the final HABS sheet set.</p>
+          <p>Jon Peterson worked with the University of Kansas HABS scholarship team documenting the New York Life Insurance Building for Library of Congress archival submission. Jon took field measurements and produced measured pencil/construction drawings for the project, including work later traced in ink for the final HABS sheet set. These examples open in their own HABS carousel.</p>
           <div class="link-row">
             <a href="https://www.loc.gov/item/mo0432/" target="_blank" rel="noopener">LOC HABS record</a>
             <a href="https://www.loc.gov/resource/hhh.mo0432.sheet.00007a/" target="_blank" rel="noopener">LOC Sheet 7</a>
@@ -270,7 +270,7 @@
     </div>
   </footer>
 
-  <div class="viewer" id="drawingViewer" hidden aria-modal="true" role="dialog" aria-label="Drawing carousel">
+  <div class="viewer" id="drawingViewer" hidden aria-modal="true" role="dialog" aria-label="Portfolio carousel">
     <div class="viewer-top">
       <div>
         <div class="viewer-title" id="viewerTitle"></div>
@@ -279,11 +279,11 @@
       <button class="viewer-button viewer-close" type="button" id="viewerClose" aria-label="Close viewer">x</button>
     </div>
     <div class="viewer-stage">
-      <button class="viewer-button viewer-prev" type="button" id="viewerPrev" aria-label="Previous drawing">&#8249;</button>
+      <button class="viewer-button viewer-prev" type="button" id="viewerPrev" aria-label="Previous item">&#8249;</button>
       <a id="viewerFullLink" href="#">
         <img id="viewerImage" src="" alt="">
       </a>
-      <button class="viewer-button viewer-next" type="button" id="viewerNext" aria-label="Next drawing">&#8250;</button>
+      <button class="viewer-button viewer-next" type="button" id="viewerNext" aria-label="Next item">&#8250;</button>
     </div>
     <div class="viewer-caption" id="viewerCaption"></div>
   </div>
@@ -355,12 +355,14 @@
           ['../assets/drafting/sets/grandview-warehouse-page-07.jpg','../assets/drafting/sets/grandview-warehouse-page-07-thumb.jpg','Grandview Warehouse - Details'],
           ['../assets/drafting/sets/grandview-warehouse-page-08.jpg','../assets/drafting/sets/grandview-warehouse-page-08-thumb.jpg','Grandview Warehouse - Details']
         ]
-      },
+      }
+    ];
+
+    const habsData = [
       {
         name: '20 W. 9th Street HABS Documentation',
         type: 'Historic documentation',
         summary: 'University of Kansas HABS work for the Library of Congress record of the New York Life Insurance Building.',
-        habs: true,
         images: [
           ['../assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan.jpg','../assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan-thumb.jpg','HABS Sheet 7 - Seventh Floor Plan'],
           ['../assets/habs/habs-mo0432-sheet-00010-facade-elevation.jpg','../assets/habs/habs-mo0432-sheet-00010-facade-elevation-thumb.jpg','HABS Sheet 10 - South Elevation'],
@@ -402,33 +404,56 @@
       renderingProject('McGonagle House', 'Residential 3D model', 'Residential SketchUp views for exterior form, roof geometry, and client communication.', 'mcgonagle-house-pdf-rendering', 3)
     ];
 
-    const allItems = [];
-    const portfolioData = [...projectData, ...modelData];
-    portfolioData.forEach((project) => {
-      const start = allItems.length;
-      project.startIndex = start;
-      project.images.forEach((image, imageIndex) => {
-        allItems.push({
-          project: project.name,
-          type: project.type,
-          src: image[0],
-          thumb: image[1],
-          title: image[2],
-          caption: `${project.name} - ${imageIndex + 1} of ${project.images.length}`
+    function buildGalleryItems(projects) {
+      const items = [];
+      projects.forEach((project) => {
+        project.startIndex = items.length;
+        project.images.forEach((image, imageIndex) => {
+          items.push({
+            project: project.name,
+            type: project.type,
+            src: image[0],
+            thumb: image[1],
+            title: image[2],
+            caption: `${project.name} - ${imageIndex + 1} of ${project.images.length}`
+          });
         });
       });
+      return items;
+    }
+
+    const galleryGroups = {
+      drawings: {
+        label: 'Representative Building Sets',
+        hash: 'drawings',
+        projects: projectData
+      },
+      models: {
+        label: '3D Modeling',
+        hash: 'models',
+        projects: modelData
+      },
+      habs: {
+        label: 'HABS Documentation',
+        hash: 'habs',
+        projects: habsData
+      }
+    };
+
+    Object.values(galleryGroups).forEach((group) => {
+      group.items = buildGalleryItems(group.projects);
     });
 
     const projectGrid = document.getElementById('projectGrid');
     const modelGrid = document.getElementById('modelGrid');
     const habsGrid = document.getElementById('habsGrid');
 
-    function renderProjectCard(project) {
+    function renderProjectCard(project, groupKey) {
       const first = project.images[0];
       const article = document.createElement('article');
       article.className = 'project-card';
       article.innerHTML = `
-        <button class="project-button" type="button" data-open-index="${project.startIndex}">
+        <button class="project-button" type="button" data-gallery="${groupKey}" data-open-index="${project.startIndex}">
           <img src="${first[1]}" alt="${project.name} drawing preview">
           <div class="project-copy">
             <span class="tag">${project.type}</span>
@@ -440,15 +465,14 @@
       return article;
     }
 
-    portfolioData.forEach((project) => {
-      const card = renderProjectCard(project);
-      if (project.habs) {
-        habsGrid.appendChild(card);
-      } else if (project.model) {
-        modelGrid.appendChild(card);
-      } else {
-        projectGrid.appendChild(card);
-      }
+    galleryGroups.drawings.projects.forEach((project) => {
+      projectGrid.appendChild(renderProjectCard(project, 'drawings'));
+    });
+    galleryGroups.models.projects.forEach((project) => {
+      modelGrid.appendChild(renderProjectCard(project, 'models'));
+    });
+    galleryGroups.habs.projects.forEach((project) => {
+      habsGrid.appendChild(renderProjectCard(project, 'habs'));
     });
 
     const viewer = document.getElementById('drawingViewer');
@@ -457,47 +481,65 @@
     const viewerTitle = document.getElementById('viewerTitle');
     const viewerCount = document.getElementById('viewerCount');
     const viewerCaption = document.getElementById('viewerCaption');
+    let activeGroupKey = 'drawings';
     let currentIndex = 0;
 
+    function getActiveGroup() {
+      return galleryGroups[activeGroupKey] || galleryGroups.drawings;
+    }
+
+    function parseViewerHash() {
+      const match = location.hash.match(/^#(drawings|models|habs)-(\d+)$/);
+      if (!match) return null;
+      const entry = Object.entries(galleryGroups).find(([, group]) => group.hash === match[1]);
+      if (!entry) return null;
+      return { groupKey: entry[0], index: Number(match[2]) - 1 };
+    }
+
     function updateViewer() {
-      const item = allItems[currentIndex];
+      const group = getActiveGroup();
+      const item = group.items[currentIndex];
       viewerImage.src = item.src;
       viewerImage.alt = item.title;
       viewerFullLink.href = item.src;
       viewerTitle.textContent = item.title;
-      viewerCount.textContent = `${currentIndex + 1} of ${allItems.length}`;
+      viewerCount.textContent = `${group.label} - ${currentIndex + 1} of ${group.items.length}`;
       viewerCaption.textContent = `${item.project} | ${item.type}`;
+      sessionStorage.setItem('maViewerGroup', activeGroupKey);
       sessionStorage.setItem('maViewerIndex', String(currentIndex));
     }
 
-    function openViewer(index, updateHistory = true) {
-      currentIndex = (index + allItems.length) % allItems.length;
+    function openViewer(groupKey, index, updateHistory = true) {
+      activeGroupKey = galleryGroups[groupKey] ? groupKey : 'drawings';
+      const group = getActiveGroup();
+      currentIndex = (index + group.items.length) % group.items.length;
       viewer.hidden = false;
       document.body.style.overflow = 'hidden';
       updateViewer();
       if (updateHistory) {
-        history.pushState({ mediaArchitectureViewer: true, index: currentIndex }, '', `#drawing-${currentIndex + 1}`);
+        history.pushState({ mediaArchitectureViewer: true, group: activeGroupKey, index: currentIndex }, '', `#${group.hash}-${currentIndex + 1}`);
       }
     }
 
     function closeViewer(updateHistory = true) {
       viewer.hidden = true;
       document.body.style.overflow = '';
-      if (updateHistory && location.hash.startsWith('#drawing-')) {
+      if (updateHistory && parseViewerHash()) {
         history.pushState({}, '', location.pathname + location.search);
       }
     }
 
     function moveViewer(delta) {
-      currentIndex = (currentIndex + delta + allItems.length) % allItems.length;
+      const group = getActiveGroup();
+      currentIndex = (currentIndex + delta + group.items.length) % group.items.length;
       updateViewer();
-      history.replaceState({ mediaArchitectureViewer: true, index: currentIndex }, '', `#drawing-${currentIndex + 1}`);
+      history.replaceState({ mediaArchitectureViewer: true, group: activeGroupKey, index: currentIndex }, '', `#${group.hash}-${currentIndex + 1}`);
     }
 
     document.addEventListener('click', (event) => {
       const button = event.target.closest('[data-open-index]');
       if (button) {
-        openViewer(Number(button.dataset.openIndex));
+        openViewer(button.dataset.gallery || 'drawings', Number(button.dataset.openIndex));
       }
     });
 
@@ -506,6 +548,7 @@
     document.getElementById('viewerNext').addEventListener('click', () => moveViewer(1));
     viewerFullLink.addEventListener('click', () => {
       sessionStorage.setItem('maRestoreViewer', '1');
+      sessionStorage.setItem('maViewerGroup', activeGroupKey);
       sessionStorage.setItem('maViewerIndex', String(currentIndex));
     });
 
@@ -517,24 +560,25 @@
     });
 
     window.addEventListener('popstate', () => {
-      const match = location.hash.match(/^#drawing-(\d+)$/);
-      if (match) {
-        openViewer(Number(match[1]) - 1, false);
+      const parsed = parseViewerHash();
+      if (parsed) {
+        openViewer(parsed.groupKey, parsed.index, false);
       } else if (!viewer.hidden) {
         closeViewer(false);
       }
     });
 
     window.addEventListener('pageshow', () => {
-      const match = location.hash.match(/^#drawing-(\d+)$/);
-      if (match) {
-        openViewer(Number(match[1]) - 1, false);
+      const parsed = parseViewerHash();
+      if (parsed) {
+        openViewer(parsed.groupKey, parsed.index, false);
         return;
       }
       if (sessionStorage.getItem('maRestoreViewer') === '1') {
         sessionStorage.removeItem('maRestoreViewer');
+        const savedGroup = sessionStorage.getItem('maViewerGroup') || 'drawings';
         const saved = Number(sessionStorage.getItem('maViewerIndex') || '0');
-        openViewer(saved, false);
+        openViewer(savedGroup, saved, false);
       }
     });
   </script>
