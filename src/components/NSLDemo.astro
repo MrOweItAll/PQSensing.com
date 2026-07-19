@@ -429,14 +429,18 @@
 
     // ----- CSV bench-trace loader -----
     function parseBenchCSV(csvText) {
-      const lines = csvText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      // Ignore blank lines and '#' metadata/comment headers (PQS-Trace-v1.0).
+      const lines = csvText
+        .split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter((l) => l && !l.startsWith('#'));
       if (lines.length < 2) throw new Error('CSV has no data rows.');
       const headers = lines[0].toLowerCase().split(',').map((h) => h.trim());
       const findIdx = (...names) =>
         headers.findIndex((h) => names.some((n) => h === n || h.includes(n)));
-      const dIdx = findIdx('delta', 'δ', 'd');
-      const pIdx = findIdx('power', 'p');
-      const nIdx = findIdx('nband', 'n_band', 'noise', 'n');
+      const dIdx = findIdx('delta', 'δ', 'phase', 'd');
+      const pIdx = findIdx('power', 'p_norm', 'p');
+      const nIdx = findIdx('nband', 'n_band', 'noise_band', 'noise', 'psd', 'n');
       if (dIdx === -1 || pIdx === -1 || nIdx === -1) {
         throw new Error('CSV needs columns for delta, P, and N_band.');
       }
