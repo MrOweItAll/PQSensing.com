@@ -1,0 +1,37 @@
+{
+  "_note": "Development updates feed. Newest first. Append one object per milestone. Allowed tags: validation, filing, partnership, publication, hardware, site. Optional 'url' links out (or to an internal page). Keep 'summary' to 1-2 sentences.",
+  "updates": [
+    {
+      "id": "2026-07-site-upgrade",
+      "date": "2026-07-19",
+      "title": "Site rebuilt on Astro with interactive NSL + DPI demos",
+      "summary": "pqsensing.com migrated to a static Astro build: live Noise-Stationary Locking demo with shareable-state URLs and a CSV bench-trace loader, a new dark-port matched-filter demo, typeset math, and a publications index.",
+      "tags": ["site"],
+      "url": "/index.html#exhibit"
+    },
+    {
+      "id": "2026-06-whitepapers",
+      "date": "2026-06-01",
+      "title": "Three technical white papers published",
+      "summary": "Non-confidential papers on Noise-Stationary Locking + Dark-Port Injection, objective-function supervisory control modules, and atom-interferometric extensions are available with BibTeX citations.",
+      "tags": ["publication"],
+      "url": "/publications.html"
+    },
+    {
+      "id": "2026-05-validation-partner",
+      "date": "2026-05-15",
+      "title": "Seeking a validation partner for the tabletop MZI sprint",
+      "summary": "Actively looking for a university lab, metrology partner, or sponsor to run the first classical Mach–Zehnder comparison of a conventional lock against NSL under controlled disturbance.",
+      "tags": ["partnership", "validation"],
+      "url": "/index.html#collaborate"
+    },
+    {
+      "id": "2026-04-bench-format",
+      "date": "2026-04-20",
+      "title": "Standardized the bench-trace data format (PQS-Trace-v1.0)",
+      "summary": "The interactive demo now ingests measured (delta, P, N_band) traces directly, so validation-sprint data will map onto the published thesis with zero rework.",
+      "tags": ["validation"],
+      "url": "/index.html#exhibit"
+    }
+  ]
+}

@@ -18,6 +18,13 @@ export default defineConfig({
     format: 'file',
   },
 
+  // Prefetch linked pages on hover/viewport for near-instant navigation,
+  // without the script re-init hazards of full view transitions.
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
+
   integrations: [
     sitemap({
       changefreq: 'weekly',

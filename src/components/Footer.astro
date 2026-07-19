@@ -26,6 +26,17 @@ const year = new Date().getFullYear();
       </p>
     </div>
   </div>
+  <nav class="container footer-nav" aria-label="Footer">
+    <a href="/index.html">Home</a>
+    <a href="/modules.html">Modules</a>
+    <a href="/metrology.html">Metrology 101</a>
+    <a href="/metrology201.html">Metrology 201</a>
+    <a href="/publications.html">Publications</a>
+    <a href="/updates.html">Updates</a>
+    <a href="/about.html">About</a>
+    <a href="/architecture.html">Media + Architecture</a>
+    <a href="/updates/rss.xml">RSS</a>
+  </nav>
   <div class="container footer-legal">
     <div>
       <strong>PQSENSING.COM</strong> · Peterson Quantum Sensing LLC · Hugoton, Kansas
@@ -45,8 +56,23 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
-  .footer-legal {
+  .footer-nav {
     margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line2, rgba(255, 255, 255, 0.1));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+  }
+  .footer-nav a {
+    color: var(--muted2, #7aa4bc);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.15s ease;
+  }
+  .footer-nav a:hover { color: var(--cyan, #39dfff); }
+  .footer-legal {
+    margin-top: 22px;
     padding-top: 20px;
     border-top: 1px solid var(--line2, rgba(255, 255, 255, 0.1));
     display: flex;

@@ -1,0 +1,110 @@
+---
+/**
+ * UpdatesFeed — reverse-chronological development-updates list.
+ * Used on the homepage (limited) and the /updates page (full).
+ * Data comes from src/data/updates.json.
+ */
+import updates from '../data/updates.json';
+
+interface Props {
+  limit?: number;
+}
+const { limit } = Astro.props;
+
+const sorted = [...updates.updates].sort((a, b) => (a.date < b.date ? 1 : -1));
+const items = typeof limit === 'number' ? sorted.slice(0, limit) : sorted;
+
+const fmt = (d: string) =>
+  new Date(d + 'T00:00:00Z').toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<ol class="updates-list">
+  {items.map((u) => (
+    <li class="update-item">
+      <time class="update-date" datetime={u.date}>{fmt(u.date)}</time>
+      <div class="update-body">
+        <h3 class="update-title">
+          {u.url ? <a href={u.url}>{u.title}</a> : u.title}
+        </h3>
+        <p class="update-summary">{u.summary}</p>
+        {u.tags && u.tags.length > 0 && (
+          <div class="update-tags">
+            {u.tags.map((t) => <span class:list={['update-tag', `tag-${t}`]}>{t}</span>)}
+          </div>
+        )}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .updates-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .update-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 22px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+  }
+  .update-item:first-child { border-top: none; }
+  .update-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--muted2, #7aa4bc);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+  .update-title {
+    font-size: 18px;
+    line-height: 1.3;
+    margin: 0 0 6px;
+    color: var(--ink, #eef9ff);
+  }
+  .update-title a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(var(--cyan, #39dfff), var(--cyan, #39dfff));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.25s ease;
+  }
+  .update-title a:hover { background-size: 100% 1px; color: var(--cyan, #39dfff); }
+  .update-summary {
+    margin: 0 0 12px;
+    color: var(--muted, #a7c4d8);
+    line-height: 1.6;
+  }
+  .update-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .update-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--muted2, #7aa4bc);
+  }
+  .tag-validation { color: #49f4c8; border-color: rgba(73, 244, 200, 0.4); }
+  .tag-partnership { color: #9a63ff; border-color: rgba(154, 99, 255, 0.4); }
+  .tag-publication { color: #39dfff; border-color: rgba(57, 223, 255, 0.4); }
+  .tag-filing { color: #e8c27a; border-color: rgba(232, 194, 122, 0.4); }
+  .tag-hardware { color: #f0b357; border-color: rgba(240, 179, 87, 0.4); }
+  .tag-site { color: #a7c4d8; border-color: rgba(167, 196, 216, 0.4); }
+
+  @media (max-width: 620px) {
+    .update-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>

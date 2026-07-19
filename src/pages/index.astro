@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import NSLDemo from '../components/NSLDemo.astro';
 import DPIDemo from '../components/DPIDemo.astro';
 import MathEquation from '../components/MathEquation.astro';
+import UpdatesFeed from '../components/UpdatesFeed.astro';
 
 const title = 'PQSensing — Advanced Supervisory Modules for Interferometric Systems';
 const description =
@@ -344,6 +345,37 @@ const description =
       </div>
     </section>
 
+    <section id="updates" class="section-pad dark-block">
+      <div class="container">
+        <div class="section-head wide" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+          <div>
+            <p class="eyebrow">Development updates</p>
+            <h2>Recent progress.</h2>
+          </div>
+          <a class="button ghost" href="/updates.html">View all updates →</a>
+        </div>
+        <div style="max-width:820px">
+          <UpdatesFeed limit={3} />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container">
+        <aside class="arch-promo" aria-label="Architectural services">
+          <div class="arch-promo-body">
+            <p class="eyebrow" style="color:#f0b357">Also from the founder · separate practice</p>
+            <h2>Media + Architecture</h2>
+            <p>Precision architectural drafting, HABS historic documentation, and photoreal 3D visualization — the same measurement discipline, applied to buildings. Productized packages for residential, commercial, and historic projects.</p>
+            <div class="cta-row">
+              <a class="button arch-promo-btn" href="/architecture.html">Explore architectural services</a>
+            </div>
+          </div>
+          <div class="arch-promo-art" aria-hidden="true"></div>
+        </aside>
+      </div>
+    </section>
+
     <section id="fund" class="section-pad fund-section">
       <div class="container fund-card">
         <div>
@@ -365,3 +397,31 @@ const description =
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .arch-promo {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(217, 119, 6, 0.3);
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.08), rgba(255, 255, 255, 0.02));
+  }
+  .arch-promo-body { padding: clamp(28px, 4vw, 44px); }
+  .arch-promo-body h2 { margin: 0 0 14px; }
+  .arch-promo-body p { color: #c3d2e0; line-height: 1.6; margin: 0 0 22px; }
+  .arch-promo-btn {
+    background: linear-gradient(135deg, #d97706, #f0b357);
+    color: #1a0f02;
+  }
+  .arch-promo-art {
+    background: url('/assets/drafting/renderings/2024-14-event-center-photoreal-concept.jpg') center/cover no-repeat;
+    min-height: 240px;
+    border-left: 1px solid rgba(217, 119, 6, 0.3);
+  }
+  @media (max-width: 760px) {
+    .arch-promo { grid-template-columns: 1fr; }
+    .arch-promo-art { min-height: 180px; order: -1; }
+  }
+</style>

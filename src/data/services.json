@@ -1,0 +1,57 @@
+{
+  "_note": "IMPORTANT: the priceFrom values below are PLACEHOLDER EXAMPLES \u2014 replace them with your real starting prices (or set to null for 'Pricing on request'). Showing a starting price is the single highest conversion lever for productized services, so keep numbers here rather than blank. Edit deliverables/timelines freely.",
+  "packages": [
+    {
+      "id": "residential-plan-set",
+      "name": "Residential Plan Set",
+      "tagline": "Permit-ready construction documents",
+      "deliverables": [
+        "Floor plans, elevations & building sections",
+        "Roof & foundation plans",
+        "Coordinated PDF + DWG deliverables"
+      ],
+      "timeline": "2\u20133 weeks",
+      "priceFrom": 2800,
+      "featured": false
+    },
+    {
+      "id": "habs-historic-documentation",
+      "name": "HABS / Historic Documentation",
+      "tagline": "Measured drawings to NPS standards",
+      "deliverables": [
+        "Measured drawings & field documentation",
+        "Large-format photo documentation",
+        "Prepared to HABS/HAER/NPS standards"
+      ],
+      "timeline": "3\u20135 weeks",
+      "priceFrom": 4500,
+      "featured": true
+    },
+    {
+      "id": "3d-visualization-bundle",
+      "name": "3D Visualization Bundle",
+      "tagline": "Photoreal renders for approvals & marketing",
+      "deliverables": [
+        "3\u20135 exterior / interior render views",
+        "Photoreal concept treatment",
+        "Optional walkthrough animation"
+      ],
+      "timeline": "1\u20132 weeks",
+      "priceFrom": 1500,
+      "featured": false
+    },
+    {
+      "id": "custom-complex",
+      "name": "Custom / Complex Projects",
+      "tagline": "Full CD sets & multi-building coordination",
+      "deliverables": [
+        "Complete construction-document sets",
+        "Multi-building & site coordination",
+        "Consultant drawing coordination"
+      ],
+      "timeline": "By scope",
+      "priceFrom": null,
+      "featured": false
+    }
+  ]
+}

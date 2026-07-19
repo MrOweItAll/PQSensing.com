@@ -1,0 +1,507 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import services from '../data/services.json';
+
+const title = 'Media + Architecture — Precision Drafting, HABS Documentation & Visualization';
+const description =
+  'Media + Architecture is the spatial-documentation practice of Peterson Quantum Sensing’s founder: architectural drafting, HABS/HAER historic documentation, and photoreal 3D visualization. Productized packages for residential, commercial, and historic projects.';
+
+const packages = services.packages;
+
+// Curated portfolio (thumbnails link to full-resolution images).
+const R = '/assets/drafting/renderings/';
+const D = '/assets/drafting/';
+const S = '/assets/drafting/sets/';
+const H = '/assets/habs/';
+
+const portfolio = [
+  // 3D Visualization
+  { cat: 'viz', title: 'Southwind House — concept render', base: R + '2022-17-southwind-house-photoreal-concept' },
+  { cat: 'viz', title: 'Event Center — concept render', base: R + '2024-14-event-center-photoreal-concept' },
+  { cat: 'viz', title: 'Pioneer Electric — office & shop', base: R + '2026-03-pioneer-electric-photoreal-concept' },
+  { cat: 'viz', title: 'Industrial Building — concept render', base: R + '20-36-industrial-building-photoreal-concept' },
+  { cat: 'viz', title: 'Truck Center — concept render', base: R + '2020-06-truck-center-photoreal-concept' },
+  { cat: 'viz', title: 'Martin Residence — concept render', base: R + '2020-29-martin-residence-photoreal-concept' },
+  // Plans & Drafting
+  { cat: 'plans', title: 'Residential elevations', base: D + 'residential-elevations' },
+  { cat: 'plans', title: 'Residential basement plan', base: D + 'residential-basement-plan' },
+  { cat: 'plans', title: 'Section & roof plan', base: D + 'residential-section-roof-plan' },
+  { cat: 'plans', title: 'Commercial floor plan', base: D + 'commercial-floor-plan' },
+  { cat: 'plans', title: 'Baker House — floor plan', base: S + 'baker-house-floor-plan' },
+  { cat: 'plans', title: 'Assembly building section', base: D + 'assembly-building-section' },
+  // HABS Documentation
+  { cat: 'habs', title: 'HABS MO-0432 — façade elevation', base: H + 'habs-mo0432-sheet-00010-facade-elevation' },
+  { cat: 'habs', title: 'HABS MO-0432 — seventh floor plan', base: H + 'habs-mo0432-sheet-00007-seventh-floor-plan' },
+  { cat: 'habs', title: 'HABS MO-0432 — exterior view', base: H + 'habs-mo0432-photo-exterior-view' },
+  { cat: 'habs', title: 'HABS MO-0432 — eagle sculpture detail', base: H + 'habs-mo0432-photo-eagle-sculpture' },
+];
+
+const filters = [
+  { key: 'all', label: 'All work' },
+  { key: 'viz', label: '3D Visualization' },
+  { key: 'plans', label: 'Plans & Drafting' },
+  { key: 'habs', label: 'HABS Documentation' },
+];
+
+const briefBody =
+  'Project type / scope:\n' +
+  'Approximate size or building:\n' +
+  'Target timeline:\n' +
+  'Project location:\n' +
+  'Anything else I should know:\n';
+const mailto = (subject, body = '') =>
+  'mailto:mroweitall@gmail.com?subject=' + encodeURIComponent(subject) +
+  (body ? '&body=' + encodeURIComponent(body) : '');
+
+const steps = [
+  { n: '1', title: 'Brief', text: 'Send the scope, any existing drawings or site photos, and your timeline. You get a fixed-fee proposal back.' },
+  { n: '2', title: 'Draft review', text: 'Work is shared as a draft set for markup. One revision round is included so the drawings match intent before final.' },
+  { n: '3', title: 'Final files + ownership', text: 'Coordinated PDF + DWG deliverables handed over — you receive the final files and full ownership of the drawings.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogImage="/assets/drafting/renderings/2022-17-southwind-house-photoreal-concept.jpg">
+  <main id="top" class="arch">
+    <section class="arch-hero">
+      <div class="arch-hero-grid" aria-hidden="true"></div>
+      <div class="container arch-hero-inner">
+        <p class="arch-eyebrow">Peterson Systems · Spatial &amp; Historic Documentation</p>
+        <h1>Media&nbsp;+&nbsp;Architecture</h1>
+        <p class="arch-lede">
+          Precision architectural drafting, HABS/HAER historic documentation, and
+          photoreal 3D visualization — the spatial-documentation practice run by the
+          founder of Peterson Quantum Sensing. The same discipline that goes into
+          interferometer control systems, applied to buildings.
+        </p>
+        <div class="arch-cta-row">
+          <a class="arch-btn primary" href="#packages">View service packages</a>
+          <a class="arch-btn ghost" href="#portfolio">See the portfolio</a>
+        </div>
+        <div class="arch-facts">
+          <span><strong>20+ years</strong> drafting &amp; documentation</span>
+          <span><strong>NPS-standard</strong> HABS / HAER work</span>
+          <span><strong>Photoreal</strong> concept visualization</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="arch-section">
+      <div class="container">
+        <div class="arch-head">
+          <p class="arch-eyebrow">Service packages</p>
+          <h2>Fixed-scope packages, clear deliverables.</h2>
+          <p>Productized services with defined outputs and timelines — request a package and it lands in the inbox pre-labeled, ready to scope.</p>
+        </div>
+        <div class="pkg-grid">
+          {packages.map((p) => (
+            <article class:list={['pkg-card', { featured: p.featured }]}>
+              {p.featured && <span class="pkg-flag">Most requested</span>}
+              <h3>{p.name}</h3>
+              <p class="pkg-tagline">{p.tagline}</p>
+              <ul class="pkg-list">
+                {p.deliverables.map((d) => <li>{d}</li>)}
+              </ul>
+              <div class="pkg-meta">
+                <span class="pkg-timeline">{p.timeline}</span>
+                <span class="pkg-price">{p.priceFrom ? `From $${p.priceFrom.toLocaleString()}` : 'Pricing on request'}</span>
+              </div>
+              <a class="arch-btn primary full" href={mailto('Media + Architecture — ' + p.name + ' inquiry', 'Package: ' + p.name + '\n\n' + briefBody)}>Request this package</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="arch-section">
+      <div class="container">
+        <div class="arch-head">
+          <p class="arch-eyebrow">How it works</p>
+          <h2>A simple, low-risk process.</h2>
+        </div>
+        <div class="steps-grid">
+          {steps.map((s) => (
+            <article class="step-card">
+              <span class="step-n">{s.n}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </article>
+          ))}
+        </div>
+        <div class="trust-strip">
+          <span><strong>20+ years</strong> of drafting &amp; documentation experience</span>
+          <span><strong>HABS / HAER</strong> measured drawings to NPS standards</span>
+          <span><strong>PDF + DWG</strong> deliverables · you own the final files</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="arch-section alt">
+      <div class="container">
+        <div class="arch-head">
+          <p class="arch-eyebrow">Selected work</p>
+          <h2>Portfolio.</h2>
+          <p>Residential and commercial drafting, historic documentation, and concept visualization. Click any image to open it full-size.</p>
+        </div>
+        <div class="arch-filters" role="tablist" aria-label="Filter portfolio">
+          {filters.map((f, i) => (
+            <button
+              type="button"
+              class:list={['arch-filter', { active: i === 0 }]}
+              data-filter={f.key}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}>{f.label}</button>
+          ))}
+        </div>
+        <div class="arch-gallery">
+          {portfolio.map((item) => (
+            <a
+              class="arch-tile"
+              data-cat={item.cat}
+              href={item.base + '.jpg'}
+              target="_blank"
+              rel="noopener">
+              <img src={item.base + '-thumb.jpg'} alt={item.title} loading="lazy" decoding="async" />
+              <span class="arch-tile-label">{item.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="arch-section">
+      <div class="container arch-founder">
+        <div>
+          <p class="arch-eyebrow">One practitioner, two disciplines</p>
+          <h2>Why the same person does both.</h2>
+          <p>
+            Architectural documentation and interferometric metrology reward the same
+            habits: exacting measurement, disciplined tolerances, and drawings you can
+            build from. Media + Architecture is a separate practice with its own clients
+            and deliverables — but it runs on the same standard of precision as the
+            quantum-sensing work.
+          </p>
+          <div class="arch-cta-row">
+            <a class="arch-btn primary" href={mailto('Media + Architecture — project inquiry', briefBody)}>Start a project</a>
+            <a class="arch-btn ghost" href="/index.html">Back to Peterson Quantum Sensing</a>
+          </div>
+        </div>
+        <aside class="arch-quote-card">
+          <span class="arch-quote-label">Request a quote</span>
+          <p>Have drawings, a site, or a historic structure that needs documenting? Send the scope and timeline and you’ll get a fixed-fee proposal.</p>
+          <a class="arch-btn primary full" href={mailto('Media + Architecture — quote request', briefBody)}>Email a project brief</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const filters = document.querySelectorAll('.arch-filter');
+    const tiles = document.querySelectorAll('.arch-tile');
+    filters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-filter');
+        filters.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        tiles.forEach((t) => {
+          const show = key === 'all' || t.getAttribute('data-cat') === key;
+          t.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
+
+<style>
+  /* Architectural sub-brand palette: gold/ochre + CAD grid, on the shared dark base. */
+  .arch {
+    --arch-gold: #d97706;
+    --arch-gold-2: #f0b357;
+    --arch-ink: #eef2f7;
+    --arch-line: rgba(217, 119, 6, 0.28);
+    --arch-panel: rgba(255, 255, 255, 0.04);
+  }
+  .arch h1,
+  .arch h2,
+  .arch h3 { color: var(--arch-ink); letter-spacing: -0.01em; }
+  .arch-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--arch-gold-2);
+    margin: 0 0 14px;
+  }
+
+  .arch-hero {
+    position: relative;
+    padding: clamp(70px, 12vw, 150px) 0 clamp(50px, 8vw, 90px);
+    overflow: hidden;
+    background:
+      radial-gradient(120% 120% at 15% 0%, rgba(217, 119, 6, 0.14), transparent 55%),
+      #06101d;
+    border-bottom: 1px solid var(--arch-line);
+  }
+  .arch-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(217, 119, 6, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(217, 119, 6, 0.09) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(120% 90% at 20% 10%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(120% 90% at 20% 10%, #000 30%, transparent 80%);
+  }
+  .arch-hero-inner { position: relative; }
+  .arch-hero h1 {
+    font-size: clamp(42px, 8vw, 84px);
+    line-height: 1.02;
+    margin: 0 0 22px;
+  }
+  .arch-lede {
+    max-width: 680px;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+    color: #c3d2e0;
+    margin: 0 0 30px;
+  }
+  .arch-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    margin-top: 34px;
+    font-size: 14px;
+    color: #9fb2c4;
+  }
+  .arch-facts strong { color: var(--arch-gold-2); }
+
+  .arch-section { padding: clamp(56px, 9vw, 104px) 0; }
+  .arch-section.alt { background: #050d18; border-block: 1px solid rgba(255,255,255,0.05); }
+  .arch-head { max-width: 640px; margin-bottom: 40px; }
+  .arch-head h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 14px; }
+  .arch-head p { color: #a7c4d8; line-height: 1.6; margin: 0; }
+
+  .arch-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .arch-btn.primary {
+    background: linear-gradient(135deg, var(--arch-gold), var(--arch-gold-2));
+    color: #1a0f02;
+    box-shadow: 0 10px 30px rgba(217, 119, 6, 0.25);
+  }
+  .arch-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(217, 119, 6, 0.34); }
+  .arch-btn.ghost {
+    border: 1px solid var(--arch-line);
+    color: var(--arch-gold-2);
+    background: transparent;
+  }
+  .arch-btn.ghost:hover { background: rgba(217, 119, 6, 0.08); }
+  .arch-btn.full { width: 100%; margin-top: 18px; }
+  .arch-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .pkg-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 26px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: var(--arch-panel);
+  }
+  .pkg-card.featured {
+    border-color: var(--arch-line);
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.08), rgba(255,255,255,0.02));
+  }
+  .pkg-flag {
+    position: absolute;
+    top: -11px;
+    left: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a0f02;
+    background: var(--arch-gold-2);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  .pkg-card h3 { font-size: 19px; margin: 0 0 4px; }
+  .pkg-tagline { color: #9fb2c4; font-size: 14px; margin: 0 0 16px; }
+  .pkg-list { list-style: none; padding: 0; margin: 0 0 18px; flex: 1; }
+  .pkg-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 9px;
+    color: #c3d2e0;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .pkg-list li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid var(--arch-gold);
+    border-radius: 2px;
+  }
+  .pkg-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .pkg-timeline { color: #9fb2c4; }
+  .pkg-price { color: var(--arch-gold-2); font-weight: 600; }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .step-card {
+    padding: 26px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: var(--arch-panel);
+  }
+  .step-n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--arch-gold), var(--arch-gold-2));
+    color: #1a0f02;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 16px;
+  }
+  .step-card h3 { font-size: 18px; margin: 0 0 8px; }
+  .step-card p { color: #a7c4d8; line-height: 1.55; margin: 0; font-size: 14px; }
+  .trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 30px;
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid var(--arch-line);
+    font-size: 14px;
+    color: #9fb2c4;
+  }
+  .trust-strip strong { color: var(--arch-gold-2); }
+
+  .arch-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+  .arch-filter {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    color: #9fb2c4;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .arch-filter:hover { color: var(--arch-ink); border-color: var(--arch-line); }
+  .arch-filter.active {
+    color: #1a0f02;
+    background: var(--arch-gold-2);
+    border-color: var(--arch-gold-2);
+  }
+
+  .arch-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+  }
+  .arch-tile {
+    position: relative;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0a1725;
+    text-decoration: none;
+    aspect-ratio: 4 / 3;
+  }
+  .arch-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .arch-tile:hover img { transform: scale(1.05); }
+  .arch-tile-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 22px 14px 12px;
+    font-size: 13px;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(4, 10, 18, 0.9));
+    transform: translateY(4px);
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+  .arch-tile:hover .arch-tile-label { transform: translateY(0); opacity: 1; }
+
+  .arch-founder {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .arch-founder h2 { font-size: clamp(26px, 4vw, 38px); margin: 0 0 16px; }
+  .arch-founder p { color: #a7c4d8; line-height: 1.65; margin: 0 0 26px; }
+  .arch-quote-card {
+    padding: 28px 26px;
+    border: 1px solid var(--arch-line);
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(217, 119, 6, 0.08), rgba(255,255,255,0.02));
+  }
+  .arch-quote-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--arch-gold-2);
+  }
+  .arch-quote-card p { color: #c3d2e0; line-height: 1.6; margin: 12px 0 0; font-size: 15px; }
+
+  @media (max-width: 820px) {
+    .arch-founder { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .arch-btn, .arch-tile img, .arch-tile-label { transition: none; }
+    .arch-tile:hover img { transform: none; }
+  }
+</style>

@@ -13,6 +13,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.2.1",
     "astro": "^4.16.18",
     "katex": "^0.16.11"
