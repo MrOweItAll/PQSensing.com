@@ -136,6 +136,10 @@ const schemaData =
         let i = 0;
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.addEventListener('keydown', (e) => {
+          // Never interfere with typing in form controls.
+          const t = e.target;
+          if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+          if (t && t.isContentEditable) return;
           const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
           i = k === seq[i] ? i + 1 : (k === seq[0] ? 1 : 0);
           if (i === seq.length) { i = 0; darkPort(); }
