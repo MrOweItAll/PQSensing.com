@@ -105,7 +105,7 @@ const steps = [
                 <span class="pkg-timeline">{p.timeline}</span>
                 <span class="pkg-price">{p.priceRange ? p.priceRange : 'Pricing on request'}</span>
               </div>
-              <a class="arch-btn primary full" href={mailto('Media + Architecture — ' + p.name + ' inquiry', 'Package: ' + p.name + '\n\n' + briefBody)}>Request this package</a>
+              <a class="arch-btn primary full" href={'/contact?type=architecture&package=' + encodeURIComponent(p.name)}>Request this package</a>
             </article>
           ))}
         </div>
@@ -181,14 +181,14 @@ const steps = [
             quantum-sensing work.
           </p>
           <div class="arch-cta-row">
-            <a class="arch-btn primary" href={mailto('Media + Architecture — project inquiry', briefBody)}>Start a project</a>
+            <a class="arch-btn primary" href="/contact?type=architecture">Start a project</a>
             <a class="arch-btn ghost" href="/index.html">Back to Peterson Quantum Sensing</a>
           </div>
         </div>
         <aside class="arch-quote-card">
           <span class="arch-quote-label">Request a quote</span>
           <p>Have drawings, a site, or a historic structure that needs documenting? Send the scope and timeline and you’ll get a fixed-fee proposal.</p>
-          <a class="arch-btn primary full" href={mailto('Media + Architecture — quote request', briefBody)}>Email a project brief</a>
+          <a class="arch-btn primary full" href="/contact?type=architecture">Email a project brief</a>
         </aside>
       </div>
     </section>

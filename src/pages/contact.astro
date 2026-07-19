@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+
+const title = 'Contact — PQSensing & Media + Architecture';
+const description =
+  'Get in touch about a Noise-Stationary Locking validation partnership, investment, architectural drafting services, or collaboration.';
+
+const endpoint = site.formspreeEndpoint;
+const email = site.contactEmail;
+
+const types = [
+  { value: 'validation', label: 'Validation partnership (lab / metrology)' },
+  { value: 'investment', label: 'Investment / funding' },
+  { value: 'architecture', label: 'Architecture — service inquiry' },
+  { value: 'collaboration', label: 'Collaboration / other' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <main id="top">
+    <section class="section-pad">
+      <div class="container" style="max-width:720px">
+        <div class="section-head narrow">
+          <p class="eyebrow">Get in touch</p>
+          <h2>Start a conversation.</h2>
+          <p>Tell me what you have in mind — a validation sprint, an investment conversation, an architecture project, or just comparing notes. I read every message.</p>
+        </div>
+
+        <form id="contactForm" class="pq-form" method="POST" action={endpoint} data-endpoint={endpoint} data-email={email}>
+          <div class="pq-field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="pq-field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="pq-field">
+            <label for="cf-type">What's this about?</label>
+            <select id="cf-type" name="inquiry_type">
+              {types.map((t) => <option value={t.value}>{t.label}</option>)}
+            </select>
+          </div>
+          <div class="pq-field" id="cf-package-wrap" hidden>
+            <label for="cf-package">Package of interest</label>
+            <input id="cf-package" name="package" type="text" readonly />
+          </div>
+          <div class="pq-field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="6" placeholder="Scope, timeline, location, and anything else useful." required></textarea>
+          </div>
+          <!-- Formspree niceties -->
+          <input type="hidden" name="_subject" id="cf-subject" value="PQSensing website inquiry" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="pq-actions">
+            <button type="submit" class="button primary" id="cf-submit">Send message</button>
+            <span class="pq-status" id="cf-status" role="status" aria-live="polite"></span>
+          </div>
+          <p class="pq-fallback">Prefer email? Write directly to <a id="cf-mailto" href={`mailto:${email}`}>{email}</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    const endpoint = form.getAttribute('data-endpoint') || '';
+    const email = form.getAttribute('data-email') || '';
+    const status = document.getElementById('cf-status');
+    const submit = document.getElementById('cf-submit');
+    const typeSel = document.getElementById('cf-type');
+    const pkgWrap = document.getElementById('cf-package-wrap');
+    const pkgInput = document.getElementById('cf-package');
+    const subject = document.getElementById('cf-subject');
+    const mailto = document.getElementById('cf-mailto');
+
+    const configured = endpoint && endpoint.indexOf('YOUR_FORM_ID') === -1;
+
+    // Prefill from URL: ?type=architecture&package=HABS...
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    const pkg = params.get('package');
+    if (type) {
+      for (const o of typeSel.options) if (o.value === type) typeSel.value = type;
+    }
+    function syncPackage() {
+      const isArch = typeSel.value === 'architecture';
+      pkgWrap.hidden = !(isArch && pkgInput.value);
+    }
+    if (pkg) { pkgInput.value = pkg; if (!type) typeSel.value = 'architecture'; }
+    syncPackage();
+    typeSel.addEventListener('change', () => { syncPackage(); updateSubject(); });
+
+    function updateSubject() {
+      const map = {
+        validation: 'PQSensing — validation partnership',
+        investment: 'PQSensing — investment inquiry',
+        architecture: 'Media + Architecture — service inquiry' + (pkgInput.value ? ' (' + pkgInput.value + ')' : ''),
+        collaboration: 'PQSensing — collaboration / hello',
+      };
+      subject.value = map[typeSel.value] || 'PQSensing website inquiry';
+      // keep the mailto fallback aligned with the chosen topic
+      mailto.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject.value);
+    }
+    updateSubject();
+
+    // If Formspree isn't configured yet, fall back to a prefilled email.
+    if (!configured) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const body =
+          'Name: ' + (form.name.value || '') + '\n' +
+          'Type: ' + typeSel.options[typeSel.selectedIndex].text + '\n' +
+          (pkgInput.value ? 'Package: ' + pkgInput.value + '\n' : '') +
+          '\n' + (form.message.value || '');
+        window.location.href =
+          'mailto:' + email + '?subject=' + encodeURIComponent(subject.value) + '&body=' + encodeURIComponent(body);
+      });
+      return;
+    }
+
+    // Configured: AJAX submit to Formspree, stay on page.
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      submit.disabled = true;
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          form.reset();
+          syncPackage();
+          status.style.color = 'var(--teal, #49f4c8)';
+          status.textContent = 'Thanks — your message is on its way.';
+        } else {
+          throw new Error('bad response');
+        }
+      } catch (_) {
+        status.style.color = 'var(--gold, #e8c27a)';
+        status.textContent = 'Something went wrong — please email ' + email + ' directly.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  })();
+</script>
+
+<style>
+  .pq-form { margin-top: 30px; display: flex; flex-direction: column; gap: 18px; }
+  .pq-field { display: flex; flex-direction: column; gap: 7px; }
+  .pq-field label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted2, #7aa4bc);
+  }
+  .pq-field input,
+  .pq-field select,
+  .pq-field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+    background: rgba(4, 16, 30, 0.6);
+    color: var(--ink, #eef9ff);
+    font-size: 15px;
+    font-family: inherit;
+  }
+  .pq-field textarea { resize: vertical; }
+  .pq-field input:focus,
+  .pq-field select:focus,
+  .pq-field textarea:focus {
+    outline: none;
+    border-color: var(--cyan, #39dfff);
+    box-shadow: 0 0 0 3px rgba(57, 223, 255, 0.15);
+  }
+  .pq-field input[readonly] { color: var(--muted, #a7c4d8); }
+  .pq-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+  .pq-status { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--muted, #a7c4d8); }
+  .pq-fallback { font-size: 14px; color: var(--muted2, #7aa4bc); margin: 4px 0 0; }
+  .pq-fallback a { color: var(--cyan, #39dfff); }
+</style>
