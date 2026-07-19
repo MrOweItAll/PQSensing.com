@@ -103,7 +103,7 @@ const steps = [
               </ul>
               <div class="pkg-meta">
                 <span class="pkg-timeline">{p.timeline}</span>
-                <span class="pkg-price">{p.priceFrom ? `From $${p.priceFrom.toLocaleString()}` : 'Pricing on request'}</span>
+                <span class="pkg-price">{p.priceRange ? p.priceRange : 'Pricing on request'}</span>
               </div>
               <a class="arch-btn primary full" href={mailto('Media + Architecture — ' + p.name + ' inquiry', 'Package: ' + p.name + '\n\n' + briefBody)}>Request this package</a>
             </article>

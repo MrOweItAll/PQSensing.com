@@ -40,6 +40,7 @@ const year = new Date().getFullYear();
   <div class="container footer-legal">
     <div>
       <strong>PQSENSING.COM</strong> · Peterson Quantum Sensing LLC · Hugoton, Kansas
+      <span class="footer-pending">NSL &amp; DPI — patent pending</span>
     </div>
     <div>
       &copy; {year} Peterson Quantum Sensing LLC ·
@@ -91,5 +92,16 @@ const year = new Date().getFullYear();
   .footer-disclosure {
     color: #64748b;
     max-width: var(--max, 1180px);
+  }
+  .footer-pending {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(73, 244, 200, 0.4);
+    color: #49f4c8;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
   }
 </style>

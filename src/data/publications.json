@@ -8,7 +8,7 @@
       "version": "v1.0",
       "date": "2025-06-01",
       "authors": ["Jon Peterson"],
-      "abstract": "Introduces the Noise-Stationary Locking (NSL) control concept — servoing an interferometer toward the operating point where a normalized measurement-band noise objective is stationary rather than where optical power is extremal — and the companion Phase-Controlled Dark-Port Injection (DPI) technique that turns the nominally dark port into a controlled channel for calibration, coding, and matched-filter recovery. Non-confidential treatment based on the PQSensing patent-application math and control architecture.",
+      "abstract": "Introduces the Noise-Stationary Locking (NSL) control concept — servoing an interferometer toward the operating point where a normalized measurement-band noise objective is stationary rather than where optical power is extremal — and the companion Phase-Controlled Dark-Port Injection (DPI) technique that turns the nominally dark port into a controlled channel for calibration, coding, and matched-filter recovery. Non-confidential treatment based on the PQSensing patent-pending math and control architecture (non-provisional filed).",
       "pdf": "/assets/whitepapers/pqsensing-nsl-dpi-white-paper.pdf",
       "thumb": "/assets/whitepapers/pqsensing-nsl-dpi-white-paper-thumb.jpg"
     },

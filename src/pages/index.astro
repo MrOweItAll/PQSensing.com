@@ -18,15 +18,19 @@ const description =
       <div class="hero-bg" role="img" aria-label="Abstract interferometer with spectral noise visualization"></div>
       <div class="hero-overlay"></div>
       <div class="hero-content container">
-        <p class="eyebrow">Advanced Supervisory Modules · measurement-aware interferometry</p>
+        <p class="eyebrow">
+          Advanced Supervisory Modules · measurement-aware interferometry
+          <span class="pill-pending" title="Non-provisional patent application filed for NSL &amp; DPI">Patent pending</span>
+        </p>
         <h1>Lock the error bar, not just the fringe.</h1>
-        <p class="lede">Conventional locks keep an instrument optically stable. PQSensing builds Advanced Supervisory Modules — a firmware performance layer that asks a harder question: is the instrument parked where it produces the most usable measurement information? Our flagship module brings this to quantum-grade optical sensing, and the family extends across inertial, timing, and quantum-communications instruments.</p>
+        <p class="hero-plain"><strong>In plain terms:</strong> we build firmware that keeps precision laser instruments parked at their most accurate, lowest-noise setting — automatically. Like autofocus, but for measurement noise.</p>
+        <p class="lede">Conventional locks keep an instrument optically stable. PQSensing builds Advanced Supervisory Modules — a firmware performance layer that asks a harder question: is the instrument parked where it produces the most usable measurement information? Our flagship module, Noise-Stationary Locking, brings this to quantum-grade optical sensing; the family extends across inertial, timing, and quantum-communications instruments.</p>
         <div class="cta-row">
-          <a class="button primary" href="/modules.html">Explore the modules</a>
-          <a class="button ghost" href="/PQSensing_MZI_NSL_Pitch_Deck.pdf" download>Download pitch deck</a>
+          <a class="button primary" href="#collaborate">Partner on the validation</a>
+          <a class="button ghost" href="#exhibit">See the live demo</a>
         </div>
         <div class="hero-facts" aria-label="Core positioning">
-          <span><strong>Supervisory</strong> performance layer.</span>
+          <span><strong>Patent pending</strong> · NSL + DPI</span>
           <span><strong>Flagship:</strong> Noise-Stationary Locking.</span>
           <span><strong>Runs on</strong> standard lab instruments.</span>
         </div>
@@ -345,6 +349,42 @@ const description =
       </div>
     </section>
 
+    <section id="work-together" class="section-pad">
+      <div class="container">
+        <div class="section-head narrow">
+          <p class="eyebrow">Ways to work together</p>
+          <h2>Four ways in.</h2>
+          <p>Whether you run a lab, write checks, need drawings, or just think this is interesting — here’s the door.</p>
+        </div>
+        <div class="ways-grid">
+          <article class="way-card way-primary">
+            <span class="way-tag">Primary ask</span>
+            <h3>Validate it in your lab</h3>
+            <p>University or metrology lab? Help run the tabletop Mach–Zehnder sprint comparing a conventional lock against NSL. Classical optics, no squeezed source required.</p>
+            <a class="button primary" href="mailto:mroweitall@gmail.com?subject=PQSensing%20%E2%80%94%20validation%20partnership">Discuss a validation sprint</a>
+          </article>
+          <article class="way-card">
+            <span class="way-tag">Investors</span>
+            <h3>Back the sprint</h3>
+            <p>Patent-pending deep-tech IP with a lean, defined first milestone. A $10K classical-MZI data sprint that proves or kills the thesis.</p>
+            <a class="button ghost" href="#fund">See the ask &amp; deck</a>
+          </article>
+          <article class="way-card">
+            <span class="way-tag">Architecture</span>
+            <h3>Hire the drafting practice</h3>
+            <p>Need construction documents, HABS historic documentation, or photoreal renders? The founder’s Media + Architecture practice takes on residential, commercial, and historic work.</p>
+            <a class="button ghost" href="/architecture.html">Explore Media + Architecture</a>
+          </article>
+          <article class="way-card">
+            <span class="way-tag">Peers &amp; collaborators</span>
+            <h3>Compare notes</h3>
+            <p>Working on interferometry, control, DSP, or quantum sensing — or just curious? Reach out to trade ideas or find a way to build together.</p>
+            <a class="button ghost" href="mailto:mroweitall@gmail.com?subject=PQSensing%20%E2%80%94%20hello">Say hello</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="updates" class="section-pad dark-block">
       <div class="container">
         <div class="section-head wide" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
@@ -399,6 +439,60 @@ const description =
 </BaseLayout>
 
 <style>
+  .pill-pending {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(73, 244, 200, 0.45);
+    color: #49f4c8;
+    background: rgba(73, 244, 200, 0.08);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .hero-plain {
+    font-size: clamp(17px, 2.1vw, 22px);
+    line-height: 1.5;
+    color: #dcebf7;
+    max-width: 680px;
+    margin: 0 0 18px;
+  }
+  .hero-plain strong { color: #fff; }
+
+  .ways-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+    margin-top: 36px;
+  }
+  .way-card {
+    display: flex;
+    flex-direction: column;
+    padding: 26px 24px;
+    border: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+    border-radius: 18px;
+    background: var(--panel2, rgba(255, 255, 255, 0.045));
+  }
+  .way-card.way-primary {
+    border-color: rgba(73, 244, 200, 0.45);
+    background: linear-gradient(180deg, rgba(73, 244, 200, 0.08), rgba(255, 255, 255, 0.02));
+  }
+  .way-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted2, #7aa4bc);
+    margin-bottom: 12px;
+  }
+  .way-primary .way-tag { color: #49f4c8; }
+  .way-card h3 { margin: 0 0 10px; font-size: 20px; }
+  .way-card p { color: var(--muted, #a7c4d8); line-height: 1.55; margin: 0 0 20px; flex: 1; font-size: 15px; }
+  .way-card .button { align-self: flex-start; }
+
   .arch-promo {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
