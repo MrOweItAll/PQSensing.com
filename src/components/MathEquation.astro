@@ -1,0 +1,46 @@
+---
+/**
+ * Build-time KaTeX typesetting. The equation is rendered to HTML during
+ * `astro build`, so the browser ships zero math-rendering JavaScript — the
+ * page receives pre-typeset, accessible markup and KaTeX's stylesheet only.
+ *
+ * Usage:
+ *   <MathEquation formula="V_{norm}(\delta) = \frac{N_{band}(\delta)}{P(\delta)^k}" display />
+ *   Inline:  <MathEquation formula="(\Delta\phi)^2" />
+ */
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+
+interface Props {
+  formula: string;
+  display?: boolean;
+  class?: string;
+}
+
+const { formula, display = false, class: className = '' } = Astro.props;
+
+const html = katex.renderToString(formula, {
+  displayMode: display,
+  throwOnError: false,
+  output: 'html',
+});
+---
+
+<span class:list={['math', { 'math-display': display }, className]} set:html={html} />
+
+<style>
+  .math {
+    color: var(--ink, #eef9ff);
+  }
+  .math-display {
+    display: block;
+    margin: 1.1rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 0;
+  }
+  /* KaTeX ships light-theme defaults; keep it legible on the dark UI. */
+  .math :global(.katex) {
+    font-size: 1.05em;
+  }
+</style>

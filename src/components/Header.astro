@@ -1,0 +1,56 @@
+---
+/**
+ * Shared site header / primary navigation.
+ * `path` is the current page's URL (e.g. "/metrology.html") so the active
+ * link can be highlighted. Markup and class names match the original
+ * hand-authored header so both the global stylesheet and the metrology
+ * pages' own CSS style it identically.
+ */
+interface Props {
+  path?: string;
+}
+const { path = '/' } = Astro.props;
+
+const links = [
+  { href: '/index.html#collaborate', label: 'Collaborate' },
+  { href: '/index.html#exhibit', label: 'Demo' },
+  { href: '/index.html#how', label: 'Method' },
+  { href: '/index.html#validate', label: 'Validate' },
+  { href: '/modules.html', label: 'Modules' },
+  { href: '/metrology.html', label: 'Metrology 101' },
+  { href: '/metrology201.html', label: 'Metrology 201' },
+  { href: '/publications.html', label: 'Publications' },
+  { href: '/about.html', label: 'About' },
+  { href: '/drafting/', label: 'Media+Architecture' },
+  { href: '/index.html#fund', label: 'Fund' },
+];
+
+const current = path.replace(/index\.html$/, '').replace(/#.*$/, '');
+const isActive = (href: string) => {
+  const base = href.replace(/#.*$/, '');
+  return base !== '/index.html' && current.endsWith(base);
+};
+---
+
+<header class="site-header" aria-label="Main navigation">
+  <a class="brand" href="/index.html" aria-label="PQSensing home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>PQSensing</span>
+  </a>
+  <button
+    class="nav-toggle"
+    aria-label="Navigation menu"
+    onclick="document.body.classList.toggle('nav-open')">Menu</button>
+  <nav class="nav-links">
+    {links.map((l) => (
+      <a href={l.href} class:list={[{ active: isActive(l.href) }]}>{l.label}</a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  // Close the mobile nav after a link tap (matches the original behavior).
+  document.querySelectorAll('.nav-links a').forEach((link) => {
+    link.addEventListener('click', () => document.body.classList.remove('nav-open'));
+  });
+</script>

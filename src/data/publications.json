@@ -1,0 +1,38 @@
+{
+  "_note": "Master manifest for the publications index. Add a new white paper by appending an entry here — the page, sitemap, and BibTeX update automatically. Dates/versions are editable placeholders; adjust to match each document's actual release.",
+  "papers": [
+    {
+      "id": "nsl-dpi",
+      "title": "Noise-Stationary Locking and Phase-Controlled Dark-Port Injection",
+      "short": "NSL + DPI",
+      "version": "v1.0",
+      "date": "2025-06-01",
+      "authors": ["Jon Peterson"],
+      "abstract": "Introduces the Noise-Stationary Locking (NSL) control concept — servoing an interferometer toward the operating point where a normalized measurement-band noise objective is stationary rather than where optical power is extremal — and the companion Phase-Controlled Dark-Port Injection (DPI) technique that turns the nominally dark port into a controlled channel for calibration, coding, and matched-filter recovery. Non-confidential treatment based on the PQSensing patent-application math and control architecture.",
+      "pdf": "/assets/whitepapers/pqsensing-nsl-dpi-white-paper.pdf",
+      "thumb": "/assets/whitepapers/pqsensing-nsl-dpi-white-paper-thumb.jpg"
+    },
+    {
+      "id": "ascm",
+      "title": "Objective-Function Supervisory Control Modules for Interferometric Systems",
+      "short": "ASCM modules",
+      "version": "v1.0",
+      "date": "2025-06-01",
+      "authors": ["Jon Peterson"],
+      "abstract": "Generalizes NSL into a family of Advanced Supervisory Control Modules: a firmware performance layer that runs alongside a conventional optical lock and holds precision instruments at their best measurement operating point across quantum metrology, inertial sensing, optical clocks, and quantum communications.",
+      "pdf": "/assets/whitepapers/pqsensing-ascm-white-paper.pdf",
+      "thumb": "/assets/whitepapers/pqsensing-ascm-white-paper-thumb.jpg"
+    },
+    {
+      "id": "atom-interferometry",
+      "title": "Advanced Supervisory Modules for Atom-Interferometric Measurement Systems",
+      "short": "Atom interferometry modules",
+      "version": "v1.0",
+      "date": "2025-06-01",
+      "authors": ["Jon Peterson"],
+      "abstract": "Extends the supervisory-module and Information-Stationary Locking (ISL) framework from optical interferometers to matter-wave sensors — cold-atom gravimeters, gyroscopes, and accelerometers — where laser phase, pulse timing, atom number, and detection noise jointly limit inertial measurement.",
+      "pdf": "/assets/whitepapers/pqsensing-atomic-interferometry-white-paper.pdf",
+      "thumb": "/assets/whitepapers/pqsensing-atomic-interferometry-white-paper-thumb.jpg"
+    }
+  ]
+}

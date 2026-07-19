@@ -1,0 +1,55 @@
+name: Build & Deploy to Namecheap
+
+# IMPORTANT: This replaces the previous "serve the repo root directly" model.
+# After the Astro migration, the servable website is the BUILT output in dist/,
+# not the repository root. This workflow builds the site and uploads dist/ to
+# your Namecheap web root over FTP.
+#
+# Before enabling, add these repository secrets
+# (Settings -> Secrets and variables -> Actions):
+#   FTP_SERVER    e.g. ftp.pqsensing.com
+#   FTP_USERNAME  your cPanel/FTP user
+#   FTP_PASSWORD  that user's password
+# and confirm SERVER_DIR below matches your web root (usually public_html/,
+# or a subfolder if the site is on an add-on domain).
+#
+# Until the secrets exist, this job will fail harmlessly without touching the
+# live site. Deployment runs only on pushes to `main`.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+      - name: Deploy dist/ to Namecheap via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: public_html/
+          # Keep server-only files that are not part of the build.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/cgi-bin/**
+            **/.ftpquota

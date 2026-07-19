@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PaperRow from '../components/PaperRow.astro';
+import publications from '../data/publications.json';
+
+const title = 'Publications & Data — PQSensing';
+const description =
+  'Non-confidential technical white papers from Peterson Quantum Sensing on Noise-Stationary Locking, Dark-Port Injection, supervisory control modules, and atom-interferometric measurement — each with a downloadable PDF and a BibTeX citation.';
+
+const papers = publications.papers;
+---
+
+<BaseLayout title={title} description={description}>
+  <main id="top">
+    <section class="section-pad">
+      <div class="container">
+        <div class="section-head narrow">
+          <p class="eyebrow">Publications &amp; data</p>
+          <h2>Technical papers behind the platform.</h2>
+          <p>
+            Non-confidential technical papers based on the PQSensing
+            patent-application math and control architecture. Each is available
+            as a PDF with a ready-to-paste BibTeX citation for academic
+            collaborators. Measured validation datasets will be published here
+            as the tabletop Mach–Zehnder sprint produces them.
+          </p>
+        </div>
+
+        <div class="papers-list">
+          {papers.map((paper) => <PaperRow paper={paper} />)}
+        </div>
+
+        <div class="cta-row" style="margin-top:36px">
+          <a class="button primary" href="mailto:mroweitall@gmail.com?subject=PQSensing%20publications%20inquiry">Request the full technical package</a>
+          <a class="button ghost" href="/index.html#validate">See the validation plan</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .papers-list {
+    margin-top: 30px;
+    border-bottom: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+  }
+</style>

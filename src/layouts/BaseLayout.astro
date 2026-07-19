@@ -1,0 +1,131 @@
+---
+/**
+ * BaseLayout — the unified shell for the standard PQSensing pages
+ * (index, modules, about, publications). Injects SEO meta, Open Graph /
+ * Twitter cards, canonical URL, and JSON-LD structured data, then wraps
+ * the shared Header + Footer around the page slot.
+ *
+ * Pass `type="article"` + `articleData` to emit TechArticle schema
+ * (used for the white-paper / publication pages); otherwise it emits the
+ * Organization schema.
+ */
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface ArticleData {
+  headline: string;
+  datePublished: string;
+  dateModified?: string;
+  abstract: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  type?: 'website' | 'article';
+  articleData?: ArticleData;
+}
+
+const {
+  title,
+  description,
+  ogImage = '/assets/hero.jpg',
+  type = 'website',
+  articleData,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site).href;
+
+const schemaData =
+  type === 'article' && articleData
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'TechArticle',
+        headline: articleData.headline,
+        description: articleData.abstract,
+        datePublished: articleData.datePublished,
+        dateModified: articleData.dateModified || articleData.datePublished,
+        mainEntityOfPage: canonicalURL.href,
+        author: { '@type': 'Organization', name: 'Peterson Quantum Sensing, LLC' },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Peterson Quantum Sensing, LLC',
+          logo: {
+            '@type': 'ImageObject',
+            url: new URL('/assets/hero.jpg', Astro.site).href,
+          },
+        },
+      }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Peterson Quantum Sensing, LLC',
+        alternateName: 'PQSensing',
+        url: Astro.site?.href,
+        logo: new URL('/assets/hero.jpg', Astro.site).href,
+        description:
+          'Advanced Supervisory Modules for interferometric systems. Flagship module: Noise-Stationary Locking.',
+        founder: { '@type': 'Person', name: 'Jon Peterson' },
+        email: 'mroweitall@gmail.com',
+        telephone: '+1-620-518-3686',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Hugoton',
+          addressRegion: 'KS',
+          addressCountry: 'US',
+        },
+        knowsAbout: [
+          'Quantum Sensing',
+          'Atomic Interferometry',
+          'Phase Noise Mitigation',
+          'Precision Metrology',
+          'Noise-Stationary Locking',
+          'Dark-Port Injection',
+        ],
+      };
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Peterson Quantum Sensing" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <Header path={Astro.url.pathname} />
+    <slot />
+    <Footer />
+  </body>
+</html>

@@ -1,36 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PQSensing — Advanced Supervisory Modules for Interferometric Systems</title>
-  <meta name="description" content="PQSensing builds Advanced Supervisory Modules — a firmware performance layer that holds precision interferometric instruments at their best measurement operating point. The flagship module, Noise-Stationary Locking, brings quantum-grade measurement stability to optical sensors; the family extends across inertial sensing, optical clocks, and quantum communications.">
-  <link rel="preload" href="assets/hero.jpg" as="image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="site-header" aria-label="Main navigation">
-    <a class="brand" href="#top" aria-label="PQSensing home">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span>PQSensing</span>
-    </a>
-    <button class="nav-toggle" aria-label="Navigation menu" onclick="document.body.classList.toggle('nav-open')">Menu</button>
-    <nav class="nav-links">
-      <a href="#collaborate">Collaborate</a>
-      <a href="#exhibit">Demo</a>
-      <a href="#how">Method</a>
-      <a href="#validate">Validate</a>
-      <a href="modules.html">Modules</a>
-      <a href="metrology.html">Metrology 101</a>
-      <a href="metrology201.html">Metrology 201</a>
-      <a href="about.html">About</a>
-      <a href="drafting/">Media+Architecture</a>
-      <a href="#fund">Fund</a>
-    </nav>
-  </header>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NSLDemo from '../components/NSLDemo.astro';
+import DPIDemo from '../components/DPIDemo.astro';
+import MathEquation from '../components/MathEquation.astro';
+
+const title = 'PQSensing — Advanced Supervisory Modules for Interferometric Systems';
+const description =
+  'PQSensing builds Advanced Supervisory Modules — a firmware performance layer that holds precision interferometric instruments at their best measurement operating point. The flagship module, Noise-Stationary Locking, brings quantum-grade measurement stability to optical sensors; the family extends across inertial sensing, optical clocks, and quantum communications.';
+---
+
+<BaseLayout title={title} description={description}>
+  <link slot="head" rel="preload" href="/assets/hero.jpg" as="image" />
 
   <main id="top">
     <section class="hero">
@@ -41,8 +21,8 @@
         <h1>Lock the error bar, not just the fringe.</h1>
         <p class="lede">Conventional locks keep an instrument optically stable. PQSensing builds Advanced Supervisory Modules — a firmware performance layer that asks a harder question: is the instrument parked where it produces the most usable measurement information? Our flagship module brings this to quantum-grade optical sensing, and the family extends across inertial, timing, and quantum-communications instruments.</p>
         <div class="cta-row">
-          <a class="button primary" href="modules.html">Explore the modules</a>
-          <a class="button ghost" href="PQSensing_MZI_NSL_Pitch_Deck.pdf" download>Download pitch deck</a>
+          <a class="button primary" href="/modules.html">Explore the modules</a>
+          <a class="button ghost" href="/PQSensing_MZI_NSL_Pitch_Deck.pdf" download>Download pitch deck</a>
         </div>
         <div class="hero-facts" aria-label="Core positioning">
           <span><strong>Supervisory</strong> performance layer.</span>
@@ -78,16 +58,16 @@
         </div>
         <div class="platform-figs" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px">
           <figure style="margin:0;border:1px solid var(--line);border-radius:20px;background:var(--panel2);padding:18px;text-align:center">
-            <img src="assets/instrument-board.svg" alt="Stylized illustration of a compact FPGA development board, Red Pitaya class" style="width:100%;height:auto;border-radius:10px">
+            <img src="/assets/instrument-board.svg" alt="Stylized illustration of a compact FPGA development board, Red Pitaya class" style="width:100%;height:auto;border-radius:10px" />
             <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">Compact FPGA board — <em>Red Pitaya class</em> · stylized illustration</figcaption>
           </figure>
           <figure style="margin:0;border:1px solid var(--line);border-radius:20px;background:var(--panel2);padding:18px;text-align:center">
-            <img src="assets/instrument-benchtop.svg" alt="Stylized illustration of a benchtop FPGA instrument, Liquid Instruments Mako class" style="width:100%;height:auto;border-radius:10px">
+            <img src="/assets/instrument-benchtop.svg" alt="Stylized illustration of a benchtop FPGA instrument, Liquid Instruments Mako class" style="width:100%;height:auto;border-radius:10px" />
             <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">Benchtop FPGA instrument — <em>Liquid Instruments Mako class</em> · stylized illustration</figcaption>
           </figure>
         </div>
         <div class="cta-row">
-          <a class="button primary" href="modules.html">See the module family</a>
+          <a class="button primary" href="/modules.html">See the module family</a>
           <a class="button ghost" href="#collaborate">Seeking collaboration</a>
         </div>
       </div>
@@ -184,76 +164,7 @@
       </div>
     </section>
 
-    <section id="exhibit" class="section-pad exhibit-section">
-      <div class="container">
-        <div class="section-head wide">
-          <p class="eyebrow">Interactive demonstration</p>
-          <h2>Watch the two locks <em>disagree</em>.</h2>
-          <p>A power lock parks at the fringe extremum. A noise-stationary lock parks where the slope of <span class="mono">V<sub>norm</sub>(δ) = N<sub>band</sub>(δ) / P(δ)<sup>k</sup></span> goes to zero. Whenever real-world noise has structure that isn't perfectly aligned with the fringe — which it rarely does — those two operating points are not the same. Drag the controls.</p>
-        </div>
-
-        <div class="exhibit-panel" aria-label="Interactive demonstration: noise-stationary lock vs power lock">
-          <div class="exhibit-plot" id="exhibitPlot" role="img" aria-label="Plot of P, N_band, and V_norm versus detuning"></div>
-
-          <div class="exhibit-readout">
-            <div class="readout-block">
-              <span class="readout-label">Power lock parks at</span>
-              <span class="readout-value" id="readPowerDelta">δ = 0.00</span>
-              <span class="readout-sub" id="readPowerVnorm">V<sub>norm</sub> there = —</span>
-            </div>
-            <div class="readout-block readout-block-accent">
-              <span class="readout-label">NSL parks at</span>
-              <span class="readout-value" id="readNSLDelta">δ = 0.00</span>
-              <span class="readout-sub" id="readNSLVnorm">V<sub>norm</sub> there = —</span>
-            </div>
-            <div class="readout-block readout-block-gain">
-              <span class="readout-label">NSL advantage</span>
-              <span class="readout-value" id="readGain">— dB</span>
-              <span class="readout-sub">in this regime</span>
-            </div>
-          </div>
-
-          <div class="exhibit-controls">
-            <label class="exhibit-control">
-              <span class="control-label">
-                Noise alignment offset
-                <span class="control-hint">how misaligned the structured noise is from the fringe</span>
-              </span>
-              <input type="range" min="0" max="100" value="68" id="ctrlOffset" class="exhibit-slider">
-              <output id="outOffset" class="control-out">+0.36π</output>
-            </label>
-
-            <label class="exhibit-control">
-              <span class="control-label">
-                Excess-noise strength
-                <span class="control-hint">how much structured noise rides on top of the floor</span>
-              </span>
-              <input type="range" min="0" max="100" value="78" id="ctrlAmp" class="exhibit-slider">
-              <output id="outAmp" class="control-out">0.78</output>
-            </label>
-
-            <label class="exhibit-control">
-              <span class="control-label">
-                Power-weighting exponent k
-                <span class="control-hint">k = 0 unweighted, k = 1 SNR-like, k = 2 photon-shot-limited</span>
-              </span>
-              <input type="range" min="0" max="200" value="100" id="ctrlK" class="exhibit-slider">
-              <output id="outK" class="control-out">k = 1.00</output>
-            </label>
-          </div>
-
-          <div class="exhibit-legend">
-            <span class="legend-item"><span class="legend-swatch legend-p"></span>P(δ) — optical transmission</span>
-            <span class="legend-item"><span class="legend-swatch legend-n"></span>N<sub>band</sub>(δ) — measurement-band noise</span>
-            <span class="legend-item"><span class="legend-swatch legend-v"></span>V<sub>norm</sub>(δ) — the NSL objective</span>
-          </div>
-
-          <p class="exhibit-note">
-            Pedagogical model, not bench data. Analytic curves illustrate the slope-null thesis. The validation sprint replaces these with measured curves from a tabletop Mach–Zehnder.
-          </p>
-        </div>
-      </div>
-    </section>
+    <NSLDemo />
 
     <section class="section-pad equation-section">
       <div class="container equation-wrap">
@@ -261,7 +172,9 @@
           <p class="eyebrow">Why optimize variance?</p>
           <h2>Because the sensor’s product is an estimate with an uncertainty.</h2>
           <p>For a photon-limited phase measurement, the useful relationship is:</p>
-          <div class="big-equation">(Δφ)<sup>2</sup> ≈ V<sub>norm</sub> / ( ṄT )</div>
+          <div class="big-equation">
+            <MathEquation formula="(\Delta\phi)^2 \;\approx\; \frac{V_{\mathrm{norm}}}{\dot{N}\,T}" display />
+          </div>
           <p>Lower and more stable V<sub>norm</sub> means the same photon flux and integration time produce a smaller phase-error variance. That can mean better precision in the same time, the same precision faster, or the same result with less optical power.</p>
         </div>
         <aside class="callout">
@@ -312,11 +225,11 @@
         <div class="formula-band">
           <div>
             <span class="label">Controller objective</span>
-            <p>V<sub>norm</sub>(δ) = N<sub>band</sub>(δ) / P(δ)<sup>k</sup> + power-floor penalty</p>
+            <p><MathEquation formula="V_{\mathrm{norm}}(\delta) = \dfrac{N_{\mathrm{band}}(\delta)}{P(\delta)^{k}} \;+\; \text{power-floor penalty}" /></p>
           </div>
           <div>
             <span class="label">Slope-null condition</span>
-            <p>dV<sub>norm</sub>/dδ → 0</p>
+            <p><MathEquation formula="\dfrac{dV_{\mathrm{norm}}}{d\delta} \to 0" /></p>
           </div>
         </div>
       </div>
@@ -324,7 +237,7 @@
 
     <section class="section-pad visual-band">
       <div class="container visual-split">
-        <img src="assets/dark_port.jpg" alt="Dark-port injection and phase-code waveform visualization">
+        <img src="/assets/dark_port.jpg" alt="Dark-port injection and phase-code waveform visualization" />
         <div>
           <p class="eyebrow">Phase-Controlled Dark-Mode Injection</p>
           <h2>DPI gives the dark port a job.</h2>
@@ -339,6 +252,8 @@
         </div>
       </div>
     </section>
+
+    <DPIDemo />
 
     <section id="measure" class="section-pad measurement-section">
       <div class="container">
@@ -362,7 +277,7 @@
 
     <section id="validate" class="section-pad validate-section">
       <div class="container visual-split reverse">
-        <img src="assets/mzi_bench.jpg" alt="Tabletop Mach-Zehnder-style optical bench visualization">
+        <img src="/assets/mzi_bench.jpg" alt="Tabletop Mach-Zehnder-style optical bench visualization" />
         <div>
           <p class="eyebrow">Validation plan</p>
           <h2>First prove it on a classical tabletop Mach-Zehnder.</h2>
@@ -421,10 +336,10 @@
         </div>
         <div class="audio-player" aria-label="Metrology overview audio player">
           <audio controls preload="metadata">
-            <source src="assets/metrology-overview.m4a" type="audio/mp4">
-            Your browser does not support embedded audio. <a href="assets/metrology-overview.m4a">Download the audio overview</a>.
+            <source src="/assets/metrology-overview.m4a" type="audio/mp4" />
+            Your browser does not support embedded audio. <a href="/assets/metrology-overview.m4a">Download the audio overview</a>.
           </audio>
-          <a class="audio-download" href="assets/metrology-overview.m4a">Download audio file</a>
+          <a class="audio-download" href="/assets/metrology-overview.m4a">Download audio file</a>
         </div>
       </div>
     </section>
@@ -444,30 +359,9 @@
         </div>
         <div class="cta-row lower">
           <a class="button primary" href="mailto:mroweitall@gmail.com?subject=PQSensing%20MZI%20validation%20sprint">Contact PQSensing</a>
-          <a class="button ghost" href="PQSensing_MZI_NSL_Pitch_Deck.pptx" download>Download PPTX deck</a>
+          <a class="button ghost" href="/PQSensing_MZI_NSL_Pitch_Deck.pptx" download>Download PPTX deck</a>
         </div>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>PQSensing</strong>
-        <p>Advanced Supervisory Modules for interferometric systems — a firmware performance layer that holds precision instruments at their best measurement operating point. Flagship module: Noise-Stationary Locking.</p>
-      </div>
-      <div>
-        <strong>Plain-language summary</strong>
-        <p>Your existing lock keeps the instrument stable. A PQSensing supervisory module keeps the measurement at its best — and the same idea extends across optical, inertial, timing, and quantum-link instruments.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="app.js" defer></script>
-  <script>
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => document.body.classList.remove('nav-open'));
-    });
-  </script>
-</body>
-</html>
+</BaseLayout>
