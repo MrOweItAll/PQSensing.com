@@ -1,0 +1,650 @@
+[
+  {
+    "cat": "plans",
+    "title": "Ottley Addition",
+    "blurb": "Residential addition — 3-sheet permit set.",
+    "count": 3,
+    "cover": "/assets/drafting/sets/ottley-addition-page-01-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/sets/ottley-addition-page-01.jpg",
+        "thumb": "/assets/drafting/sets/ottley-addition-page-01-thumb.jpg",
+        "caption": "Sheet 1"
+      },
+      {
+        "full": "/assets/drafting/sets/ottley-addition-page-02.jpg",
+        "thumb": "/assets/drafting/sets/ottley-addition-page-02-thumb.jpg",
+        "caption": "Sheet 2"
+      },
+      {
+        "full": "/assets/drafting/sets/ottley-addition-page-03.jpg",
+        "thumb": "/assets/drafting/sets/ottley-addition-page-03-thumb.jpg",
+        "caption": "Sheet 3"
+      }
+    ]
+  },
+  {
+    "cat": "plans",
+    "title": "Baker House",
+    "blurb": "Custom residence — 4-sheet set: plans, elevations, sections.",
+    "count": 4,
+    "cover": "/assets/drafting/sets/baker-house-basement-plan-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/sets/baker-house-basement-plan.jpg",
+        "thumb": "/assets/drafting/sets/baker-house-basement-plan-thumb.jpg",
+        "caption": "Basement Plan"
+      },
+      {
+        "full": "/assets/drafting/sets/baker-house-elevations.jpg",
+        "thumb": "/assets/drafting/sets/baker-house-elevations-thumb.jpg",
+        "caption": "Elevations"
+      },
+      {
+        "full": "/assets/drafting/sets/baker-house-floor-plan.jpg",
+        "thumb": "/assets/drafting/sets/baker-house-floor-plan-thumb.jpg",
+        "caption": "Floor Plan"
+      },
+      {
+        "full": "/assets/drafting/sets/baker-house-section-roof-plan.jpg",
+        "thumb": "/assets/drafting/sets/baker-house-section-roof-plan-thumb.jpg",
+        "caption": "Section Roof Plan"
+      }
+    ]
+  },
+  {
+    "cat": "plans",
+    "title": "Western Quality Auto",
+    "blurb": "Small-commercial auto facility — full 9-sheet construction set.",
+    "count": 9,
+    "cover": "/assets/drafting/sets/western-quality-auto-page-01-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-01.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-01-thumb.jpg",
+        "caption": "Sheet 1"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-02.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-02-thumb.jpg",
+        "caption": "Sheet 2"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-03.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-03-thumb.jpg",
+        "caption": "Sheet 3"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-04.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-04-thumb.jpg",
+        "caption": "Sheet 4"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-05.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-05-thumb.jpg",
+        "caption": "Sheet 5"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-06.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-06-thumb.jpg",
+        "caption": "Sheet 6"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-07.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-07-thumb.jpg",
+        "caption": "Sheet 7"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-08.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-08-thumb.jpg",
+        "caption": "Sheet 8"
+      },
+      {
+        "full": "/assets/drafting/sets/western-quality-auto-page-09.jpg",
+        "thumb": "/assets/drafting/sets/western-quality-auto-page-09-thumb.jpg",
+        "caption": "Sheet 9"
+      }
+    ]
+  },
+  {
+    "cat": "plans",
+    "title": "Church of the Seventh-Day Adventists",
+    "blurb": "Assembly building — 7-sheet construction set.",
+    "count": 7,
+    "cover": "/assets/drafting/sets/church-seventh-day-adventist-page-01-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/sets/church-seventh-day-adventist-page-01.jpg",
+        "thumb": "/assets/drafting/sets/church-seventh-day-adventist-page-01-thumb.jpg",
+        "caption": "Sheet 1"
+      },
+      {
+        "full": "/assets/drafting/sets/church-seventh-day-adventist-page-02.jpg",
+        "thumb": "/assets/drafting/sets/church-seventh-day-adventist-page-02-thumb.jpg",
+        "caption": "Sheet 2"
+      },
+      {
+        "full": "/assets/drafting/sets/church-seventh-day-adventist-page-03.jpg",
+        "thumb": "/assets/drafting/sets/church-seventh-day-adventist-page-03-thumb.jpg",
+        "caption": "Sheet 3"
+      },
+      {
+        "full": "/assets/drafting/sets/church-seventh-day-adventist-page-04.jpg",
+        "thumb": "/assets/drafting/sets/church-seventh-day-adventist-page-04-thumb.jpg",
+        "caption": "Sheet 4"
+      },
+      {
+        "full": "/assets/drafting/sets/church-seventh-day-adventist-page-05.jpg",
+        "thumb": "/assets/drafting/sets/church-seventh-day-adventist-page-05-thumb.jpg",
+        "caption": "Sheet 5"
+      },
+      {
+        "full": "/assets/drafting/sets/church-seventh-day-adventist-page-06.jpg",
+        "thumb": "/assets/drafting/sets/church-seventh-day-adventist-page-06-thumb.jpg",
+        "caption": "Sheet 6"
+      },
+      {
+        "full": "/assets/drafting/sets/church-seventh-day-adventist-page-07.jpg",
+        "thumb": "/assets/drafting/sets/church-seventh-day-adventist-page-07-thumb.jpg",
+        "caption": "Sheet 7"
+      }
+    ]
+  },
+  {
+    "cat": "plans",
+    "title": "Grandview Warehouse",
+    "blurb": "Commercial warehouse — 8-sheet set with schedules & details.",
+    "count": 8,
+    "cover": "/assets/drafting/sets/grandview-warehouse-page-01-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-01.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-01-thumb.jpg",
+        "caption": "Sheet 1"
+      },
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-02.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-02-thumb.jpg",
+        "caption": "Sheet 2"
+      },
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-03.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-03-thumb.jpg",
+        "caption": "Sheet 3"
+      },
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-04.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-04-thumb.jpg",
+        "caption": "Sheet 4"
+      },
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-05.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-05-thumb.jpg",
+        "caption": "Sheet 5"
+      },
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-06.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-06-thumb.jpg",
+        "caption": "Sheet 6"
+      },
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-07.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-07-thumb.jpg",
+        "caption": "Sheet 7"
+      },
+      {
+        "full": "/assets/drafting/sets/grandview-warehouse-page-08.jpg",
+        "thumb": "/assets/drafting/sets/grandview-warehouse-page-08-thumb.jpg",
+        "caption": "Sheet 8"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Industrial Building",
+    "blurb": "3 views — SketchUp visualization.",
+    "count": 3,
+    "cover": "/assets/drafting/renderings/20-36-industrial-building-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/20-36-industrial-building-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/20-36-industrial-building-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/20-36-industrial-building-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/20-36-industrial-building-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/20-36-industrial-building-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/20-36-industrial-building-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Truck Center",
+    "blurb": "3 views — SketchUp visualization.",
+    "count": 3,
+    "cover": "/assets/drafting/renderings/2020-06-truck-center-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/2020-06-truck-center-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/2020-06-truck-center-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-06-truck-center-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/2020-06-truck-center-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-06-truck-center-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/2020-06-truck-center-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Martin Residence",
+    "blurb": "8 views — SketchUp visualization.",
+    "count": 8,
+    "cover": "/assets/drafting/renderings/2020-29-martin-residence-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-04.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-04-thumb.jpg",
+        "caption": "View 4"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-05.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-05-thumb.jpg",
+        "caption": "View 5"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-06.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-06-thumb.jpg",
+        "caption": "View 6"
+      },
+      {
+        "full": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-07.jpg",
+        "thumb": "/assets/drafting/renderings/2020-29-martin-residence-pdf-rendering-07-thumb.jpg",
+        "caption": "View 7"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Southwind House",
+    "blurb": "5 views — SketchUp visualization.",
+    "count": 5,
+    "cover": "/assets/drafting/renderings/2022-17-southwind-house-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/2022-17-southwind-house-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/2022-17-southwind-house-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      },
+      {
+        "full": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-04.jpg",
+        "thumb": "/assets/drafting/renderings/2022-17-southwind-house-pdf-rendering-04-thumb.jpg",
+        "caption": "View 4"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Event Center",
+    "blurb": "4 views — SketchUp visualization.",
+    "count": 4,
+    "cover": "/assets/drafting/renderings/2024-14-event-center-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/2024-14-event-center-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/2024-14-event-center-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/2024-14-event-center-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/2024-14-event-center-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/2024-14-event-center-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/2024-14-event-center-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/2024-14-event-center-pdf-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/2024-14-event-center-pdf-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Pioneer Electric — Office & Shop",
+    "blurb": "10 views — SketchUp visualization.",
+    "count": 10,
+    "cover": "/assets/drafting/renderings/2026-03-pioneer-electric-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/2026-03-pioneer-electric-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/2026-03-pioneer-electric-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/pioneer-electric-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/pioneer-electric-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/2026-03-pioneer-electric-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/2026-03-pioneer-electric-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/2026-03-pioneer-electric-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/2026-03-pioneer-electric-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/pioneer-electric-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/pioneer-electric-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/pioneer-electric-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/pioneer-electric-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/pioneer-electric-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/pioneer-electric-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      },
+      {
+        "full": "/assets/drafting/renderings/pioneer-electric-rendering-04.jpg",
+        "thumb": "/assets/drafting/renderings/pioneer-electric-rendering-04-thumb.jpg",
+        "caption": "View 4"
+      },
+      {
+        "full": "/assets/drafting/renderings/pioneer-electric-rendering-05.jpg",
+        "thumb": "/assets/drafting/renderings/pioneer-electric-rendering-05-thumb.jpg",
+        "caption": "View 5"
+      },
+      {
+        "full": "/assets/drafting/renderings/pioneer-electric-rendering-06.jpg",
+        "thumb": "/assets/drafting/renderings/pioneer-electric-rendering-06-thumb.jpg",
+        "caption": "View 6"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Assembly of God Addition",
+    "blurb": "3 views — SketchUp visualization.",
+    "count": 3,
+    "cover": "/assets/drafting/renderings/assembly-of-god-addition-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/assembly-of-god-addition-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/assembly-of-god-addition-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/assembly-of-god-addition-wolters-construction-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/assembly-of-god-addition-wolters-construction-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/assembly-of-god-addition-wolters-construction-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/assembly-of-god-addition-wolters-construction-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Baker Residence (Rev. 3)",
+    "blurb": "6 views — SketchUp visualization.",
+    "count": 6,
+    "cover": "/assets/drafting/renderings/baker-3rd-revision-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/baker-3rd-revision-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/baker-3rd-revision-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      },
+      {
+        "full": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-04.jpg",
+        "thumb": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-04-thumb.jpg",
+        "caption": "View 4"
+      },
+      {
+        "full": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-05.jpg",
+        "thumb": "/assets/drafting/renderings/baker-3rd-revision-pdf-rendering-05-thumb.jpg",
+        "caption": "View 5"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "Ebert Residence (Rev. 4)",
+    "blurb": "14 views — SketchUp visualization.",
+    "count": 14,
+    "cover": "/assets/drafting/renderings/ebert-4th-revision-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-04.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-04-thumb.jpg",
+        "caption": "View 4"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-05.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-05-thumb.jpg",
+        "caption": "View 5"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-06.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-06-thumb.jpg",
+        "caption": "View 6"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-07.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-07-thumb.jpg",
+        "caption": "View 7"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-08.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-08-thumb.jpg",
+        "caption": "View 8"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-09.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-09-thumb.jpg",
+        "caption": "View 9"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-10.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-10-thumb.jpg",
+        "caption": "View 10"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-11.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-11-thumb.jpg",
+        "caption": "View 11"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-12.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-12-thumb.jpg",
+        "caption": "View 12"
+      },
+      {
+        "full": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-13.jpg",
+        "thumb": "/assets/drafting/renderings/ebert-4th-revision-pdf-rendering-13-thumb.jpg",
+        "caption": "View 13"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "GBS Facility",
+    "blurb": "4 views — SketchUp visualization.",
+    "count": 4,
+    "cover": "/assets/drafting/renderings/gbs-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/gbs-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/gbs-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/gbs-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/gbs-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/gbs-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/gbs-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/gbs-pdf-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/gbs-pdf-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      }
+    ]
+  },
+  {
+    "cat": "viz",
+    "title": "McGonagle House",
+    "blurb": "4 views — SketchUp visualization.",
+    "count": 4,
+    "cover": "/assets/drafting/renderings/mcgonagle-house-photoreal-concept-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/drafting/renderings/mcgonagle-house-photoreal-concept.jpg",
+        "thumb": "/assets/drafting/renderings/mcgonagle-house-photoreal-concept-thumb.jpg",
+        "caption": "Photoreal concept render"
+      },
+      {
+        "full": "/assets/drafting/renderings/mcgonagle-house-pdf-rendering-01.jpg",
+        "thumb": "/assets/drafting/renderings/mcgonagle-house-pdf-rendering-01-thumb.jpg",
+        "caption": "View 1"
+      },
+      {
+        "full": "/assets/drafting/renderings/mcgonagle-house-pdf-rendering-02.jpg",
+        "thumb": "/assets/drafting/renderings/mcgonagle-house-pdf-rendering-02-thumb.jpg",
+        "caption": "View 2"
+      },
+      {
+        "full": "/assets/drafting/renderings/mcgonagle-house-pdf-rendering-03.jpg",
+        "thumb": "/assets/drafting/renderings/mcgonagle-house-pdf-rendering-03-thumb.jpg",
+        "caption": "View 3"
+      }
+    ]
+  },
+  {
+    "cat": "habs",
+    "title": "New York Life Building — HABS MO-0432",
+    "blurb": "Library of Congress measured-drawing set; Charles E. Peterson Prize honorable mention.",
+    "count": 4,
+    "cover": "/assets/habs/habs-mo0432-sheet-00010-facade-elevation-thumb.jpg",
+    "images": [
+      {
+        "full": "/assets/habs/habs-mo0432-sheet-00010-facade-elevation.jpg",
+        "thumb": "/assets/habs/habs-mo0432-sheet-00010-facade-elevation-thumb.jpg",
+        "caption": "Sheet 10 — South Elevation"
+      },
+      {
+        "full": "/assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan.jpg",
+        "thumb": "/assets/habs/habs-mo0432-sheet-00007-seventh-floor-plan-thumb.jpg",
+        "caption": "Sheet 7 — Seventh Floor Plan"
+      },
+      {
+        "full": "/assets/habs/habs-mo0432-photo-eagle-sculpture.jpg",
+        "thumb": "/assets/habs/habs-mo0432-photo-eagle-sculpture-thumb.jpg",
+        "caption": "Eagle sculpture — photo by Jon Peterson"
+      },
+      {
+        "full": "/assets/habs/habs-mo0432-photo-exterior-view.jpg",
+        "thumb": "/assets/habs/habs-mo0432-photo-exterior-view-thumb.jpg",
+        "caption": "20 W. 9th — exterior HABS photo"
+      }
+    ]
+  }
+]

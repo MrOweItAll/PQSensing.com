@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import services from '../data/services.json';
+import portfolio from '../data/portfolio.json';
 
 const title = 'Media + Architecture — Precision Drafting, HABS Documentation & Visualization';
 const description =
@@ -8,33 +9,8 @@ const description =
 
 const packages = services.packages;
 
-// Curated portfolio (thumbnails link to full-resolution images).
-const R = '/assets/drafting/renderings/';
-const D = '/assets/drafting/';
-const S = '/assets/drafting/sets/';
-const H = '/assets/habs/';
-
-const portfolio = [
-  // 3D Visualization
-  { cat: 'viz', title: 'Southwind House — concept render', base: R + '2022-17-southwind-house-photoreal-concept' },
-  { cat: 'viz', title: 'Event Center — concept render', base: R + '2024-14-event-center-photoreal-concept' },
-  { cat: 'viz', title: 'Pioneer Electric — office & shop', base: R + '2026-03-pioneer-electric-photoreal-concept' },
-  { cat: 'viz', title: 'Industrial Building — concept render', base: R + '20-36-industrial-building-photoreal-concept' },
-  { cat: 'viz', title: 'Truck Center — concept render', base: R + '2020-06-truck-center-photoreal-concept' },
-  { cat: 'viz', title: 'Martin Residence — concept render', base: R + '2020-29-martin-residence-photoreal-concept' },
-  // Plans & Drafting
-  { cat: 'plans', title: 'Residential elevations', base: D + 'residential-elevations' },
-  { cat: 'plans', title: 'Residential basement plan', base: D + 'residential-basement-plan' },
-  { cat: 'plans', title: 'Section & roof plan', base: D + 'residential-section-roof-plan' },
-  { cat: 'plans', title: 'Commercial floor plan', base: D + 'commercial-floor-plan' },
-  { cat: 'plans', title: 'Baker House — floor plan', base: S + 'baker-house-floor-plan' },
-  { cat: 'plans', title: 'Assembly building section', base: D + 'assembly-building-section' },
-  // HABS Documentation
-  { cat: 'habs', title: 'HABS MO-0432 — façade elevation', base: H + 'habs-mo0432-sheet-00010-facade-elevation' },
-  { cat: 'habs', title: 'HABS MO-0432 — seventh floor plan', base: H + 'habs-mo0432-sheet-00007-seventh-floor-plan' },
-  { cat: 'habs', title: 'HABS MO-0432 — exterior view', base: H + 'habs-mo0432-photo-exterior-view' },
-  { cat: 'habs', title: 'HABS MO-0432 — eagle sculpture detail', base: H + 'habs-mo0432-photo-eagle-sculpture' },
-];
+// Full portfolio (project-grouped, in-page carousel). Data generated in src/data/portfolio.json.
+const totalImages = portfolio.reduce((n, p) => n + p.images.length, 0);
 
 const filters = [
   { key: 'all', label: 'All work' },
@@ -105,7 +81,7 @@ const steps = [
                 <span class="pkg-timeline">{p.timeline}</span>
                 <span class="pkg-price">{p.priceRange ? p.priceRange : 'Pricing on request'}</span>
               </div>
-              <a class="arch-btn primary full" href={'/contact?type=architecture&package=' + encodeURIComponent(p.name)}>Request this package</a>
+              <a class="arch-btn primary full" href={'/contact.html?type=architecture&package=' + encodeURIComponent(p.name)}>Request this package</a>
             </article>
           ))}
         </div>
@@ -140,7 +116,7 @@ const steps = [
         <div class="arch-head">
           <p class="arch-eyebrow">Selected work</p>
           <h2>Portfolio.</h2>
-          <p>Residential and commercial drafting, historic documentation, and concept visualization. Click any image to open it full-size.</p>
+          <p>Residential and commercial drafting, historic documentation, and concept visualization — {portfolio.length} projects, {totalImages} drawings and renders. Click any project to page through the full set in place.</p>
         </div>
         <div class="arch-filters" role="tablist" aria-label="Filter portfolio">
           {filters.map((f, i) => (
@@ -153,20 +129,100 @@ const steps = [
           ))}
         </div>
         <div class="arch-gallery">
-          {portfolio.map((item) => (
-            <a
+          {portfolio.map((proj, pi) => (
+            <button
+              type="button"
               class="arch-tile"
-              data-cat={item.cat}
-              href={item.base + '.jpg'}
-              target="_blank"
-              rel="noopener">
-              <img src={item.base + '-thumb.jpg'} alt={item.title} loading="lazy" decoding="async" />
-              <span class="arch-tile-label">{item.title}</span>
-            </a>
+              data-cat={proj.cat}
+              data-project={pi}
+              aria-label={`${proj.title} — open ${proj.images.length}-image gallery`}>
+              <img src={proj.cover} alt={proj.title} loading="lazy" decoding="async" />
+              {proj.images.length > 1 && <span class="arch-tile-count">{proj.images.length} images</span>}
+              <span class="arch-tile-label">
+                <strong>{proj.title}</strong>
+                {proj.blurb && <em>{proj.blurb}</em>}
+              </span>
+            </button>
           ))}
         </div>
       </div>
+
+      <!-- In-page carousel viewer (replaces separate-tab image opening) -->
+      <div class="arch-lightbox" id="archLightbox" hidden aria-modal="true" role="dialog" aria-label="Project gallery">
+        <div class="arch-lb-top">
+          <div>
+            <div class="arch-lb-title" id="archLbTitle"></div>
+            <div class="arch-lb-count" id="archLbCount"></div>
+          </div>
+          <button class="arch-lb-btn arch-lb-close" type="button" id="archLbClose" aria-label="Close gallery">&times;</button>
+        </div>
+        <div class="arch-lb-stage">
+          <button class="arch-lb-btn arch-lb-prev" type="button" id="archLbPrev" aria-label="Previous image">&#8249;</button>
+          <img id="archLbImage" src="" alt="" />
+          <button class="arch-lb-btn arch-lb-next" type="button" id="archLbNext" aria-label="Next image">&#8250;</button>
+        </div>
+        <div class="arch-lb-caption" id="archLbCaption"></div>
+        <div class="arch-lb-actions"><a class="arch-lb-open" id="archLbOpen" href="#" target="_blank" rel="noopener">Open full-size ↗</a></div>
+      </div>
     </section>
+
+    <script is:inline define:vars={{ portfolio }}>
+      (function () {
+        const lb = document.getElementById('archLightbox');
+        const img = document.getElementById('archLbImage');
+        const titleEl = document.getElementById('archLbTitle');
+        const countEl = document.getElementById('archLbCount');
+        const capEl = document.getElementById('archLbCaption');
+        const openEl = document.getElementById('archLbOpen');
+        const btnClose = document.getElementById('archLbClose');
+        const btnPrev = document.getElementById('archLbPrev');
+        const btnNext = document.getElementById('archLbNext');
+        let proj = null, idx = 0, lastFocus = null;
+
+        function render() {
+          const item = proj.images[idx];
+          if (!item) return;
+          img.src = item.full;
+          img.alt = (item.caption ? item.caption + ' — ' : '') + proj.title;
+          titleEl.textContent = proj.title;
+          countEl.textContent = proj.images.length > 1 ? `${idx + 1} / ${proj.images.length}` : '';
+          capEl.textContent = item.caption || '';
+          openEl.href = item.full;
+          const multi = proj.images.length > 1;
+          btnPrev.style.display = multi ? '' : 'none';
+          btnNext.style.display = multi ? '' : 'none';
+        }
+        function open(pi, i) {
+          proj = portfolio[pi]; idx = i || 0;
+          lastFocus = document.activeElement;
+          render();
+          lb.hidden = false;
+          document.body.style.overflow = 'hidden';
+          btnClose.focus();
+        }
+        function close() {
+          lb.hidden = true;
+          img.removeAttribute('src');
+          document.body.style.overflow = '';
+          if (lastFocus && lastFocus.focus) lastFocus.focus();
+        }
+        function step(d) { idx = (idx + d + proj.images.length) % proj.images.length; render(); }
+
+        document.querySelectorAll('.arch-tile').forEach((tile) => {
+          tile.addEventListener('click', () => open(parseInt(tile.getAttribute('data-project'), 10), 0));
+        });
+        btnClose.addEventListener('click', close);
+        btnPrev.addEventListener('click', () => step(-1));
+        btnNext.addEventListener('click', () => step(1));
+        lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+        document.addEventListener('keydown', (e) => {
+          if (lb.hidden) return;
+          if (e.key === 'Escape') close();
+          else if (e.key === 'ArrowLeft') step(-1);
+          else if (e.key === 'ArrowRight') step(1);
+        });
+      })();
+    </script>
 
     <section class="arch-section">
       <div class="container arch-founder">
@@ -181,14 +237,14 @@ const steps = [
             quantum-sensing work.
           </p>
           <div class="arch-cta-row">
-            <a class="arch-btn primary" href="/contact?type=architecture">Start a project</a>
+            <a class="arch-btn primary" href="/contact.html?type=architecture">Start a project</a>
             <a class="arch-btn ghost" href="/index.html">Back to Peterson Quantum Sensing</a>
           </div>
         </div>
         <aside class="arch-quote-card">
           <span class="arch-quote-label">Request a quote</span>
           <p>Have drawings, a site, or a historic structure that needs documenting? Send the scope and timeline and you’ll get a fixed-fee proposal.</p>
-          <a class="arch-btn primary full" href="/contact?type=architecture">Email a project brief</a>
+          <a class="arch-btn primary full" href="/contact.html?type=architecture">Email a project brief</a>
         </aside>
       </div>
     </section>
@@ -444,13 +500,20 @@ const steps = [
   .arch-tile {
     position: relative;
     display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #0a1725;
     text-decoration: none;
     aspect-ratio: 4 / 3;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
   }
+  .arch-tile:focus-visible { outline: 2px solid var(--arch-gold-2); outline-offset: 2px; }
   .arch-tile img {
     width: 100%;
     height: 100%;
@@ -459,20 +522,108 @@ const steps = [
     transition: transform 0.4s ease;
   }
   .arch-tile:hover img { transform: scale(1.05); }
+  .arch-tile-count {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: #1a0f02;
+    background: var(--arch-gold-2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
   .arch-tile-label {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 22px 14px 12px;
-    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 30px 14px 12px;
+    text-align: left;
     color: #fff;
-    background: linear-gradient(transparent, rgba(4, 10, 18, 0.9));
-    transform: translateY(4px);
-    opacity: 0;
-    transition: all 0.2s ease;
+    background: linear-gradient(transparent, rgba(4, 10, 18, 0.92));
   }
-  .arch-tile:hover .arch-tile-label { transform: translateY(0); opacity: 1; }
+  .arch-tile-label strong { font-size: 14px; font-weight: 700; line-height: 1.2; }
+  .arch-tile-label em {
+    font-style: normal;
+    font-size: 12px;
+    line-height: 1.35;
+    color: #b9c9d8;
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.22s ease;
+  }
+  .arch-tile:hover .arch-tile-label em,
+  .arch-tile:focus-visible .arch-tile-label em { opacity: 1; max-height: 60px; }
+
+  /* Carousel lightbox */
+  .arch-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    background: rgba(3, 8, 14, 0.94);
+    backdrop-filter: blur(4px);
+    padding: 18px clamp(12px, 4vw, 60px) 24px;
+  }
+  .arch-lightbox[hidden] { display: none; }
+  .arch-lb-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    color: #eef2f7;
+  }
+  .arch-lb-title { font-size: 17px; font-weight: 700; }
+  .arch-lb-count { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--arch-gold-2); margin-top: 2px; }
+  .arch-lb-stage {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .arch-lb-stage img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.6);
+  }
+  .arch-lb-btn {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--arch-line);
+    background: rgba(217, 119, 6, 0.14);
+    color: #f0b357;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .arch-lb-btn:hover { background: rgba(217, 119, 6, 0.28); }
+  .arch-lb-close { width: 40px; height: 40px; font-size: 24px; }
+  .arch-lb-caption { text-align: center; color: #c3d2e0; font-size: 14px; min-height: 20px; }
+  .arch-lb-actions { text-align: center; margin-top: 10px; }
+  .arch-lb-open { color: var(--arch-gold-2); font-size: 13px; font-weight: 600; text-decoration: none; }
+  .arch-lb-open:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .arch-lb-btn { width: 38px; height: 38px; font-size: 22px; }
+  }
 
   .arch-founder {
     display: grid;
