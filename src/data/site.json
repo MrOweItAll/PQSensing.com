@@ -1,0 +1,5 @@
+{
+  "_note": "Set formspreeEndpoint to your Formspree form URL to make the /contact form send email. Create a free form at https://formspree.io (New Form -> copy the endpoint like https://formspree.io/f/abcdefgh). Until you set it, the form falls back to a direct email link so nothing breaks.",
+  "formspreeEndpoint": "https://formspree.io/f/xqerbarl",
+  "contactEmail": "mroweitall@gmail.com"
+}

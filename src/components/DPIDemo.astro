@@ -1,0 +1,267 @@
+---
+/**
+ * DPIDemo — Dark-Port Injection companion demo (Astro island).
+ * Injects a known phase code g(t) into a noisy channel, runs a matched
+ * filter (cross-correlation with the known code), and shows the
+ * correlation peak recovering the code out of noise — making the
+ * dark-port processing-gain claim as tangible as the NSL slope-null.
+ * Pure client-side DSP, no dependencies.
+ */
+---
+
+<section id="dpi-demo" class="section-pad exhibit-section">
+  <div class="container">
+    <div class="section-head wide">
+      <p class="eyebrow">Interactive demonstration · dark-port injection</p>
+      <h2>Pull a known code back <em>out of the noise</em>.</h2>
+      <p>
+        Inject a known phase code <span class="mono">g(t)</span> through the dark
+        port, bury it under channel noise, then correlate the received stream
+        against the code you sent. The matched filter concentrates the code's
+        energy into a single peak while noise stays spread out — the processing
+        gain that makes weak coded signatures recoverable.
+      </p>
+    </div>
+
+    <div class="exhibit-panel">
+      <div class="dpi-plots">
+        <div class="dpi-plot-wrap">
+          <span class="dpi-plot-label">Received: g(t) + noise (dark port)</span>
+          <canvas id="dpiRx" width="800" height="180" role="img" aria-label="Noisy received signal"></canvas>
+        </div>
+        <div class="dpi-plot-wrap">
+          <span class="dpi-plot-label">Matched-filter output (correlation vs lag)</span>
+          <canvas id="dpiCorr" width="800" height="180" role="img" aria-label="Matched filter correlation output with recovery peak"></canvas>
+        </div>
+      </div>
+
+      <div class="exhibit-readout">
+        <div class="readout-block">
+          <span class="readout-label">Injected lag</span>
+          <span class="readout-value" id="dpiTrueLag">—</span>
+          <span class="readout-sub">where the code was hidden</span>
+        </div>
+        <div class="readout-block readout-block-accent">
+          <span class="readout-label">Recovered lag</span>
+          <span class="readout-value" id="dpiRecLag">—</span>
+          <span class="readout-sub" id="dpiRecStatus">peak of the correlation</span>
+        </div>
+        <div class="readout-block readout-block-gain">
+          <span class="readout-label">Processing gain</span>
+          <span class="readout-value" id="dpiGain">— dB</span>
+          <span class="readout-sub">≈ 10·log₁₀(code length)</span>
+        </div>
+      </div>
+
+      <div class="exhibit-controls">
+        <label class="exhibit-control">
+          <span class="control-label">
+            Code length
+            <span class="control-hint">longer codes spread more energy → more gain</span>
+          </span>
+          <input type="range" min="7" max="255" value="63" id="dpiLen" class="exhibit-slider" />
+          <output id="dpiLenOut" class="control-out">63 chips</output>
+        </label>
+        <label class="exhibit-control">
+          <span class="control-label">
+            Channel noise
+            <span class="control-hint">how much noise buries the injected code</span>
+          </span>
+          <input type="range" min="0" max="100" value="40" id="dpiNoise" class="exhibit-slider" />
+          <output id="dpiNoiseOut" class="control-out">σ = 1.2</output>
+        </label>
+        <div class="exhibit-control" style="justify-content:flex-end">
+          <button type="button" class="button ghost small" id="dpiReroll">Re-randomize</button>
+        </div>
+      </div>
+
+      <p class="exhibit-note">
+        Pedagogical DSP model. A binary phase code is injected at a random lag,
+        buried under Gaussian channel noise, and recovered by cross-correlation.
+        The peak height over the noise floor is the processing gain that dark-port
+        coding buys you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    'use strict';
+    const rxCanvas = document.getElementById('dpiRx');
+    const corrCanvas = document.getElementById('dpiCorr');
+    if (!rxCanvas || !corrCanvas) return;
+
+    const lenEl = document.getElementById('dpiLen');
+    const noiseEl = document.getElementById('dpiNoise');
+    const lenOut = document.getElementById('dpiLenOut');
+    const noiseOut = document.getElementById('dpiNoiseOut');
+    const trueLagEl = document.getElementById('dpiTrueLag');
+    const recLagEl = document.getElementById('dpiRecLag');
+    const recStatusEl = document.getElementById('dpiRecStatus');
+    const gainEl = document.getElementById('dpiGain');
+    const rerollEl = document.getElementById('dpiReroll');
+
+    const COL = { cyan: '#39dfff', teal: '#49f4c8', gold: '#e8c27a', grid: 'rgba(96,219,255,0.10)', muted: 'rgba(167,196,216,0.55)' };
+
+    // Deterministic PRNG so a given seed reproduces the same trace.
+    let seed = 1234567;
+    function rand() {
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+      return seed / 0x7fffffff;
+    }
+    // Box-Muller Gaussian
+    function gauss() {
+      let u = 0, v = 0;
+      while (u === 0) u = rand();
+      while (v === 0) v = rand();
+      return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+    }
+
+    function makeCode(L) {
+      const c = new Array(L);
+      for (let i = 0; i < L; i++) c[i] = rand() < 0.5 ? -1 : 1;
+      return c;
+    }
+
+    function clearCanvas(ctx, w, h) {
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = COL.grid;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2);
+      ctx.stroke();
+    }
+
+    function drawSeries(ctx, data, w, h, color, opts) {
+      opts = opts || {};
+      const n = data.length;
+      let max = opts.max;
+      if (max == null) { max = 1e-6; for (let i = 0; i < n; i++) max = Math.max(max, Math.abs(data[i])); }
+      const midY = h / 2;
+      const scale = (h / 2 - 8) / max;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = opts.width || 1.4;
+      ctx.beginPath();
+      for (let i = 0; i < n; i++) {
+        const x = (i / (n - 1)) * w;
+        const y = midY - data[i] * scale;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      return { max, scale, midY };
+    }
+
+    function run() {
+      const L = parseInt(lenEl.value, 10);
+      const noiseUI = parseInt(noiseEl.value, 10);
+      const sigma = (noiseUI / 100) * 3; // 0..3
+      lenOut.textContent = L + ' chips';
+      noiseOut.textContent = 'σ = ' + sigma.toFixed(2);
+
+      const code = makeCode(L);
+      const bufLen = Math.max(3 * L, L + 40);
+      const trueLag = Math.floor(rand() * (bufLen - L));
+
+      // received = noise everywhere + code injected at trueLag
+      const rx = new Array(bufLen);
+      for (let i = 0; i < bufLen; i++) rx[i] = gauss() * sigma;
+      for (let i = 0; i < L; i++) rx[trueLag + i] += code[i];
+
+      // matched filter: cross-correlate rx with the known code
+      const corrN = bufLen - L + 1;
+      const corr = new Array(corrN);
+      let peakVal = -Infinity, peakIdx = 0;
+      for (let lag = 0; lag < corrN; lag++) {
+        let s = 0;
+        for (let i = 0; i < L; i++) s += rx[lag + i] * code[i];
+        corr[lag] = s;
+        if (s > peakVal) { peakVal = s; peakIdx = lag; }
+      }
+
+      // noise floor of the correlation (exclude the peak neighborhood)
+      let sumsq = 0, cnt = 0;
+      for (let lag = 0; lag < corrN; lag++) {
+        if (Math.abs(lag - peakIdx) < L / 4) continue;
+        sumsq += corr[lag] * corr[lag]; cnt++;
+      }
+      const floorRms = Math.sqrt(sumsq / Math.max(cnt, 1)) || 1e-6;
+      const peakToFloorDb = 20 * Math.log10(Math.abs(peakVal) / floorRms);
+
+      // ----- draw received -----
+      const rxCtx = rxCanvas.getContext('2d');
+      const W = rxCanvas.width, H = rxCanvas.height;
+      clearCanvas(rxCtx, W, H);
+      drawSeries(rxCtx, rx, W, H, COL.muted, { width: 1 });
+      // highlight the injected window
+      rxCtx.fillStyle = 'rgba(73,244,200,0.10)';
+      rxCtx.fillRect((trueLag / bufLen) * W, 0, (L / bufLen) * W, H);
+
+      // ----- draw correlation -----
+      const cCtx = corrCanvas.getContext('2d');
+      const W2 = corrCanvas.width, H2 = corrCanvas.height;
+      clearCanvas(cCtx, W2, H2);
+      const meta = drawSeries(cCtx, corr, W2, H2, COL.cyan, { width: 1.4 });
+      // mark the recovery peak
+      const px = (peakIdx / (corrN - 1)) * W2;
+      const py = meta.midY - peakVal * meta.scale;
+      cCtx.fillStyle = COL.teal;
+      cCtx.beginPath(); cCtx.arc(px, py, 5, 0, Math.PI * 2); cCtx.fill();
+      cCtx.strokeStyle = 'rgba(73,244,200,0.5)';
+      cCtx.setLineDash([3, 4]);
+      cCtx.beginPath(); cCtx.moveTo(px, 0); cCtx.lineTo(px, H2); cCtx.stroke();
+      cCtx.setLineDash([]);
+
+      // ----- readouts -----
+      trueLagEl.textContent = 'n = ' + trueLag;
+      recLagEl.textContent = 'n = ' + peakIdx;
+      const ok = peakIdx === trueLag;
+      recStatusEl.textContent = ok ? '✓ code recovered' : (Math.abs(peakIdx - trueLag) <= 1 ? '≈ recovered (±1)' : '✗ lost in noise');
+      recLagEl.style.color = ok || Math.abs(peakIdx - trueLag) <= 1 ? COL.teal : COL.gold;
+      gainEl.textContent = (peakToFloorDb >= 0 ? '+' : '') + peakToFloorDb.toFixed(1) + ' dB';
+    }
+
+    [lenEl, noiseEl].forEach((el) => {
+      el.addEventListener('input', () => { run(); });
+    });
+    rerollEl.addEventListener('click', () => { seed = (seed * 16807 + 17) & 0x7fffffff; run(); });
+
+    run();
+  })();
+</script>
+
+<style>
+  .dpi-plots {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+  .dpi-plot-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .dpi-plot-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted2, #7aa4bc);
+  }
+  .dpi-plot-wrap canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+    border-radius: 12px;
+    background: rgba(4, 16, 30, 0.6);
+    display: block;
+  }
+  .button.small {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+</style>

@@ -1,0 +1,57 @@
+{
+  "_note": "Media + Architecture packages. 'priceRange' shows a starting band (e.g. '$2.5k–$5k'); set to null for 'Pricing on request'. Ranges below are the founder's confirmed public bands. Edit deliverables/timelines freely.",
+  "packages": [
+    {
+      "id": "residential-plan-set",
+      "name": "Residential Plan Set",
+      "tagline": "Permit-ready construction documents",
+      "deliverables": [
+        "Floor plans, elevations & building sections",
+        "Roof & foundation plans",
+        "Coordinated PDF + DWG deliverables"
+      ],
+      "timeline": "2–3 weeks",
+      "featured": false,
+      "priceRange": "$2.5k–$5k"
+    },
+    {
+      "id": "habs-historic-documentation",
+      "name": "HABS / Historic Documentation",
+      "tagline": "Measured drawings to NPS standards",
+      "deliverables": [
+        "Measured drawings & field documentation",
+        "Large-format photo documentation",
+        "Prepared to HABS/HAER/NPS standards"
+      ],
+      "timeline": "3–5 weeks",
+      "featured": true,
+      "priceRange": "$4k–$8k"
+    },
+    {
+      "id": "3d-visualization-bundle",
+      "name": "3D Visualization Bundle",
+      "tagline": "Photoreal renders for approvals & marketing",
+      "deliverables": [
+        "3–5 exterior / interior render views",
+        "Photoreal concept treatment",
+        "Optional walkthrough animation"
+      ],
+      "timeline": "1–2 weeks",
+      "featured": false,
+      "priceRange": "$1.5k–$4k"
+    },
+    {
+      "id": "custom-complex",
+      "name": "Custom / Complex Projects",
+      "tagline": "Full CD sets & multi-building coordination",
+      "deliverables": [
+        "Complete construction-document sets",
+        "Multi-building & site coordination",
+        "Consultant drawing coordination"
+      ],
+      "timeline": "By scope",
+      "featured": false,
+      "priceRange": null
+    }
+  ]
+}

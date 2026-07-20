@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import UpdatesFeed from '../components/UpdatesFeed.astro';
+
+const title = 'Development Updates — PQSensing';
+const description =
+  'Ongoing development at Peterson Quantum Sensing: validation-sprint milestones, publications, partnerships, and site progress.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main id="top">
+    <section class="section-pad">
+      <div class="container" style="max-width:820px">
+        <div class="section-head narrow">
+          <p class="eyebrow">Development updates</p>
+          <h2>What’s happening at PQSensing.</h2>
+          <p>
+            A running log of progress — validation milestones, publications,
+            partnerships, and platform work.
+            <a href="/updates/rss.xml" style="color:var(--cyan)">Subscribe via RSS</a>.
+          </p>
+        </div>
+        <div style="margin-top:24px">
+          <UpdatesFeed />
+        </div>
+        <div class="cta-row" style="margin-top:34px">
+          <a class="button primary" href="/index.html#collaborate">Collaborate with PQSensing</a>
+          <a class="button ghost" href="/index.html">Back to home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

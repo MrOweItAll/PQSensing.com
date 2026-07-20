@@ -1,0 +1,108 @@
+---
+/**
+ * Shared site footer. Combines the homepage footer summary with the
+ * contact + AI-tools disclosure line previously carried only on the
+ * metrology pages, so every page now presents the same complete footer.
+ */
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>PQSensing</strong>
+      <p>
+        Advanced Supervisory Modules for interferometric systems — a firmware
+        performance layer that holds precision instruments at their best
+        measurement operating point. Flagship module: Noise-Stationary Locking.
+      </p>
+    </div>
+    <div>
+      <strong>Plain-language summary</strong>
+      <p>
+        Your existing lock keeps the instrument stable. A PQSensing supervisory
+        module keeps the measurement at its best — and the same idea extends
+        across optical, inertial, timing, and quantum-link instruments.
+      </p>
+    </div>
+  </div>
+  <nav class="container footer-nav" aria-label="Footer">
+    <a href="/index.html">Home</a>
+    <a href="/modules.html">Modules</a>
+    <a href="/metrology.html">Metrology 101</a>
+    <a href="/metrology201.html">Metrology 201</a>
+    <a href="/publications.html">Publications</a>
+    <a href="/updates.html">Updates</a>
+    <a href="/about.html">About</a>
+    <a href="/architecture.html">Media + Architecture</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/updates/rss.xml">RSS</a>
+  </nav>
+  <div class="container footer-legal">
+    <div>
+      <strong>PQSENSING.COM</strong> · Peterson Quantum Sensing LLC · Hugoton, Kansas
+      <span class="footer-pending">NSL &amp; DPI — patent pending</span>
+    </div>
+    <div>
+      &copy; {year} Peterson Quantum Sensing LLC ·
+      <a href="mailto:mroweitall@gmail.com">mroweitall@gmail.com</a> ·
+      <a href="tel:+16205183686">620-518-3686</a>
+    </div>
+    <div class="footer-disclosure">
+      Website, patent drafting, research, and grant-writing support developed with
+      AI tools at the direction of Peterson Quantum Sensing LLC. Original
+      intellectual-property direction and publication decisions remain with Jon
+      Peterson and Peterson Quantum Sensing LLC.
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-nav {
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line2, rgba(255, 255, 255, 0.1));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+  }
+  .footer-nav a {
+    color: var(--muted2, #7aa4bc);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.15s ease;
+  }
+  .footer-nav a:hover { color: var(--cyan, #39dfff); }
+  .footer-legal {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line2, rgba(255, 255, 255, 0.1));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted2, #7aa4bc);
+  }
+  .footer-legal a {
+    color: var(--cyan, #39dfff);
+    text-decoration: none;
+  }
+  .footer-legal a:hover {
+    text-decoration: underline;
+  }
+  .footer-disclosure {
+    color: #64748b;
+    max-width: var(--max, 1180px);
+  }
+  .footer-pending {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(73, 244, 200, 0.4);
+    color: #49f4c8;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+</style>
