@@ -46,7 +46,10 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: public_html/
+          # The codex@pqsensing.com FTP account is rooted at public_html, so its
+          # login root IS the web root — deploy to "./" (do NOT append public_html/).
+          # If you switch to the master account (pqselyjx), use server-dir: public_html/
+          server-dir: ./
           # Keep server-only files that are not part of the build.
           exclude: |
             **/.git*
