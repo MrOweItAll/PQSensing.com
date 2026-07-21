@@ -48,6 +48,7 @@ const description =
             <a class="button primary" href="/contact.html?type=validation">Partner on the validation</a>
             <a class="button ghost" href="#platform">Read the technical version</a>
           </div>
+          <p class="explainer-audio">Prefer to listen? <a href="/assets/metrology-overview.m4a">2-minute spoken overview →</a></p>
         </div>
         <div class="explainer-video">
           <iframe
@@ -132,26 +133,13 @@ const description =
       </div>
     </section>
 
-    <section id="why" class="section-pad intro-section">
-      <div class="container split major-split">
-        <div>
-          <p class="eyebrow">Why this exists</p>
-          <h2>A locked interferometer is not always an optimized interferometer.</h2>
-        </div>
-        <div class="copy-stack">
-          <p>Most precision interferometers are locked to an optical condition: a cavity resonance, a fringe point, a reflected-power null, or a transmitted-power peak. That is necessary, but it is not always enough.</p>
-          <p>The customer does not buy a pretty fringe. The customer buys a smaller error bar: displacement, phase, strain, rotation, acceleration, refractive index, or timing measured with less uncertainty and less wasted integration time.</p>
-          <p><strong>NSL + DPI is for instruments that are optically locked but not necessarily measurement-optimized.</strong> The optical lock says stable. The noise floor says otherwise.</p>
-        </div>
-      </div>
-    </section>
-
     <section class="section-pad value-section">
       <div class="container value-grid">
         <article class="value-card tall">
           <p class="eyebrow">The buyer pain</p>
           <h2>“My interferometer is locked, but my measurement is still noisy.”</h2>
           <p>That is the use case. The lock is holding the optics, but vibration, thermal drift, laser-frequency noise, platform motion, speckle, detuning jitter, or quadrature-angle error still corrupt the measurement band.</p>
+          <p>The customer does not buy a pretty fringe — they buy a smaller error bar. NSL + DPI is for instruments that are optically locked but not measurement-optimized: the lock says stable, the noise floor says otherwise.</p>
         </article>
         <article class="value-card">
           <h3>More averaging stops helping.</h3>
@@ -358,23 +346,6 @@ const description =
       </div>
     </section>
 
-    <section id="audio" class="section-pad audio-section">
-      <div class="container audio-panel">
-        <div>
-          <p class="eyebrow">Audio overview</p>
-          <h2>Listen to the metrology thesis.</h2>
-          <p>A concise spoken overview of the PQSensing approach, the tabletop validation sprint, and why noise-stationary control matters for interferometric metrology.</p>
-        </div>
-        <div class="audio-player" aria-label="Metrology overview audio player">
-          <audio controls preload="metadata">
-            <source src="/assets/metrology-overview.m4a" type="audio/mp4" />
-            Your browser does not support embedded audio. <a href="/assets/metrology-overview.m4a">Download the audio overview</a>.
-          </audio>
-          <a class="audio-download" href="/assets/metrology-overview.m4a">Download audio file</a>
-        </div>
-      </div>
-    </section>
-
     <!-- Status / traction strip: at-a-glance signals for partners & investors. -->
     <section id="status" class="section-pad status-section">
       <div class="container">
@@ -508,6 +479,9 @@ const description =
   }
   .explainer-copy h2 { font-size: clamp(26px, 3.6vw, 40px); line-height: 1.1; margin: 6px 0 16px; }
   .explainer-copy p { color: #a7c4d8; line-height: 1.65; margin: 0 0 24px; font-size: 16px; }
+  .explainer-audio { font-size: 14px; margin: 14px 0 0; }
+  .explainer-audio a { color: var(--cyan, #39dfff); font-weight: 600; text-decoration: none; }
+  .explainer-audio a:hover { text-decoration: underline; }
   .explainer-video {
     border-radius: 20px;
     overflow: hidden;
