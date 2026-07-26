@@ -49,19 +49,54 @@ const description = "Jon Peterson is the founder and inventor behind PQSensing �
               Your browser does not support the audio player.
             </audio>
             <div class="music-links">
-              <a class="wav-primary" href="https://wavlake.com/jon-peterson" target="_blank" rel="noopener">Hear the full catalog on Wavlake →</a>
-              <div class="wav-chips" aria-label="Selected releases on Wavlake">
-                <a class="wav-chip" href="https://wavlake.com/album/9598fb36-52ba-4827-adf9-de85f487e5f4" target="_blank" rel="noopener">A Real Charmer</a>
-                <a class="wav-chip" href="https://wavlake.com/album/2bedc69a-cc32-45b3-b153-5b0f0fe5c595" target="_blank" rel="noopener">Homemade and Funky</a>
-                <a class="wav-chip" href="https://wavlake.com/album/0bb63f08-9d96-47e3-88a6-86f33ad1ace8" target="_blank" rel="noopener">Lost In The NeverWas</a>
-                <a class="wav-chip" href="https://wavlake.com/album/93eb03e4-92c6-48b7-875c-59d3042ecad5" target="_blank" rel="noopener">New Sky</a>
-                <a class="wav-chip" href="https://wavlake.com/album/eb1a22bf-6419-4354-b335-7970a1f791d2" target="_blank" rel="noopener">Southbound Train</a>
-                <a class="wav-chip" href="https://wavlake.com/album/4343c836-9215-4b11-891d-b6e8f0feccbd" target="_blank" rel="noopener">Time After Time</a>
-                <a class="wav-chip" href="https://wavlake.com/album/e0be09ee-4b3b-4891-bed0-40b8a5207a91" target="_blank" rel="noopener">Oldie Cologne</a>
-                <a class="wav-chip" href="https://wavlake.com/album/8da81891-47e5-4ef0-bc64-6869b8748d12" target="_blank" rel="noopener">Sittin’ On The Dock Of The Bay</a>
-                <a class="wav-chip" href="https://wavlake.com/album/e74294f4-ed68-4df8-91c3-5f6ea2bb5ea0" target="_blank" rel="noopener">In The Name Of</a>
+              <p class="wav-embed-label">Play the catalog right here — pick an album:</p>
+              <div class="wav-embed-wrap">
+                <iframe
+                  id="wavPlayer"
+                  class="wav-embed"
+                  title="Wavlake player — EverSound Records"
+                  src="https://embed.wavlake.com/album/9598fb36-52ba-4827-adf9-de85f487e5f4"
+                  loading="lazy"
+                  frameborder="0"
+                  allow="encrypted-media; clipboard-write; autoplay"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
               </div>
+              <div class="wav-chips" id="wavChips" role="tablist" aria-label="EverSound Records releases on Wavlake">
+                <a class="wav-chip is-active" data-album="9598fb36-52ba-4827-adf9-de85f487e5f4" role="tab" aria-selected="true" href="https://wavlake.com/album/9598fb36-52ba-4827-adf9-de85f487e5f4" target="_blank" rel="noopener">A Real Charmer</a>
+                <a class="wav-chip" data-album="2bedc69a-cc32-45b3-b153-5b0f0fe5c595" role="tab" aria-selected="false" href="https://wavlake.com/album/2bedc69a-cc32-45b3-b153-5b0f0fe5c595" target="_blank" rel="noopener">Homemade and Funky</a>
+                <a class="wav-chip" data-album="0bb63f08-9d96-47e3-88a6-86f33ad1ace8" role="tab" aria-selected="false" href="https://wavlake.com/album/0bb63f08-9d96-47e3-88a6-86f33ad1ace8" target="_blank" rel="noopener">Lost In The NeverWas</a>
+                <a class="wav-chip" data-album="93eb03e4-92c6-48b7-875c-59d3042ecad5" role="tab" aria-selected="false" href="https://wavlake.com/album/93eb03e4-92c6-48b7-875c-59d3042ecad5" target="_blank" rel="noopener">New Sky</a>
+                <a class="wav-chip" data-album="eb1a22bf-6419-4354-b335-7970a1f791d2" role="tab" aria-selected="false" href="https://wavlake.com/album/eb1a22bf-6419-4354-b335-7970a1f791d2" target="_blank" rel="noopener">Southbound Train</a>
+                <a class="wav-chip" data-album="4343c836-9215-4b11-891d-b6e8f0feccbd" role="tab" aria-selected="false" href="https://wavlake.com/album/4343c836-9215-4b11-891d-b6e8f0feccbd" target="_blank" rel="noopener">Time After Time</a>
+                <a class="wav-chip" data-album="e0be09ee-4b3b-4891-bed0-40b8a5207a91" role="tab" aria-selected="false" href="https://wavlake.com/album/e0be09ee-4b3b-4891-bed0-40b8a5207a91" target="_blank" rel="noopener">Oldie Cologne</a>
+                <a class="wav-chip" data-album="8da81891-47e5-4ef0-bc64-6869b8748d12" role="tab" aria-selected="false" href="https://wavlake.com/album/8da81891-47e5-4ef0-bc64-6869b8748d12" target="_blank" rel="noopener">Sittin’ On The Dock Of The Bay</a>
+                <a class="wav-chip" data-album="e74294f4-ed68-4df8-91c3-5f6ea2bb5ea0" role="tab" aria-selected="false" href="https://wavlake.com/album/e74294f4-ed68-4df8-91c3-5f6ea2bb5ea0" target="_blank" rel="noopener">In The Name Of</a>
+              </div>
+              <a class="wav-primary" href="https://wavlake.com/jon-peterson" target="_blank" rel="noopener">Open the full catalog on Wavlake →</a>
             </div>
+            <script is:inline>
+              (function () {
+                var frame = document.getElementById('wavPlayer');
+                var chips = document.getElementById('wavChips');
+                if (!frame || !chips) return;
+                chips.addEventListener('click', function (e) {
+                  var chip = e.target.closest('.wav-chip');
+                  if (!chip) return;
+                  // let modifier/middle clicks open the real Wavlake link normally
+                  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+                  var id = chip.getAttribute('data-album');
+                  if (!id) return;
+                  e.preventDefault();
+                  frame.src = 'https://embed.wavlake.com/album/' + id;
+                  chips.querySelectorAll('.wav-chip').forEach(function (c) {
+                    c.classList.remove('is-active');
+                    c.setAttribute('aria-selected', 'false');
+                  });
+                  chip.classList.add('is-active');
+                  chip.setAttribute('aria-selected', 'true');
+                });
+              })();
+            </script>
           </div>
         </div>
       </div>
@@ -258,6 +293,37 @@ const lightbox = document.getElementById('drawingLightbox');
     border-color: rgba(96, 219, 255, 0.6);
     color: #fff;
     background: rgba(57, 223, 255, 0.1);
+  }
+  .wav-chip.is-active {
+    border-color: var(--teal, #49f4c8);
+    color: #02121a;
+    background: linear-gradient(135deg, var(--cyan, #39dfff), var(--teal, #49f4c8));
+    font-weight: 700;
+  }
+  .wav-embed-label {
+    margin: 4px 0 12px;
+    font-size: 14px;
+    color: var(--muted, #a7c4d8);
+  }
+  .wav-embed-wrap {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+    background: #04101e;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  }
+  .wav-embed {
+    display: block;
+    width: 100%;
+    height: 480px;
+    border: 0;
+    background: #04101e;
+  }
+  .music-links .wav-primary { margin-top: 16px; }
+  @media (max-width: 560px) {
+    .wav-embed { height: 420px; }
   }
 </style>
 </BaseLayout>

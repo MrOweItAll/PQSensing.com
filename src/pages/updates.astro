@@ -9,18 +9,25 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <main id="top">
+    <section class="page-hero">
+      <div class="page-hero-bg" style="background-image:url('/assets/bg/updates.jpg')"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-inner container">
+        <p class="eyebrow">Development updates</p>
+        <h1>What’s happening at PQSensing — and the timeline behind it.</h1>
+        <p class="page-hero-lede">
+          A running log of progress: the patent filing, validation milestones,
+          publications, partnerships, and platform work. Faded entries mark major
+          frontier-AI model releases over the same period — a backdrop that shows how
+          the theory, filings, and validation path advanced alongside a fast-moving
+          generation of reasoning tools.
+          <a href="/updates/rss.xml" style="color:var(--cyan)">Subscribe via RSS</a>.
+        </p>
+      </div>
+    </section>
     <section class="section-pad">
       <div class="container" style="max-width:820px">
-        <div class="section-head narrow">
-          <p class="eyebrow">Development updates</p>
-          <h2>What’s happening at PQSensing.</h2>
-          <p>
-            A running log of progress — validation milestones, publications,
-            partnerships, and platform work.
-            <a href="/updates/rss.xml" style="color:var(--cyan)">Subscribe via RSS</a>.
-          </p>
-        </div>
-        <div style="margin-top:24px">
+        <div style="margin-top:0">
           <UpdatesFeed />
         </div>
         <div class="cta-row" style="margin-top:34px">

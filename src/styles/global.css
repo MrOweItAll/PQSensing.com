@@ -69,6 +69,21 @@ h1{max-width:900px;margin-bottom:28px;font-size:clamp(46px,6.6vw,84px);line-heig
 .hero-facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:42px;max-width:950px}
 .hero-facts span{border:1px solid var(--line);background:rgba(5,17,31,.66);border-radius:999px;padding:10px 14px;color:#d7efff;box-shadow:0 15px 40px rgba(0,0,0,.18)}
 .section-pad{padding:92px 0}
+/* Shared page-hero banner — background image + brand overlay, like the homepage hero. */
+.page-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.page-hero-bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,9,16,.97) 0%,rgba(3,9,16,.74) 46%,rgba(3,9,16,.30) 100%)}
+.page-hero-inner{position:relative;padding:clamp(76px,11vw,132px) 0 clamp(46px,7vw,84px)}
+.page-hero-inner .section-head{margin-bottom:0}
+.page-hero-inner h1{margin-bottom:18px}
+.page-hero-lede{max-width:720px;color:#cfe3f2;font-size:clamp(17px,1.8vw,20px);line-height:1.55;margin:0}
+/* Modules + About heroes get the same background-image banner treatment. */
+.mod-hero,.about-hero{position:relative;overflow:hidden;padding:clamp(70px,10vw,120px) 0 clamp(48px,7vw,86px);border-bottom:1px solid var(--line)}
+.mod-hero::before,.about-hero::before{content:'';position:absolute;inset:0;background-size:cover;background-position:center right;z-index:0}
+.mod-hero::after,.about-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,9,16,.96) 0%,rgba(3,9,16,.72) 48%,rgba(3,9,16,.34) 100%);z-index:0}
+.mod-hero::before{background-image:url('/assets/bg/modules.jpg')}
+.about-hero::before{background-image:url('/assets/bg/about.jpg')}
+.mod-hero>.container,.about-hero>.container{position:relative;z-index:1}
 .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
 .major-split h2,.section-head h2,.visual-split h2,.fund-card h2,.equation-wrap h2{font-size:clamp(31px,3.8vw,52px);line-height:1.1;letter-spacing:-.01em;margin-bottom:22px}
 .copy-stack p,.section-head p,.value-card p,.tech-card p,.process-grid p,.visual-split p,.measurement-grid p,.fund-card p,.site-footer p{color:var(--muted);font-size:18px}

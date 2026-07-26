@@ -12,20 +12,23 @@ const papers = publications.papers;
 
 <BaseLayout title={title} description={description}>
   <main id="top">
+    <section class="page-hero">
+      <div class="page-hero-bg" style="background-image:url('/assets/bg/publications.jpg')"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-inner container">
+        <p class="eyebrow">Publications &amp; data</p>
+        <h1>Technical papers behind the platform.</h1>
+        <p class="page-hero-lede">
+          Non-confidential technical papers based on the PQSensing
+          patent-pending math and control architecture (non-provisional filed). Each is available
+          as a PDF with a ready-to-paste BibTeX citation for academic
+          collaborators. Measured validation datasets will be published here
+          as the tabletop Mach–Zehnder sprint produces them.
+        </p>
+      </div>
+    </section>
     <section class="section-pad">
       <div class="container">
-        <div class="section-head narrow">
-          <p class="eyebrow">Publications &amp; data</p>
-          <h2>Technical papers behind the platform.</h2>
-          <p>
-            Non-confidential technical papers based on the PQSensing
-            patent-pending math and control architecture (non-provisional filed). Each is available
-            as a PDF with a ready-to-paste BibTeX citation for academic
-            collaborators. Measured validation datasets will be published here
-            as the tabletop Mach–Zehnder sprint produces them.
-          </p>
-        </div>
-
         <div class="papers-list">
           {papers.map((paper) => <PaperRow paper={paper} />)}
         </div>

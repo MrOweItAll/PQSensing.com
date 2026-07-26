@@ -1,6 +1,14 @@
 {
-  "_note": "Development updates feed. Newest first. Append one object per milestone. Allowed tags: validation, filing, partnership, publication, hardware, site. Optional 'url' links out (or to an internal page). Keep 'summary' to 1-2 sentences.",
+  "_note": "Development updates feed. Newest first (component sorts by date). Append one object per milestone. Tags: validation, filing, partnership, publication, hardware, site, milestone, ai. Items tagged 'ai' are frontier-model release markers rendered as a muted backdrop to show how PQSensing's work progressed alongside AI capability. Keep 'summary' to 1-2 sentences.",
   "updates": [
+    {
+      "id": "2026-07-brand",
+      "date": "2026-07-24",
+      "title": "Brand system, official logo, and in-page catalog player",
+      "summary": "Adopted the official Peterson Quantum Sensing logo, letterhead, and typography site-wide, gave the Media + Architecture practice its own identity, and embedded an in-page player for the founder's EverSound Records catalog.",
+      "tags": ["site"],
+      "url": "/about.html"
+    },
     {
       "id": "2026-07-site-upgrade",
       "date": "2026-07-19",
@@ -8,6 +16,13 @@
       "summary": "pqsensing.com migrated to a static Astro build: live Noise-Stationary Locking demo with shareable-state URLs and a CSV bench-trace loader, a new dark-port matched-filter demo, typeset math, and a publications index.",
       "tags": ["site"],
       "url": "/index.html#exhibit"
+    },
+    {
+      "id": "2026-06-moku",
+      "date": "2026-06-20",
+      "title": "Validation path aligned to the Liquid Instruments Moku platform",
+      "summary": "Targeted the Kansas State prototype at the Liquid Instruments Moku FPGA platform, so a first reproducible bench validation of NSL runs on standard, widely available lab hardware.",
+      "tags": ["validation", "hardware"]
     },
     {
       "id": "2026-06-whitepapers",
@@ -18,10 +33,31 @@
       "url": "/publications.html"
     },
     {
+      "id": "2026-06-outreach",
+      "date": "2026-06-02",
+      "title": "Licensing-first commercial and investor outreach",
+      "summary": "Opened licensing-first conversations with precision-optics makers and deep-tech investors, positioning NSL as a hardware-agnostic supervisory layer that sits above existing PDH and cavity locks rather than replacing them.",
+      "tags": ["milestone"]
+    },
+    {
+      "id": "2026-05-vescent",
+      "date": "2026-05-30",
+      "title": "Introductory call with Vescent on where NSL fits",
+      "summary": "Vescent's R&D team took an introductory call on layering Noise-Stationary Locking above the D2-125 and SLICE-OPL laser-servo platforms as a firmware or licensed supervisory module.",
+      "tags": ["partnership"]
+    },
+    {
+      "id": "2026-05-ksu",
+      "date": "2026-05-26",
+      "title": "Kansas State University to prototype NSL (summer research)",
+      "summary": "After a Zoom review, Prof. Meng (Ming) Han's group at Kansas State University took on a summer research project to prototype Noise-Stationary Locking, with follow-on discussion toward DPI-assisted delay measurements.",
+      "tags": ["partnership", "validation"]
+    },
+    {
       "id": "2026-05-validation-partner",
       "date": "2026-05-15",
       "title": "Seeking a validation partner for the tabletop MZI sprint",
-      "summary": "Actively looking for a university lab, metrology partner, or sponsor to run the first classical Mach–Zehnder comparison of a conventional lock against NSL under controlled disturbance.",
+      "summary": "Actively looking for a university lab, metrology partner, or sponsor to run the first classical Mach-Zehnder comparison of a conventional lock against NSL under controlled disturbance.",
       "tags": ["partnership", "validation"],
       "url": "/index.html#collaborate"
     },
@@ -32,6 +68,91 @@
       "summary": "The interactive demo now ingests measured (delta, P, N_band) traces directly, so validation-sprint data will map onto the published thesis with zero rework.",
       "tags": ["validation"],
       "url": "/index.html#exhibit"
+    },
+    {
+      "id": "2026-03-patent",
+      "date": "2026-03-26",
+      "title": "USPTO filing receipt — utility application 19/535,045",
+      "summary": "The USPTO issued the official filing receipt for non-provisional utility application No. 19/535,045, \"Noise-Stationary Locking and Phase-Controlled Dark-Port Injection for Interferometric Signal and Noise Manipulation.\" PQSensing is patent pending.",
+      "tags": ["filing"]
+    },
+    {
+      "id": "2026-02-funding",
+      "date": "2026-02-11",
+      "title": "Prototype-funding path opened",
+      "summary": "Began outreach for prototype funding to build the first hardware embodiments of NSL and Dark-Port Injection — the actuators, detectors, and phase shifters for a tabletop demonstrator.",
+      "tags": ["milestone"]
+    },
+
+    {
+      "id": "ai-grok4",
+      "date": "2025-07-09",
+      "title": "AI frontier: xAI releases Grok 4",
+      "summary": "Context marker — the reasoning-model wave this work was developed alongside.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-opus41",
+      "date": "2025-08-05",
+      "title": "AI frontier: Anthropic releases Claude Opus 4.1",
+      "summary": "Context marker — frontier-model backdrop.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-gpt5",
+      "date": "2025-08-07",
+      "title": "AI frontier: OpenAI releases GPT-5",
+      "summary": "Context marker — frontier-model backdrop.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-grok41",
+      "date": "2025-11-17",
+      "title": "AI frontier: xAI releases Grok 4.1",
+      "summary": "Context marker — frontier-model backdrop.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-gemini3",
+      "date": "2025-11-18",
+      "title": "AI frontier: Google releases Gemini 3 Pro",
+      "summary": "Context marker — frontier-model backdrop.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-opus45",
+      "date": "2025-11-24",
+      "title": "AI frontier: Anthropic releases Claude Opus 4.5",
+      "summary": "Context marker — frontier-model backdrop.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-gemini31",
+      "date": "2026-02-19",
+      "title": "AI frontier: Google releases Gemini 3.1 Pro",
+      "summary": "Context marker — frontier-model backdrop, alongside PQSensing's patent-prosecution phase.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-opus48",
+      "date": "2026-05-28",
+      "title": "AI frontier: Anthropic releases Claude Opus 4.8",
+      "summary": "Context marker — frontier-model backdrop, alongside the KSU and Vescent conversations.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-fable5",
+      "date": "2026-06-09",
+      "title": "AI frontier: Anthropic releases Claude Fable 5",
+      "summary": "Context marker — frontier-model backdrop.",
+      "tags": ["ai"]
+    },
+    {
+      "id": "ai-sonnet5",
+      "date": "2026-06-30",
+      "title": "AI frontier: Anthropic releases Claude Sonnet 5",
+      "summary": "Context marker — frontier-model backdrop.",
+      "tags": ["ai"]
     }
   ]
 }

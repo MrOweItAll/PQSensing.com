@@ -3,6 +3,7 @@ import updatesData from '../../data/updates.json';
 
 export function GET(context) {
   const items = [...updatesData.updates]
+    .filter((u) => !(u.tags && u.tags.includes('ai')))
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .map((u) => ({
       title: u.title,

@@ -8,10 +8,14 @@ import updates from '../data/updates.json';
 
 interface Props {
   limit?: number;
+  hideAi?: boolean;
 }
-const { limit } = Astro.props;
+const { limit, hideAi } = Astro.props;
 
-const sorted = [...updates.updates].sort((a, b) => (a.date < b.date ? 1 : -1));
+const base = hideAi
+  ? updates.updates.filter((u) => !(u.tags && u.tags.includes('ai')))
+  : updates.updates;
+const sorted = [...base].sort((a, b) => (a.date < b.date ? 1 : -1));
 const items = typeof limit === 'number' ? sorted.slice(0, limit) : sorted;
 
 const fmt = (d: string) =>
@@ -25,7 +29,7 @@ const fmt = (d: string) =>
 
 <ol class="updates-list">
   {items.map((u) => (
-    <li class="update-item">
+    <li class:list={['update-item', { 'is-ai': u.tags && u.tags.includes('ai') }]}>
       <time class="update-date" datetime={u.date}>{fmt(u.date)}</time>
       <div class="update-body">
         <h3 class="update-title">
@@ -103,6 +107,12 @@ const fmt = (d: string) =>
   .tag-filing { color: #e8c27a; border-color: rgba(232, 194, 122, 0.4); }
   .tag-hardware { color: #f0b357; border-color: rgba(240, 179, 87, 0.4); }
   .tag-site { color: #a7c4d8; border-color: rgba(167, 196, 216, 0.4); }
+  .tag-milestone { color: #8ff3ff; border-color: rgba(57, 223, 255, 0.4); }
+  .tag-ai { color: #7f8ea3; border-color: rgba(127, 142, 163, 0.35); }
+  /* AI-frontier markers are a muted backdrop behind the PQS milestones. */
+  .update-item.is-ai { opacity: 0.62; }
+  .update-item.is-ai .update-title { font-size: 15px; font-weight: 600; color: var(--muted, #a7c4d8); }
+  .update-item.is-ai:hover { opacity: 0.9; }
 
   @media (max-width: 620px) {
     .update-item { grid-template-columns: 1fr; gap: 8px; }
