@@ -1,6 +1,27 @@
-*.jpg binary
-*.jpeg binary
-*.png binary
-*.pdf binary
-*.pptx binary
-*.wav binary
+# Normalize every text file to LF in the repository and on checkout.
+# `eol=lf` forces LF even on Windows, so CRLF working copies stop showing
+# up as phantom "modified" files in GitHub Desktop.
+* text=auto eol=lf
+
+# Binary assets — never apply line-ending conversion to these.
+*.jpg    binary
+*.jpeg   binary
+*.png    binary
+*.gif    binary
+*.webp   binary
+*.ico    binary
+*.pdf    binary
+*.pptx   binary
+*.zip    binary
+*.bundle binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
+*.eot    binary
+*.wav    binary
+*.mp3    binary
+*.m4a    binary
+*.mp4    binary
+*.m4v    binary
+*.mov    binary

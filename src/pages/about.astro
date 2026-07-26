@@ -48,6 +48,20 @@ const description = "Jon Peterson is the founder and inventor behind PQSensing �
               <source src="assets/audio/a-real-charmer-ai-gentle-remaster.wav" type="audio/wav">
               Your browser does not support the audio player.
             </audio>
+            <div class="music-links">
+              <a class="wav-primary" href="https://wavlake.com/jon-peterson" target="_blank" rel="noopener">Hear the full catalog on Wavlake →</a>
+              <div class="wav-chips" aria-label="Selected releases on Wavlake">
+                <a class="wav-chip" href="https://wavlake.com/album/9598fb36-52ba-4827-adf9-de85f487e5f4" target="_blank" rel="noopener">A Real Charmer</a>
+                <a class="wav-chip" href="https://wavlake.com/album/2bedc69a-cc32-45b3-b153-5b0f0fe5c595" target="_blank" rel="noopener">Homemade and Funky</a>
+                <a class="wav-chip" href="https://wavlake.com/album/0bb63f08-9d96-47e3-88a6-86f33ad1ace8" target="_blank" rel="noopener">Lost In The NeverWas</a>
+                <a class="wav-chip" href="https://wavlake.com/album/93eb03e4-92c6-48b7-875c-59d3042ecad5" target="_blank" rel="noopener">New Sky</a>
+                <a class="wav-chip" href="https://wavlake.com/album/eb1a22bf-6419-4354-b335-7970a1f791d2" target="_blank" rel="noopener">Southbound Train</a>
+                <a class="wav-chip" href="https://wavlake.com/album/4343c836-9215-4b11-891d-b6e8f0feccbd" target="_blank" rel="noopener">Time After Time</a>
+                <a class="wav-chip" href="https://wavlake.com/album/e0be09ee-4b3b-4891-bed0-40b8a5207a91" target="_blank" rel="noopener">Oldie Cologne</a>
+                <a class="wav-chip" href="https://wavlake.com/album/8da81891-47e5-4ef0-bc64-6869b8748d12" target="_blank" rel="noopener">Sittin’ On The Dock Of The Bay</a>
+                <a class="wav-chip" href="https://wavlake.com/album/e74294f4-ed68-4df8-91c3-5f6ea2bb5ea0" target="_blank" rel="noopener">In The Name Of</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -213,4 +227,37 @@ const lightbox = document.getElementById('drawingLightbox');
       if (event.key === 'ArrowRight') stepCarousel(1);
     });
 </script>
+
+<style>
+  .music-links { margin-top: 18px; }
+  .wav-primary {
+    display: inline-block;
+    color: var(--cyan, #39dfff);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .wav-primary:hover { text-decoration: underline; }
+  .wav-chips {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .wav-chip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(96, 219, 255, 0.28);
+    background: rgba(255, 255, 255, 0.04);
+    color: #cfe3f2;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .wav-chip:hover {
+    border-color: rgba(96, 219, 255, 0.6);
+    color: #fff;
+    background: rgba(57, 223, 255, 0.1);
+  }
+</style>
 </BaseLayout>
