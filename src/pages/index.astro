@@ -478,16 +478,16 @@ const description =
     align-items: center;
   }
   .explainer-copy h2 { font-size: clamp(26px, 3.6vw, 40px); line-height: 1.1; margin: 6px 0 16px; }
-  .explainer-copy p { color: #a7c4d8; line-height: 1.65; margin: 0 0 24px; font-size: 16px; }
+  .explainer-copy p { color: var(--muted, #4d5157); line-height: 1.65; margin: 0 0 24px; font-size: 16px; }
   .explainer-audio { font-size: 14px; margin: 14px 0 0; }
-  .explainer-audio a { color: var(--cyan, #39dfff); font-weight: 600; text-decoration: none; }
+  .explainer-audio a { color: var(--cyan, #2b50a8); font-weight: 600; text-decoration: none; }
   .explainer-audio a:hover { text-decoration: underline; }
   .explainer-video {
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(96, 219, 255, 0.24);
-    background: #04101e;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(14, 15, 17, 0.18);
+    background: #0e0f11;
+    box-shadow: 0 24px 60px rgba(14, 15, 17, 0.18);
   }
   .explainer-video .yt-embed {
     display: block;
@@ -502,8 +502,10 @@ const description =
     .explainer-video { max-width: 340px; margin: 0 auto; }
   }
 
-  /* Status / traction strip */
-  .status-section { background: linear-gradient(180deg, #061525, #04101e); }
+  /* Status / traction strip — bench-black credibility instrument panel */
+  .status-section { background: linear-gradient(180deg, #15171a, #0b0d0f); }
+  .status-section h2 { color: #fff; }
+  .status-section > .container > p, .status-section .section-head p { color: #98a2ab; }
   .status-grid {
     margin-top: 34px;
     display: grid;
@@ -515,27 +517,27 @@ const description =
     flex-direction: column;
     gap: 10px;
     padding: 22px 22px 20px;
-    border: 1px solid rgba(96, 219, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.035);
+    background: rgba(255, 255, 255, 0.04);
   }
   .status-k {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #7aa4bc;
+    color: #98a2ab;
   }
-  .status-v { margin: 0; color: #cfe3f2; line-height: 1.5; font-size: 15px; }
+  .status-v { margin: 0; color: #dfe4e7; line-height: 1.5; font-size: 15px; }
   .status-v strong { color: #fff; }
   .status-tag {
     align-self: flex-start;
     margin-top: auto;
     padding: 3px 10px;
     border-radius: 999px;
-    border: 1px solid rgba(73, 244, 200, 0.45);
-    color: #49f4c8;
-    background: rgba(73, 244, 200, 0.08);
+    border: 1px solid rgba(55, 227, 192, 0.45);
+    color: #37e3c0;
+    background: rgba(55, 227, 192, 0.10);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10.5px;
     letter-spacing: 0.08em;
@@ -543,7 +545,7 @@ const description =
   }
   .status-link {
     margin-top: auto;
-    color: var(--cyan, #39dfff);
+    color: #7fb0ff;
     font-weight: 600;
     font-size: 14px;
     text-decoration: none;
@@ -588,8 +590,8 @@ const description =
     background: var(--panel2, rgba(255, 255, 255, 0.045));
   }
   .way-card.way-primary {
-    border-color: rgba(73, 244, 200, 0.45);
-    background: linear-gradient(180deg, rgba(73, 244, 200, 0.08), rgba(255, 255, 255, 0.02));
+    border-color: rgba(43, 80, 168, 0.4);
+    background: linear-gradient(180deg, rgba(43, 80, 168, 0.06), #fff);
   }
   .way-tag {
     font-family: 'IBM Plex Mono', monospace;
@@ -599,7 +601,7 @@ const description =
     color: var(--muted2, #7aa4bc);
     margin-bottom: 12px;
   }
-  .way-primary .way-tag { color: #49f4c8; }
+  .way-primary .way-tag { color: #2b50a8; }
   .way-card h3 { margin: 0 0 10px; font-size: 20px; }
   .way-card p { color: var(--muted, #a7c4d8); line-height: 1.55; margin: 0 0 20px; flex: 1; font-size: 15px; }
   .way-card .button { align-self: flex-start; }
@@ -616,22 +618,22 @@ const description =
     display: grid;
     grid-template-columns: 1.3fr 1fr;
     gap: 0;
-    border: 1px solid rgba(217, 119, 6, 0.3);
+    border: 1px solid rgba(43, 80, 168, 0.28);
     border-radius: 24px;
     overflow: hidden;
-    background: linear-gradient(180deg, rgba(217, 119, 6, 0.08), rgba(255, 255, 255, 0.02));
+    background: linear-gradient(180deg, rgba(43, 80, 168, 0.05), #fff);
   }
   .arch-promo-body { padding: clamp(28px, 4vw, 44px); }
   .arch-promo-body h2 { margin: 0 0 14px; }
-  .arch-promo-body p { color: #c3d2e0; line-height: 1.6; margin: 0 0 22px; }
+  .arch-promo-body p { color: var(--muted, #4d5157); line-height: 1.6; margin: 0 0 22px; }
   .arch-promo-btn {
-    background: linear-gradient(135deg, #d97706, #f0b357);
-    color: #1a0f02;
+    background: var(--cyan, #2b50a8);
+    color: #fff;
   }
   .arch-promo-art {
     background: url('/assets/drafting/renderings/2024-14-event-center-photoreal-concept.jpg') center/cover no-repeat;
     min-height: 240px;
-    border-left: 1px solid rgba(217, 119, 6, 0.3);
+    border-left: 1px solid rgba(43, 80, 168, 0.28);
   }
   @media (max-width: 760px) {
     .arch-promo { grid-template-columns: 1fr; }

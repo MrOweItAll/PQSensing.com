@@ -169,21 +169,23 @@ const types = [
     width: 100%;
     padding: 12px 14px;
     border-radius: 10px;
-    border: 1px solid var(--line, rgba(96, 219, 255, 0.24));
-    background: rgba(4, 16, 30, 0.6);
-    color: var(--ink, #eef9ff);
+    border: 1px solid var(--line, rgba(14, 15, 17, 0.2));
+    background: #ffffff;
+    color: var(--ink, #16181b);
     font-size: 15px;
     font-family: inherit;
   }
   .pq-field textarea { resize: vertical; }
+  .pq-field input::placeholder,
+  .pq-field textarea::placeholder { color: #9aa0a6; }
   .pq-field input:focus,
   .pq-field select:focus,
   .pq-field textarea:focus {
     outline: none;
-    border-color: var(--cyan, #39dfff);
-    box-shadow: 0 0 0 3px rgba(57, 223, 255, 0.15);
+    border-color: var(--cyan, #2b50a8);
+    box-shadow: 0 0 0 3px rgba(43, 80, 168, 0.15);
   }
-  .pq-field input[readonly] { color: var(--muted, #a7c4d8); }
+  .pq-field input[readonly] { color: var(--muted, #4d5157); background: #f1f2ee; }
   .pq-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
   .pq-status { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--muted, #a7c4d8); }
   .pq-fallback { font-size: 14px; color: var(--muted2, #7aa4bc); margin: 4px 0 0; }
