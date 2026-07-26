@@ -37,6 +37,32 @@ const description =
       </div>
     </section>
 
+    <!-- Plain-language video explainer — layperson/investor first. -->
+    <section id="watch" class="section-pad explainer-section">
+      <div class="container explainer-grid">
+        <div class="explainer-copy">
+          <p class="eyebrow">Watch · 80 seconds</p>
+          <h2>How Noise-Stationary Locking protects sensors.</h2>
+          <p>Precision instruments lock onto the brightest signal — but the brightest point isn’t always the most accurate one. This short explainer shows, in plain terms, how NSL parks an instrument where its measurement is quietest instead, and why that matters for everything from navigation to quantum sensing.</p>
+          <div class="cta-row">
+            <a class="button primary" href="/contact.html?type=validation">Partner on the validation</a>
+            <a class="button ghost" href="#platform">Read the technical version</a>
+          </div>
+          <p class="explainer-audio">Prefer to listen? <a href="/assets/metrology-overview.m4a">2-minute spoken overview →</a></p>
+        </div>
+        <div class="explainer-video">
+          <iframe
+            class="yt-embed"
+            src="https://www.youtube-nocookie.com/embed/P9Ce6NoKEwY?rel=0&modestbranding=1"
+            title="How Noise-Stationary Locking protects sensors — 80-second explainer"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
     <section id="platform" class="section-pad dark-block">
       <div class="container">
         <div class="section-head wide">
@@ -88,7 +114,7 @@ const description =
           <p><strong>What we need:</strong> access to an optical bench or Mach-Zehnder/cavity test setup, photodetector readout, a PZT or phase actuator, DAQ/controller support, and technical guidance on a defensible validation protocol.</p>
           <p><strong>What partners get:</strong> a focused applied optics/control project, possible student-useful data, early visibility into Kansas-origin photonics IP, and a clear sponsored-research or prototype path if the traces are interesting.</p>
           <div class="cta-row">
-            <a class="button primary" href="/contact?type=validation">Discuss collaboration</a>
+            <a class="button primary" href="/contact.html?type=validation">Discuss collaboration</a>
             <a class="button ghost" href="/PQSensing-Validation-Sprint.pdf" target="_blank" rel="noopener">Read the lab one-pager (PDF)</a>
             <a class="button ghost" href="#validate">View validation plan</a>
           </div>
@@ -107,26 +133,13 @@ const description =
       </div>
     </section>
 
-    <section id="why" class="section-pad intro-section">
-      <div class="container split major-split">
-        <div>
-          <p class="eyebrow">Why this exists</p>
-          <h2>A locked interferometer is not always an optimized interferometer.</h2>
-        </div>
-        <div class="copy-stack">
-          <p>Most precision interferometers are locked to an optical condition: a cavity resonance, a fringe point, a reflected-power null, or a transmitted-power peak. That is necessary, but it is not always enough.</p>
-          <p>The customer does not buy a pretty fringe. The customer buys a smaller error bar: displacement, phase, strain, rotation, acceleration, refractive index, or timing measured with less uncertainty and less wasted integration time.</p>
-          <p><strong>NSL + DPI is for instruments that are optically locked but not necessarily measurement-optimized.</strong> The optical lock says stable. The noise floor says otherwise.</p>
-        </div>
-      </div>
-    </section>
-
     <section class="section-pad value-section">
       <div class="container value-grid">
         <article class="value-card tall">
           <p class="eyebrow">The buyer pain</p>
           <h2>“My interferometer is locked, but my measurement is still noisy.”</h2>
           <p>That is the use case. The lock is holding the optics, but vibration, thermal drift, laser-frequency noise, platform motion, speckle, detuning jitter, or quadrature-angle error still corrupt the measurement band.</p>
+          <p>The customer does not buy a pretty fringe — they buy a smaller error bar. NSL + DPI is for instruments that are optically locked but not measurement-optimized: the lock says stable, the noise floor says otherwise.</p>
         </article>
         <article class="value-card">
           <h3>More averaging stops helping.</h3>
@@ -333,19 +346,35 @@ const description =
       </div>
     </section>
 
-    <section id="audio" class="section-pad audio-section">
-      <div class="container audio-panel">
-        <div>
-          <p class="eyebrow">Audio overview</p>
-          <h2>Listen to the metrology thesis.</h2>
-          <p>A concise spoken overview of the PQSensing approach, the tabletop validation sprint, and why noise-stationary control matters for interferometric metrology.</p>
+    <!-- Status / traction strip: at-a-glance signals for partners & investors. -->
+    <section id="status" class="section-pad status-section">
+      <div class="container">
+        <div class="section-head narrow">
+          <p class="eyebrow">Where things stand</p>
+          <h2>The receipts, at a glance.</h2>
+          <p>A ten-second read for lab partners and investors — the concrete signals behind the thesis, each one linking to the detail.</p>
         </div>
-        <div class="audio-player" aria-label="Metrology overview audio player">
-          <audio controls preload="metadata">
-            <source src="/assets/metrology-overview.m4a" type="audio/mp4" />
-            Your browser does not support embedded audio. <a href="/assets/metrology-overview.m4a">Download the audio overview</a>.
-          </audio>
-          <a class="audio-download" href="/assets/metrology-overview.m4a">Download audio file</a>
+        <div class="status-grid">
+          <article class="status-card">
+            <span class="status-k">Intellectual property</span>
+            <p class="status-v">Non-provisional patent <strong>filed</strong> for Noise-Stationary Locking &amp; Dark-Port Injection.</p>
+            <span class="status-tag">Patent pending</span>
+          </article>
+          <article class="status-card">
+            <span class="status-k">Published research</span>
+            <p class="status-v"><strong>Three</strong> non-confidential white papers, each with a ready-to-paste BibTeX citation.</p>
+            <a class="status-link" href="/publications.html">Read the papers →</a>
+          </article>
+          <article class="status-card">
+            <span class="status-k">Working technology</span>
+            <p class="status-v"><strong>Live, interactive</strong> NSL and dark-port demonstrations — running math, not slideware.</p>
+            <a class="status-link" href="#measure">See the demo →</a>
+          </article>
+          <article class="status-card">
+            <span class="status-k">Validation readiness</span>
+            <p class="status-v">Bench-data format standardized (<strong>PQS-Trace v1.0</strong>); actively seeking a lab partner for the tabletop sprint.</p>
+            <a class="status-link" href="#collaborate">Partner on it →</a>
+          </article>
         </div>
       </div>
     </section>
@@ -362,7 +391,7 @@ const description =
             <span class="way-tag">Primary ask</span>
             <h3>Validate it in your lab</h3>
             <p>University or metrology lab? Help run the tabletop Mach–Zehnder sprint comparing a conventional lock against NSL. Classical optics, no squeezed source required.</p>
-            <a class="button primary" href="/contact?type=validation">Discuss a validation sprint</a>
+            <a class="button primary" href="/contact.html?type=validation">Discuss a validation sprint</a>
             <a class="way-onepager" href="/PQSensing-Validation-Sprint.pdf" target="_blank" rel="noopener">Read the lab one-pager (PDF) ↓</a>
           </article>
           <article class="way-card">
@@ -381,7 +410,7 @@ const description =
             <span class="way-tag">Peers &amp; collaborators</span>
             <h3>Compare notes</h3>
             <p>Working on interferometry, control, DSP, or quantum sensing — or just curious? Reach out to trade ideas or find a way to build together.</p>
-            <a class="button ghost" href="/contact?type=collaboration">Say hello</a>
+            <a class="button ghost" href="/contact.html?type=collaboration">Say hello</a>
           </article>
         </div>
       </div>
@@ -432,7 +461,7 @@ const description =
           <p><strong>Output:</strong> raw logs, plots, updated deck, technical package for companies, SBIR/STTR, investors, and lab partners.</p>
         </div>
         <div class="cta-row lower">
-          <a class="button primary" href="/contact?type=investment">Contact PQSensing</a>
+          <a class="button primary" href="/contact.html?type=investment">Contact PQSensing</a>
           <a class="button ghost" href="/PQSensing_MZI_NSL_Pitch_Deck.pptx" download>Download PPTX deck</a>
         </div>
       </div>
@@ -441,6 +470,86 @@ const description =
 </BaseLayout>
 
 <style>
+  /* Plain-language video explainer */
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 360px);
+    gap: 44px;
+    align-items: center;
+  }
+  .explainer-copy h2 { font-size: clamp(26px, 3.6vw, 40px); line-height: 1.1; margin: 6px 0 16px; }
+  .explainer-copy p { color: #a7c4d8; line-height: 1.65; margin: 0 0 24px; font-size: 16px; }
+  .explainer-audio { font-size: 14px; margin: 14px 0 0; }
+  .explainer-audio a { color: var(--cyan, #39dfff); font-weight: 600; text-decoration: none; }
+  .explainer-audio a:hover { text-decoration: underline; }
+  .explainer-video {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(96, 219, 255, 0.24);
+    background: #04101e;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  }
+  .explainer-video .yt-embed {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 80vh;
+    border: 0;
+    background: #04101e;
+  }
+  @media (max-width: 860px) {
+    .explainer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .explainer-video { max-width: 340px; margin: 0 auto; }
+  }
+
+  /* Status / traction strip */
+  .status-section { background: linear-gradient(180deg, #061525, #04101e); }
+  .status-grid {
+    margin-top: 34px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .status-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px 22px 20px;
+    border: 1px solid rgba(96, 219, 255, 0.22);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.035);
+  }
+  .status-k {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7aa4bc;
+  }
+  .status-v { margin: 0; color: #cfe3f2; line-height: 1.5; font-size: 15px; }
+  .status-v strong { color: #fff; }
+  .status-tag {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(73, 244, 200, 0.45);
+    color: #49f4c8;
+    background: rgba(73, 244, 200, 0.08);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .status-link {
+    margin-top: auto;
+    color: var(--cyan, #39dfff);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .status-link:hover { text-decoration: underline; }
+
   .pill-pending {
     display: inline-block;
     margin-left: 10px;

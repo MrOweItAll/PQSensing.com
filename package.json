@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-links.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "4.0.19",

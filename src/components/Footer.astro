@@ -10,7 +10,10 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <strong>PQSensing</strong>
+      <div class="footer-brand">
+        <img src="/assets/brand/pqs-logo.svg" alt="Peterson Quantum Sensing" width="46" height="46" />
+        <span class="footer-wordmark">Peterson<br />Quantum<br />Sensing</span>
+      </div>
       <p>
         Advanced Supervisory Modules for interferometric systems — a firmware
         performance layer that holds precision instruments at their best
@@ -58,6 +61,25 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .footer-brand img {
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
+  }
+  .footer-wordmark {
+    font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--ink, #eef9ff);
+  }
   .footer-nav {
     margin-top: 26px;
     padding-top: 20px;
