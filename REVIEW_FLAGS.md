@@ -41,7 +41,20 @@ only so it isn't forgotten.
 Confirm this is the intended production form and that it routes to the desired
 inbox. (Informational — not a defect; noted because it's a live integration.)
 
-## 5. Wording not changed
+## 5. Merging this PR to `main` auto-deploys to Namecheap
+
+`.github/workflows/deploy.yml` ("Build & Deploy to Namecheap") runs on **push to
+`main`** and builds + FTP-uploads `dist/` to the live web root (when the
+`FTP_SERVER` / `FTP_USERNAME` / `FTP_PASSWORD` secrets are set). It does **not**
+run on this PR or feature branch — nothing was deployed by this session.
+
+**Implication:** merging PR #4 = a live deployment. This is the founder's call,
+not the agent's. Complete local review (`npm run dev` / `npm run build` +
+`npm run preview`) before merging. Note: there are no PR-triggered CI checks, so
+a "green" status won't appear on the PR itself — the build/test/deploy runs only
+after merge to `main`.
+
+## 6. Wording not changed
 
 No claim figures, dates, or filing references (e.g. the ≥6 dB target, the
 validation-sprint figure, patent 19/535,045) were altered. None were edited even
