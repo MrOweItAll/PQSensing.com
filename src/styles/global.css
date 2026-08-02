@@ -225,8 +225,10 @@ h1{max-width:900px;margin-bottom:28px;font-size:clamp(46px,6.6vw,84px);line-heig
   gap:clamp(20px,2vw,28px);
 }
 .exhibit-noscript{
-  grid-column:1 / -1;
-  margin:0;
+  /* Sits before .exhibit-panel, not inside it: as a grid child it was
+     auto-placed into a trailing row, so the explanation landed below the
+     blank plot and the empty readouts it is meant to explain. */
+  margin:34px 0 0;
   padding:16px 18px;
   border:1px solid var(--line);
   border-radius:14px;
