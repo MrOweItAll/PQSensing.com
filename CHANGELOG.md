@@ -24,7 +24,15 @@ figures, dates, or filing references were added or altered (IP freeze respected)
 - **`<noscript>` fallback for the dark-port injection exhibit**
   (`src/components/DPIDemo.astro`). Same rationale.
 - **`.exhibit-noscript` style** (`src/styles/global.css`) — shared styling so the
-  fallback reads cleanly and spans the full panel width in the no-JS grid.
+  fallback reads cleanly above the panel.
+- **Fix: moved the notice out of the panel grid.** As a grid child of
+  `.exhibit-panel`, the `<noscript>` block was auto-placed into a trailing row
+  and rendered roughly 800px *below* the blank plot and empty readouts it
+  explains — so a no-JS visitor met the broken-looking panel first and the
+  explanation last. It now sits immediately before the panel. *Found by* loading
+  the built page in a browser with scripting disabled and looking at it;
+  measured positions confirm the notice (top 6681px) now precedes the plot
+  (top 6872px).
 
 ## Verification (this session)
 
