@@ -224,6 +224,19 @@ h1{max-width:900px;margin-bottom:28px;font-size:clamp(46px,6.6vw,84px);line-heig
   grid-template-rows:auto auto auto auto;
   gap:clamp(20px,2vw,28px);
 }
+.exhibit-noscript{
+  /* Sits before .exhibit-panel, not inside it: as a grid child it was
+     auto-placed into a trailing row, so the explanation landed below the
+     blank plot and the empty readouts it is meant to explain. */
+  margin:34px 0 0;
+  padding:16px 18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(4,16,30,.5);
+  color:var(--muted,#a7c4d8);
+  font-size:15px;
+  line-height:1.6;
+}
 .exhibit-plot{
   grid-column:1;grid-row:1 / span 2;
   width:100%;aspect-ratio:16/10;
