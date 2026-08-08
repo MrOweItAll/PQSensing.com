@@ -49,7 +49,7 @@
         <div class="readout-block readout-block-gain">
           <span class="readout-label">Processing gain</span>
           <span class="readout-value" id="dpiGain">— dB</span>
-          <span class="readout-sub">≈ 10·log₁₀(code length)</span>
+          <span class="readout-sub">peak-to-floor, 20·log₁₀</span>
         </div>
       </div>
 
@@ -143,8 +143,11 @@
       ctx.strokeStyle = color;
       ctx.lineWidth = opts.width || 1.4;
       ctx.beginPath();
+      // opts.span lets both panels share one sample-index axis, so lag n on the
+      // correlation sits directly under sample n of the received stream.
+      const span = opts.span || n;
       for (let i = 0; i < n; i++) {
-        const x = (i / (n - 1)) * w;
+        const x = (i / span) * w;
         const y = midY - data[i] * scale;
         if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
@@ -192,7 +195,7 @@
       const rxCtx = rxCanvas.getContext('2d');
       const W = rxCanvas.width, H = rxCanvas.height;
       clearCanvas(rxCtx, W, H);
-      drawSeries(rxCtx, rx, W, H, COL.muted, { width: 1 });
+      drawSeries(rxCtx, rx, W, H, COL.muted, { width: 1, span: bufLen });
       // highlight the injected window
       rxCtx.fillStyle = 'rgba(73,244,200,0.10)';
       rxCtx.fillRect((trueLag / bufLen) * W, 0, (L / bufLen) * W, H);
@@ -201,9 +204,9 @@
       const cCtx = corrCanvas.getContext('2d');
       const W2 = corrCanvas.width, H2 = corrCanvas.height;
       clearCanvas(cCtx, W2, H2);
-      const meta = drawSeries(cCtx, corr, W2, H2, COL.cyan, { width: 1.4 });
+      const meta = drawSeries(cCtx, corr, W2, H2, COL.cyan, { width: 1.4, span: bufLen });
       // mark the recovery peak
-      const px = (peakIdx / (corrN - 1)) * W2;
+      const px = (peakIdx / bufLen) * W2;
       const py = meta.midY - peakVal * meta.scale;
       cCtx.fillStyle = COL.teal;
       cCtx.beginPath(); cCtx.arc(px, py, 5, 0, Math.PI * 2); cCtx.fill();
