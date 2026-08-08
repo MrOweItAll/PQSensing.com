@@ -230,7 +230,7 @@
         <g font-family="'IBM Plex Mono', monospace" font-size="11" fill="${C.muted}" letter-spacing="0.04em">
           ${tickText}
           <text x="${PX + PW / 2}" y="${VB.h - 4}" text-anchor="middle" font-style="italic">detuning δ</text>
-          <text x="20" y="${PY + PH / 2}" text-anchor="middle" transform="rotate(-90 20 ${PY + PH / 2})" font-style="italic">normalized amplitude</text>
+          <text x="20" y="${PY + PH / 2}" text-anchor="middle" transform="rotate(-90 20 ${PY + PH / 2})" font-style="italic">P, N_band shared scale · V_norm scaled separately</text>
         </g>
         <path id="exFillP" fill="url(#gradP)" stroke="none"/>
         <path id="exPathP" fill="none" stroke="${C.cyan}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
@@ -247,7 +247,7 @@
           <path d="M0,-5L1.4,-1.6L5,-1.6L2.1,0.7L3.2,4.5L0,2.4L-3.2,4.5L-2.1,0.7L-5,-1.6L-1.4,-1.6Z" fill="${C.teal}"/>
         </g>
         <g id="exLabelPower" font-family="'IBM Plex Mono', monospace" font-size="11" letter-spacing="0.06em" fill="${C.cyan}">
-          <text x="0" y="-14" text-anchor="middle" font-weight="500">PDH lock</text>
+          <text x="0" y="-14" text-anchor="middle" font-weight="500">Power lock</text>
         </g>
         <g id="exLabelNSL" font-family="'IBM Plex Mono', monospace" font-size="11" letter-spacing="0.06em" fill="${C.teal}">
           <text x="0" y="-16" text-anchor="middle" font-weight="600">NSL lock</text>
@@ -263,22 +263,35 @@
 
     // Render from arbitrary sampled arrays (shared by analytic + bench modes).
     function render(xs, ps, ns, vs, k) {
-      const vsSorted = [...vs].filter(isFinite).sort((a, b) => a - b);
-      const v97 = vsSorted[Math.floor(vsSorted.length * 0.97)] ?? 1;
-      const vDisplayMax = Math.min(v97, vsSorted[vsSorted.length - 1] ?? 1);
-
       const pMax = Math.max(...ps, 1e-6);
-      const nMax = Math.max(...ns) * 1.08 || 1;
-      const vMax = (vDisplayMax || 1) * 1.06;
+      const P_FLOOR_DRAW = 0.12 * pMax;
 
-      const yP = (v) => PY + PH - (v / pMax) * PH * 0.92;
-      const yN = (v) => PY + PH - (v / nMax) * PH * 0.92;
-      const yV = (v) => PY + PH - (Math.min(v, vMax) / vMax) * PH * 0.92;
+      // P and N_band share one scale — both are dimensionless and directly
+      // comparable, so their relative heights carry meaning.
+      const pnMax = Math.max(pMax, Math.max(...ns), 1e-6) * 1.08;
+
+      // V_norm gets its own scale, fitted to the samples that are ACTUALLY
+      // DRAWN (inside the power floor). Scaling to a percentile of every
+      // sample let the undrawn dark-fringe blow-ups — where P^k drives V
+      // toward its EPS-clamped maximum — compress the visible curve into the
+      // bottom few percent of the panel.
+      const vDrawn = vs.filter((v, i) => ps[i] >= P_FLOOR_DRAW && isFinite(v));
+      const vLo = vDrawn.length ? Math.min(...vDrawn) : 0;
+      const vHi = vDrawn.length ? Math.max(...vDrawn) : 1;
+      const vPad = (vHi - vLo) * 0.08 || Math.max(vHi * 0.08, 1e-6);
+      const vBot = vLo - vPad;
+      const vTop = vHi + vPad;
+
+      const yP = (v) => PY + PH - (v / pnMax) * PH * 0.92;
+      const yN = yP;
+      const yV = (v) => {
+        const c = Math.min(Math.max(v, vBot), vTop);
+        return PY + PH - ((c - vBot) / (vTop - vBot)) * PH * 0.92;
+      };
 
       const pathP = xs.map((d, i) => `${i === 0 ? 'M' : 'L'}${xMap(d).toFixed(2)},${yP(ps[i]).toFixed(2)}`).join('');
       const pathN = xs.map((d, i) => `${i === 0 ? 'M' : 'L'}${xMap(d).toFixed(2)},${yN(ns[i]).toFixed(2)}`).join('');
 
-      const P_FLOOR_DRAW = 0.12 * pMax;
       let pathV = '';
       let inSeg = false;
       for (let i = 0; i < xs.length; i++) {
