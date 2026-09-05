@@ -17,15 +17,16 @@
   <div class="container">
     <div class="section-head wide">
       <p class="eyebrow">Interactive demonstration</p>
-      <h2>Watch the two locks <em>disagree</em>.</h2>
+      <h2>Watch the two setpoints <em>disagree</em>.</h2>
       <p>
-        A power lock parks at the fringe extremum. A noise-stationary lock parks
-        where the slope of
+        A power lock parks at the fringe extremum. NSL seeks the lowest usable
+        value of
         <span class="mono">V<sub>norm</sub>(δ) = N<sub>band</sub>(δ) / P(δ)<sup>k</sup></span>
-        goes to zero. Whenever real-world noise has structure that isn't
-        perfectly aligned with the fringe — which it rarely does — those two
-        operating points are not the same. Drag the controls, share a regime, or
-        drop in a measured bench trace.
+        subject to a power floor. At an interior optimum its slope goes to zero;
+        if the power constraint becomes active, the result is a constraint-limited
+        boundary point. Structured noise can move that usable optimum away from
+        the power extremum. Drag the controls, share a regime, or drop in a
+        measured bench trace.
       </p>
     </div>
 
@@ -39,8 +40,9 @@
           <span class="readout-sub" id="readPowerVnorm">V<sub>norm</sub> there = —</span>
         </div>
         <div class="readout-block readout-block-accent">
-          <span class="readout-label">NSL parks at</span>
+          <span class="readout-label">NSL constrained optimum</span>
           <span class="readout-value" id="readNSLDelta">δ = 0.00</span>
+          <span class="readout-sub" id="readNSLStatus">Interior slope-null</span>
           <span class="readout-sub" id="readNSLVnorm">V<sub>norm</sub> there = —</span>
         </div>
         <div class="readout-block readout-block-gain">
@@ -108,9 +110,10 @@
 
       <p class="exhibit-note" id="exhibitNote">
         Pedagogical model, not bench data. Analytic curves illustrate the
-        slope-null thesis. The validation sprint replaces these with measured
-        curves from a tabletop Mach–Zehnder — or drop a trace above to preview
-        the comparison on real data now.
+        constrained-optimum thesis, including interior slope-nulls and
+        power-floor-limited cases. The validation sprint replaces these with
+        measured curves from a tabletop Mach–Zehnder — or drop a trace above to
+        preview the comparison on real data now.
       </p>
     </div>
   </div>
@@ -151,6 +154,7 @@
     const readPowerDelta = document.getElementById('readPowerDelta');
     const readPowerVnorm = document.getElementById('readPowerVnorm');
     const readNSLDelta = document.getElementById('readNSLDelta');
+    const readNSLStatus = document.getElementById('readNSLStatus');
     const readNSLVnorm = document.getElementById('readNSLVnorm');
     const readGain = document.getElementById('readGain');
     const btnShare = document.getElementById('btnShare');
@@ -315,6 +319,10 @@
       const pThresh = 0.18 * pMax;
       const allowed = (i) => ps[i] > pThresh;
       const idxV = findMin(vs, allowed).i;
+      const powerFloorLimited =
+        (idxV > 0 && !allowed(idxV - 1)) ||
+        (idxV < xs.length - 1 && !allowed(idxV + 1));
+      const sweepRangeLimited = idxV === 0 || idxV === xs.length - 1;
 
       const dPower = xs[idxPmax];
       const dNSL = xs[idxV];
@@ -357,6 +365,11 @@
       readPowerDelta.textContent = fmtDelta(dPower);
       readPowerVnorm.innerHTML = 'V<sub>norm</sub> there = ' + fmtV(vAtPower);
       readNSLDelta.textContent = fmtDelta(dNSL);
+      readNSLStatus.textContent = powerFloorLimited
+        ? 'Power-floor-limited boundary point'
+        : sweepRangeLimited
+          ? 'Sweep-range-limited boundary point'
+          : 'Interior slope-null';
       readNSLVnorm.innerHTML = 'V<sub>norm</sub> there = ' + fmtV(vAtNSL);
 
       if (vAtNSL > 0 && isFinite(vAtPower) && isFinite(vAtNSL)) {
