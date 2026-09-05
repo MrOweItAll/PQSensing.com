@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   P, Nband, Vnorm, linspace, findMin, findMax, computeLocks,
-  N_FLOOR, EPS,
+  N_FLOOR, EPS, POWER_FLOOR,
 } from './nsl-model.js';
 
 describe('fringe power P(delta)', () => {
@@ -77,6 +77,29 @@ describe('NSL thesis invariants (computeLocks)', () => {
 
   it('keeps the NSL lock at a usable power floor (never the dark fringe)', () => {
     const { dNSL } = computeLocks(Math.PI, 1.0, 2);
-    expect(P(dNSL)).toBeGreaterThan(0.18);
+    expect(P(dNSL)).toBeGreaterThanOrEqual(POWER_FLOOR);
+  });
+
+  it('identifies an interior constrained optimum as a slope-null', () => {
+    const offset = Math.PI / 2, amp = 0.8, k = 1;
+    const { dNSL, constraintLimited } = computeLocks(offset, amp, k, 4001);
+    const h = 1e-5;
+    const slope =
+      (Vnorm(dNSL + h, offset, amp, k) - Vnorm(dNSL - h, offset, amp, k)) /
+      (2 * h);
+    expect(constraintLimited).toBe(false);
+    expect(Math.abs(slope)).toBeLessThan(1e-3);
+  });
+
+  it('reports a power-floor solution without claiming a slope-null', () => {
+    const offset = 0, amp = 0.6, k = 0.5;
+    const { dNSL, constraintLimited } = computeLocks(offset, amp, k, 4001);
+    const h = 1e-5;
+    const slope =
+      (Vnorm(dNSL + h, offset, amp, k) - Vnorm(dNSL - h, offset, amp, k)) /
+      (2 * h);
+    expect(constraintLimited).toBe(true);
+    expect(P(dNSL)).toBeGreaterThanOrEqual(POWER_FLOOR);
+    expect(Math.abs(slope)).toBeGreaterThan(0.05);
   });
 });

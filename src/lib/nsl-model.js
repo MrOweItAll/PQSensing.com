@@ -13,13 +13,15 @@
      V_norm(delta) = N_band(delta) / max(P(delta), eps)^k
 
    Story: the power lock parks at delta = 0 (the fringe maximum).
-   The slope-null of V_norm sits elsewhere whenever the structured
-   noise term is misaligned with the fringe.
+   NSL selects the lowest admissible V_norm subject to a usable-power
+   constraint. An interior solution is a slope-null; when the power
+   constraint is active, the solution is constraint-limited instead.
    ============================================================ */
 
 export const N_FLOOR = 0.04;
 export const A_JITTER = 0.06;
 export const EPS = 0.01;
+export const POWER_FLOOR = 0.18;
 
 /** Optical transmission / fringe power, normalized to [0, 1]. */
 export function P(d) {
@@ -77,9 +79,11 @@ export function findMax(arr) {
  * Sample the model across delta in [-pi, pi] and locate both lock points.
  *
  * Returns the sampled arrays plus:
- *   dPower  — where a power/PDH lock parks (fringe power maximum)
- *   dNSL    — where the NSL objective is stationary (V_norm minimum,
- *             restricted to a usable power floor)
+ *   dPower  — where the power lock parks (fringe power maximum)
+ *   dNSL    — sampled constrained minimum of V_norm within the usable
+ *             power region
+ *   constraintLimited — true when the selected point borders the
+ *             excluded low-power region rather than being an interior null
  *   gainDb  — 10*log10(V_norm@power / V_norm@NSL); the NSL advantage
  */
 export function computeLocks(offset, amp, k, N = 401) {
@@ -92,8 +96,11 @@ export function computeLocks(offset, amp, k, N = 401) {
   const idxPmax = findMax(ps).i;
   // Restrict the NSL search to points where enough optical power survives —
   // the controller enforces a power floor rather than chasing a dark fringe.
-  const allowed = (i) => ps[i] > 0.18;
+  const allowed = (i) => ps[i] >= POWER_FLOOR;
   const idxV = findMin(vs, allowed).i;
+  const constraintLimited =
+    (idxV > 0 && !allowed(idxV - 1)) ||
+    (idxV < xs.length - 1 && !allowed(idxV + 1));
 
   const dPower = xs[idxPmax];
   const dNSL = xs[idxV];
@@ -108,6 +115,6 @@ export function computeLocks(offset, amp, k, N = 401) {
   return {
     xs, ps, ns, vs,
     idxPmax, idxV,
-    dPower, dNSL, vAtPower, vAtNSL, gainDb,
+    dPower, dNSL, vAtPower, vAtNSL, gainDb, constraintLimited,
   };
 }

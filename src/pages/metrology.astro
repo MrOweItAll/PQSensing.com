@@ -34,8 +34,8 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 <p>That is all an interferometer is: a machine that turns microscopic length changes into measurable light intensity changes. The rest is engineering.</p>
 </div>
 <!-- ===================== INTERACTIVE MZI ===================== -->
-<h2>Interactive: PQS interferometer with squeezed-light injection</h2>
-<p>This layout reflects the current benchtop NSL test concept and working optical drawing. It illustrates a Mach-Zehnder interferometer with an OPO path feeding squeezed-vacuum injection at the dark port, along with the control hardware used to compare conventional locking and noise-stationary locking.</p>
+<h2>Interactive: PQS Mach–Zehnder with squeezed-state input</h2>
+<p>This layout reflects the current benchtop NSL test concept and working optical drawing. The OPO feeds squeezed vacuum into the normally unused input of BS1 — the dark-mode input in this model. The nominally dark output is formed at BS2.</p>
 <div class="controls">
 <button class="btn mzi-btn active" data-mzi="off">No lock</button>
 <button class="btn mzi-btn" data-mzi="power">Apply power lock</button>
@@ -43,7 +43,7 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 <span class="mode-hint">Hover any component for details. NSL adds on top of the power lock.</span>
 </div>
 <div class="diagram mode-off" id="mzi-diagram">
-<svg aria-label="Interactive PQS interferometer with OPO cavity and squeezed-light injection" role="img" viewbox="0 0 880 500" xmlns="http://www.w3.org/2000/svg">
+<svg aria-label="Interactive PQS Mach–Zehnder with an OPO feeding squeezed vacuum into the normally unused input of BS1" role="img" viewbox="0 0 880 500" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <marker id="arrow1" markerheight="6" markerwidth="6" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
 <path d="M0,0 L10,5 L0,10 z" fill="#39dfff"></path>
@@ -86,7 +86,7 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 <line stroke="#f472b6" stroke-opacity="0.6" stroke-width="1.5" x1="210" x2="210" y1="260" y2="162"></line>
 <!-- M0 → OPO Cavity → EOM → M-1 (horizontal) -->
 <line stroke="#f472b6" stroke-opacity="0.6" stroke-width="1.5" x1="225" x2="405" y1="150" y2="150"></line>
-<!-- M-1 → down to BS1 (squeezed vacuum injection) -->
+<!-- M-1 → down to the normally unused input of BS1 -->
 <line marker-end="url(#arrow-sq)" stroke="#f472b6" stroke-dasharray="5 3" stroke-opacity="0.7" stroke-width="1.5" x1="420" x2="420" y1="162" y2="260"></line>
 <!-- Breadboard → EOM connection -->
 <line stroke="#a7c4d8" stroke-dasharray="3 3" stroke-opacity="0.4" stroke-width="1" x1="330" x2="330" y1="100" y2="138"></line>
@@ -116,19 +116,19 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 <rect class="hit" height="36" width="36" x="192" y="132"></rect>
 </g>
 <!-- OPO Cavity -->
-<g class="hotspot" data-body="A nonlinear crystal (e.g. PPKTP or PPLN) inside a resonant cavity, pumped by the laser via BS0 and M0. Below threshold the OPO produces squeezed vacuum — light whose quantum noise in one quadrature is suppressed below the shot-noise limit. This squeezed state is injected into the interferometer dark port to improve measurement sensitivity beyond the standard quantum limit." data-title="OPO cavity (Optical Parametric Oscillator)">
+<g class="hotspot" data-body="A nonlinear crystal (e.g. PPKTP or PPLN) inside a resonant cavity, pumped by the laser via BS0 and M0. Below threshold the OPO produces squeezed vacuum — light whose quantum noise in one quadrature is reduced while the conjugate quadrature is increased. In this Mach–Zehnder model, the squeezed state enters through the normally unused input of BS1." data-title="OPO cavity (Optical Parametric Oscillator)">
 <rect class="hw" fill="rgba(244,114,182,0.1)" height="28" rx="4" stroke="#f472b6" width="120" x="248" y="136"></rect>
 <text class="lbl" fill="#f9a8d4" text-anchor="middle" x="308" y="155">OPO Cavity</text>
 <rect class="hit" height="44" width="132" x="242" y="128"></rect>
 </g>
 <!-- EOM (on the OPO path) -->
-<g class="hotspot" data-body="A lithium-niobate or similar crystal driven at RF frequency to phase-modulate the pump beam entering the OPO. The modulation sidebands are used for Pound-Drever-Hall locking of the OPO cavity length, ensuring stable and continuous squeezed-vacuum generation. Also enables phase-coding of the injected squeezed field for NSL." data-title="Electro-Optic Modulator (EOM)">
+<g class="hotspot" data-body="A lithium-niobate or similar crystal driven at RF frequency to phase-modulate the pump beam entering the OPO. The modulation sidebands are used for Pound-Drever-Hall locking of the OPO cavity length, ensuring stable and continuous squeezed-vacuum generation. Related phase control can support optional calibration and injection studies." data-title="Electro-Optic Modulator (EOM)">
 <rect class="hw" fill="rgba(57,223,255,0.1)" height="28" rx="3" stroke="#39dfff" width="30" x="373" y="136"></rect>
 <text class="sub" text-anchor="middle" x="388" y="125">EOM</text>
 <rect class="hit" height="44" width="40" x="368" y="128"></rect>
 </g>
 <!-- M-1 (mirror, OPO output to BS1) -->
-<g class="hotspot" data-body="Steers the squeezed vacuum output from the OPO cavity downward into BS1, where it enters the interferometer via the dark port path. The alignment of M-1 is critical for mode-matching the squeezed beam into the interferometer spatial mode." data-title="Mirror M-1">
+<g class="hotspot" data-body="Steers the squeezed-vacuum output into the normally unused input of BS1 and mode-matches it to the interferometer spatial mode." data-title="Mirror M-1">
 <line class="hw" stroke="#a7c4d8" stroke-width="3" x1="430" x2="410" y1="160" y2="140"></line>
 <text class="sub" x="442" y="142">M-1</text>
 <rect class="hit" height="36" width="36" x="404" y="132"></rect>
@@ -146,7 +146,7 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 <rect class="hit" height="68" width="132" x="264" y="30"></rect>
 </g>
 <!-- BS1 (NPBS) — main interferometer input splitter -->
-<g class="hotspot" data-body="A 50/50 non-polarizing beam splitter (NPBS) that splits the main laser beam into two coherent halves: one continues right to mirror M3 (the upper arm) and the other reflects down to mirror M1 (the lower arm). The squeezed vacuum from the OPO also enters here from above via M-1. Their relative phase at recombination (BS2) is what encodes the measurement signal." data-title="BS1 — Non-Polarizing Beam Splitter">
+<g class="hotspot" data-body="A 50/50 non-polarizing beam splitter (NPBS). The coherent field enters from the left and squeezed vacuum enters through the normally unused second input from above. BS1 mixes those inputs into the upper and lower interferometer arms." data-title="BS1 — Non-Polarizing Beam Splitter">
 <rect class="hw-violet" fill="rgba(154,99,255,0.15)" height="40" stroke="#9a63ff" transform="rotate(45 420 280)" width="40" x="400" y="260"></rect>
 <text class="sub" text-anchor="middle" x="420" y="335">BS1 (NPBS)</text>
 <rect class="hit" height="50" width="50" x="395" y="255"></rect>
@@ -179,13 +179,13 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 <text class="sub" fill="#39dfff" text-anchor="middle" x="660" y="504">NSL</text>
 <rect class="hit" height="55" width="74" x="623" y="455"></rect>
 </g>
-<!-- Dark Port (Injected Squeezed Light w/ NSL) — right of BS2 -->
-<g class="hotspot" data-body="The destructive-interference output of BS2. At nominal lock this detector sees very little classical light. In squeezed-state embodiments, this is the port where the injected auxiliary field is intended to support lower-noise readout. The NSL concept is to hold the statistics of this port more stable under disturbance, rather than relying only on an intensity extremum." data-title="Dark port — injected squeezed light with NSL">
+<!-- Dark output (squeezed-state readout with NSL) — right of BS2 -->
+<g class="hotspot" data-body="The destructive-interference output of BS2. At nominal lock this detector sees very little classical light. The squeezed state was introduced at BS1's normally unused input; its resulting noise statistics are observed here. NSL seeks the best admissible normalized-noise operating point rather than relying only on an intensity extremum." data-title="Dark output — squeezed-state readout with NSL">
 <rect class="d2-glow" fill="none" height="54" rx="10" stroke="#9a63ff" stroke-width="2" width="80" x="783" y="373"></rect>
 <rect class="hw" fill="#1e293b" height="40" rx="6" stroke="#9a63ff" width="66" x="790" y="380"></rect>
 <text class="lbl" fill="#9a63ff" text-anchor="middle" x="823" y="397">Dark</text>
 <text class="lbl" fill="#f9a8d4" font-size="10" text-anchor="middle" x="823" y="413">Squeezed + NSL</text>
-<text class="sub" fill="#a7c4d8" text-anchor="middle" x="823" y="440">injected squeezed light</text>
+<text class="sub" fill="#a7c4d8" text-anchor="middle" x="823" y="440">squeezed-state readout</text>
 <rect class="hit" height="74" width="80" x="783" y="370"></rect>
 </g>
 <!-- Squeezed light injection label -->
@@ -203,12 +203,12 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 </svg>
 </div>
 <div class="method-info" id="mzi-info">
-<strong>No lock applied.</strong> The interferometer sits at whatever phase the environment happens to give it. The OPO generates squeezed vacuum, but without a lock, environmental turbulence (temperature drift, air currents, table vibration) walks the fringe — the squeezed-state advantage is wasted.
+<strong>No lock applied.</strong> The moving dashed overlay represents uncontrolled phase and intensity disturbance. The fixed purple, red, and blue colours identify the source and interferometer arms; they do not represent changing wavelength. The OPO feeds squeezed vacuum into BS1's normally unused input, while temperature drift, air currents, and table vibration can walk the fringe.
   </div>
 <!-- ===================== NOISE LOCK SECTION ===================== -->
 <h2>Power locking vs noise locking — why PQS picks a different fight</h2>
 <p>A conventional <strong>power lock</strong> tries to pin the interferometer to a single operating point on the fringe. It measures how far the fringe has drifted, then pushes it back with a feedback loop. This works beautifully in a quiet lab — and falls apart when the environment is loud, non-stationary, or when the lock loop has to compete with the very signal you want to measure.</p>
-<p>PQS's approach inverts that. Instead of holding the interferometer at a single instantaneous value, <strong>noise-stationary locking</strong> holds the <em>statistics</em> of the dark port stationary. An auxiliary phase-coded field is injected at the dark port, and a detection-normalized objective keeps its noise distribution — not its instantaneous value — constant. The lock survives conditions a power lock cannot.</p>
+<p>PQS adds a slow <strong>noise-stationary locking</strong> supervisor above the conventional lock. It seeks the lowest admissible detection-normalized noise objective subject to power and validity constraints. An interior solution is a slope-null; an active constraint produces a reported boundary solution. Dark-mode injection is an optional companion channel, not a requirement for the NSL controller.</p>
 <div class="controls">
 <button class="btn lock-btn active" data-lock="off">No lock</button>
 <button class="btn lock-btn" data-lock="power">Power lock</button>
@@ -314,7 +314,7 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
 </div>
 </div>
 <div class="method-info" id="lock-info">
-<strong>No lock.</strong> Thin beam, flickering color — the environment owns the fringe. Nothing is being held steady. Click through the stages to watch amplitude lock in (beam thickens) and then watch noise-stationary locking ride additively on top.
+<strong>No lock.</strong> The moving dashed overlay represents uncontrolled phase and intensity disturbance. The fixed beam colours identify the optical paths; they do not represent changing laser wavelength. Click through the stages to compare the residual disturbance under each control mode.
   </div>
 <!-- ===================== WHAT A PROTOTYPE LOOKS LIKE ===================== -->
 <h2>What a tabletop prototype actually looks like</h2>
@@ -607,42 +607,13 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
     el.addEventListener('blur', hideTip);
   });
 
-  // ---------- Turbulence color cycling ----------
-  // Environmental turbulence is shown by rapidly changing the beam color every 500ms.
-  // Palette intensity scales with how effectively the lock is quelling the noise:
-  //   off:   vibrant/chaotic (nothing is holding the beam steady)
-  //   power: muted          (partial locking, still wobbles)
-  //   noise: STOP cycling   (NSL fully quells turbulence — beam holds steady bright cyan)
-  var palettes = {
-    off:   ['#39dfff','#f472b6','#e8c27a','#f87171','#34d399','#a78bfa','#60a5fa','#fb923c'],
-    power: ['#39dfff','#7dd3fc','#a5f3fc','#bae6fd','#39dfff','#06b6d4'],
-    noise: ['#39dfff']
-  };
-  var turbulenceTimers = new WeakMap();
-  function setTurbulence(diagram, mode){
-    var old = turbulenceTimers.get(diagram);
-    if(old) clearInterval(old);
-    var palette = palettes[mode] || palettes.off;
-    // Apply an initial color immediately
-    diagram.style.setProperty('--beam-color', palette[0]);
-    if(mode === 'noise' || palette.length === 1){
-      turbulenceTimers.delete(diagram);
-      return;
-    }
-    var timer = setInterval(function(){
-      var c = palette[Math.floor(Math.random() * palette.length)];
-      diagram.style.setProperty('--beam-color', c);
-    }, 500);
-    turbulenceTimers.set(diagram, timer);
-  }
-
   // ---------- MZI mode buttons ----------
   var mziDiagram = document.getElementById('mzi-diagram');
   var mziInfo = document.getElementById('mzi-info');
   var mziInfoText = {
-    off: '<strong>No lock applied.</strong> The interferometer sits at whatever phase the environment happens to give it. Watch the laser line — it is thin and its color flickers to represent environmental turbulence. The OPO generates squeezed vacuum at the dark port, but without a lock the squeezed-state advantage is wasted. Temperature drift, air currents, and table vibration walk the fringe.',
-    power: '<strong>Power lock applied.</strong> The PZT actuator on M3 drives a feedback loop that holds the dark-port amplitude at its operating point. The laser line becomes <em>thick</em> — that thickness represents the locked-in amplitude. The color still flickers in a muted palette, because a power lock alone cannot fully suppress non-stationary environmental noise. Squeezed vacuum from the OPO helps reduce shot noise at the dark port, but the classical lock is doing the heavy lifting.',
-    noise: '<strong>Power lock + noise-stationary lock applied.</strong> NSL sits <em>on top of</em> the power lock. The thick bright base beam is the power-locked amplitude. The thin dashed overlay riding on top is the noise waveform, held stationary by the detection-normalized objective. Notice the color stops flickering — NSL has quelled the turbulence. The injected squeezed vacuum at the dark port now provides its full quantum advantage because the lock is holding the noise statistics steady. This is where sub-shot-noise sensing becomes possible in loud environments.'
+    off: '<strong>No lock applied.</strong> The moving dashed overlay represents uncontrolled phase and intensity disturbance. The fixed purple, red, and blue colours identify the source and interferometer arms; they do not represent changing wavelength. The OPO feeds squeezed vacuum into BS1\'s normally unused input, while temperature drift, air currents, and table vibration can walk the fringe.',
+    power: '<strong>Power lock applied.</strong> The PZT actuator on M3 holds the interferometer near its conventional operating point. The residual overlay continues to move because environmental and technical noise can remain even while the primary lock is captured. The squeezed state enters through BS1\'s normally unused input and is observed at the outputs.',
+    noise: '<strong>Power lock + noise-stationary lock applied.</strong> NSL sits <em>on top of</em> the conventional lock. The residual overlay steadies to represent a stabilized normalized-noise objective. The environmental disturbance has not disappeared; the operating point is made less sensitive to it within the controller\'s bandwidth. With adequate phase control, mode matching, and low loss, the squeezed input may reduce the measured quantum-noise contribution.'
   };
   document.querySelectorAll('.mzi-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -653,19 +624,16 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
       mziDiagram.classList.add('mode-' + m);
       mziInfo.className = 'method-info' + (m === 'noise' ? ' violet' : '');
       mziInfo.innerHTML = mziInfoText[m];
-      setTurbulence(mziDiagram, m);
     });
   });
-  // Initialize turbulence on the starting mode
-  setTurbulence(mziDiagram, 'off');
 
   // ---------- Lock comparison buttons ----------
   var lockDiagram = document.getElementById('lock-diagram');
   var lockInfo = document.getElementById('lock-info');
   var lockInfoText = {
-    off: '<strong>No lock.</strong> Thin beam, flickering color — the environment owns the fringe. Nothing is being held steady.',
-    power: '<strong>Power lock engaged.</strong> The beam thickens — the amplitude is now held at the target operating point by classical feedback. The color still flickers in a muted palette because a power lock alone cannot fully suppress non-stationary noise. This is where traditional interferometers live.',
-    noise: '<strong>Power lock + noise-stationary lock.</strong> NSL is additive, not a replacement. The thick bright base beam is still the power-locked amplitude. The thin dashed overlay riding on top is the noise waveform — tiny amplitude, held stationary in its statistics by the detection-normalized objective. Color flicker stops. The dark-port channel is now usable for signaling, ranging, or sensing in conditions a power lock alone cannot survive.'
+    off: '<strong>No lock.</strong> The rapidly moving dashed overlay represents uncontrolled phase and intensity disturbance. Nothing is being held steady.',
+    power: '<strong>Power lock engaged.</strong> The conventional loop holds the primary operating point, while the slower dashed overlay represents residual disturbance that remains in the measurement band.',
+    noise: '<strong>Power lock + noise-stationary lock.</strong> NSL is additive, not a replacement. The residual overlay becomes visually steady to represent a normalized-noise objective held near its best admissible point. This indicates reduced first-order sensitivity within the control bandwidth, not removal of the environmental disturbance.'
   };
   document.querySelectorAll('.lock-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -676,10 +644,8 @@ const description = "Metrology 101 — Peterson Quantum Sensing";
       lockDiagram.classList.add('mode-' + m);
       lockInfo.className = 'method-info' + (m === 'noise' ? ' violet' : '');
       lockInfo.innerHTML = lockInfoText[m];
-      setTurbulence(lockDiagram, m);
     });
   });
-  setTurbulence(lockDiagram, 'off');
 
   // ---------- Gyro method buttons ----------
   var gyroDiagram = document.getElementById('gyro-diagram');

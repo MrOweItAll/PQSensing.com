@@ -93,8 +93,8 @@ const description =
             <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">Compact FPGA board — <em>Red Pitaya class</em> · stylized illustration</figcaption>
           </figure>
           <figure style="margin:0;border:1px solid var(--line);border-radius:20px;background:var(--panel2);padding:18px;text-align:center">
-            <img src="/assets/instrument-benchtop.svg" alt="Stylized illustration of a benchtop FPGA instrument, Liquid Instruments Mako class" style="width:100%;height:auto;border-radius:10px" />
-            <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">Benchtop FPGA instrument — <em>Liquid Instruments Mako class</em> · stylized illustration</figcaption>
+            <img src="/assets/instrument-benchtop.svg" alt="Stylized illustration of a benchtop FPGA instrument, Liquid Instruments Moku class" style="width:100%;height:auto;border-radius:10px" />
+            <figcaption style="margin-top:10px;color:var(--muted);font-size:13px">Benchtop FPGA instrument — <em>Liquid Instruments Moku class</em> · stylized illustration</figcaption>
           </figure>
         </div>
         <div class="cta-row">
@@ -150,8 +150,8 @@ const description =
           <p>Squeezed-light benefit depends on alignment, loss, and phase stability. A squeezed source is not enough if the readout drifts away from the low-variance quadrature.</p>
         </article>
         <article class="value-card">
-          <h3>The dark port is underused.</h3>
-          <p>A nominally dark port can be more than an empty input. DPI turns it into a controlled channel for calibration, coding, ranging, interference rejection, and squeezed-light injection.</p>
+          <h3>The dark input mode is underused.</h3>
+          <p>A normally unoccupied interferometer input can be more than a passive vacuum input. Dark-mode injection turns it into a controlled channel for calibration, coding, ranging, interference rejection, and squeezed-state injection.</p>
         </article>
       </div>
     </section>
@@ -161,7 +161,7 @@ const description =
         <div class="section-head wide">
           <p class="eyebrow">What we are doing</p>
           <h2>We add a measurement-performance layer to interferometric sensors.</h2>
-          <p>NSL + DPI is intended to augment established optical locking methods such as PDH, not pick a needless fight with them. PDH keeps the cavity or interferometer captured. NSL trims the operating point toward the quietest useful measurement condition. DPI gives the dark port a controlled job.</p>
+          <p>NSL + DPI is intended to augment established optical locking methods such as PDH, not pick a needless fight with them. PDH keeps the cavity or interferometer captured. NSL trims the operating point toward the quietest useful measurement condition. In the depicted Mach–Zehnder, DPI gives a normally unused input mode a controlled job.</p>
         </div>
         <div class="three-col">
           <article class="tech-card">
@@ -176,8 +176,8 @@ const description =
           </article>
           <article class="tech-card violet">
             <span class="number">03</span>
-            <h3>Activate the dark port.</h3>
-            <p>Inject a controlled auxiliary field, phase code, pilot signal, or squeezed vacuum through the dark mode and recover useful signatures at the output.</p>
+            <h3>Activate the unused input mode.</h3>
+            <p>Inject a controlled auxiliary field, phase code, pilot signal, or squeezed state into the normally unoccupied input mode and recover useful signatures at the selected output.</p>
           </article>
         </div>
       </div>
@@ -207,7 +207,7 @@ const description =
       <div class="container">
         <div class="section-head narrow">
           <p class="eyebrow">How we intend to do it</p>
-          <h2>Measure the noise that matters, normalize it, find its slope, and lock there.</h2>
+          <h2>Measure the noise that matters, normalize it, and hold the best admissible point.</h2>
         </div>
         <div class="process-grid">
           <article>
@@ -233,7 +233,7 @@ const description =
           <article>
             <span>5</span>
             <h3>Servo</h3>
-            <p>Drive the actuator toward dV<sub>norm</sub>/dδ ≈ 0 while preserving a power floor and using mislock recovery logic.</p>
+            <p>Drive toward an interior slope-null while enforcing the power floor. If that constraint becomes active, hold the best admissible boundary point and report the constraint-limited state.</p>
           </article>
           <article>
             <span>6</span>
@@ -243,11 +243,11 @@ const description =
         </div>
         <div class="formula-band">
           <div>
-            <span class="label">Controller objective</span>
-            <p><MathEquation formula="V_{\mathrm{norm}}(\delta) = \dfrac{N_{\mathrm{band}}(\delta)}{P(\delta)^{k}} \;+\; \text{power-floor penalty}" /></p>
+            <span class="label">Constrained controller objective</span>
+            <p><MathEquation formula="\min_{\delta}\; V_{\mathrm{norm}}(\delta) = \dfrac{N_{\mathrm{band}}(\delta)}{P(\delta)^{k}},\qquad P(\delta) \ge P_{\min}" /></p>
           </div>
           <div>
-            <span class="label">Slope-null condition</span>
+            <span class="label">Interior stationarity condition</span>
             <p><MathEquation formula="\dfrac{dV_{\mathrm{norm}}}{d\delta} \to 0" /></p>
           </div>
         </div>
@@ -259,8 +259,8 @@ const description =
         <img src="/assets/dark_port.jpg" alt="Dark-port injection and phase-code waveform visualization" />
         <div>
           <p class="eyebrow">Phase-Controlled Dark-Mode Injection</p>
-          <h2>DPI gives the dark port a job.</h2>
-          <p>In a conventional interferometer, the dark input is often treated as unused or as a passive vacuum input. DPI uses that port intentionally. A known phase waveform g(t), pilot signal, code, chirp, coherent auxiliary field, or squeezed vacuum can be injected and recovered through synchronous detection, correlation, matched filtering, or homodyne readout.</p>
+          <h2>Dark-mode injection gives the unused input a job.</h2>
+          <p>In this Mach–Zehnder model, the dark-mode input is the normally unused second input of the first beam splitter; the nominally dark output is formed at the recombining beam splitter. A known phase waveform g(t), pilot signal, code, chirp, coherent auxiliary field, or squeezed vacuum can enter through that unused input and be recovered at a selected output through synchronous detection, correlation, matched filtering, or homodyne readout.</p>
           <ul class="checklist">
             <li>Calibration and system identification</li>
             <li>Code-division signatures and multiplexing</li>
@@ -303,9 +303,9 @@ const description =
           <p>The first milestone is intentionally lean. No squeezed-light source is required to validate the core control principle. Build a classical MZI, sweep the operating point, map power and V<sub>norm</sub>, inject controlled detuning jitter, and compare a conventional power lock against NSL.</p>
           <ul class="checklist">
             <li>Map P(δ), N<sub>band</sub>(δ), and V<sub>norm</sub>(δ)</li>
-            <li>Show whether the noise-stationary point differs from the power extremum</li>
+            <li>Show whether the best admissible normalized-noise point differs from the power extremum</li>
             <li>Inject repeatable jitter and compare locked time traces</li>
-            <li>Demonstrate dither/demod convergence toward dV<sub>norm</sub>/dδ ≈ 0</li>
+            <li>Demonstrate convergence to an interior slope-null or a correctly reported constraint-limited boundary point</li>
             <li>Package raw data, plots, and reproducible analysis</li>
           </ul>
         </div>
@@ -321,9 +321,9 @@ const description =
         </div>
         <div class="metrics-table" role="table" aria-label="Prototype validation metrics">
           <div class="row head" role="row"><span>Metric</span><span>Target</span><span>Evidence output</span></div>
-          <div class="row" role="row"><span>Setpoint separation</span><span>V<sub>norm</sub> stationary point differs from the power extremum in at least one injected-noise regime.</span><span>δ sweep: P(δ), N<sub>band</sub>(δ), V<sub>norm</sub>(δ)</span></div>
+          <div class="row" role="row"><span>Setpoint separation</span><span>The best admissible V<sub>norm</sub> point differs from the power extremum in at least one injected-noise regime.</span><span>δ sweep: P(δ), N<sub>band</sub>(δ), V<sub>norm</sub>(δ)</span></div>
           <div class="row" role="row"><span>Jitter-induced noise reduction</span><span>First-demo target: ≥6 dB vs power lock; stretch target: 10–20 dB if bench stability supports it.</span><span>Locked traces under controlled jitter</span></div>
-          <div class="row" role="row"><span>Slope-null convergence</span><span>|dV<sub>norm</sub>/dδ| driven toward zero while maintaining P above a useful floor.</span><span>Dither/demod error and actuator command</span></div>
+          <div class="row" role="row"><span>Constrained-optimum convergence</span><span>|dV<sub>norm</sub>/dδ| driven toward zero for an interior solution, or the active power constraint identified at a boundary solution.</span><span>Dither/demod error, constraint state, and actuator command</span></div>
           <div class="row" role="row"><span>Reacquisition</span><span>≥5 successful reacquisitions after intentional mislock or disturbance trials.</span><span>State log: SEARCH → CAPTURE → BIAS_LOCK → NOISE_LOCK</span></div>
           <div class="row" role="row"><span>DPI optional test</span><span>Recover known g(t) by correlation/matched filtering with a visible peak over uncorrelated disturbance.</span><span>Correlation peak, lag estimate, processing-gain plot</span></div>
         </div>
