@@ -317,7 +317,7 @@
 
       const idxPmax = findMax(ps).i;
       const pThresh = 0.18 * pMax;
-      const allowed = (i) => ps[i] > pThresh;
+      const allowed = (i) => ps[i] >= pThresh;
       const idxV = findMin(vs, allowed).i;
       const powerFloorLimited =
         (idxV > 0 && !allowed(idxV - 1)) ||

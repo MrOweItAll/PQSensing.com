@@ -77,7 +77,7 @@ describe('NSL thesis invariants (computeLocks)', () => {
 
   it('keeps the NSL lock at a usable power floor (never the dark fringe)', () => {
     const { dNSL } = computeLocks(Math.PI, 1.0, 2);
-    expect(P(dNSL)).toBeGreaterThan(POWER_FLOOR);
+    expect(P(dNSL)).toBeGreaterThanOrEqual(POWER_FLOOR);
   });
 
   it('identifies an interior constrained optimum as a slope-null', () => {
@@ -99,7 +99,7 @@ describe('NSL thesis invariants (computeLocks)', () => {
       (Vnorm(dNSL + h, offset, amp, k) - Vnorm(dNSL - h, offset, amp, k)) /
       (2 * h);
     expect(constraintLimited).toBe(true);
-    expect(P(dNSL)).toBeGreaterThan(POWER_FLOOR);
+    expect(P(dNSL)).toBeGreaterThanOrEqual(POWER_FLOOR);
     expect(Math.abs(slope)).toBeGreaterThan(0.05);
   });
 });

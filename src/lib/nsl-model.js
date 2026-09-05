@@ -96,7 +96,7 @@ export function computeLocks(offset, amp, k, N = 401) {
   const idxPmax = findMax(ps).i;
   // Restrict the NSL search to points where enough optical power survives —
   // the controller enforces a power floor rather than chasing a dark fringe.
-  const allowed = (i) => ps[i] > POWER_FLOOR;
+  const allowed = (i) => ps[i] >= POWER_FLOOR;
   const idxV = findMin(vs, allowed).i;
   const constraintLimited =
     (idxV > 0 && !allowed(idxV - 1)) ||
