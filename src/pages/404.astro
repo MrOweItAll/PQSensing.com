@@ -1,0 +1,76 @@
+---
+/**
+ * 404 — friendly not-found page. Astro emits this as /404.html (build.format
+ * 'file'); public/.htaccess wires Apache's ErrorDocument to serve it so mistyped
+ * or stale URLs land here with the full nav instead of the host's bare error.
+ * Presentation only — no technical or claim content.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Page not found — PQSensing';
+const description =
+  'That page could not be found. Return to the Peterson Quantum Sensing home page or jump to modules, metrology, or publications.';
+
+const links = [
+  { href: '/index.html', label: 'Home' },
+  { href: '/modules.html', label: 'Supervisory Modules' },
+  { href: '/metrology.html', label: 'Metrology 101' },
+  { href: '/publications.html', label: 'Publications' },
+  { href: '/contact.html', label: 'Contact' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <meta slot="head" name="robots" content="noindex, follow" />
+  <main id="top">
+    <section class="section-pad">
+      <div class="container" style="max-width:720px">
+        <div class="section-head narrow">
+          <p class="eyebrow">Error 404</p>
+          <h2>This page parked at a dark port.</h2>
+          <p>
+            The link you followed doesn't resolve to a page here — it may have
+            moved, or the address may have a typo. Nothing is broken; you just
+            need a different bearing.
+          </p>
+        </div>
+
+        <nav class="nf-links" aria-label="Suggested pages">
+          {links.map((l) => (
+            <a href={l.href}>{l.label}</a>
+          ))}
+        </nav>
+
+        <p class="nf-home">
+          <a class="button primary" href="/index.html">Back to home</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .nf-links {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nf-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    padding: 9px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+    color: var(--ink, #eef9ff);
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .nf-links a:hover,
+  .nf-links a:focus-visible {
+    border-color: var(--cyan, #39dfff);
+    color: var(--cyan, #39dfff);
+  }
+  .nf-home { margin-top: 30px; }
+</style>

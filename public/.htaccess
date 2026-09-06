@@ -1,0 +1,5 @@
+# PQSensing static site — Apache config for Namecheap shared hosting.
+# The site builds with Astro's file format, so pages emit as /name.html and the
+# not-found page emits as /404.html. Point Apache at it so mistyped or stale URLs
+# render the branded 404 (with full nav) instead of the host's default error.
+ErrorDocument 404 /404.html
