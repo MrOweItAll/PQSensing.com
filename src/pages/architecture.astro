@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import services from '../data/services.json';
 import portfolio from '../data/portfolio.json';
 
-const title = 'Media + Architecture — Precision Drafting, HABS Documentation & Visualization';
+const title = 'Media + Architecture by Jon Peterson — Architectural Production on Demand';
 const description =
-  'Media + Architecture is the spatial-documentation practice of Peterson Quantum Sensing’s founder: architectural drafting, HABS/HAER historic documentation, and photoreal 3D visualization. Productized packages for residential, commercial, and historic projects.';
+  'Media + Architecture by Jon Peterson provides experienced AutoCAD production, construction-document drafting, as-builts, historic documentation, and reserved production capacity for architecture and design-build firms.';
 
 const packages = services.packages;
 
@@ -44,22 +44,22 @@ const steps = [
         <figure class="arch-logo-plate">
           <img class="arch-logo" src="/assets/brand/ma-logo.jpg" width="1099" height="1100" alt="Media + Architecture — m+a monogram over a classical portico" />
         </figure>
-        <p class="arch-eyebrow">Peterson Systems · Spatial &amp; Historic Documentation</p>
-        <h1>Media&nbsp;+&nbsp;Architecture</h1>
+        <p class="arch-eyebrow">Media + Architecture · by Jon Peterson</p>
+        <h1>Senior-level architectural production. On demand.</h1>
         <p class="arch-lede">
-          Precision architectural drafting, HABS/HAER historic documentation, and
-          photoreal 3D visualization — the spatial-documentation practice run by the
-          founder of Peterson Quantum Sensing. The same discipline that goes into
-          interferometer control systems, applied to buildings.
+          When your workload exceeds your drafting capacity, Media + Architecture provides
+          experienced AutoCAD production without the cost or commitment of another full-time
+          employee. Clean construction documents, quick turnaround, flexible capacity.
         </p>
         <div class="arch-cta-row">
-          <a class="arch-btn primary" href="#packages">View service packages</a>
+          <a class="arch-btn primary" href="#packages">See production services</a>
           <a class="arch-btn ghost" href="#portfolio">See the portfolio</a>
         </div>
         <div class="arch-facts">
-          <span><strong>20+ years</strong> drafting &amp; documentation</span>
-          <span><strong>NPS-standard</strong> HABS / HAER work</span>
-          <span><strong>Photoreal</strong> concept visualization</span>
+          <span><strong>30+ years</strong> AutoCAD experience</span>
+          <span><strong>B.S. Architectural Engineering</strong> · University of Kansas</span>
+          <span><strong>Construction experience</strong> beginning in 1992</span>
+          <span><strong>HABS</strong> measured-documentation experience</span>
         </div>
       </div>
     </section>
@@ -68,13 +68,13 @@ const steps = [
       <div class="container">
         <div class="arch-head">
           <p class="arch-eyebrow">Service packages</p>
-          <h2>Fixed-scope packages, clear deliverables.</h2>
-          <p>Productized services with defined outputs and timelines — request a package and it lands in the inbox pre-labeled, ready to scope.</p>
+          <h2>Production capacity that fits the workload.</h2>
+          <p>Use Media + Architecture for a single deadline, an entire drawing package, or recurring monthly production. Fixed-fee ranges establish the working budget; final scope and schedule are confirmed before work begins.</p>
         </div>
         <div class="pkg-grid">
           {packages.map((p) => (
             <article class:list={['pkg-card', { featured: p.featured }]}>
-              {p.featured && <span class="pkg-flag">Most requested</span>}
+              {p.featured && <span class="pkg-flag">Core service</span>}
               <h3>{p.name}</h3>
               <p class="pkg-tagline">{p.tagline}</p>
               <ul class="pkg-list">
@@ -107,9 +107,9 @@ const steps = [
           ))}
         </div>
         <div class="trust-strip">
-          <span><strong>20+ years</strong> of drafting &amp; documentation experience</span>
-          <span><strong>HABS / HAER</strong> measured drawings to NPS standards</span>
-          <span><strong>PDF + DWG</strong> deliverables · you own the final files</span>
+          <span><strong>30+ years</strong> working in AutoCAD</span>
+          <span><strong>Jobsite + drawing-board</strong> perspective</span>
+          <span><strong>PDF + DWG</strong> deliverables · clean, disciplined documentation</span>
         </div>
       </div>
     </section>
@@ -230,24 +230,29 @@ const steps = [
     <section class="arch-section">
       <div class="container arch-founder">
         <div>
-          <p class="arch-eyebrow">One practitioner, two disciplines</p>
-          <h2>Why the same person does both.</h2>
+          <p class="arch-eyebrow">Why Jon Peterson</p>
+          <h2>Drawings informed by how buildings actually get built.</h2>
           <p>
-            Architectural documentation and interferometric metrology reward the same
-            habits: exacting measurement, disciplined tolerances, and drawings you can
-            build from. Media + Architecture is a separate practice with its own clients
-            and deliverables — but it runs on the same standard of precision as the
-            quantum-sensing work.
+            Jon Peterson combines hands-on construction experience beginning in 1992 with a
+            B.S. in Architectural Engineering from the University of Kansas, HABS measured-
+            documentation experience, and decades of AutoCAD production. The value is not
+            simply knowing which command draws a line. It is understanding what the line means
+            to the architect, contractor, estimator and person standing on the jobsite.
+          </p>
+          <p>
+            Media + Architecture is built for firms that need experienced production help
+            without adding permanent payroll: clean drawings, disciplined linework, readable
+            annotation, fast turnaround and flexible scheduling.
           </p>
           <div class="arch-cta-row">
-            <a class="arch-btn primary" href="/contact.html?type=architecture">Start a project</a>
-            <a class="arch-btn ghost" href="/index.html">Back to Peterson Quantum Sensing</a>
+            <a class="arch-btn primary" href="/contact.html?type=architecture">Discuss your workload</a>
+            <a class="arch-btn ghost" href="/index.html">Also by Jon: Peterson Quantum Sensing</a>
           </div>
         </div>
         <aside class="arch-quote-card">
           <span class="arch-quote-label">Request a quote</span>
-          <p>Have drawings, a site, or a historic structure that needs documenting? Send the scope and timeline and you’ll get a fixed-fee proposal.</p>
-          <a class="arch-btn primary full" href="/contact.html?type=architecture">Email a project brief</a>
+          <p>Have a deadline your production staff cannot absorb? Send the redlines, existing drawings, project requirements and deadline. I’ll tell you quickly whether I can help.</p>
+          <a class="arch-btn primary full" href="/contact.html?type=architecture">Send a production brief</a>
         </aside>
       </div>
     </section>
