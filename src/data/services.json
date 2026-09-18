@@ -1,57 +1,83 @@
 {
-  "_note": "Media + Architecture packages. 'priceRange' shows a starting band (e.g. '$2.5k–$5k'); set to null for 'Pricing on request'. Ranges below are the founder's confirmed public bands. Edit deliverables/timelines freely.",
+  "_note": "Media + Architecture by Jon Peterson — public service packages and working price ranges.",
   "packages": [
     {
-      "id": "residential-plan-set",
-      "name": "Residential Plan Set",
-      "tagline": "Permit-ready construction documents",
+      "id": "overflow-cad-production",
+      "name": "Overflow CAD Production",
+      "tagline": "Experienced AutoCAD production when your staff is at capacity",
       "deliverables": [
-        "Floor plans, elevations & building sections",
-        "Roof & foundation plans",
+        "Redlines, revisions, plans, elevations, sections & details",
+        "Work within your firm’s title blocks and drawing standards",
         "Coordinated PDF + DWG deliverables"
       ],
-      "timeline": "2–3 weeks",
-      "featured": false,
-      "priceRange": "$2.5k–$5k"
+      "timeline": "By scope · expedited work available",
+      "featured": true,
+      "priceRange": "$1.5k–$5k"
     },
     {
-      "id": "habs-historic-documentation",
+      "id": "permit-construction-documents",
+      "name": "Permit & Construction Documents",
+      "tagline": "Complete or partial drawing-package production",
+      "deliverables": [
+        "Residential, commercial & design-build drawing production",
+        "Plans, elevations, sections, details & schedules",
+        "Consultant and drawing-set coordination as scoped"
+      ],
+      "timeline": "Typically 1–4 weeks",
+      "featured": false,
+      "priceRange": "$2.5k–$7.5k+"
+    },
+    {
+      "id": "existing-conditions-asbuilts",
+      "name": "Existing Conditions / As-Builts",
+      "tagline": "Field information turned into disciplined CAD records",
+      "deliverables": [
+        "Existing drawings, measurements, photos & field notes converted to CAD",
+        "Clean existing-condition and record drawing sets",
+        "PDF + DWG deliverables"
+      ],
+      "timeline": "Typically 1–3 weeks",
+      "featured": false,
+      "priceRange": "$1k–$4k+"
+    },
+    {
+      "id": "reserved-production-capacity",
+      "name": "Reserved Production Capacity",
+      "tagline": "Your remote CAD department — available when workload demands it",
+      "deliverables": [
+        "Reserved monthly production capacity",
+        "Priority scheduling for recurring client work",
+        "Flexible project mix without another full-time hire"
+      ],
+      "timeline": "Monthly engagement",
+      "featured": true,
+      "priceRange": "$2.5k–$5k / month"
+    },
+    {
+      "id": "specialty-documentation",
       "name": "HABS / Historic Documentation",
-      "tagline": "Measured drawings to NPS standards",
+      "tagline": "Measured and historic documentation informed by HABS experience",
       "deliverables": [
         "Measured drawings & field documentation",
-        "Large-format photo documentation",
-        "Prepared to HABS/HAER/NPS standards"
-      ],
-      "timeline": "3–5 weeks",
-      "featured": true,
-      "priceRange": "$4k–$8k"
-    },
-    {
-      "id": "3d-visualization-bundle",
-      "name": "3D Visualization Bundle",
-      "tagline": "Photoreal renders for approvals & marketing",
-      "deliverables": [
-        "3–5 exterior / interior render views",
-        "Photoreal concept treatment",
-        "Optional walkthrough animation"
-      ],
-      "timeline": "1–2 weeks",
-      "featured": false,
-      "priceRange": "$1.5k–$4k"
-    },
-    {
-      "id": "custom-complex",
-      "name": "Custom / Complex Projects",
-      "tagline": "Full CD sets & multi-building coordination",
-      "deliverables": [
-        "Complete construction-document sets",
-        "Multi-building & site coordination",
-        "Consultant drawing coordination"
+        "Historic-building drawing production",
+        "HABS/HAER/NPS-format documentation when applicable"
       ],
       "timeline": "By scope",
       "featured": false,
-      "priceRange": null
+      "priceRange": "$4k–$8k+"
+    },
+    {
+      "id": "visualization",
+      "name": "Architectural Visualization",
+      "tagline": "3D imagery for design communication, approvals & marketing",
+      "deliverables": [
+        "Exterior and interior render views",
+        "Concept visualization from architectural information",
+        "Optional walkthrough animation"
+      ],
+      "timeline": "Typically 1–2 weeks",
+      "featured": false,
+      "priceRange": "$1.5k–$4k"
     }
   ]
 }
