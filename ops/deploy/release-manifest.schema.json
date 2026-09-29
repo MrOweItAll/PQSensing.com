@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PQS immutable static release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releaseId", "sourceCommit", "baselineId", "requestId", "workflowRun", "tests", "routes", "files"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "releaseId": {"$ref": "#/$defs/id"},
+    "sourceCommit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "baselineId": {"$ref": "#/$defs/id"},
+    "requestId": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[ -~]+$"},
+    "workflowRun": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[ -~]+$"},
+    "tests": {"type": "array", "maxItems": 100, "items": {"type": "string", "minLength": 1, "maxLength": 300, "pattern": "^[ -~]+$"}},
+    "routes": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^/"}},
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "size", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1, "maxLength": 220},
+          "size": {"type": "integer", "minimum": 0, "maximum": 209715200},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$"}
+  },
+  "$comment": "artifact.py adds authoritative safe-path, uniqueness/ancestor, static-content, route inventory, byte/count, marker, and SHA-256 checks. This schema alone cannot establish artifact integrity, baseline acceptance, source provenance, or test success."
+}

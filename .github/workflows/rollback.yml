@@ -1,0 +1,20 @@
+name: Website rollback (disabled scaffold)
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  rollback:
+    # No remote operation exists. Do not interpret a dispatch as recovery.
+    if: ${{ false }}
+    runs-on: ubuntu-24.04
+    environment: production
+    concurrency:
+      group: pqs-production
+      cancel-in-progress: false
+    steps:
+      - run: |
+          echo 'Blocked: configure and test retained-release identity, expected-current, authenticated approval and live recovery checks first.'
+          exit 78

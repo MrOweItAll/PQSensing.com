@@ -1,0 +1,72 @@
+name: Website checks (unprivileged)
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pqs-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.14'
+      - name: Pin and report build tools
+        run: |
+          npm install --global --ignore-scripts npm@11.9.0
+          test "$(node --version)" = "v24.19.0"
+          test "$(npm --version)" = "11.9.0"
+          python3 --version
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Check source preservation and deployment safety
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 scripts/check-preservation.py --root .
+          python3 -m unittest discover -s tests/deploy -p 'test_*.py' -v
+          python3 -m unittest discover -s tests/site -p 'test_*.py' -v
+      - name: Install isolated browser test tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pqs-browser-tools" --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          node "$RUNNER_TEMP/pqs-browser-tools/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Browser regression checks (no real form submissions)
+        env:
+          PLAYWRIGHT_MODULE_PATH: ${{ runner.temp }}/pqs-browser-tools/node_modules/playwright/index.mjs
+        run: node scripts/test-site.mjs --dist dist --report "$RUNNER_TEMP/browser.json"
+      - name: Validate immutable candidate packaging
+        env:
+          CANDIDATE_SOURCE: ${{ github.sha }}
+          CANDIDATE_RELEASE: ci-${{ github.run_id }}-${{ github.run_attempt }}
+          CANDIDATE_RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 scripts/make-release.py --site dist --output-dir "$RUNNER_TEMP/pqs-candidate" \
+            --release-id "$CANDIDATE_RELEASE" --source-commit "$CANDIDATE_SOURCE" \
+            --baseline-id unaccepted-source-only --request-id "$CANDIDATE_RELEASE" \
+            --workflow-run "$CANDIDATE_RUN" --test-reference "$CANDIDATE_RUN"
+      - name: Attach browser report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: browser-report-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/browser.json
+          if-no-files-found: ignore
+          retention-days: 14

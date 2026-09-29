@@ -1,0 +1,164 @@
+name: Website candidate (publication disabled)
+
+# No pull_request_target, workflow_run, arbitrary ref input, hosting secrets,
+# or deployment client belongs in this build job. Main must be reviewed.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: ${{ github.repository == 'MrOweItAll/PQSensing.com' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    outputs:
+      artifact-id: ${{ steps.upload.outputs.artifact-id }}
+      archive-sha256: ${{ steps.identity.outputs.archive-sha256 }}
+      release-id: ${{ steps.identity.outputs.release-id }}
+      source-sha: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.14'
+      - name: Pin and report build tools
+        run: |
+          npm install --global --ignore-scripts npm@11.9.0
+          test "$(node --version)" = "v24.19.0"
+          test "$(npm --version)" = "11.9.0"
+          python3 --version
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Check source preservation and deployment safety
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 scripts/check-preservation.py --root .
+          python3 -m unittest discover -s tests/deploy -p 'test_*.py' -v
+          python3 -m unittest discover -s tests/site -p 'test_*.py' -v
+      - name: Install isolated browser test tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pqs-browser-tools" --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          node "$RUNNER_TEMP/pqs-browser-tools/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Browser regression checks
+        env:
+          PLAYWRIGHT_MODULE_PATH: ${{ runner.temp }}/pqs-browser-tools/node_modules/playwright/index.mjs
+        run: node scripts/test-site.mjs --dist dist --report "$RUNNER_TEMP/browser.json"
+      - name: Package existing build once
+        env:
+          CANDIDATE_SOURCE: ${{ github.sha }}
+          CANDIDATE_RELEASE: pqs-${{ github.run_id }}-${{ github.run_attempt }}
+          CANDIDATE_RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 scripts/make-release.py --site dist --output-dir "$RUNNER_TEMP/pqs-candidate" \
+            --release-id "$CANDIDATE_RELEASE" --source-commit "$CANDIDATE_SOURCE" \
+            --baseline-id unaccepted-source-only --request-id "$CANDIDATE_RELEASE" \
+            --workflow-run "$CANDIDATE_RUN" --test-reference "$CANDIDATE_RUN"
+      - name: Record exact candidate identity and unresolved gate
+        id: identity
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          candidate = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'pqs-candidate/candidate.json').read_text())
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('archive-sha256=' + candidate['artifactSha256'] + '\n')
+              output.write('release-id=' + candidate['releaseId'] + '\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Candidate only — publishing is disabled\n\n')
+              summary.write('No accepted source/live baseline, authenticated host preview or production approval exists.\n\n')
+              for key in ('releaseId', 'sourceCommit', 'baselineId', 'artifactSha256', 'artifactBytes', 'publicationStatus'):
+                  summary.write(f'- {key}: `{candidate[key]}`\n')
+          PY
+      - name: Store immutable candidate (not a deployed preview)
+        id: upload
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pqs-candidate/
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: false
+          retention-days: 30
+      - name: Attach browser report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: candidate-browser-report-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/browser.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+  stage:
+    # Hard block: replacing this scaffold needs explicit owner infrastructure review.
+    if: ${{ false }}
+    needs: build
+    runs-on: ubuntu-24.04
+    environment: staging
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          artifact-ids: ${{ needs.build.outputs.artifact-id }}
+          path: candidate
+          merge-multiple: true
+          digest-mismatch: error
+      - name: Require exact archive identity
+        env:
+          EXPECTED_SHA256: ${{ needs.build.outputs.archive-sha256 }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, os, pathlib, re
+          expected = os.environ['EXPECTED_SHA256']
+          assert re.fullmatch('[0-9a-f]{64}', expected)
+          assert hashlib.sha256(pathlib.Path('candidate/bundle.tar').read_bytes()).hexdigest() == expected
+          PY
+      - name: Host setup is not complete
+        run: |
+          echo 'Blocked: authenticated staging, host key, restricted receiver, baseline and asset compatibility need verified setup.'
+          exit 78
+
+  production:
+    # Even changing automation.json cannot activate this placeholder.
+    if: ${{ false }}
+    needs: [build, stage]
+    name: Disabled promotion of ${{ needs.build.outputs.release-id }} / ${{ needs.build.outputs.archive-sha256 }}
+    runs-on: ubuntu-24.04
+    environment: production
+    concurrency:
+      group: pqs-production
+      cancel-in-progress: false
+    steps:
+      # Same artifact ID from the same run, never a new build or "latest" lookup.
+      # Future privileged job must not check out source or execute artifact code.
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          artifact-ids: ${{ needs.build.outputs.artifact-id }}
+          path: candidate
+          merge-multiple: true
+          digest-mismatch: error
+      - name: Require exact archive identity
+        env:
+          EXPECTED_SHA256: ${{ needs.build.outputs.archive-sha256 }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, os, pathlib, re
+          expected = os.environ['EXPECTED_SHA256']
+          assert re.fullmatch('[0-9a-f]{64}', expected)
+          assert hashlib.sha256(pathlib.Path('candidate/bundle.tar').read_bytes()).hexdigest() == expected
+          PY
+      - name: Production setup is not complete
+        run: |
+          echo 'Blocked: no production client or credentials are installed. Exact approval, expected-current, host evidence and rollback proof are required.'
+          exit 78
