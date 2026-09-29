@@ -298,13 +298,42 @@
     "src/pages/contact.astro": "f6a93be19bc5e777c350911efbe74b596f057ef809cf0f1a6b53dc6b9ab07332",
     "src/pages/index.astro": "4c6602ccf77920018b3573dca68c89b7812feeaec737a4eafa78b5ad244e2bd7",
     "src/pages/metrology.astro": "75529edd737245c71c6b2c30ff770d24e6c87f48a60cbb56212f924819f94df7",
-    "src/pages/metrology201.astro": "94cfb0a28222be73183a916dfc37e45debc07b07904670056b3e245667ed94ad",
+    "src/pages/metrology201.astro": "8cef8cf03b4de8d1d195fe16fbe9a4f6f61e2f753fe6a9cb84a498c50e22403c",
     "src/pages/modules.astro": "2728751c03af1ec67b7903a8a82d9de4bac4bdc6ce828ee3544bf6777f9ee970",
     "src/pages/publications.astro": "82e6c5bbbb020f2170840c583fba39c8d517e1294be67d4f3679a091ddb1da3b",
     "src/pages/updates/rss.xml.js": "c3b73feac5d6c202f722b1067f50d8319b444b88caefb6c39dea8efa6568cef8",
     "src/pages/updates.astro": "c77bd8a4ac249b0d9e637967ee4ad3a20f9b113a3341252ccef3548b173f7aec",
-    "src/styles/global.css": "516a980598a5761b7ea02a3ea83730222caec1ae0ae51e5e6546e285ecd31048",
-    "src/styles/metrology.css": "4e24710ba174e99d176b921c4afe6c00099a77a4fc9b3ff465c96fae39cbed4d",
-    "src/styles/metrology201.css": "68a429cd0bb77a44ed37813fe789f3e3a19ff9d81435bca46754484b209f88ce"
-  }
+    "src/styles/global.css": "51ebe6972d03ace6573be0249549fd2b8b22ba34383ddd5acd0d9b735c9314e9",
+    "src/styles/metrology.css": "495941f890cd97ed055ac9a698fa1fffee29e92f283c5aed80f3d9f826470461",
+    "src/styles/metrology201.css": "262724d12b0987f778f0c3f5aa9a35328cf35a2ad286b57f52828e1025544b0b"
+  },
+  "intentionalSourceUpdates": [
+    {
+      "date": "2026-09-29",
+      "request": "Fix GitHub email CI failures: responsive navigation and comparison tables only",
+      "parentSourceSha": "d0efcd6751d5f16fd0dda246e0a31964305884f1",
+      "files": [
+        {
+          "path": "src/styles/global.css",
+          "previousSha256": "516a980598a5761b7ea02a3ea83730222caec1ae0ae51e5e6546e285ecd31048",
+          "sha256": "51ebe6972d03ace6573be0249549fd2b8b22ba34383ddd5acd0d9b735c9314e9"
+        },
+        {
+          "path": "src/styles/metrology.css",
+          "previousSha256": "4e24710ba174e99d176b921c4afe6c00099a77a4fc9b3ff465c96fae39cbed4d",
+          "sha256": "495941f890cd97ed055ac9a698fa1fffee29e92f283c5aed80f3d9f826470461"
+        },
+        {
+          "path": "src/styles/metrology201.css",
+          "previousSha256": "68a429cd0bb77a44ed37813fe789f3e3a19ff9d81435bca46754484b209f88ce",
+          "sha256": "262724d12b0987f778f0c3f5aa9a35328cf35a2ad286b57f52828e1025544b0b"
+        },
+        {
+          "path": "src/pages/metrology201.astro",
+          "previousSha256": "94cfb0a28222be73183a916dfc37e45debc07b07904670056b3e245667ed94ad",
+          "sha256": "8cef8cf03b4de8d1d195fe16fbe9a4f6f61e2f753fe6a9cb84a498c50e22403c"
+        }
+      ]
+    }
+  ]
 }

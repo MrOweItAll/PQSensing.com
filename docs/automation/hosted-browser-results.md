@@ -1,6 +1,27 @@
 # Hosted browser results — 29 September 2026
 
-**CI failed: 307 checks passed; 23 responsive-width checks failed.**
+**Historical run: 307 checks passed; 23 responsive-width checks failed.**
+
+## Responsive repair — 29 September 2026
+
+The owner requested correction of the GitHub failure emails. The follow-up changes
+the compact-navigation breakpoint from 740px to 1440px in all three themes and
+bounds the open menu to the viewport height with vertical scrolling. The two
+Metrology 201 tables now have keyboard-focusable horizontal scroll regions.
+Page text, technical claims, routes, assets and form behavior are unchanged.
+
+Only the four intentionally edited source-file hashes were updated in the
+repository preservation manifest, with old/new hashes and the parent commit
+recorded. This is not acceptance of a live hosting baseline. The browser gate
+retains all existing checks and adds 1280px, 1441px and 1536px coverage plus
+open-menu bounds checks. Local build, 14 unit tests and 256 internal links pass;
+hosted Chromium verification must complete on the follow-up commit. Local
+Chromium download returned an invalid archive, so no local browser pass is claimed.
+Deployment remains blocked; this repair does not reconcile live content or
+authorize merging the infrastructure draft.
+
+## Original failure evidence
+
 
 [GitHub run 36551496861](https://github.com/MrOweItAll/PQSensing.com/actions/runs/36551496861)
 executed Chromium 151.0.7922.34 with Playwright 1.62.1. Branch head was

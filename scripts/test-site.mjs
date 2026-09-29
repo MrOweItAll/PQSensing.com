@@ -20,7 +20,7 @@ for (let i = 2; i < process.argv.length; i += 2) {
 }
 const dist = resolve(options.dist);
 const reportPath = resolve(options.report);
-const widths = [320, 375, 390, 768, 1024, 1440];
+const widths = [320, 375, 390, 768, 1024, 1280, 1440, 1441, 1536];
 const report = { schemaVersion: 1, startedAt: new Date().toISOString(), scope: 'local repository build only; not live reconciliation', sourceSha: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), node: process.version, widths, checks: [], diagnostics: [], externalRequestsStubbed: [], contactSubmissions: 0, status: 'running' };
 const check = (name, passed, detail = {}) => report.checks.push({ name, status: passed ? 'passed' : 'failed', ...detail });
 const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
@@ -88,7 +88,7 @@ try {
     }
     await route.continue();
   });
-  // A metadata check per document and six viewport checks per route.
+  // A metadata check per document and viewport checks around the menu breakpoint.
   for (const route of routes) {
     const page = await context.newPage();
     const errors = [];
@@ -124,6 +124,7 @@ try {
       if (await toggle.count() && await toggle.isVisible()) {
         await toggle.click();
         check('mobile menu opens', await page.locator('.nav-links').isVisible(), { route, width });
+        check('open menu stays within viewport', await page.locator('.nav-links').evaluate(e => { const r = e.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth && r.bottom <= innerHeight && e.clientWidth >= e.scrollWidth; }), { route, width });
         const link = page.locator('.nav-links a').first();
         await link.click();
         await page.waitForLoadState('load');
