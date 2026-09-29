@@ -71,6 +71,16 @@ committed receiver tests provide the reproducible fixture coverage. Neither that
 review nor the results above establishes live
 site parity, protected staging, SSH confinement or production approval.
 
+## Hosted CI follow-up
+
+[Run 36551496861](https://github.com/MrOweItAll/PQSensing.com/actions/runs/36551496861)
+passed install, existing tests/build and deployment/preservation unit tests.
+Chromium ran successfully there: **307 checks passed and 23 responsive checks
+failed**. The failures expose existing navigation/table overflow in the preserved
+source. Gallery/contact validation and console checks passed with zero messages.
+The hosted artifact-packaging step was skipped after browser failure. See
+[hosted-browser-results.md](hosted-browser-results.md); overall CI is not green.
+
 ## Acceptance status by supplied test ID
 
 | IDs | Status and scope |
@@ -81,7 +91,7 @@ site parity, protected staging, SSH confinement or production approval.
 | C02 | Existing locked install/tests/build passed locally; hosted CI result reported separately. |
 | C03–C04 | Local artifact identity checks only; identical bytes through staging/production and renewed real approval not demonstrated. |
 | C05 | Repository build links and content hashes checked; live/accepted-baseline and browser coverage remain separate gates. |
-| C06–C07 | Actual browser/form validation status is recorded in reconciliation report; no messages submitted. |
+| C06–C07 | Hosted browser ran: 23 responsive-width failures; contact validation/prefill passed with no messages submitted. |
 | C08 | No claim changes. Preservation is verified, not scientific acceptance of old content. |
 | S01–S05 | Blocked: no authenticated staging or actual host/SSH/key/router tests. |
 | S06–S07 | Local artifact path/type/hash/secret-pattern tests only; not proof all private content is automatically detectable. |

@@ -81,6 +81,20 @@ External font/service requests are stubbed in local browser checks, so external
 availability remains separate. No screenshot reference set was created because
 no browser ran.
 
+## Hosted follow-up
+
+GitHub subsequently installed Chromium successfully and ran the full browser gate.
+Run [36551496861](https://github.com/MrOweItAll/PQSensing.com/actions/runs/36551496861)
+recorded **307 passes and 23 responsive-width failures** in the unchanged source.
+The 23 failures comprise tablet navigation overflow on the ten documents at 768
+and 1024 px, plus the metrology201 comparison table at 320, 375 and 390 px. Gallery,
+contact validation/prefill and console checks passed; no contact message was sent.
+The local missing-Chromium result above remains accurate for this workspace but
+is no longer the only browser evidence. See
+[hosted-browser-results.md](automation/hosted-browser-results.md) for exact cases.
+CI remains failed; candidate packaging was skipped after the browser gate.
+No accepted visual baseline or authenticated preview has been established.
+
 ## Remaining baseline acceptance work
 
 1. Freeze every active legacy publisher through the authorized administration
