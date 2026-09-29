@@ -1,0 +1,9 @@
+# Advisory until repository rules enforce owner review. A solo owner cannot
+# self-approve a pull request; use an explicit, recorded infrastructure review.
+/.github/ @MrOweItAll
+/ops/ @MrOweItAll
+/scripts/make-release.py @MrOweItAll
+/scripts/test-site.mjs @MrOweItAll
+/scripts/check-preservation.py @MrOweItAll
+/.node-version @MrOweItAll
+/AGENTS.md @MrOweItAll

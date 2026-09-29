@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWABLE_SCAFFOLD_NOT_OPERATIONAL",
+  "repository": "MrOweItAll/PQSensing.com",
+  "productionBranch": "main",
+  "productionOrigin": "https://www.pqsensing.com",
+  "productionEnabled": false,
+  "stagingEnabled": false,
+  "baselineAccepted": false,
+  "baselineId": null,
+  "stagingOrigin": null,
+  "hosting": {
+    "serverHostname": null,
+    "sshPort": null,
+    "cPanelUsername": null,
+    "documentRoot": null,
+    "deploymentBase": null,
+    "verifiedHostKeyFingerprint": null,
+    "hostCapabilityTestsPassed": false,
+    "routerAccepted": false,
+    "forcedCommandRestrictionsVerified": false,
+    "hostManagedPathsInventoried": false,
+    "privateSnapshotRestoreVerified": false,
+    "stagingAuthenticationVerified": false
+  },
+  "github": {
+    "productionEnvironment": "production",
+    "stagingEnvironment": "staging",
+    "requiredReviewer": "MrOweItAll",
+    "mainBranchProtected": false,
+    "approvalCapabilityVerified": false,
+    "legacyDeploymentDisabled": false,
+    "productionConcurrencyGroup": "pqs-production",
+    "cancelInProgress": false
+  },
+  "release": {
+    "buildOnce": true,
+    "requireExactArtifactDigest": true,
+    "requireExpectedCurrent": true,
+    "retainSuccessfulReleasesTarget": 10,
+    "alwaysRetainCurrentAndPrevious": true,
+    "maxArchiveBytes": null,
+    "maxExtractedBytes": null,
+    "maxFileCount": null,
+    "minimumFreeDiskBytes": null,
+    "minimumFreeInodes": null,
+    "assetCompatibilityStrategy": null,
+    "offHostBackupVerified": false,
+    "interruptedActivationRecoveryVerified": false,
+    "endToEndAcceptancePassed": false
+  },
+  "hostManagedPaths": [],
+  "criticalRoutesFromAcceptedBaseline": [],
+  "responsiveWidths": [320, 375, 390, 768, 1024, 1440],
+  "runtime": {"node": "24.19.0", "npm": "11.9.0", "python": "3.12.14", "playwright": "1.62.1"},
+  "notes": [
+    "This file is not an authorization or a receiver configuration.",
+    "Host fields and limits are deliberately unresolved; do not infer live paths from examples.",
+    "The workflows hard-disable stage, promote and rollback independently of these booleans.",
+    "Enabling deployment requires reviewed implementation plus account-level controls and acceptance evidence, not merely changing flags.",
+    "Keep credentials, private snapshots and raw host inventories outside this public repository."
+  ]
+}

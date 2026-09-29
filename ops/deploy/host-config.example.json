@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "enabled": false,
+  "environment": "staging",
+  "deploymentBase": null,
+  "documentRoot": null,
+  "acceptedBaseline": null,
+  "gates": {
+    "baselineAccepted": false,
+    "legacyDeploymentDisabled": false,
+    "hostCapabilityTestsPassed": false,
+    "routerAccepted": false,
+    "keyRestrictionsVerified": false,
+    "privateBackupVerified": false,
+    "approvalCapabilityVerified": false
+  },
+  "limits": {
+    "maxArchiveBytes": 268435456,
+    "maxExtractedBytes": 209715200,
+    "maxFileCount": 10000,
+    "maxManifestBytes": 4194304,
+    "minimumFreeDiskBytes": 67108864,
+    "minimumFreeInodes": 2000,
+    "receiveTimeoutSeconds": 300
+  },
+  "assetCompatibility": {
+    "status": "NOT_IMPLEMENTED",
+    "note": "Activation is unconditionally blocked in the public CLI; this is not an enablement flag."
+  }
+}

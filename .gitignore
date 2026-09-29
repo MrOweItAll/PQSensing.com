@@ -16,3 +16,10 @@ Thumbs.db
 # local transport bundle (not part of the site)
 thread-merge.bundle
 *.bundle
+
+# Local automation validation; no candidate archives or private host config in Git.
+__pycache__/
+*.pyc
+verification/
+ops/deploy/host-config.json
+release-candidates/
