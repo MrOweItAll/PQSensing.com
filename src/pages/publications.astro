@@ -8,6 +8,14 @@ const description =
   'Technical papers, audio, video, and exploratory research notes from Peterson Quantum Sensing, including an unvalidated hypothesis and experimental test plan for autonomous excitation management in superconductors.';
 
 const papers = publications.papers;
+// These existing Namecheap-hosted resources are maintained outside this repository.
+// Full URLs distinguish them from local build artifacts; verify their availability on the live site.
+const hosted = {
+  audio: 'https://www.pqsensing.com/assets/audio/pqs-overview-2026-09.wav',
+  transcript: 'https://www.pqsensing.com/assets/downloads/pqs-overview-transcript.txt',
+  evidence: 'https://www.pqsensing.com/evidence.html',
+  exampleCsv: 'https://www.pqsensing.com/assets/downloads/example-measurements.csv',
+};
 ---
 
 <BaseLayout title={title} description={description}>
@@ -56,11 +64,11 @@ const papers = publications.papers;
           <h2 id="overview-audio-title">Listen to the PQS introduction.</h2>
           <p>A plain-language guide to the proposition, the electrical result, and the next validation step.</p>
           <audio controls preload="none" aria-label="PQS introduction">
-            <source src="/assets/audio/pqs-overview-2026-09.wav" type="audio/wav" />
+            <source src={hosted.audio} type="audio/wav" />
             Your browser does not support audio. Use the download link below.
           </audio>
           <p class="format-note">Computer-narrated for accessibility. No autoplay.</p>
-          <p><a href="/assets/audio/pqs-overview-2026-09.wav">Download audio</a> · <a href="/assets/downloads/pqs-overview-transcript.txt">Text transcript</a></p>
+          <p><a href={hosted.audio}>Download audio</a> · <a href={hosted.transcript}>Text transcript</a></p>
           <details>
             <summary>Read the transcript</summary>
             <div class="transcript">
@@ -77,13 +85,13 @@ const papers = publications.papers;
         <section class="resource-panel" aria-labelledby="original-video-title">
           <p class="eyebrow">Historical concept video</p>
           <h2 id="original-video-title">The original visual explainer.</h2>
-          <p>Retained from the earlier PQS site as an introduction to the concept. The current <a href="/evidence.html">evidence statement</a> supersedes any impression of established optical performance or product readiness.</p>
+          <p>Retained from the earlier PQS site as an introduction to the concept. The current <a href={hosted.evidence}>evidence statement</a> supersedes any impression of established optical performance or product readiness.</p>
           <p><a class="button ghost" href="https://www.youtube.com/watch?v=P9Ce6NoKEwY" target="_blank" rel="noopener noreferrer">Open the original video on YouTube ↗</a></p>
           <p class="format-note">Opening this link connects to YouTube. Availability and playback depend on that service.</p>
         </section>
 
         <h2 class="platform-heading">Platform technical papers</h2>
-        <p>The June 2026 papers below present concepts and proposed validation paths. They are self-published, not peer-reviewed application benchmarks. Statements about optical, atomic, or quantum systems describe research directions. For supported company performance claims, use the <a href="/evidence.html">September 2026 evidence page</a>.</p>
+        <p>The June 2026 papers below present concepts and proposed validation paths. They are self-published, not peer-reviewed application benchmarks. Statements about optical, atomic, or quantum systems describe research directions. For supported company performance claims, use the <a href={hosted.evidence}>September 2026 evidence page</a>.</p>
         <div class="papers-list">
           {papers.map((paper) => <PaperRow paper={paper} />)}
         </div>
@@ -91,12 +99,12 @@ const papers = publications.papers;
         <section class="resource-panel" aria-labelledby="exploration-title">
           <h2 id="exploration-title">Interactive exploration</h2>
           <p>Explore the site's demonstrations and compare power, noise, and a normalized objective. The local CSV explorer works with measurements in your browser.</p>
-          <p><a href="/index.html">Explore the demonstrations</a> · <a href="/assets/downloads/example-measurements.csv">Download example CSV</a></p>
+          <p><a href="/index.html">Explore the demonstrations</a> · <a href={hosted.exampleCsv}>Download example CSV</a></p>
         </section>
 
         <div class="cta-row" style="margin-top:36px">
           <a class="button primary" href="mailto:mroweitall@gmail.com?subject=PQSensing%20publications%20inquiry">Request the full technical package</a>
-          <a class="button ghost" href="/evidence.html">Read the evidence and its limits</a>
+          <a class="button ghost" href={hosted.evidence}>Read the evidence and its limits</a>
         </div>
       </div>
     </section>
