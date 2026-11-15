@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autonomous Excitation Management for Superconducting Stability — Jon Peterson | PQSensing</title>
+  <meta name="description" content="An unvalidated hypothesis and experimental test plan by Jon Peterson: autonomous excitation management, superconducting stability, and controlled tests of a proposed energy-selective escape path.">
+  <meta name="author" content="Jon Peterson">
+  <meta name="citation_title" content="Autonomous Excitation Management for Superconducting Stability">
+  <meta name="citation_author" content="Peterson, Jon">
+  <meta name="citation_publication_date" content="2026/11/15">
+  <link rel="canonical" href="https://www.pqsensing.com/research/autonomous-superconducting-stability.html">
+  <style>
+    :root { color-scheme: light; --ink: #192c3b; --muted: #4a5b69; --accent: #235b85; --line: #d4dde4; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #f5f7f9; font: 18px/1.72 Georgia, 'Times New Roman', serif; }
+    .site-nav { background: #142b3c; color: white; padding: 15px max(20px, calc((100vw - 920px)/2)); font: 15px/1.5 system-ui, sans-serif; }
+    .site-nav a { color: white; text-underline-offset: 4px; margin-right: 22px; }
+    main { max-width: 920px; margin: 28px auto 48px; background: white; border: 1px solid var(--line); padding: 48px 60px; }
+    h1, h2, h3, .eyebrow, .meta, .status, .contents, .footnote { font-family: system-ui, sans-serif; }
+    h1 { font-size: clamp(28px, 4.5vw, 43px); line-height: 1.17; letter-spacing: -.025em; margin: 12px 0 14px; }
+    h2 { font-size: 25px; line-height: 1.3; margin: 42px 0 16px; }
+    h3 { font-size: 19px; line-height: 1.4; margin: 27px 0 12px; }
+    p { margin: 0 0 19px; }
+    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    a:focus-visible { outline: 3px solid #bd7612; outline-offset: 4px; }
+    .eyebrow { font-size: 12px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    .subtitle { color: var(--muted); font-size: 23px; }
+    .meta { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .status { border-left: 4px solid var(--accent); background: #edf4f9; padding: 17px 20px; margin: 26px 0; font-size: 15px; line-height: 1.6; }
+    .contents { font-size: 14px; line-height: 1.9; border-block: 1px solid var(--line); padding: 17px 0; }
+    .contents a { display: inline-block; margin-right: 18px; }
+    blockquote { border-left: 3px solid #7896aa; padding-left: 21px; margin: 23px 0; font-style: italic; }
+    .equation { overflow-x: auto; background: #f5f7f9; border: 1px solid var(--line); padding: 16px; text-align: center; font-size: 17px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 16px; }
+    th, td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); padding: 13px 12px; }
+    th { background: #edf4f9; font-family: system-ui, sans-serif; font-size: 14px; }
+    td:first-child { width: 32%; font-weight: bold; }
+    .references { font-size: 15px; line-height: 1.6; padding-left: 25px; }
+    .references li { padding-left: 6px; margin-bottom: 16px; }
+    .footnote { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+    .skip { position: absolute; top: -100px; left: 12px; background: white; padding: 10px; }
+    .skip:focus { top: 10px; }
+    @media (max-width: 650px) { main { margin: 0; padding: 30px 21px; border: 0; } body { font-size: 17px; } h2 { font-size: 23px; } }
+    @media print { body { background: white; color: black; font-size: 11pt; line-height: 1.5; } .site-nav, .skip, .contents { display: none; } main { margin: 0; padding: 0; border: 0; max-width: none; } h1 { font-size: 25pt; } h2 { font-size: 16pt; } h3 { font-size: 12pt; } h1, h2, h3 { break-after: avoid; } blockquote, tr, .equation { break-inside: avoid; } a { color: black; } .references { font-size: 10pt; } }
+  </style>
+</head>
+<body>
+<a class="skip" href="#paper">Skip to paper</a>
+<nav class="site-nav" aria-label="Website"><a href="/index.html">PQSensing</a><a href="/publications.html">Publications &amp; data</a></nav>
+<main id="paper">
+<article>
+<header>
+  <p class="eyebrow">Technical discussion paper — unvalidated hypothesis</p>
+  <h1>Autonomous Excitation Management for Superconducting Stability</h1>
+  <p class="subtitle">A hypothesis and experimental test plan</p>
+  <p class="meta"><strong>Jon Peterson</strong><br>Independent contributor | B.S., Architectural Engineering, University of Kansas<br><time datetime="2026-11-15">November 15, 2026</time> | Version 3.0 | Web edition</p>
+  <aside class="status"><strong>Research status:</strong> This is an independent hypothesis note, not a peer-reviewed paper or an experimental result. No validated simulation, new physical effect, or claim of novelty is reported. The complete discussion paper is reproduced below; use your browser’s Print command to save a PDF copy of this web edition.</aside>
+</header>
+<nav class="contents" aria-label="Paper contents"><a href="#abstract">Abstract</a><a href="#hypothesis">Hypothesis</a><a href="#candidate">Candidate mechanism</a><a href="#conditions">Physical constraints</a><a href="#experiment">Experiment</a><a href="#falsification">Falsification</a><a href="#references">References</a></nav>
+<section id="abstract">
+<h2>Abstract</h2>
+<p>I propose investigating whether a superconducting element can be made more resistant to localized disturbances by coupling it to a structure that preferentially transfers unwanted excitations into a relaxing reservoir. The intended response would arise from the materials and their interactions, rather than an external measurement-and-control loop. This is closer to a single-purpose quantum device than a quantum computer. Quasiparticle traps, superconducting-gap engineering, phonon downconversion, and autonomous quantum refrigeration already provide substantial precedents. The unresolved question posed here is narrower: can a specified implementation improve a current-carrying element’s disturbance tolerance, while preserving useful critical current, beyond independently characterized thermal and electrical effects? I outline a candidate based on a gap-engineered superconducting microstructure, identify the energy-transfer and reset requirements, and propose controlled tests of excitation dynamics and resistive-switching probability. No experiment, validated simulation, new physical effect, or claim of novelty is reported. Application to REBCO magnets remains a separate, unestablished extrapolation.</p>
+<p><strong>Keywords:</strong> superconducting stability; nonequilibrium quasiparticles; gap engineering; phonon escape; autonomous quantum devices; experimental controls.</p>
+</section>
+<section id="question">
+<h2>1. The question I am trying to answer</h2>
+<p>The idea began with a practical question: could the physical structure that responds to an emerging disturbance also provide the correction? Instead of putting a sensor beside a superconductor and telling another device what to do, could we arrange the materials so that an unwanted excitation has a preferred route out of the vulnerable region?</p>
+<p>I am not proposing that a material recognize a problem in the way a computer does. The response would be built into its available states, interfaces, and energy-transfer rates. In that limited sense, the sensing and response would be the same physical interaction.</p>
+<p>Existing protection is not limited to detecting trouble after it begins. Passive current sharing and surface shunting already provide important precedents in superconducting magnets <a href="#ref-1">[1]</a>. The question is therefore not whether passive protection can exist. It is whether a particular excitation-selective structure offers an additional, measurable benefit in a carefully chosen device.</p>
+<p>My purpose is to put a useful question in front of people who can assess it. I am not seeking a commercial position or recognition for an untested idea. A reference showing that the mechanism is already understood, or a clear reason it will not help, would move this discussion forward just as much as a promising result.</p>
+</section>
+<section id="precedents">
+<h2>2. What is established, and what remains a hypothesis</h2>
+<p>Normal-metal quasiparticle traps have been modeled and tested in superconducting qubits; their effectiveness depends on transport and trap properties <a href="#ref-2">[2]</a>. Lower-gap superconducting traps have also been analyzed as a way to improve trapping while reducing added dissipation <a href="#ref-3">[3]</a>. These are precedents for selective excitation management, not evidence that the proposal here is new.</p>
+<p>Phonon downconversion is another close precedent. Iaia and colleagues demonstrated reduced quasiparticle poisoning using metal reservoirs on the back of superconducting-qubit chips <a href="#ref-4">[4]</a>. This is important because removing quasiparticles from one region is not sufficient when energetic phonons can produce new ones elsewhere.</p>
+<p>Aamir and colleagues demonstrated an autonomous superconducting-circuit refrigerator that resets a target qubit using an engineered interaction and a thermal gradient <a href="#ref-5">[5]</a>. Sundelin and colleagues subsequently reported noise-powered quantum refrigeration in a superconducting circuit <a href="#ref-6">[6]</a>. Neither result establishes that the superconducting material itself is protected from entering a resistive state. Qubit-state preparation and conductor stability are different endpoints.</p>
+<p>Recent work also gives a direct warning against assuming that a favorable energy spectrum solves the whole problem. Nho and colleagues associated the limited benefit of gap engineering after quasiparticle bursts with slow phonon thermalization <a href="#ref-7">[7]</a>. A useful design must address acceptance, relaxation, and energy escape together.</p>
+<p>I would not describe this territory as overlooked. The more defensible question is whether a specific combination of established mechanisms produces a useful improvement in a specified current-carrying test structure. The literature reviewed here establishes related work, but is not an exhaustive novelty review.</p>
+</section>
+<section id="hypothesis">
+<h2>3. Working hypothesis and scope</h2>
+<blockquote>For a specified superconducting microbridge, disturbance type, temperature, field, and bias-current range, an engineered excitation-transfer structure will increase the deposited energy associated with a defined probability of sustained resistive switching, relative to appropriate controls, without an unacceptable reduction in the device’s undisturbed current-carrying capability.</blockquote>
+<p>The proposed explanation is preferential transfer and relaxation of nonequilibrium excitations. The experiment must show that explanation adds predictive value beyond measured changes in heat flow, current sharing, geometry, and equilibrium superconducting properties. Those are not nuisances to ignore; they are competing explanations.</p>
+<p><strong>Null hypothesis:</strong> Within the stated device and operating range, there is no reproducible improvement beyond those competing effects, or any improvement is offset by a loss of useful critical current, added dissipation, or reservoir saturation. A negative result would reject that implementation under those conditions—not every conceivable excitation-management structure.</p>
+<p>I separate three levels of evidence. First, does the structure change excitation dynamics? Second, does that change improve a measured stability endpoint? Third, is a specifically coherent quantum process necessary to explain the advantage? The first two can be useful without establishing the third. A device can depend on quantum energy levels while its measured populations are adequately described by rate equations.</p>
+</section>
+<section id="candidate">
+<h2>4. A concrete candidate: an energy-selective escape path</h2>
+<p>The most grounded starting point is a low-energy superconducting microbridge with a nearby, engineered lower-gap region and a separately characterized path from that region to a cold environment. A conventional thin-film system, initially aluminum-based if a partner laboratory considers it suitable, would be more interpretable than beginning with a high-current REBCO winding. This is a candidate device class, not a completed materials recipe.</p>
+<p>Let S denote the protected region, A the accepting region, and B the bath. The proposed sequence is: a localized disturbance creates excess excitations in S; accessible states and coupling allow some excitation energy to enter A; relaxation reduces its ability to return; and B accepts the energy so A can remain effective. The mechanism does not require a separately measured error signal.</p>
+<p>For a lower-gap accepting region, a quasiparticle may enter at an energy allowed by both regions and then relax to an energy below the gap of S. That can impede its return. Gap-engineered trapping is established prior work <a href="#ref-3">[3]</a>. What would require testing here is the resulting disturbance tolerance of the biased microbridge, including the effects of the trap on the bridge itself.</p>
+<p>A lower-gap region is not automatically beneficial. Its connection can alter the protected material through the proximity effect <a href="#ref-8">[8]</a>. It can also become a weak link or an unintended electrical bypass. The accepting structure should therefore be evaluated off the main transport path, with actual current redistribution measured rather than assumed absent.</p>
+<p>The phonon pathway matters just as much as the electronic interface. A proposed extension would co-design the accepting region and its environment to reduce the return of pair-breaking phonons. I would first compare that extension with established trapping and phonon-downconversion controls <a href="#ref-4">[4]</a>, rather than calling a familiar trap a new quantum stabilizer.</p>
+<h3>4.1 The single-purpose quantum-circuit alternative</h3>
+<p>The small-quantum-computer analogy is useful only to a point. A resonator or few-level superconducting circuit could be engineered for a specific energy-transfer task, as autonomous-refrigeration experiments illustrate <a href="#ref-5">[5]</a>, <a href="#ref-6">[6]</a>. But its transition must couple to the actual harmful excitation. Cooling a microwave mode does not automatically remove material quasiparticles or suppress vortex-driven heating.</p>
+<p>I would retain this as a separate branch of the hypothesis, not assume it is interchangeable with a material trap. It becomes a credible candidate only after specifying the protected excitation, interaction, energy scales, achievable transfer rate, and reset pathway. Adding a qubit merely because the goal is quantum mechanical would not improve the proposal.</p>
+</section>
+<section id="conditions">
+<h2>5. Conditions the mechanism must satisfy</h2>
+<h3>5.1 Autonomous does not mean isolated or energy-free</h3>
+<p>In this proposal, passive means the stabilizing pathway has no dedicated drive or powered local controller; the maintained cold bath and transport bias remain explicit resources. Autonomous means the response follows fixed interactions and boundary conditions rather than a measurement-based decision. A driven quantum refrigerator can be autonomous without being passive in this sense: it may consume a thermal gradient, electrical bias, or supplied noise <a href="#ref-5">[5]</a>, <a href="#ref-6">[6]</a>. Those resources must be counted.</p>
+<p>A simple energy balance for the protected region and accepting region together is:</p>
+<p class="equation">d(U<sub>S</sub> + U<sub>A</sub>)/dt = P<sub>disturbance</sub> + P<sub>bias</sub> + P<sub>drive</sub> − P<sub>bath</sub>. &nbsp; (1)</p>
+<p>All terms are powers; U denotes stored energy. Internal transfer from S to A cancels in the combined balance. A passive candidate sets the separate control-drive term to zero, but the bias source can still deliver energy if resistance develops. The reservoir cannot erase that energy. Repeated operation requires adequate disposal, not merely temporary storage.</p>
+<h3>5.2 The energy scales must match</h3>
+<p>The superconducting pairing gap and a qubit’s transition energy are not the same quantity. As an illustrative scale check, McEwen and colleagues use a bulk-aluminum gap parameter of about 180 μeV <a href="#ref-9">[9]</a>. A pair-breaking energy of 2Δ then corresponds to roughly 87 GHz, whereas a 5 GHz photon carries about 21 μeV. These are illustrative conversions, not measured parameters of a proposed device; thin-film gaps vary.</p>
+<p>This does not rule out multistep conversion or a reservoir coupled to other modes. It does rule out assuming that an ordinary microwave qubit absorbs the relevant pair-breaking energy just because both devices are superconducting. Electronic transfer, phonon coupling, and microwave exchange require different interaction models.</p>
+<h3>5.3 Transfer rate and capacity must both be adequate</h3>
+<p>Energy must leave the vulnerable region before the instability grows. Acceptance must be fast enough, but relaxation and escape must also prevent backflow and saturation. A structure that performs well for one weak pulse may fail under closely spaced disturbances. Nho and colleagues’ phonon-thermalization result makes that failure mode especially relevant <a href="#ref-7">[7]</a>.</p>
+<p>For scale only, a channel removing one 5 GHz quantum every microsecond transfers about 3.3 × 10<sup>−18</sup> W. This calculation is not a universal quantum-device power limit: many modes, higher energies, and higher throughput can change it. It does show why a single-qubit demonstration cannot be extrapolated directly to magnet protection.</p>
+<h3>5.4 Quantum-selective does not mean nonthermal</h3>
+<p>Microscopic excitation transfer and heat transport are related descriptions, not clean opposites. The useful test is whether independently measured spectral and interfacial properties explain the improvement more accurately than added thermal conductance or electrical shunting alone. A thermal explanation remains a serious possibility: controlled quasiparticle-injection experiments in nanowires have found critical-current suppression dominated by injected power <a href="#ref-10">[10]</a>.</p>
+<p>No long-lived entanglement, instantaneous action at a distance, or violation of thermodynamics is proposed. A coherent quantum advantage would need its own demonstration. The immediate objective is autonomous stabilization, not proving that classical population dynamics are incapable of describing it.</p>
+</section>
+<section id="model">
+<h2>6. A model that could fail, rather than one that assumes success</h2>
+<p>The first calculation should track quasiparticles, pair-breaking phonons, the accepting region, and energy escape. Rothwarf–Taylor kinetics provide a starting precedent for coupled quasiparticle and phonon dynamics <a href="#ref-11">[11]</a>, but transport, interfaces, current bias, and device-specific switching would need to be added.</p>
+<p>For clarity, a schematic population balance in a defined effective volume is:</p>
+<p class="equation">dN<sub>q</sub>/dt = G<sub>q</sub> − 2R<sub>rec</sub> + 2R<sub>pb</sub> − J<sub>capture</sub> + J<sub>return</sub>. &nbsp; (2)</p>
+<p class="equation">dN<sub>p</sub>/dt = G<sub>p</sub> + R<sub>rec</sub> − R<sub>pb</sub> − J<sub>escape</sub> + J<sub>p,return</sub>. &nbsp; (3)</p>
+<p>N<sub>q</sub> and N<sub>p</sub> denote quasiparticle and pair-breaking-phonon counts. G denotes injection rates; R<sub>rec</sub> and R<sub>pb</sub> count recombination and pair-breaking events per second; J denotes particle-transfer rates. The factors of two account for two quasiparticles per recombination or pair-breaking event. These equations are bookkeeping, not a solved microscopic model. They require reservoir balances, energy-resolved rates, and appropriate equilibrium terms before quantitative use.</p>
+<p>In particular, adding a favorable capture term while leaving return, reservoir heating, or altered critical current out of the model would build the desired answer into the equations. A current-biased device also needs a measured or justified link between excitation populations, local superconducting properties, and the onset of sustained voltage. Lower N<sub>q</sub> alone is not a quench-prevention result.</p>
+<p>A two-mode quantum model can test exchange and relaxation in a selected circuit implementation, but it cannot substitute for that material connection. No numerical model has been fitted or validated for this proposal. Parameter bounds and the dominant disturbance mechanism should be established with an experimental group before simulation results are treated as evidence.</p>
+</section>
+<section id="experiment">
+<h2>7. Proposed experiment</h2>
+<h3>7.1 Establish the device and endpoint before comparing it</h3>
+<p>Begin with a current-limited, low-stored-energy superconducting microbridge in an existing laboratory. Measure its transition, switching-current distribution, retrapping behavior, baseline dissipation, thermal response, and relevant spectral properties. Choose a disturbance that couples to the proposed mechanism rather than beginning with an arbitrary heater pulse and assuming equivalence.</p>
+<p>Define the resistive event in advance: a specified four-terminal voltage threshold sustained for a specified duration, under fixed bias and a defined observation window. Distinguish this event from a short reversible voltage transient. Use E<sub>50</sub>, the deposited disturbance energy giving a 50% event probability, as an operational endpoint where a threshold distribution can be measured. It is not automatically the minimum quench energy of a magnet.</p>
+<h3>7.2 Use controls that address the actual alternatives</h3>
+<div class="table-wrap"><table><thead><tr><th scope="col">Test structure</th><th scope="col">Purpose</th></tr></thead><tbody>
+<tr><td>Baseline microbridge</td><td>Establish the response without the accepting structure.</td></tr>
+<tr><td>Thermal/electrical control</td><td>Characterize added heat capacity, heat escape, geometry, and any parallel current path without assuming these effects are negligible.</td></tr>
+<tr><td>Candidate accepting structure</td><td>Test the specified excitation-transfer mechanism with its relaxation and bath connections.</td></tr>
+<tr><td>Mechanism-disabled comparison</td><td>Alter the relevant spectrum or coupling where feasible; independently measure any accompanying change in temperature, field, resistance, or critical current.</td></tr>
+</tbody></table></div>
+<p>Perfectly identical thermal controls may be impossible because changing an interface also changes its transport properties. The requirement is to measure those changes, include their uncertainty, and test whether they explain the result. An unmeasured difference cannot be labeled a quantum advantage.</p>
+<h3>7.3 Apply calibrated disturbances and independent readout</h3>
+<p>A laboratory may use tunnel injection, a calibrated heater, or optical pulses depending on the device. Electrical pulse energy at an injector or heater is not automatically the energy deposited in the protected volume; optical pulse energy also requires absorption calibration. Estimate the deposited energy and its uncertainty for every configuration.</p>
+<p>Record transient voltage and current, recovery time, switching probability, and an independent excitation-sensitive signal where available. A calibrated resonator or tunneling probe may help separate excitation dynamics from a simple thermal response. Diagnostic equipment can be active while the proposed stabilizer remains autonomous, but readout heating and backaction must be quantified.</p>
+<p>Compare at both the same absolute current and the same fraction of each device’s measured switching or critical-current scale. Otherwise a trap that simply weakens the conductor may look artificially tolerant when operated at a much lower current. Repeat across pulse energies, pulse spacing, temperatures, and independently fabricated samples.</p>
+</section>
+<section id="falsification">
+<h2>8. Analysis, falsification, and decision criteria</h2>
+<p>Set the useful effect size and acceptable losses before the main comparison, based on pilot uncertainty and the device’s purpose. An arbitrary improvement percentage would be a target, not a prediction. Randomize or interleave trials to limit drift, document excluded data, and use sample-level uncertainty. Hundreds of pulses on one specimen do not establish fabrication reproducibility.</p>
+<p>The hypothesis would gain support from a reproducible increase in E<sub>50</sub>, together with excitation-dynamics measurements and a dependence on coupling or spectrum consistent with a preregistered mechanism. Independently characterized thermal and electrical models should be fitted to calibration data and tested against held-out disturbance conditions, rather than freely adjusted after seeing every result.</p>
+<p>Several outcomes would count against the proposed implementation: no stability improvement; an effect fully explained by ordinary heat flow or current sharing; reduced critical current that cancels the benefit; evidence that the accepting structure heats the protected region; or apparent protection that disappears under repeated pulses. A lower quasiparticle signal without improved disturbance tolerance would support only the first, narrower claim.</p>
+<p>A positive engineering result would still not establish that coherence or entanglement caused it. If that stronger claim becomes relevant, a separate experiment would need to compare coherent and incoherent dynamics while controlling energy flow and other confounds. There is no reason to impose that burden before demonstrating a useful stabilizing effect.</p>
+</section>
+<section id="scope">
+<h2>9. Practical scope and questions for an experimental group</h2>
+<p>The immediate next step is expert assessment of a specific material/interface combination—not purchasing an optical bench or building a magnet. Thin-film fabrication, low-temperature measurements, controlled injection, and reliable thermometry make this a laboratory collaboration rather than a credible personal-budget proof of the quantum mechanism.</p>
+<p>The first question for a specialist is whether there is an experimentally accessible device in which nonequilibrium excitations limit disturbance tolerance before ordinary heating dominates. The second is whether a proposed trap or coupled circuit can accept and evacuate those excitations on the relevant timescale without weakening the device. The third is which existing experiment or material system already answers either question.</p>
+<p>REBCO magnet protection remains a separate problem. A small conventional-superconductor result would not establish performance under a magnet’s field, current, strain, cooling conditions, and stored energy. It would need to be connected to the actual instability and compared with existing passive stabilization, including current sharing <a href="#ref-1">[1]</a>. This proposal is not a replacement for qualified quench protection.</p>
+</section>
+<section id="conclusion">
+<h2>10. Conclusion</h2>
+<p>The central idea is straightforward: make the corrective response part of the material arrangement, so that a disturbance itself opens or uses a favorable energy-transfer pathway. That is a meaningful design objective, but it is not yet a device or a discovery.</p>
+<p>The strongest question is whether a specified quantum-selective interaction can improve the stability of a specified current-carrying superconducting element, with the energy destination, competing explanations, and failure conditions all accounted for. Established trapping and autonomous-refrigeration research justify asking the question; they do not supply the answer.</p>
+<p>I would consider this note useful if it helps identify a testable implementation, connects the question to work already underway, or shows clearly where the proposed connection fails. First establish what the mechanism actually does. Then decide whether there is anything further to build on.</p>
+</section>
+<section id="preparation">
+<h2>Author and preparation note</h2>
+<p>This is an independent hypothesis note, not an experimental report, journal submission, or claim of scientific priority. It was developed through discussion with ChatGPT, which assisted with drafting, literature organization, and internal critical review. It has not received independent scientific peer review. No measurements or simulated performance curves are presented. The author’s purpose is to invite technical criticism and share a possible research question.</p>
+</section>
+<section id="references">
+<h2>References</h2>
+<p class="meta">Selected primary research. Publication details and relevance checked November 15, 2026 in the original discussion paper. DOI links lead to the cited publications, not to new results from this proposal.</p>
+<ol class="references">
+<li id="ref-1">F. Dong, D. Park, J. Kim, J. Bascuñán, and Y. Iwasa. A surface-shunting method for the prevention of a fault-mode-induced quench in high-field no-insulation REBCO magnets. <em>Superconductor Science and Technology</em> 37, 115018 (2024). <a href="https://doi.org/10.1088/1361-6668/ad826a">DOI: 10.1088/1361-6668/ad826a</a></li>
+<li id="ref-2">R.-P. Riwar et al. Normal-metal quasiparticle traps for superconducting qubits. <em>Physical Review B</em> 94, 104516 (2016). <a href="https://doi.org/10.1103/PhysRevB.94.104516">DOI: 10.1103/PhysRevB.94.104516</a></li>
+<li id="ref-3">R.-P. Riwar and G. Catelani. Efficient quasiparticle traps with low dissipation through gap engineering. <em>Physical Review B</em> 100, 144514 (2019). <a href="https://doi.org/10.1103/PhysRevB.100.144514">DOI: 10.1103/PhysRevB.100.144514</a></li>
+<li id="ref-4">V. Iaia et al. Phonon downconversion to suppress correlated errors in superconducting qubits. <em>Nature Communications</em> 13, 6425 (2022). <a href="https://doi.org/10.1038/s41467-022-33997-0">DOI: 10.1038/s41467-022-33997-0</a></li>
+<li id="ref-5">M. A. Aamir et al. Thermally driven quantum refrigerator autonomously resets a superconducting qubit. <em>Nature Physics</em> 21, 318–323 (2025). <a href="https://doi.org/10.1038/s41567-024-02708-5">DOI: 10.1038/s41567-024-02708-5</a></li>
+<li id="ref-6">S. Sundelin, M. A. Aamir, V. M. Kulkarni, C. Castillo-Moreno, and S. Gasparinetti. Quantum refrigeration powered by noise in a superconducting circuit. <em>Nature Communications</em> 17, 359 (2026). <a href="https://doi.org/10.1038/s41467-025-67751-z">DOI: 10.1038/s41467-025-67751-z</a></li>
+<li id="ref-7">H. Nho et al. Recovery Dynamics of a Gap-Engineered Transmon after a Quasiparticle Burst. <em>Physical Review Letters</em> 136, 050601 (2026). <a href="https://doi.org/10.1103/ql6q-wfpn">DOI: 10.1103/ql6q-wfpn</a></li>
+<li id="ref-8">A. Hosseinkhani and G. Catelani. Proximity effect in normal-metal quasiparticle traps. <em>Physical Review B</em> 97, 054513 (2018). <a href="https://doi.org/10.1103/PhysRevB.97.054513">DOI: 10.1103/PhysRevB.97.054513</a></li>
+<li id="ref-9">M. McEwen et al. Resisting High-Energy Impact Events through Gap Engineering in Superconducting Qubit Arrays. <em>Physical Review Letters</em> 133, 240601 (2024). <a href="https://doi.org/10.1103/PhysRevLett.133.240601">DOI: 10.1103/PhysRevLett.133.240601</a></li>
+<li id="ref-10">T. Jalabert et al. Thermalization and dynamics of high-energy quasiparticles in a superconducting nanowire. <em>Nature Physics</em> (2023). <a href="https://doi.org/10.1038/s41567-023-01999-4">DOI: 10.1038/s41567-023-01999-4</a></li>
+<li id="ref-11">A. Rothwarf and B. N. Taylor. Measurement of Recombination Lifetimes in Superconductors. <em>Physical Review Letters</em> 19, 27 (1967). <a href="https://doi.org/10.1103/PhysRevLett.19.27">DOI: 10.1103/PhysRevLett.19.27</a></li>
+</ol>
+</section>
+<footer class="footnote"><p>Published on PQSensing as an exploratory research discussion, separate from the site’s other technical work. This web edition preserves the paper’s hypothesis status, limitations, experimental plan, and AI-assistance disclosure.</p><p><a href="mailto:mroweitall@gmail.com?subject=Superconducting%20stability%20hypothesis%20%E2%80%94%20technical%20feedback">Send a reference, correction, or technical comment</a> · <a href="/publications.html">Back to publications</a></p></footer>
+</article>
+</main>
+</body>
+</html>
