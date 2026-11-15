@@ -5,7 +5,7 @@ import publications from '../data/publications.json';
 
 const title = 'Publications & Data — PQSensing';
 const description =
-  'Non-confidential technical white papers from Peterson Quantum Sensing on Noise-Stationary Locking, Dark-Port Injection, supervisory control modules, and atom-interferometric measurement — each with a downloadable PDF and a BibTeX citation.';
+  'Technical papers and exploratory research notes from Peterson Quantum Sensing, including an unvalidated hypothesis and experimental test plan for autonomous excitation management in superconductors.';
 
 const papers = publications.papers;
 ---
@@ -17,18 +17,41 @@ const papers = publications.papers;
       <div class="page-hero-overlay"></div>
       <div class="page-hero-inner container">
         <p class="eyebrow">Publications &amp; data</p>
-        <h1>Technical papers behind the platform.</h1>
+        <h1>Technical papers and research questions.</h1>
         <p class="page-hero-lede">
-          Non-confidential technical papers based on the PQSensing
-          patent-pending math and control architecture (non-provisional filed). Each is available
-          as a PDF with a ready-to-paste BibTeX citation for academic
-          collaborators. Measured validation datasets will be published here
-          as the tabletop Mach–Zehnder sprint produces them.
+          Read technical papers and exploratory research notes from PQSensing.
+          Each document states its scope and validation status. A proposed
+          hypothesis is not an experimental result or a peer-reviewed finding.
         </p>
       </div>
     </section>
     <section class="section-pad">
       <div class="container">
+        <article class="research-note" aria-labelledby="superconducting-paper-title">
+          <p class="eyebrow">Exploratory research · November 15, 2026 · Version 3.0</p>
+          <h2 id="superconducting-paper-title">Autonomous Excitation Management for Superconducting Stability</h2>
+          <p><strong>Jon Peterson — A hypothesis and experimental test plan</strong></p>
+          <p>
+            Could an engineered interface or coupled device provide a preferred
+            route for unwanted excitations to leave a vulnerable superconducting
+            region, without a separate measurement-and-control loop? This note
+            examines established precedents, physical limitations, experimental
+            controls, and conditions that would count against the proposed mechanism.
+          </p>
+          <p class="research-status">
+            <strong>Unvalidated hypothesis; not independently peer reviewed.</strong>
+            No experimental results, validated simulations, or claim of novelty are
+            reported. AI assistance is disclosed in the paper. This exploratory note
+            is separate from the platform papers below.
+          </p>
+          <div class="cta-row">
+            <a class="button primary" href="/research/autonomous-superconducting-stability.html">Read the full paper</a>
+            <a class="button ghost" href="mailto:mroweitall@gmail.com?subject=Superconducting%20stability%20hypothesis%20feedback">Share technical feedback</a>
+          </div>
+          <p class="format-note">Complete, accessible web edition with all 11 references and a print-friendly layout.</p>
+        </article>
+
+        <h2 class="platform-heading">Platform technical papers</h2>
         <div class="papers-list">
           {papers.map((paper) => <PaperRow paper={paper} />)}
         </div>
@@ -43,6 +66,18 @@ const papers = publications.papers;
 </BaseLayout>
 
 <style>
+  .research-note {
+    border: 1px solid var(--line, rgba(96, 219, 255, 0.24));
+    border-radius: 12px;
+    padding: clamp(20px, 4vw, 34px);
+    margin: 12px 0 42px;
+    background: rgba(96, 219, 255, 0.035);
+  }
+  .research-note h2 { max-width: 850px; line-height: 1.25; }
+  .research-note p { max-width: 900px; line-height: 1.7; }
+  .research-status { border-left: 3px solid currentColor; padding-left: 16px; }
+  .format-note { font-size: 0.9rem; opacity: 0.85; }
+  .platform-heading { margin-top: 34px; }
   .papers-list {
     margin-top: 30px;
     border-bottom: 1px solid var(--line, rgba(96, 219, 255, 0.24));
