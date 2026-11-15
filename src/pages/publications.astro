@@ -5,7 +5,7 @@ import publications from '../data/publications.json';
 
 const title = 'Publications & Data — PQSensing';
 const description =
-  'Technical papers and exploratory research notes from Peterson Quantum Sensing, including an unvalidated hypothesis and experimental test plan for autonomous excitation management in superconductors.';
+  'Technical papers, audio, video, and exploratory research notes from Peterson Quantum Sensing, including an unvalidated hypothesis and experimental test plan for autonomous excitation management in superconductors.';
 
 const papers = publications.papers;
 ---
@@ -16,7 +16,7 @@ const papers = publications.papers;
       <div class="page-hero-bg" style="background-image:url('/assets/bg/publications.jpg')"></div>
       <div class="page-hero-overlay"></div>
       <div class="page-hero-inner container">
-        <p class="eyebrow">Publications &amp; data</p>
+        <p class="eyebrow">Publications, media &amp; data</p>
         <h1>Technical papers and research questions.</h1>
         <p class="page-hero-lede">
           Read technical papers and exploratory research notes from PQSensing.
@@ -51,14 +51,52 @@ const papers = publications.papers;
           <p class="format-note">Complete, accessible web edition with all 11 references and a print-friendly layout.</p>
         </article>
 
+        <section class="resource-panel" aria-labelledby="overview-audio-title">
+          <p class="eyebrow">Current overview / September 2026</p>
+          <h2 id="overview-audio-title">Listen to the PQS introduction.</h2>
+          <p>A plain-language guide to the proposition, the electrical result, and the next validation step.</p>
+          <audio controls preload="none" aria-label="PQS introduction">
+            <source src="/assets/audio/pqs-overview-2026-09.wav" type="audio/wav" />
+            Your browser does not support audio. Use the download link below.
+          </audio>
+          <p class="format-note">Computer-narrated for accessibility. No autoplay.</p>
+          <p><a href="/assets/audio/pqs-overview-2026-09.wav">Download audio</a> · <a href="/assets/downloads/pqs-overview-transcript.txt">Text transcript</a></p>
+          <details>
+            <summary>Read the transcript</summary>
+            <div class="transcript">
+              <p>Precision becomes valuable when it helps someone make a decision. A stable instrument is a starting point, but holding a setting steady does not always preserve measurement quality. Peterson Quantum Sensing is developing a supervisory software or firmware layer that pays attention to a defined noise or information objective alongside an instrument's existing controls.</p>
+              <p>The idea is to make small adjustments, observe their effect, and seek favorable measurement conditions. A quieter output still has to preserve the desired signal. Calibration, bias, and response speed matter.</p>
+              <p>Today, PQS is at the electrical proof-of-principle stage. In one experiment with a deliberately moving optimum, active control reduced the median test objective by 3.68 decibels, about 57 percent, compared with a fixed setting after a documented tuning change. These numbers describe the same electrical objective comparison. They do not establish an improvement in optical sensitivity or customer throughput.</p>
+              <p>The test used a physical electrical signal path with software-defined actuation and measurement, one programmed disturbance pattern, and separate passes in a fixed order. The next step is stronger repeated electrical testing, followed by optical validation against an independently calibrated measurement.</p>
+              <p>The proposed applications include precision metrology, industrial optical inspection, and scientific interferometry. Existing stabilization, detection, and isolation tools already solve important problems. PQS's opportunity is to demonstrate additional value where a controllable quality limitation remains.</p>
+              <p>For a prospective collaborator, the starting point is a focused evaluation: a clear measurement problem, an accessible adjustment, and a reference that can establish whether the final result improves. Learn more at p q sensing dot com.</p>
+            </div>
+          </details>
+        </section>
+
+        <section class="resource-panel" aria-labelledby="original-video-title">
+          <p class="eyebrow">Historical concept video</p>
+          <h2 id="original-video-title">The original visual explainer.</h2>
+          <p>Retained from the earlier PQS site as an introduction to the concept. The current <a href="/evidence.html">evidence statement</a> supersedes any impression of established optical performance or product readiness.</p>
+          <p><a class="button ghost" href="https://www.youtube.com/watch?v=P9Ce6NoKEwY" target="_blank" rel="noopener noreferrer">Open the original video on YouTube ↗</a></p>
+          <p class="format-note">Opening this link connects to YouTube. Availability and playback depend on that service.</p>
+        </section>
+
         <h2 class="platform-heading">Platform technical papers</h2>
+        <p>The June 2026 papers below present concepts and proposed validation paths. They are self-published, not peer-reviewed application benchmarks. Statements about optical, atomic, or quantum systems describe research directions. For supported company performance claims, use the <a href="/evidence.html">September 2026 evidence page</a>.</p>
         <div class="papers-list">
           {papers.map((paper) => <PaperRow paper={paper} />)}
         </div>
 
+        <section class="resource-panel" aria-labelledby="exploration-title">
+          <h2 id="exploration-title">Interactive exploration</h2>
+          <p>Explore the site's demonstrations and compare power, noise, and a normalized objective. The local CSV explorer works with measurements in your browser.</p>
+          <p><a href="/index.html">Explore the demonstrations</a> · <a href="/assets/downloads/example-measurements.csv">Download example CSV</a></p>
+        </section>
+
         <div class="cta-row" style="margin-top:36px">
           <a class="button primary" href="mailto:mroweitall@gmail.com?subject=PQSensing%20publications%20inquiry">Request the full technical package</a>
-          <a class="button ghost" href="/index.html#validate">See the validation plan</a>
+          <a class="button ghost" href="/evidence.html">Read the evidence and its limits</a>
         </div>
       </div>
     </section>
@@ -74,10 +112,14 @@ const papers = publications.papers;
     background: rgba(96, 219, 255, 0.035);
   }
   .research-note h2 { max-width: 850px; line-height: 1.25; }
-  .research-note p { max-width: 900px; line-height: 1.7; }
+  .research-note p, .resource-panel p { max-width: 900px; line-height: 1.7; }
   .research-status { border-left: 3px solid currentColor; padding-left: 16px; }
   .format-note { font-size: 0.9rem; opacity: 0.85; }
   .platform-heading { margin-top: 34px; }
+  .resource-panel { padding: 24px 0; border-top: 1px solid var(--line, rgba(96, 219, 255, 0.24)); margin: 28px 0; }
+  audio { display: block; width: 100%; max-width: 700px; margin: 20px 0 10px; }
+  summary { cursor: pointer; }
+  .transcript { padding-top: 20px; }
   .papers-list {
     margin-top: 30px;
     border-bottom: 1px solid var(--line, rgba(96, 219, 255, 0.24));
